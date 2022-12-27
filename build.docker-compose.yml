@@ -1,0 +1,8 @@
+version: "2.0"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: build.Dockerfile
+    volumes:
+      - ./output:/app/output

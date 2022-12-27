@@ -1,0 +1,63 @@
+{
+  "name": "service-venue-dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/src/start.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon src/bootstrap",
+    "start": "npm run serve",
+    "serve": "node dist/src/bootstrap",
+    "pretest": "npm run lint",
+    "test": "APP_ENV=Dev NEW_RELIC_APP_NAME='Dev' ts-mocha --paths",
+    "test:watch": "APP_ENV=Dev ts-mocha -w",
+    "lint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
+    "lint:fix": "eslint --fix 'src/**/*.ts' 'test/**/*.ts'",
+    "ci": "npm test && npm run build"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "dependencies": {
+    "@tabdigital/api-client": "^5.0.0",
+    "@tabdigital/api-logger": "^3.1.1",
+    "@tabdigital/api-server": "^2.6.0",
+    "@tabdigital/json-config": "^4.1.3",
+    "@tabdigital/secrets": "^1.0.2",
+    "axios": "^0.27.2",
+    "axios-retry": "^3.2.5",
+    "dayjs": "^1.11.6",
+    "javascript-stringify": "^2.1.0",
+    "mongoose": "^6.8.1",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1",
+    "qs": "^6.11.0",
+    "strummer": "^2.10.0",
+    "typescript": "^4.8.2"
+  },
+  "devDependencies": {
+    "@tabdigital/eslint-config-node": "0.0.3",
+    "concurrently": "^7.3.0",
+    "eslint": "^8.30.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "nock": "^13.2.9",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1",
+    "require-lint": "^2.0.3"
+  },
+  "files": [
+    "configs",
+    "dist",
+    "src",
+    "test",
+    "package.json",
+    "package-lock.json"
+  ],
+  "baselinedFiles": [
+    "/usr/bin/sha256sum",
+    "src",
+    "package.json",
+    "package-lock.json"
+  ]
+}
