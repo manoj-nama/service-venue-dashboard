@@ -1,6 +1,6 @@
 {
-  "serverPort": 8186,
-  "publicUrl": "http://localhost:8186",
+  "serverPort": 3000,
+  "publicUrl": "http://localhost:3000",
   "basePath": "/v1/service-venue",
   "mongoose": { 
     "url": "mongodb://10.13.152.23:27017/",
