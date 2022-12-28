@@ -4,8 +4,8 @@
   "description": "",
   "main": "dist/src/start.js",
   "scripts": {
-    "dev": "nodemon src/bootstrap",
-    "start": "node src/bootstrap",
+    "dev": "APP_ENV=Dev nodemon src/bootstrap",
+    "start": "APP_ENV=Congo node src/bootstrap",
     "pretest": "npm run lint",
     "test": "APP_ENV=Dev NEW_RELIC_APP_NAME='Dev' ts-mocha --paths",
     "test:watch": "APP_ENV=Dev ts-mocha -w",

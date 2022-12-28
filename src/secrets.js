@@ -13,7 +13,7 @@ export const load = async () => {
     const res = await secrets.load({
       service: pkg.name,
       env: env,
-      skip: ['Dev', 'ci'],
+      skip: ['Dev', 'ci', 'Congo'],
     });
     log.info(res.message, 'Secret loaded successfully');
     secretLoaded = true;
