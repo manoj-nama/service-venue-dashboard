@@ -8,7 +8,7 @@ secrets
   .load({
     service: "service-venue-dashbaord",
     env: env,
-    skip: ["Dev"],
+    skip: ["Dev", "Congo"],
   })
   .then((response) => {
     log.info(response.message);
