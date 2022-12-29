@@ -1,7 +1,7 @@
 const BetModel = require('./bet');
-const UserVenueModel = require('./user-venue');
+const UserModel = require('./users');
 
 module.exports = {
   BetModel,
-  UserVenueModel
+  UserModel
 };
