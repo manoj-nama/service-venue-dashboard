@@ -1,4 +1,4 @@
-const { BetModel } = require('../models')
+const { BetModel,UserModel } = require('../models')
 const redis = require('../redis');
 const {
 	liveBetsFormatter,
@@ -6,9 +6,26 @@ const {
 	formatBetDistribution,
 } = require('./formatter/bet-stats');
 
-const createBets = async (bets) => {
-	const formattedBetsInput = inputBetsFormatter(bets);
-	const response = await BetModel.insertMany(formattedBetsInput);
+ const makeBet = async (bet) => {
+	const userInfo = await UserModel.findOne({ accountNumber: bet.account_number });
+	if (userInfo) {
+		bet.venueId = userInfo.venueId;
+		bet.venueName = userInfo.venueName;
+		bet.venueType = userInfo.venueType;
+		bet.venueState = userInfo.venueState;
+		bet.location = userInfo.location
+	}
+	const betDetail = new BetModel(bet);
+	return betDetail.save();
+};
+
+const createBets = async (betDetails) => {
+	// const formattedBetsInput = inputBetsFormatter(bets);
+	let i = 0;
+	const promises = [];
+	while (i < betDetails.length) { const promise = await makeBet(betDetails[i]); i += 1; promises.push(promise); }
+	const result = await Promise.all(promises);
+	return result
 };
 
 const getBetsUsingCount = async (count) => {

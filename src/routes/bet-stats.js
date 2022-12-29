@@ -52,4 +52,12 @@ router.get({
   ],
 });
 
+router.post({
+  path: {
+    name: 'add-transactions',
+    path: '/v1/service-venue/bet-stats',
+  },
+  handlers: [betStatsController.addBetDetails],
+});
+
 module.exports = router;
