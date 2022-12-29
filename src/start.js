@@ -18,7 +18,7 @@ const start = async () => {
   });
 
   try {
-    mongoose.connect(`${cfg.mongoose.url}${cfg.mongoose.dbName}`).then(async () => {
+    mongoose.connect(`${cfg.mongoose.url}${cfg.mongoose.dbName}?authMechanism=DEFAULT&authSource=admin`).then(async () => {
       log.info('Connected to MongoDB', `${cfg.mongoose.url}${cfg.mongoose.dbName}`);
       // Initialising Kafka topics
       initialiseKafkaTopics();
