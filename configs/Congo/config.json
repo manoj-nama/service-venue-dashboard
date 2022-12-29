@@ -7,7 +7,7 @@
     "prefix": "bet-distribution:"
   },
   "mongoose": {
-    "url": "mongodb://10.13.152.23:27017/",
+    "url": "mongodb://hackathon:!tab^hackathon#789@10.13.152.23:27017/",
     "dbName": "bets-distribution"
   },
   "betStatsScheduler": {
