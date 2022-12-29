@@ -19,6 +19,7 @@
     "node": "16"
   },
   "dependencies": {
+    "@mongoosejs/double": "^0.3.0",
     "@tabdigital/api-client": "^5.0.0",
     "@tabdigital/api-logger": "^3.1.1",
     "@tabdigital/api-server": "^2.6.0",
@@ -29,6 +30,7 @@
     "dayjs": "^1.11.6",
     "javascript-stringify": "^2.1.0",
     "mongoose": "^6.8.1",
+    "mongoose-long": "^0.6.0",
     "nodemon": "^2.0.19",
     "prettier": "^2.7.1",
     "qs": "^6.11.0",
@@ -38,9 +40,6 @@
   "devDependencies": {
     "@tabdigital/eslint-config-node": "0.0.3",
     "concurrently": "^7.3.0",
-    "eslint": "^8.30.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0",
     "nock": "^13.2.9",
     "nodemon": "^2.0.19",
     "prettier": "^2.7.1",
