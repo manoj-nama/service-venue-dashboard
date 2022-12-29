@@ -14,7 +14,7 @@
     "ci": "npm test && npm run build"
   },
   "engines": {
-    "node": "16"
+    "node": "14.16.0"
   },
   "dependencies": {
     "@tabdigital/api-client": "^5.0.0",
