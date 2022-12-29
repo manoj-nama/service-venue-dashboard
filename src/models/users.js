@@ -16,8 +16,8 @@ const pointSchema = new mongoose.Schema({
 
 const userSchema = new mongoose.Schema(
   {
-    accountNumber: { type: Number, required: true },
-    customerNumber: { type: Number, required: true },
+    accountNumber: { type: Schema.Types.Long, required: true },
+    customerNumber: { type: Schema.Types.Long, required: true },
     timestamp: { type: Number, required: true },
     event: { type: Number },
     currentState: { type: Number },
