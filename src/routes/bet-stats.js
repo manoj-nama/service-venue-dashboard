@@ -1,6 +1,6 @@
 const apiRouter = require('@tabdigital/connect-router');
 
-const betStatsController = require('../controllers/bet-stats');
+const betStatsController = require('../controllers/bet-stats-controller');
 
 const router = apiRouter();
 
