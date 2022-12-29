@@ -3,7 +3,7 @@
   "publicUrl": "http://13.211.126.67:3000",
   "basePath": "/v1/service-venue",
   "redis": {
-    "connectionString": "redis://localhost:6379",
+    "connectionString": "redis://10.13.152.23:6379",
     "prefix": "bet-distribution:"
   },
   "mongoose": {
