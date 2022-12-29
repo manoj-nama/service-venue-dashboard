@@ -4,7 +4,8 @@ const apiRouter = require('@tabdigital/connect-router');
 const schemas = require('./validation/message-schemas');
 
 
-const getActiveVenues = require('./controllers/active-venues');
+const getActiveVenuesandUser = require('./controllers/active-venues');
+const { createUser } = require('./controllers/user-controller');
 
 
 const routes = () => {
@@ -13,10 +14,18 @@ const routes = () => {
 
   router.get({
     path: {
-      name: 'getActiveVenues',
-      path: '/v1/active-venues',
+      name: 'getActiveVenuesandUser',
+      path: '/v1/active-venuesanduser',
     },
-    handlers: [getActiveVenues],
+    handlers: [getActiveVenuesandUser],
+  });
+
+  router.post({
+    path: {
+      name: 'createUser',
+      path: '/v1/add-users',
+    },
+    handlers: [createUser],
   });
 
   router.post({

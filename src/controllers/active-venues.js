@@ -1,8 +1,9 @@
 const service = require('../services/active-venue');
 
-const getActiveVenues = async (req, res) => {
+const getActiveVenuesandUser = async (req, res) => {
   const venueCount = await service.getActiveVenues();
-  return res.send(200, { venueCount });
+  const userCount = await service.getActiveUsers();
+  return res.send(200, { venueCount, userCount });
 };
 
-module.exports = getActiveVenues;
+module.exports = getActiveVenuesandUser;

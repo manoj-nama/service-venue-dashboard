@@ -1,5 +1,11 @@
 const axios = require('axios');
 
+const UserModel = require('../models/user.model');
+
+module.exports.getActiveUsers = async () => {
+  const activeUsers = await UserModel.find({ currentState: 1 });
+  return activeUsers.length;
+};
 
 module.exports.getActiveVenues = async () => {
   const activeVenudata = await axios({
