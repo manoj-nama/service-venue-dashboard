@@ -20,9 +20,25 @@ const getBetsEntireDistribution = async (req, res) => {
   return res.send(200, response);
 };
 
+const addBetDetails = async (req,res) => {
+    try {
+      const { betDetails } = req.body;
+      if (!betDetails) {
+        res.send(400, 'payload is required');
+        return;
+     }
+      const result = await betStatsService.createBets(betDetails)
+      res.send(201, { message: 'Success', data: result });
+    } catch (error) {
+      console.log(' Error : ', error);
+      res.send(400, error);
+    }
+  };
+
 module.exports = {
   getLiveBets,
   getBigBets,
   getHeatMapData,
   getBetsEntireDistribution,
+  addBetDetails
 };
