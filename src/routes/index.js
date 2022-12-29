@@ -32,7 +32,7 @@ const router = apiRouter();
   router.get({
     path: {
       name: 'getActiveVenuesAndUser',
-      path: '/v1/active-venues-users',
+      path: '/v1/service-venue/active-venues-users',
     },
     handlers: [getActiveVenuesAndUser],
   });
@@ -40,7 +40,7 @@ const router = apiRouter();
   router.post({
     path: {
       name: 'createUser',
-      path: '/v1/add-users',
+      path: '/v1/service-venue/add-users',
     },
     handlers: [createUser],
   });

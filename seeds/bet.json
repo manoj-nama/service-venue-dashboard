@@ -1,1060 +1,934 @@
 [
     {
-        "topic": "au.wagering.spectrum.prod.betstream.avro",
-        "partition": 0,
-        "offset": 1316184551,
-        "timestamp": 1672302785349,
-        "timestampType": "CREATE_TIME",
-        "headers": [],
-        "key": {
-            "outlet_identifier": null,
-            "customer_identifier": {
-                "int": 3279255
-            },
-            "account_identifier": {
-                "int": 3379251
-            }
+      "topic": "au.wagering.spectrum.prod.betstream.avro",
+      "partition": 0,
+      "offset": 1316184558,
+      "timestamp": 1672302785550,
+      "timestampType": "CREATE_TIME",
+      "headers": [
+       
+      ],
+      "key": {
+        "outlet_identifier": null,
+        "customer_identifier": {
+          "int": 488489
         },
-        "value": {
-            "betstream_id": {
-                "string": "fac4ab02-f931-4643-ac16-a109e65e5fc1"
-            },
-            "transaction_group": 35,
-            "version_number": 13,
-            "business_date": 20221229,
-            "transaction_date_time": 1672302784000,
-            "event_date": {
-                "int": 20221229
-            },
-            "original_bet_date_time": null,
-            "hub": "TTBWAWFP",
-            "community": "QLD",
-            "source": "QDIA",
-            "branch": "8625",
-            "window": 122,
-            "teller_number": {
-                "int": 850083
-            },
-            "customer_session_number": {
-                "int": 1045444492
-            },
-            "tx_type": "SPORT_BET",
-            "serial_number": {
-                "string": "93DE0626A8A57C7582CD4D662CA5958E69AA1C7A"
-            },
-            "guest_id": {
-                "string": "40020000015#3379251 %TQQ"
-            },
-            "identifier_detail": {
-                "string": "Lowe"
-            },
-            "identifier2_detail": {
-                "string": "David"
-            },
-            "retail_outlet_name": null,
-            "currency": "AUD",
-            "account_number": {
-                "int": 3379251
-            },
-            "outlet_number": null,
-            "customer_number": {
-                "int": 3279255
-            },
-            "loyalty_number": null,
-            "bet_amount": {
-                "string": "36.00"
+        "account_identifier": {
+          "int": 805458
+        }
+      },
+      "value": {
+        "betstream_id": "1396d1c8-77c9-4f8e-8d62-caeae8e1493d",
+        "transaction_group": 35,
+        "version_number": 13,
+        "business_date": 20221229,
+        "transaction_date_time": 1672302785000,
+        "event_date": 20221229,
+        "original_bet_date_time": null,
+        "hub": "TTBWAWFP",
+        "community": "VIC",
+        "source": "VDIA",
+        "branch": "8700",
+        "window": 65,
+        "teller_number": 856315,
+        "customer_session_number": 1045444499,
+        "tx_type": "SPORT_BET",
+        "serial_number": "E531E39276FAFA2067295E2ABBF2C4D606565EB6",
+        "guest_id": "40020000055#805458  %TVV",
+        "identifier_detail": "Miutescu",
+        "identifier2_detail": "Wayne",
+        "retail_outlet_name": null,
+        "currency": "AUD",
+        "account_number": 805458,
+        "outlet_number": null,
+        "customer_number": 488489,
+        "loyalty_number": null,
+        "bet_amount": "40.00",
+        "price": "3.88",
+        "bet_liability": "155.20",
+        "total_cost": "40.00",
+        "surcharge": null,
+        "base_win_value": "40.00",
+        "base_place_value": null,
+        "bet_type": "ML",
+        "number_of_legs": 5,
+        "propositions": [
+          {
+            "bundle_number": null,
+            "prop_type": "",
+            "bundle_price": null,
+            "prop_id": "623704",
+            "start_combo_parlay": {
+              "int": 1
             },
             "price": {
-                "string": "1.750"
+              "string": "1.3"
             },
-            "bet_liability": {
-                "string": "63.00"
+            "combo_base_value": {
+              "string": "40.00"
             },
-            "total_cost": {
-                "string": "36.00"
+            "win_place_combo_payout": {
+              "string": "155.20"
             },
-            "surcharge": null,
-            "base_win_value": {
-                "string": "36.00"
+            "description": {
+              "string": "Adelaide"
             },
-            "base_place_value": null,
-            "bet_type": "WN",
-            "number_of_legs": {
-                "int": 1
+            "runner_number": null,
+            "future_id": {
+              "string": "BLALBRH3"
             },
-            "propositions": [
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "156404",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.75"
-                    },
-                    "combo_base_value": {
-                        "string": "36.00"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "63.00"
-                    },
-                    "description": {
-                        "string": "CRUISE MODE"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "GVSDSANDW2"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "GREYHOUNDS"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "SANDOWN_R2"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 5004
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 8
-                    },
-                    "tournament_name": null
-                }
-            ],
-            "formula_string": null,
-            "flexi_percent": null,
-            "combinations": {
-                "int": 1
+            "future_description": null,
+            "future_live_status": null,
+            "future_bet_type": null,
+            "sport": {
+              "string": "BASKETBALL"
             },
-            "reject_code": null,
-            "reject_message": null,
-            "risk_rating": null,
-            "promo_string": null
-        },
-        "__confluent_index": 4
+            "sport_name": null,
+            "match": {
+              "string": "AdlvBri0"
+            },
+            "match_name": null,
+            "match_time": null,
+            "competition": {
+              "int": 1003
+            },
+            "competition_name": null,
+            "tournament": null,
+            "tournament_name": null
+          },
+          {
+            "bundle_number": null,
+            "prop_type": "",
+            "bundle_price": null,
+            "prop_id": "400705",
+            "start_combo_parlay": null,
+            "price": {
+              "string": "1.24"
+            },
+            "combo_base_value": null,
+            "win_place_combo_payout": null,
+            "description": {
+              "string": "Huesler"
+            },
+            "runner_number": null,
+            "future_id": {
+              "string": "UCUMHSSKHH"
+            },
+            "future_description": null,
+            "future_live_status": null,
+            "future_bet_type": null,
+            "sport": {
+              "string": "TENNIS"
+            },
+            "sport_name": null,
+            "match": {
+              "string": "HslrvSkat"
+            },
+            "match_name": null,
+            "match_time": null,
+            "competition": {
+              "int": 3309
+            },
+            "competition_name": null,
+            "tournament": {
+              "int": 1
+            },
+            "tournament_name": null
+          },
+          {
+            "bundle_number": null,
+            "prop_type": "",
+            "bundle_price": null,
+            "prop_id": "403455",
+            "start_combo_parlay": null,
+            "price": {
+              "string": "1.65"
+            },
+            "combo_base_value": null,
+            "win_place_combo_payout": null,
+            "description": {
+              "string": "Rinderknech"
+            },
+            "runner_number": null,
+            "future_id": {
+              "string": "UCUMRKCDHH"
+            },
+            "future_description": null,
+            "future_live_status": null,
+            "future_bet_type": null,
+            "sport": {
+              "string": "TENNIS"
+            },
+            "sport_name": null,
+            "match": {
+              "string": "RdkcvCdoF"
+            },
+            "match_name": null,
+            "match_time": null,
+            "competition": {
+              "int": 3309
+            },
+            "competition_name": null,
+            "tournament": {
+              "int": 1
+            },
+            "tournament_name": null
+          },
+          {
+            "bundle_number": null,
+            "prop_type": "",
+            "bundle_price": null,
+            "prop_id": "400700",
+            "start_combo_parlay": null,
+            "price": {
+              "string": "1.26"
+            },
+            "combo_base_value": null,
+            "win_place_combo_payout": null,
+            "description": {
+              "string": "Bencic"
+            },
+            "runner_number": null,
+            "future_id": {
+              "string": "UCUWBEPUHH"
+            },
+            "future_description": null,
+            "future_live_status": null,
+            "future_bet_type": null,
+            "sport": {
+              "string": "TENNIS"
+            },
+            "sport_name": null,
+            "match": {
+              "string": "BnccvPuti"
+            },
+            "match_name": null,
+            "match_time": null,
+            "competition": {
+              "int": 3309
+            },
+            "competition_name": null,
+            "tournament": {
+              "int": 2
+            },
+            "tournament_name": null
+          },
+          {
+            "bundle_number": null,
+            "prop_type": "",
+            "bundle_price": null,
+            "prop_id": "400698",
+            "start_combo_parlay": null,
+            "price": {
+              "string": "1.16"
+            },
+            "combo_base_value": null,
+            "win_place_combo_payout": null,
+            "description": {
+              "string": "Cornet"
+            },
+            "runner_number": null,
+            "future_id": {
+              "string": "UCUWC5CAHH"
+            },
+            "future_description": null,
+            "future_live_status": null,
+            "future_bet_type": null,
+            "sport": {
+              "string": "TENNIS"
+            },
+            "sport_name": null,
+            "match": {
+              "string": "CornvCarl"
+            },
+            "match_name": null,
+            "match_time": null,
+            "competition": {
+              "int": 3309
+            },
+            "competition_name": null,
+            "tournament": {
+              "int": 2
+            },
+            "tournament_name": null
+          }
+        ],
+        "formula_string": null,
+        "flexi_percent": null,
+        "combinations": 1,
+        "reject_code": null,
+        "reject_message": null,
+        "risk_rating": 4,
+        "promo_string": null
+      },
+      "__confluent_index": 11
     },
     {
-        "topic": "au.wagering.spectrum.prod.betstream.avro",
-        "partition": 0,
-        "offset": 1316184552,
-        "timestamp": 1672302785399,
-        "timestampType": "CREATE_TIME",
-        "headers": [],
-        "key": {
-            "outlet_identifier": null,
-            "customer_identifier": {
-                "int": 785850
-            },
-            "account_identifier": {
-                "int": 785850
-            }
+      "topic": "au.wagering.spectrum.prod.betstream.avro",
+      "partition": 0,
+      "offset": 1316184559,
+      "timestamp": 1672302785550,
+      "timestampType": "CREATE_TIME",
+      "headers": [
+       
+      ],
+      "key": {
+        "outlet_identifier": {
+          "int": 183
         },
-        "value": {
-            "betstream_id": {
-                "string": "ad71e888-a1ea-4dc1-a88e-b6d5e6f5b99f"
-            },
-            "transaction_group": 35,
-            "version_number": 13,
-            "business_date": 20221229,
-            "transaction_date_time": 1672302784000,
-            "event_date": {
-                "int": 20221230
-            },
-            "original_bet_date_time": null,
-            "hub": "TTBWAWFP",
-            "community": "NSW",
-            "source": "NDIA",
-            "branch": "8705",
-            "window": 6,
-            "teller_number": {
-                "int": 81009
-            },
-            "customer_session_number": {
-                "int": 1045444493
-            },
-            "tx_type": "SPORT_BET",
-            "serial_number": {
-                "string": "1A95BF251D083CBDE2AA753ABB652878D5678ABF"
-            },
-            "guest_id": {
-                "string": "40020000016#785850  %TNN"
-            },
-            "identifier_detail": {
-                "string": "Kirkwood"
-            },
-            "identifier2_detail": {
-                "string": "Daryl"
-            },
-            "retail_outlet_name": null,
-            "currency": "AUD",
-            "account_number": {
-                "int": 785850
-            },
-            "outlet_number": null,
-            "customer_number": {
-                "int": 785850
-            },
-            "loyalty_number": null,
-            "bet_amount": {
-                "string": "2.00"
-            },
+        "customer_identifier": null,
+        "account_identifier": null
+      },
+      "value": {
+        "betstream_id": "91bd258e-695d-4cd7-9f35-c7a7866401c2",
+        "transaction_group": 35,
+        "version_number": 13,
+        "business_date": 20221229,
+        "transaction_date_time": 1672302785000,
+        "event_date": 20221229,
+        "original_bet_date_time": null,
+        "hub": "TTBWAWFP",
+        "community": "VIC",
+        "source": "VRC",
+        "branch": "8501",
+        "window": 89,
+        "teller_number": 860653,
+        "customer_session_number": 1045444500,
+        "tx_type": "SPORT_BET",
+        "serial_number": "240CE94CB59FDB45B402CD329D869A4C57B42C0A",
+        "guest_id": "01RN0183/03Y#        %FVV",
+        "identifier_detail": null,
+        "identifier2_detail": null,
+        "retail_outlet_name": "KYNETON RSL",
+        "currency": "AUD",
+        "account_number": 1271223,
+        "outlet_number": 183,
+        "customer_number": null,
+        "loyalty_number": null,
+        "bet_amount": "710.00",
+        "price": "1.750",
+        "bet_liability": "1242.50",
+        "total_cost": "710.00",
+        "surcharge": null,
+        "base_win_value": "710.00",
+        "base_place_value": null,
+        "bet_type": "WN",
+        "number_of_legs": 1,
+        "propositions": [
+          {
+            "bundle_number": null,
+            "prop_type": "",
+            "bundle_price": null,
+            "prop_id": "156404",
+            "start_combo_parlay": null,
             "price": {
-                "string": "38"
+              "string": "1.75"
             },
-            "bet_liability": {
-                "string": "38.00"
+            "combo_base_value": {
+              "string": "710.00"
             },
-            "total_cost": {
-                "string": "2.00"
+            "win_place_combo_payout": {
+              "string": "1242.50"
             },
-            "surcharge": null,
-            "base_win_value": {
-                "string": "1.00"
+            "description": {
+              "string": "CRUISE MODE"
             },
-            "base_place_value": {
-                "string": "1.00"
+            "runner_number": null,
+            "future_id": {
+              "string": "GVSDSANDW2"
             },
-            "bet_type": "EW",
-            "number_of_legs": {
-                "int": 2
+            "future_description": null,
+            "future_live_status": null,
+            "future_bet_type": null,
+            "sport": {
+              "string": "GREYHOUNDS"
             },
-            "propositions": [
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "154214",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "31"
-                    },
-                    "combo_base_value": {
-                        "string": "1.00"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "31.00"
-                    },
-                    "description": {
-                        "string": "SWEET BELUGA"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "VIWNWANGW1"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "HORSERACE"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "WANGARATT0"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 1108
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 15
-                    },
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "154214p",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "7"
-                    },
-                    "combo_base_value": {
-                        "string": "1.00"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "7.00"
-                    },
-                    "description": {
-                        "string": "SWEET BELUGA"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "VIWNWANGW1"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "HORSERACE"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "WANGARATT0"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 1108
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 15
-                    },
-                    "tournament_name": null
-                }
-            ],
-            "formula_string": null,
-            "flexi_percent": null,
-            "combinations": {
-                "int": 2
+            "sport_name": null,
+            "match": {
+              "string": "SANDOWN_R2"
             },
-            "reject_code": null,
-            "reject_message": null,
-            "risk_rating": null,
-            "promo_string": null
-        },
-        "__confluent_index": 5
+            "match_name": null,
+            "match_time": null,
+            "competition": {
+              "int": 5004
+            },
+            "competition_name": null,
+            "tournament": {
+              "int": 8
+            },
+            "tournament_name": null
+          }
+        ],
+        "formula_string": null,
+        "flexi_percent": null,
+        "combinations": 1,
+        "reject_code": null,
+        "reject_message": null,
+        "risk_rating": null,
+        "promo_string": null
+      },
+      "__confluent_index": 12
     },
     {
-        "topic": "au.wagering.spectrum.prod.betstream.avro",
-        "partition": 0,
-        "offset": 1316184553,
-        "timestamp": 1672302785399,
-        "timestampType": "CREATE_TIME",
-        "headers": [],
-        "key": {
-            "outlet_identifier": null,
-            "customer_identifier": {
-                "int": 1452260
-            },
-            "account_identifier": {
-                "int": 4135606
-            }
+      "topic": "au.wagering.spectrum.prod.betstream.avro",
+      "partition": 0,
+      "offset": 1316185297,
+      "timestamp": 1672302824054,
+      "timestampType": "CREATE_TIME",
+      "headers": [
+       
+      ],
+      "key": {
+        "outlet_identifier": null,
+        "customer_identifier": {
+          "int": 1878892
         },
-        "value": {
-            "betstream_id": {
-                "string": "fc514cc3-735b-4ec3-be0e-74fed2dbc466"
-            },
-            "transaction_group": 35,
-            "version_number": 13,
-            "business_date": 20221229,
-            "transaction_date_time": 1672302785000,
-            "event_date": {
-                "int": 20221229
-            },
-            "original_bet_date_time": null,
-            "hub": "TTBWAWFP",
-            "community": "NSW",
-            "source": "NDIA",
-            "branch": "8705",
-            "window": 7,
-            "teller_number": {
-                "int": 81031
-            },
-            "customer_session_number": {
-                "int": 1045444494
-            },
-            "tx_type": "SPORT_BET",
-            "serial_number": {
-                "string": "DB19C0D8DEF8F1B74A90CD2C71AA70A97C89001C"
-            },
-            "guest_id": {
-                "string": "40020000014#4135606 %TNN"
-            },
-            "identifier_detail": {
-                "string": "Taylor"
-            },
-            "identifier2_detail": {
-                "string": "Hayden"
-            },
-            "retail_outlet_name": null,
-            "currency": "AUD",
-            "account_number": {
-                "int": 4135606
-            },
-            "outlet_number": null,
-            "customer_number": {
-                "int": 1452260
-            },
-            "loyalty_number": null,
-            "bet_amount": {
-                "string": "100.00"
-            },
+        "account_identifier": {
+          "int": 1925513
+        }
+      },
+      "value": {
+        "betstream_id": "33710866-9193-40c1-90f6-23555af5f080",
+        "transaction_group": 35,
+        "version_number": 13,
+        "business_date": 20221229,
+        "transaction_date_time": 1672302823000,
+        "event_date": 20221229,
+        "original_bet_date_time": null,
+        "hub": "TTBWAWFP",
+        "community": "NSW",
+        "source": "NDIA",
+        "branch": "8705",
+        "window": 79,
+        "teller_number": 850089,
+        "customer_session_number": 1045445221,
+        "tx_type": "SPORT_BET",
+        "serial_number": "1F5CBB8CB1DB882234BBCA08EC0F58837D25A1D7",
+        "guest_id": "40020000014#1925513 %TNN",
+        "identifier_detail": "Cheetham",
+        "identifier2_detail": "Sean",
+        "retail_outlet_name": null,
+        "currency": "AUD",
+        "account_number": 1925513,
+        "outlet_number": null,
+        "customer_number": 1878892,
+        "loyalty_number": null,
+        "bet_amount": "40.00",
+        "price": "70",
+        "bet_liability": "1400.00",
+        "total_cost": "40.00",
+        "surcharge": null,
+        "base_win_value": "20.00",
+        "base_place_value": "20.00",
+        "bet_type": "EW",
+        "number_of_legs": 2,
+        "propositions": [
+          {
+            "bundle_number": null,
+            "prop_type": "",
+            "bundle_price": null,
+            "prop_id": "153216",
+            "start_combo_parlay": null,
             "price": {
-                "string": "2.900"
+              "string": "61"
             },
-            "bet_liability": {
-                "string": "290.00"
+            "combo_base_value": {
+              "string": "20.00"
             },
-            "total_cost": {
-                "string": "100.00"
+            "win_place_combo_payout": {
+              "string": "1220.00"
             },
-            "surcharge": null,
-            "base_win_value": {
-                "string": "100.00"
+            "description": {
+              "string": "GARDEN QUARTZ"
             },
-            "base_place_value": null,
-            "bet_type": "WN",
-            "number_of_legs": {
-                "int": 1
+            "runner_number": null,
+            "future_id": {
+              "string": "WABEBELMW6"
             },
-            "propositions": [
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "150946",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "2.9"
-                    },
-                    "combo_base_value": {
-                        "string": "100.00"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "290.00"
-                    },
-                    "description": {
-                        "string": "ULTIMATE FOCUS"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "VICRCRANW6"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "HORSERACE"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "CRANBOUR12"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 1108
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 8
-                    },
-                    "tournament_name": null
-                }
-            ],
-            "formula_string": null,
-            "flexi_percent": null,
-            "combinations": {
-                "int": 1
+            "future_description": null,
+            "future_live_status": null,
+            "future_bet_type": null,
+            "sport": {
+              "string": "HORSERACE"
             },
-            "reject_code": null,
-            "reject_message": null,
-            "risk_rating": null,
-            "promo_string": null
-        },
-        "__confluent_index": 6
+            "sport_name": null,
+            "match": {
+              "string": "BELMONT_R6"
+            },
+            "match_name": null,
+            "match_time": null,
+            "competition": {
+              "int": 1111
+            },
+            "competition_name": null,
+            "tournament": {
+              "int": 2
+            },
+            "tournament_name": null
+          },
+          {
+            "bundle_number": null,
+            "prop_type": "",
+            "bundle_price": null,
+            "prop_id": "153216p",
+            "start_combo_parlay": null,
+            "price": {
+              "string": "9"
+            },
+            "combo_base_value": {
+              "string": "20.00"
+            },
+            "win_place_combo_payout": {
+              "string": "180.00"
+            },
+            "description": {
+              "string": "GARDEN QUARTZ"
+            },
+            "runner_number": null,
+            "future_id": {
+              "string": "WABEBELMW6"
+            },
+            "future_description": null,
+            "future_live_status": null,
+            "future_bet_type": null,
+            "sport": {
+              "string": "HORSERACE"
+            },
+            "sport_name": null,
+            "match": {
+              "string": "BELMONT_R6"
+            },
+            "match_name": null,
+            "match_time": null,
+            "competition": {
+              "int": 1111
+            },
+            "competition_name": null,
+            "tournament": {
+              "int": 2
+            },
+            "tournament_name": null
+          }
+        ],
+        "formula_string": null,
+        "flexi_percent": null,
+        "combinations": 2,
+        "reject_code": null,
+        "reject_message": null,
+        "risk_rating": null,
+        "promo_string": null
+      },
+      "__confluent_index": 761
     },
     {
-        "topic": "au.wagering.spectrum.prod.betstream.avro",
-        "partition": 0,
-        "offset": 1316184554,
-        "timestamp": 1672302785399,
-        "timestampType": "CREATE_TIME",
-        "headers": [],
-        "key": {
-            "outlet_identifier": null,
-            "customer_identifier": {
-                "int": 1923047
-            },
-            "account_identifier": {
-                "int": 1970947
-            }
+      "topic": "au.wagering.spectrum.prod.betstream.avro",
+      "partition": 0,
+      "offset": 1316185296,
+      "timestamp": 1672302823904,
+      "timestampType": "CREATE_TIME",
+      "headers": [
+       
+      ],
+      "key": {
+        "outlet_identifier": null,
+        "customer_identifier": {
+          "int": 666665
         },
-        "value": {
-            "betstream_id": {
-                "string": "92a32ae6-f271-4565-bc9a-00c87b1a24ff"
-            },
-            "transaction_group": 35,
-            "version_number": 13,
-            "business_date": 20221229,
-            "transaction_date_time": 1672302785000,
-            "event_date": {
-                "int": 20221230
-            },
-            "original_bet_date_time": null,
-            "hub": "TTBWAWFP",
-            "community": "VIC",
-            "source": "VDIA",
-            "branch": "8700",
-            "window": 64,
-            "teller_number": {
-                "int": 856309
-            },
-            "customer_session_number": {
-                "int": 1045444495
-            },
-            "tx_type": "SPORT_BET",
-            "serial_number": {
-                "string": "CC9218DFF6097EB49356341CDB013A0252DA95B7"
-            },
-            "guest_id": {
-                "string": "40020000014#1970947 %TVV"
-            },
-            "identifier_detail": {
-                "string": "Gillen"
-            },
-            "identifier2_detail": {
-                "string": "Richard"
-            },
-            "retail_outlet_name": null,
-            "currency": "AUD",
-            "account_number": {
-                "int": 1970947
-            },
-            "outlet_number": null,
-            "customer_number": {
-                "int": 1923047
-            },
-            "loyalty_number": null,
-            "bet_amount": {
-                "string": "1.00"
-            },
+        "account_identifier": {
+          "int": 566665
+        }
+      },
+      "value": {
+        "betstream_id": "49d8e8d8-affe-4a0f-b23a-7dae16258372",
+        "transaction_group": 35,
+        "version_number": 13,
+        "business_date": 20221229,
+        "transaction_date_time": 1672302823000,
+        "event_date": 20221229,
+        "original_bet_date_time": null,
+        "hub": "TTBWAWFP",
+        "community": "NSW",
+        "source": "NDIA",
+        "branch": "8705",
+        "window": 78,
+        "teller_number": 850080,
+        "customer_session_number": 1045445220,
+        "tx_type": "SPORT_BET",
+        "serial_number": "5C70FF306C488F7A4C1CEED6C20DEAA8021AB388",
+        "guest_id": "40020000014#566665  %TNN",
+        "identifier_detail": "Haddad",
+        "identifier2_detail": "Elias",
+        "retail_outlet_name": null,
+        "currency": "AUD",
+        "account_number": 566665,
+        "outlet_number": null,
+        "customer_number": 666665,
+        "loyalty_number": null,
+        "bet_amount": "6.00",
+        "price": "28",
+        "bet_liability": "84.00",
+        "total_cost": "6.00",
+        "surcharge": null,
+        "base_win_value": "3.00",
+        "base_place_value": "3.00",
+        "bet_type": "EW",
+        "number_of_legs": 2,
+        "propositions": [
+          {
+            "bundle_number": null,
+            "prop_type": "",
+            "bundle_price": null,
+            "prop_id": "150969",
+            "start_combo_parlay": null,
             "price": {
-                "string": "7.12"
+              "string": "23"
             },
-            "bet_liability": {
-                "string": "7.12"
+            "combo_base_value": {
+              "string": "3.00"
             },
-            "total_cost": {
-                "string": "1.00"
+            "win_place_combo_payout": {
+              "string": "69.00"
             },
-            "surcharge": null,
-            "base_win_value": {
-                "string": "1.00"
+            "description": {
+              "string": "DANERICH DAN"
             },
-            "base_place_value": null,
-            "bet_type": "ML",
-            "number_of_legs": {
-                "int": 13
+            "runner_number": null,
+            "future_id": {
+              "string": "VICRCRANW7"
             },
-            "propositions": [
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "361912",
-                    "start_combo_parlay": {
-                        "int": 1
-                    },
-                    "price": {
-                        "string": "1.03"
-                    },
-                    "combo_base_value": {
-                        "string": "1.00"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "7.12"
-                    },
-                    "description": {
-                        "string": "A Madrid - Draw"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "SLAMECDC"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "SOCCER"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "AMdrvElce"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 828
-                    },
-                    "competition_name": null,
-                    "tournament": null,
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "311834",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.12"
-                    },
-                    "combo_base_value": null,
-                    "win_place_combo_payout": null,
-                    "description": {
-                        "string": "Sporting Lisbon"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "PSSLPARE"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "SOCCER"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "SLsbvPacF"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 858
-                    },
-                    "competition_name": null,
-                    "tournament": null,
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "351080",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.04"
-                    },
-                    "combo_base_value": null,
-                    "win_place_combo_payout": null,
-                    "description": {
-                        "string": "Man United - Draw"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "EPMCBRDC"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "SOCCER"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "MchUvBrmt"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 801
-                    },
-                    "competition_name": null,
-                    "tournament": null,
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "230581",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.09"
-                    },
-                    "combo_base_value": null,
-                    "win_place_combo_payout": null,
-                    "description": {
-                        "string": "Zamalek - Draw"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "8DZAIMDC"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "SOCCER"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "ZamavImly"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 7489
-                    },
-                    "competition_name": null,
-                    "tournament": null,
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "200572",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.05"
-                    },
-                    "combo_base_value": null,
-                    "win_place_combo_payout": null,
-                    "description": {
-                        "string": "Hyderabad - Draw"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "ISHBNODC"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "SOCCER"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "HydrvNrtU"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 8644
-                    },
-                    "competition_name": null,
-                    "tournament": null,
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "150172",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.15"
-                    },
-                    "combo_base_value": null,
-                    "win_place_combo_payout": null,
-                    "description": {
-                        "string": "SOME CHEVRON"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "HNPNPENRW3"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "HARNESS"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "PENRITH_R3"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 4004
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 18
-                    },
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "150609p",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.14"
-                    },
-                    "combo_base_value": null,
-                    "win_place_combo_payout": null,
-                    "description": {
-                        "string": "MIYAGI BOY"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "HVCRCRANW6"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "HARNESS"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "CRANBOURN5"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 4005
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 8
-                    },
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "249566",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.14"
-                    },
-                    "combo_base_value": null,
-                    "win_place_combo_payout": null,
-                    "description": {
-                        "string": "Manchester City"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "EPMCETRE"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "SOCCER"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "MnCtvEvrt"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 801
-                    },
-                    "competition_name": null,
-                    "tournament": null,
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "426800",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.07"
-                    },
-                    "combo_base_value": null,
-                    "win_place_combo_payout": null,
-                    "description": {
-                        "string": "Sheff Wed - Draw"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "E9SWCUDC"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "SOCCER"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "SefWvCmUd"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 852
-                    },
-                    "competition_name": null,
-                    "tournament": null,
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "431551",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.14"
-                    },
-                    "combo_base_value": null,
-                    "win_place_combo_payout": null,
-                    "description": {
-                        "string": "Derby - Draw"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "E9DBACDC"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "SOCCER"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "DerbvAccS"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 852
-                    },
-                    "competition_name": null,
-                    "tournament": null,
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "432030",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.09"
-                    },
-                    "combo_base_value": null,
-                    "win_place_combo_payout": null,
-                    "description": {
-                        "string": "Stevenage - Draw"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "E8STGLDC"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "SOCCER"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "StgevGill"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 853
-                    },
-                    "competition_name": null,
-                    "tournament": null,
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "155588",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.45"
-                    },
-                    "combo_base_value": null,
-                    "win_place_combo_payout": null,
-                    "description": {
-                        "string": "GONDOLA"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "GSAPANGLW2"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "GREYHOUNDS"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "ANGLE_PK_1"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 5006
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 1
-                    },
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "155591",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.8"
-                    },
-                    "combo_base_value": null,
-                    "win_place_combo_payout": null,
-                    "description": {
-                        "string": "MALLEE MAGIC"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "GSAPANGLW3"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "GREYHOUNDS"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "ANGLE_PK_2"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 5006
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 1
-                    },
-                    "tournament_name": null
-                }
-            ],
-            "formula_string": null,
-            "flexi_percent": null,
-            "combinations": {
-                "int": 1
+            "future_description": null,
+            "future_live_status": null,
+            "future_bet_type": null,
+            "sport": {
+              "string": "HORSERACE"
             },
-            "reject_code": null,
-            "reject_message": null,
-            "risk_rating": null,
-            "promo_string": null
+            "sport_name": null,
+            "match": {
+              "string": "CRANBOUR13"
+            },
+            "match_name": null,
+            "match_time": null,
+            "competition": {
+              "int": 1108
+            },
+            "competition_name": null,
+            "tournament": {
+              "int": 8
+            },
+            "tournament_name": null
+          },
+          {
+            "bundle_number": null,
+            "prop_type": "",
+            "bundle_price": null,
+            "prop_id": "150969p",
+            "start_combo_parlay": null,
+            "price": {
+              "string": "5"
+            },
+            "combo_base_value": {
+              "string": "3.00"
+            },
+            "win_place_combo_payout": {
+              "string": "15.00"
+            },
+            "description": {
+              "string": "DANERICH DAN"
+            },
+            "runner_number": null,
+            "future_id": {
+              "string": "VICRCRANW7"
+            },
+            "future_description": null,
+            "future_live_status": null,
+            "future_bet_type": null,
+            "sport": {
+              "string": "HORSERACE"
+            },
+            "sport_name": null,
+            "match": {
+              "string": "CRANBOUR13"
+            },
+            "match_name": null,
+            "match_time": null,
+            "competition": {
+              "int": 1108
+            },
+            "competition_name": null,
+            "tournament": {
+              "int": 8
+            },
+            "tournament_name": null
+          }
+        ],
+        "formula_string": null,
+        "flexi_percent": null,
+        "combinations": 2,
+        "reject_code": null,
+        "reject_message": null,
+        "risk_rating": null,
+        "promo_string": null
+      },
+      "__confluent_index": 762
+    },
+    {
+      "topic": "au.wagering.spectrum.prod.betstream.avro",
+      "partition": 0,
+      "offset": 1316185295,
+      "timestamp": 1672302823904,
+      "timestampType": "CREATE_TIME",
+      "headers": [
+       
+      ],
+      "key": {
+        "outlet_identifier": null,
+        "customer_identifier": {
+          "int": 4399745
         },
-        "__confluent_index": 7
+        "account_identifier": {
+          "int": 4523604
+        }
+      },
+      "value": {
+        "betstream_id": "73449c59-1b2e-468c-90df-35fee1182b66",
+        "transaction_group": 35,
+        "version_number": 13,
+        "business_date": 20221229,
+        "transaction_date_time": 1672302823000,
+        "event_date": 20221229,
+        "original_bet_date_time": null,
+        "hub": "TTBWAWFP",
+        "community": "NSW",
+        "source": "NDIA",
+        "branch": "8705",
+        "window": 77,
+        "teller_number": 850072,
+        "customer_session_number": 1045445219,
+        "tx_type": "SPORT_BET",
+        "serial_number": "81BA1489ED1AFA53E02F6353333E855AA1C55317",
+        "guest_id": "40020000016#4523604 %TNN",
+        "identifier_detail": "Sohr",
+        "identifier2_detail": "Stephen",
+        "retail_outlet_name": null,
+        "currency": "AUD",
+        "account_number": 4523604,
+        "outlet_number": null,
+        "customer_number": 4399745,
+        "loyalty_number": null,
+        "bet_amount": "6.50",
+        "price": "8.300",
+        "bet_liability": "25.80",
+        "total_cost": "6.50",
+        "surcharge": null,
+        "base_win_value": "3.00",
+        "base_place_value": "3.50",
+        "bet_type": "EW",
+        "number_of_legs": 2,
+        "propositions": [
+          {
+            "bundle_number": null,
+            "prop_type": "",
+            "bundle_price": null,
+            "prop_id": "156401",
+            "start_combo_parlay": null,
+            "price": {
+              "string": "6.5"
+            },
+            "combo_base_value": {
+              "string": "3.00"
+            },
+            "win_place_combo_payout": {
+              "string": "19.50"
+            },
+            "description": {
+              "string": "CRACKERJACK KING"
+            },
+            "runner_number": null,
+            "future_id": {
+              "string": "GVSDSANDW2"
+            },
+            "future_description": null,
+            "future_live_status": null,
+            "future_bet_type": null,
+            "sport": {
+              "string": "GREYHOUNDS"
+            },
+            "sport_name": null,
+            "match": {
+              "string": "SANDOWN_R2"
+            },
+            "match_name": null,
+            "match_time": null,
+            "competition": {
+              "int": 5004
+            },
+            "competition_name": null,
+            "tournament": {
+              "int": 8
+            },
+            "tournament_name": null
+          },
+          {
+            "bundle_number": null,
+            "prop_type": "",
+            "bundle_price": null,
+            "prop_id": "156401p",
+            "start_combo_parlay": null,
+            "price": {
+              "string": "1.8"
+            },
+            "combo_base_value": {
+              "string": "3.50"
+            },
+            "win_place_combo_payout": {
+              "string": "6.30"
+            },
+            "description": {
+              "string": "CRACKERJACK KING"
+            },
+            "runner_number": null,
+            "future_id": {
+              "string": "GVSDSANDW2"
+            },
+            "future_description": null,
+            "future_live_status": null,
+            "future_bet_type": null,
+            "sport": {
+              "string": "GREYHOUNDS"
+            },
+            "sport_name": null,
+            "match": {
+              "string": "SANDOWN_R2"
+            },
+            "match_name": null,
+            "match_time": null,
+            "competition": {
+              "int": 5004
+            },
+            "competition_name": null,
+            "tournament": {
+              "int": 8
+            },
+            "tournament_name": null
+          }
+        ],
+        "formula_string": null,
+        "flexi_percent": null,
+        "combinations": 2,
+        "reject_code": null,
+        "reject_message": null,
+        "risk_rating": null,
+        "promo_string": null
+      },
+      "__confluent_index": 763
+    },
+    {
+      "topic": "au.wagering.spectrum.prod.betstream.avro",
+      "partition": 0,
+      "offset": 1316185294,
+      "timestamp": 1672302823854,
+      "timestampType": "CREATE_TIME",
+      "headers": [
+       
+      ],
+      "key": {
+        "outlet_identifier": null,
+        "customer_identifier": {
+          "int": 573166
+        },
+        "account_identifier": {
+          "int": 448940
+        }
+      },
+      "value": {
+        "betstream_id": "d2574f33-46e6-48ef-a321-02330cf76f62",
+        "transaction_group": 35,
+        "version_number": 13,
+        "business_date": 20221229,
+        "transaction_date_time": 1672302823000,
+        "event_date": 20221229,
+        "original_bet_date_time": null,
+        "hub": "TTBWAWFP",
+        "community": "VIC",
+        "source": "VDII",
+        "branch": "8701",
+        "window": 96,
+        "teller_number": 860293,
+        "customer_session_number": 1045445218,
+        "tx_type": "SPORT_BET",
+        "serial_number": "B8CCDB1F8658D61E28AC61D8B7B18268287256BC",
+        "guest_id": "40020000014#448940  %TVQ",
+        "identifier_detail": "Kennedy",
+        "identifier2_detail": "Jarrod",
+        "retail_outlet_name": null,
+        "currency": "AUD",
+        "account_number": 448940,
+        "outlet_number": null,
+        "customer_number": 573166,
+        "loyalty_number": null,
+        "bet_amount": "25.00",
+        "price": "1.650",
+        "bet_liability": "41.25",
+        "total_cost": "25.00",
+        "surcharge": null,
+        "base_win_value": "25.00",
+        "base_place_value": null,
+        "bet_type": "WN",
+        "number_of_legs": 1,
+        "propositions": [
+          {
+            "bundle_number": null,
+            "prop_type": "",
+            "bundle_price": null,
+            "prop_id": "156404",
+            "start_combo_parlay": null,
+            "price": {
+              "string": "1.65"
+            },
+            "combo_base_value": {
+              "string": "25.00"
+            },
+            "win_place_combo_payout": {
+              "string": "41.25"
+            },
+            "description": {
+              "string": "CRUISE MODE"
+            },
+            "runner_number": null,
+            "future_id": {
+              "string": "GVSDSANDW2"
+            },
+            "future_description": null,
+            "future_live_status": null,
+            "future_bet_type": null,
+            "sport": {
+              "string": "GREYHOUNDS"
+            },
+            "sport_name": null,
+            "match": {
+              "string": "SANDOWN_R2"
+            },
+            "match_name": null,
+            "match_time": null,
+            "competition": {
+              "int": 5004
+            },
+            "competition_name": null,
+            "tournament": {
+              "int": 8
+            },
+            "tournament_name": null
+          }
+        ],
+        "formula_string": null,
+        "flexi_percent": null,
+        "combinations": 1,
+        "reject_code": null,
+        "reject_message": null,
+        "risk_rating": 4,
+        "promo_string": null
+      },
+      "__confluent_index": 764
     },
     {
         "topic": "au.wagering.spectrum.prod.betstream.avro",
@@ -1064,139 +938,107 @@
         "timestampType": "CREATE_TIME",
         "headers": [],
         "key": {
-            "outlet_identifier": null,
-            "customer_identifier": {
-                "int": 2900801
-            },
-            "account_identifier": {
-                "int": 2992135
-            }
+                  "outlet_identifier": null,
+                  "customer_identifier": {
+                            "int": 2900801
+                  },
+                  "account_identifier": {
+                            "int": 2992135
+                  }
         },
         "value": {
-            "betstream_id": {
-                "string": "a9aabc56-0d80-4e32-9f22-f521f2cd17c6"
-            },
-            "transaction_group": 35,
-            "version_number": 13,
-            "business_date": 20221229,
-            "transaction_date_time": 1672302785000,
-            "event_date": {
-                "int": 20221229
-            },
-            "original_bet_date_time": null,
-            "hub": "TTBWAWFP",
-            "community": "NSW",
-            "source": "NDVA",
-            "branch": "8756",
-            "window": 3,
-            "teller_number": {
-                "int": 81007
-            },
-            "customer_session_number": {
-                "int": 1045444496
-            },
-            "tx_type": "SPORT_BET",
-            "serial_number": {
-                "string": "9226789C2E90D1BC474988A562EF684439E0A149"
-            },
-            "guest_id": {
-                "string": "40020000016#2992135 %TNN"
-            },
-            "identifier_detail": {
-                "string": "Rann"
-            },
-            "identifier2_detail": {
-                "string": "Allan"
-            },
-            "retail_outlet_name": null,
-            "currency": "AUD",
-            "account_number": {
-                "int": 2992135
-            },
-            "outlet_number": null,
-            "customer_number": {
-                "int": 2900801
-            },
-            "loyalty_number": null,
-            "bet_amount": {
-                "string": "1.00"
-            },
-            "price": {
-                "string": "23"
-            },
-            "bet_liability": {
-                "string": "23.00"
-            },
-            "total_cost": {
-                "string": "1.00"
-            },
-            "surcharge": null,
-            "base_win_value": {
-                "string": "1.00"
-            },
-            "base_place_value": null,
-            "bet_type": "WN",
-            "number_of_legs": {
-                "int": 1
-            },
-            "propositions": [
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "156406",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "23"
-                    },
-                    "combo_base_value": {
-                        "string": "1.00"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "23.00"
-                    },
-                    "description": {
-                        "string": "MASTER CLASS"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "GVSDSANDW2"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "GREYHOUNDS"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "SANDOWN_R2"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 5004
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 8
-                    },
-                    "tournament_name": null
-                }
-            ],
-            "formula_string": null,
-            "flexi_percent": null,
-            "combinations": {
-                "int": 1
-            },
-            "reject_code": null,
-            "reject_message": null,
-            "risk_rating": null,
-            "promo_string": null
+                  "betstream_id": "a9aabc56-0d80-4e32-9f22-f521f2cd17c6",
+                  "transaction_group": 35,
+                  "version_number": 13,
+                  "business_date": 20221229,
+                  "transaction_date_time": 1672302785000,
+                  "event_date":20221229,
+                  "original_bet_date_time": null,
+                  "hub": "TTBWAWFP",
+                  "community": "NSW",
+                  "source": "NDVA",
+                  "branch": "8756",
+                  "window": 3,
+                  "teller_number": 81007,
+                  "customer_session_number":1045444496,
+                  "tx_type": "SPORT_BET",
+                  "serial_number": "9226789C2E90D1BC474988A562EF684439E0A149",
+                  "guest_id": "40020000016#2992135 %TNN",
+                  "identifier_detail": "Rann",
+                  "identifier2_detail": "Allan",
+                  "retail_outlet_name": null,
+                  "currency": "AUD",
+                  "account_number": 2992135,
+                  "outlet_number": null,
+                  "customer_number":2900801,
+                  "loyalty_number": null,
+                  "bet_amount": "1.00",
+                  "price": "23",
+                  "bet_liability": "23.00",
+                  "total_cost": "1.00",
+                  "surcharge": null,
+                  "base_win_value": "1.00",
+                  "base_place_value": null,
+                  "bet_type": "WN",
+                  "number_of_legs": 1,
+                  "propositions": [
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "156406",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "23"
+                                      },
+                                      "combo_base_value": {
+                                                "string": "1.00"
+                                      },
+                                      "win_place_combo_payout": {
+                                                "string": "23.00"
+                                      },
+                                      "description": {
+                                                "string": "MASTER CLASS"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "GVSDSANDW2"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "GREYHOUNDS"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "SANDOWN_R2"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 5004
+                                      },
+                                      "competition_name": null,
+                                      "tournament": {
+                                                "int": 8
+                                      },
+                                      "tournament_name": null
+                            }
+                  ],
+                  "formula_string": null,
+                  "flexi_percent": null,
+                  "combinations": {
+                            "int": 1
+                  },
+                  "reject_code": null,
+                  "reject_message": null,
+                  "risk_rating": null,
+                  "promo_string": null
         },
         "__confluent_index": 8
-    },
-    {
+},
+{
         "topic": "au.wagering.spectrum.prod.betstream.avro",
         "partition": 0,
         "offset": 1316184556,
@@ -1204,141 +1046,109 @@
         "timestampType": "CREATE_TIME",
         "headers": [],
         "key": {
-            "outlet_identifier": null,
-            "customer_identifier": {
-                "int": 968734
-            },
-            "account_identifier": {
-                "int": 968734
-            }
+                  "outlet_identifier": null,
+                  "customer_identifier": {
+                            "int": 968734
+                  },
+                  "account_identifier": {
+                            "int": 968734
+                  }
         },
         "value": {
-            "betstream_id": {
-                "string": "5ee6aa12-78af-4cac-8cb5-b4906363756d"
-            },
-            "transaction_group": 35,
-            "version_number": 13,
-            "business_date": 20221229,
-            "transaction_date_time": 1672302785000,
-            "event_date": {
-                "int": 20221229
-            },
-            "original_bet_date_time": null,
-            "hub": "TTBWAWFP",
-            "community": "NSW",
-            "source": "NDIA",
-            "branch": "8705",
-            "window": 10,
-            "teller_number": {
-                "int": 81034
-            },
-            "customer_session_number": {
-                "int": 1045444497
-            },
-            "tx_type": "SPORT_BET",
-            "serial_number": {
-                "string": "E6E4B0FC182CFEAE1ECE6D2D65581EC5E7C131CD"
-            },
-            "guest_id": {
-                "string": "40020000016#968734  %TNN"
-            },
-            "identifier_detail": {
-                "string": "Byrnes"
-            },
-            "identifier2_detail": {
-                "string": "Matthew"
-            },
-            "retail_outlet_name": null,
-            "currency": "AUD",
-            "account_number": {
-                "int": 968734
-            },
-            "outlet_number": null,
-            "customer_number": {
-                "int": 968734
-            },
-            "loyalty_number": null,
-            "bet_amount": {
-                "string": "1000.00"
-            },
-            "price": {
-                "string": "1.750"
-            },
-            "bet_liability": {
-                "string": "1750.00"
-            },
-            "total_cost": {
-                "string": "1000.00"
-            },
-            "surcharge": null,
-            "base_win_value": {
-                "string": "1000.00"
-            },
-            "base_place_value": null,
-            "bet_type": "WN",
-            "number_of_legs": {
-                "int": 1
-            },
-            "propositions": [
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "156404",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.75"
-                    },
-                    "combo_base_value": {
-                        "string": "1000.00"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "1750.00"
-                    },
-                    "description": {
-                        "string": "CRUISE MODE"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "GVSDSANDW2"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "GREYHOUNDS"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "SANDOWN_R2"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 5004
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 8
-                    },
-                    "tournament_name": null
-                }
-            ],
-            "formula_string": null,
-            "flexi_percent": null,
-            "combinations": {
-                "int": 1
-            },
-            "reject_code": null,
-            "reject_message": null,
-            "risk_rating": {
-                "int": 2
-            },
-            "promo_string": null
+                  "betstream_id": "5ee6aa12-78af-4cac-8cb5-b4906363756d",
+                  "transaction_group": 35,
+                  "version_number": 13,
+                  "business_date": 20221229,
+                  "transaction_date_time": 1672302785000,
+                  "event_date": 20221229,
+                  "original_bet_date_time": null,
+                  "hub": "TTBWAWFP",
+                  "community": "NSW",
+                  "source": "NDIA",
+                  "branch": "8705",
+                  "window": 10,
+                  "teller_number": 81034,
+                  "customer_session_number": 1045444497,
+                  "tx_type": "SPORT_BET",
+                  "serial_number": "E6E4B0FC182CFEAE1ECE6D2D65581EC5E7C131CD",
+                  "guest_id": "40020000016#968734  %TNN",
+                  "identifier_detail": "Byrnes",
+                  "identifier2_detail": "Matthew",
+                  "retail_outlet_name": null,
+                  "currency": "AUD",
+                  "account_number":968734,
+                  "outlet_number": null,
+                  "customer_number": 968734,
+                  "loyalty_number": null,
+                  "bet_amount": "1000.00",
+                  "price": "1.750",
+                  "bet_liability": "1750.00",
+                  "total_cost":"1000.00",
+                  "surcharge": null,
+                  "base_win_value":"1000.00",
+                  "base_place_value": null,
+                  "bet_type": "WN",
+                  "number_of_legs": 1,
+                  "propositions": [
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "156404",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "1.75"
+                                      },
+                                      "combo_base_value": {
+                                                "string": "1000.00"
+                                      },
+                                      "win_place_combo_payout": {
+                                                "string": "1750.00"
+                                      },
+                                      "description": {
+                                                "string": "CRUISE MODE"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "GVSDSANDW2"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "GREYHOUNDS"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "SANDOWN_R2"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 5004
+                                      },
+                                      "competition_name": null,
+                                      "tournament": {
+                                                "int": 8
+                                      },
+                                      "tournament_name": null
+                            }
+                  ],
+                  "formula_string": null,
+                  "flexi_percent": null,
+                  "combinations": {
+                            "int": 1
+                  },
+                  "reject_code": null,
+                  "reject_message": null,
+                  "risk_rating": {
+                            "int": 2
+                  },
+                  "promo_string": null
         },
         "__confluent_index": 9
-    },
-    {
+},
+{
         "topic": "au.wagering.spectrum.prod.betstream.avro",
         "partition": 0,
         "offset": 1316184557,
@@ -1346,1265 +1156,1025 @@
         "timestampType": "CREATE_TIME",
         "headers": [],
         "key": {
-            "outlet_identifier": null,
-            "customer_identifier": {
-                "int": 940284
-            },
-            "account_identifier": {
-                "int": 940284
-            }
+                  "outlet_identifier": null,
+                  "customer_identifier": {
+                            "int": 940284
+                  },
+                  "account_identifier": {
+                            "int": 940284
+                  }
         },
         "value": {
-            "betstream_id": {
-                "string": "5cb36fb1-923f-4256-b978-31019626e473"
-            },
-            "transaction_group": 35,
-            "version_number": 13,
-            "business_date": 20221229,
-            "transaction_date_time": 1672302785000,
-            "event_date": {
-                "int": 20221229
-            },
-            "original_bet_date_time": null,
-            "hub": "TTBWAWFP",
-            "community": "NSW",
-            "source": "NDIA",
-            "branch": "8705",
-            "window": 12,
-            "teller_number": {
-                "int": 81029
-            },
-            "customer_session_number": {
-                "int": 1045444498
-            },
-            "tx_type": "SPORT_BET",
-            "serial_number": {
-                "string": "11A5D29C3DFD9874C1F4DB4909C7FCB5C3BAB809"
-            },
-            "guest_id": {
-                "string": "40020000014#940284  %TNN"
-            },
-            "identifier_detail": {
-                "string": "Berry"
-            },
-            "identifier2_detail": {
-                "string": "Stephen"
-            },
-            "retail_outlet_name": null,
-            "currency": "AUD",
-            "account_number": {
-                "int": 940284
-            },
-            "outlet_number": null,
-            "customer_number": {
-                "int": 940284
-            },
-            "loyalty_number": null,
-            "bet_amount": {
-                "string": "10.00"
-            },
-            "price": {
-                "string": "1.750"
-            },
-            "bet_liability": {
-                "string": "17.50"
-            },
-            "total_cost": {
-                "string": "10.00"
-            },
-            "surcharge": null,
-            "base_win_value": {
-                "string": "10.00"
-            },
-            "base_place_value": null,
-            "bet_type": "WN",
-            "number_of_legs": {
-                "int": 1
-            },
-            "propositions": [
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "156404",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.75"
-                    },
-                    "combo_base_value": {
-                        "string": "10.00"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "17.50"
-                    },
-                    "description": {
-                        "string": "CRUISE MODE"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "GVSDSANDW2"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "GREYHOUNDS"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "SANDOWN_R2"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 5004
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 8
-                    },
-                    "tournament_name": null
-                }
-            ],
-            "formula_string": null,
-            "flexi_percent": null,
-            "combinations": {
-                "int": 1
-            },
-            "reject_code": null,
-            "reject_message": null,
-            "risk_rating": null,
-            "promo_string": null
+                  "betstream_id": "5cb36fb1-923f-4256-b978-31019626e473",
+                  "transaction_group": 35,
+                  "version_number": 13,
+                  "business_date": 20221229,
+                  "transaction_date_time": 1672302785000,
+                  "event_date": 20221229,
+                  "original_bet_date_time": null,
+                  "hub": "TTBWAWFP",
+                  "community": "NSW",
+                  "source": "NDIA",
+                  "branch": "8705",
+                  "window": 12,
+                  "teller_number": 81029,
+                  "customer_session_number":1045444498,
+                  "tx_type": "SPORT_BET",
+                  "serial_number":"11A5D29C3DFD9874C1F4DB4909C7FCB5C3BAB809",
+                  "guest_id": "40020000014#940284  %TNN",
+                  "identifier_detail": "Berry",
+                  "identifier2_detail": "Stephen",
+                  "retail_outlet_name": null,
+                  "currency": "AUD",
+                  "account_number": 940284,
+                  "outlet_number": null,
+                  "customer_number": 940284,
+                  "loyalty_number": null,
+                  "bet_amount":"10.00",
+                  "price": "1.750",
+                  "bet_liability": "17.50",
+                  "total_cost": "10.00",
+                  "surcharge": null,
+                  "base_win_value": "10.00",
+                  "base_place_value": null,
+                  "bet_type": "WN",
+                  "number_of_legs": 1,
+                  "propositions": [
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "156404",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "1.75"
+                                      },
+                                      "combo_base_value": {
+                                                "string": "10.00"
+                                      },
+                                      "win_place_combo_payout": {
+                                                "string": "17.50"
+                                      },
+                                      "description": {
+                                                "string": "CRUISE MODE"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "GVSDSANDW2"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "GREYHOUNDS"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "SANDOWN_R2"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 5004
+                                      },
+                                      "competition_name": null,
+                                      "tournament": {
+                                                "int": 8
+                                      },
+                                      "tournament_name": null
+                            }
+                  ],
+                  "formula_string": null,
+                  "flexi_percent": null,
+                  "combinations": {
+                            "int": 1
+                  },
+                  "reject_code": null,
+                  "reject_message": null,
+                  "risk_rating": null,
+                  "promo_string": null
         },
         "__confluent_index": 10
-    },
-    {
+},
+{
         "topic": "au.wagering.spectrum.prod.betstream.avro",
         "partition": 0,
-        "offset": 1316184558,
-        "timestamp": 1672302785550,
+        "offset": 1316184551,
+        "timestamp": 1672302785349,
         "timestampType": "CREATE_TIME",
         "headers": [],
         "key": {
-            "outlet_identifier": null,
-            "customer_identifier": {
-                "int": 488489
-            },
-            "account_identifier": {
-                "int": 805458
-            }
+                  "outlet_identifier": null,
+                  "customer_identifier": {
+                            "int": 3279255
+                  },
+                  "account_identifier": {
+                            "int": 3379251
+                  }
         },
         "value": {
-            "betstream_id": {
-                "string": "1396d1c8-77c9-4f8e-8d62-caeae8e1493d"
-            },
-            "transaction_group": 35,
-            "version_number": 13,
-            "business_date": 20221229,
-            "transaction_date_time": 1672302785000,
-            "event_date": {
-                "int": 20221229
-            },
-            "original_bet_date_time": null,
-            "hub": "TTBWAWFP",
-            "community": "VIC",
-            "source": "VDIA",
-            "branch": "8700",
-            "window": 65,
-            "teller_number": {
-                "int": 856315
-            },
-            "customer_session_number": {
-                "int": 1045444499
-            },
-            "tx_type": "SPORT_BET",
-            "serial_number": {
-                "string": "E531E39276FAFA2067295E2ABBF2C4D606565EB6"
-            },
-            "guest_id": {
-                "string": "40020000055#805458  %TVV"
-            },
-            "identifier_detail": {
-                "string": "Miutescu"
-            },
-            "identifier2_detail": {
-                "string": "Wayne"
-            },
-            "retail_outlet_name": null,
-            "currency": "AUD",
-            "account_number": {
-                "int": 805458
-            },
-            "outlet_number": null,
-            "customer_number": {
-                "int": 488489
-            },
-            "loyalty_number": null,
-            "bet_amount": {
-                "string": "40.00"
-            },
-            "price": {
-                "string": "3.88"
-            },
-            "bet_liability": {
-                "string": "155.20"
-            },
-            "total_cost": {
-                "string": "40.00"
-            },
-            "surcharge": null,
-            "base_win_value": {
-                "string": "40.00"
-            },
-            "base_place_value": null,
-            "bet_type": "ML",
-            "number_of_legs": {
-                "int": 5
-            },
-            "propositions": [
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "623704",
-                    "start_combo_parlay": {
-                        "int": 1
-                    },
-                    "price": {
-                        "string": "1.3"
-                    },
-                    "combo_base_value": {
-                        "string": "40.00"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "155.20"
-                    },
-                    "description": {
-                        "string": "Adelaide"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "BLALBRH3"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "BASKETBALL"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "AdlvBri0"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 1003
-                    },
-                    "competition_name": null,
-                    "tournament": null,
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "400705",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.24"
-                    },
-                    "combo_base_value": null,
-                    "win_place_combo_payout": null,
-                    "description": {
-                        "string": "Huesler"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "UCUMHSSKHH"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "TENNIS"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "HslrvSkat"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 3309
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 1
-                    },
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "403455",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.65"
-                    },
-                    "combo_base_value": null,
-                    "win_place_combo_payout": null,
-                    "description": {
-                        "string": "Rinderknech"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "UCUMRKCDHH"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "TENNIS"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "RdkcvCdoF"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 3309
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 1
-                    },
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "400700",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.26"
-                    },
-                    "combo_base_value": null,
-                    "win_place_combo_payout": null,
-                    "description": {
-                        "string": "Bencic"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "UCUWBEPUHH"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "TENNIS"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "BnccvPuti"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 3309
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 2
-                    },
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "400698",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.16"
-                    },
-                    "combo_base_value": null,
-                    "win_place_combo_payout": null,
-                    "description": {
-                        "string": "Cornet"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "UCUWC5CAHH"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "TENNIS"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "CornvCarl"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 3309
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 2
-                    },
-                    "tournament_name": null
-                }
-            ],
-            "formula_string": null,
-            "flexi_percent": null,
-            "combinations": {
-                "int": 1
-            },
-            "reject_code": null,
-            "reject_message": null,
-            "risk_rating": {
-                "int": 4
-            },
-            "promo_string": null
+                  "betstream_id":"fac4ab02-f931-4643-ac16-a109e65e5fc1",
+                  "transaction_group": 35,
+                  "version_number": 13,
+                  "business_date": 20221229,
+                  "transaction_date_time": 1672302784000,
+                  "event_date": 20221229,
+                  "original_bet_date_time": null,
+                  "hub": "TTBWAWFP",
+                  "community": "QLD",
+                  "source": "QDIA",
+                  "branch": "8625",
+                  "window": 122,
+                  "teller_number": 850083,
+                  "customer_session_number": 1045444492,
+                  "tx_type": "SPORT_BET",
+                  "serial_number": "93DE0626A8A57C7582CD4D662CA5958E69AA1C7A",
+                  "guest_id": "40020000015#3379251 %TQQ",
+                  "retail_outlet_name": null,
+                  "currency": "AUD",
+                  "account_number": 3379251,
+                  "outlet_number": null,
+                  "customer_number": 3279255,
+                  "loyalty_number": null,
+                  "bet_amount": "36.00",
+                  "price": "1.750",
+                  "bet_liability": "63.00",
+                  "total_cost": "36.00",
+                  "surcharge": null,
+                  "base_win_value": "36.00",
+                  "base_place_value": null,
+                  "bet_type": "WN",
+                  "number_of_legs": 1,
+                  "propositions": [
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "156404",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "1.75"
+                                      },
+                                      "combo_base_value": {
+                                                "string": "36.00"
+                                      },
+                                      "win_place_combo_payout": {
+                                                "string": "63.00"
+                                      },
+                                      "description": {
+                                                "string": "CRUISE MODE"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "GVSDSANDW2"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "GREYHOUNDS"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "SANDOWN_R2"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 5004
+                                      },
+                                      "competition_name": null,
+                                      "tournament": {
+                                                "int": 8
+                                      },
+                                      "tournament_name": null
+                            }
+                  ],
+                  "formula_string": null,
+                  "flexi_percent": null,
+                  "combinations": {
+                            "int": 1
+                  },
+                  "reject_code": null,
+                  "reject_message": null,
+                  "risk_rating": null,
+                  "promo_string": null
         },
-        "__confluent_index": 11
-    },
-    {
+        "__confluent_index": 4
+},
+{
         "topic": "au.wagering.spectrum.prod.betstream.avro",
         "partition": 0,
-        "offset": 1316184559,
-        "timestamp": 1672302785550,
+        "offset": 1316184552,
+        "timestamp": 1672302785399,
         "timestampType": "CREATE_TIME",
         "headers": [],
         "key": {
-            "outlet_identifier": {
-                "int": 183
-            },
-            "customer_identifier": null,
-            "account_identifier": null
+                  "outlet_identifier": null,
+                  "customer_identifier": {
+                            "int": 785850
+                  },
+                  "account_identifier": {
+                            "int": 785850
+                  }
         },
         "value": {
-            "betstream_id": {
-                "string": "91bd258e-695d-4cd7-9f35-c7a7866401c2"
-            },
-            "transaction_group": 35,
-            "version_number": 13,
-            "business_date": 20221229,
-            "transaction_date_time": 1672302785000,
-            "event_date": {
-                "int": 20221229
-            },
-            "original_bet_date_time": null,
-            "hub": "TTBWAWFP",
-            "community": "VIC",
-            "source": "VRC",
-            "branch": "8501",
-            "window": 89,
-            "teller_number": {
-                "int": 860653
-            },
-            "customer_session_number": {
-                "int": 1045444500
-            },
-            "tx_type": "SPORT_BET",
-            "serial_number": {
-                "string": "240CE94CB59FDB45B402CD329D869A4C57B42C0A"
-            },
-            "guest_id": {
-                "string": "01RN0183/03Y#        %FVV"
-            },
-            "identifier_detail": null,
-            "identifier2_detail": null,
-            "retail_outlet_name": {
-                "string": "KYNETON RSL"
-            },
-            "currency": "AUD",
-            "account_number": null,
-            "outlet_number": {
-                "int": 183
-            },
-            "customer_number": null,
-            "loyalty_number": null,
-            "bet_amount": {
-                "string": "710.00"
-            },
-            "price": {
-                "string": "1.750"
-            },
-            "bet_liability": {
-                "string": "1242.50"
-            },
-            "total_cost": {
-                "string": "710.00"
-            },
-            "surcharge": null,
-            "base_win_value": {
-                "string": "710.00"
-            },
-            "base_place_value": null,
-            "bet_type": "WN",
-            "number_of_legs": {
-                "int": 1
-            },
-            "propositions": [
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "156404",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.75"
-                    },
-                    "combo_base_value": {
-                        "string": "710.00"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "1242.50"
-                    },
-                    "description": {
-                        "string": "CRUISE MODE"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "GVSDSANDW2"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "GREYHOUNDS"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "SANDOWN_R2"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 5004
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 8
-                    },
-                    "tournament_name": null
-                }
-            ],
-            "formula_string": null,
-            "flexi_percent": null,
-            "combinations": {
-                "int": 1
-            },
-            "reject_code": null,
-            "reject_message": null,
-            "risk_rating": null,
-            "promo_string": null
+                  "betstream_id":"ad71e888-a1ea-4dc1-a88e-b6d5e6f5b99f",
+                  "transaction_group": 35,
+                  "version_number": 13,
+                  "business_date": 20221229,
+                  "transaction_date_time": 1672302784000,
+                  "event_date": 20221230,
+                  "original_bet_date_time": null,
+                  "hub": "TTBWAWFP",
+                  "community": "NSW",
+                  "source": "NDIA",
+                  "branch": "8705",
+                  "window": 6,
+                  "teller_number": 81009,
+                  "customer_session_number": 1045444493,
+                  "tx_type": "SPORT_BET",
+                  "serial_number": "1A95BF251D083CBDE2AA753ABB652878D5678ABF",
+                  "guest_id": "40020000016#785850  %TNN",
+                  "retail_outlet_name": null,
+                  "currency": "AUD",
+                  "account_number": 785850,
+                  "outlet_number": null,
+                  "customer_number": 785850,
+                  "loyalty_number": null,
+                  "bet_amount": "2.00",
+                  "price": "38",
+                  "bet_liability": "38.00",
+                  "total_cost":"2.00",
+                  "surcharge": null,
+                  "base_win_value": "1.00",
+                  "base_place_value":"1.00",
+                  "bet_type": "EW",
+                  "number_of_legs": 2,
+                  "propositions": [
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "154214",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "31"
+                                      },
+                                      "combo_base_value": {
+                                                "string": "1.00"
+                                      },
+                                      "win_place_combo_payout": {
+                                                "string": "31.00"
+                                      },
+                                      "description": {
+                                                "string": "SWEET BELUGA"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "VIWNWANGW1"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "HORSERACE"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "WANGARATT0"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 1108
+                                      },
+                                      "competition_name": null,
+                                      "tournament": {
+                                                "int": 15
+                                      },
+                                      "tournament_name": null
+                            },
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "154214p",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "7"
+                                      },
+                                      "combo_base_value": {
+                                                "string": "1.00"
+                                      },
+                                      "win_place_combo_payout": {
+                                                "string": "7.00"
+                                      },
+                                      "description": {
+                                                "string": "SWEET BELUGA"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "VIWNWANGW1"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "HORSERACE"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "WANGARATT0"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 1108
+                                      },
+                                      "competition_name": null,
+                                      "tournament": {
+                                                "int": 15
+                                      },
+                                      "tournament_name": null
+                            }
+                  ],
+                  "formula_string": null,
+                  "flexi_percent": null,
+                  "combinations": {
+                            "int": 2
+                  },
+                  "reject_code": null,
+                  "reject_message": null,
+                  "risk_rating": null,
+                  "promo_string": null
         },
-        "__confluent_index": 12
-    },
-    {
+        "__confluent_index": 5
+},
+{
         "topic": "au.wagering.spectrum.prod.betstream.avro",
         "partition": 0,
-        "offset": 1316185297,
-        "timestamp": 1672302824054,
+        "offset": 1316184553,
+        "timestamp": 1672302785399,
         "timestampType": "CREATE_TIME",
         "headers": [],
         "key": {
-            "outlet_identifier": null,
-            "customer_identifier": {
-                "int": 1878892
-            },
-            "account_identifier": {
-                "int": 1925513
-            }
+                  "outlet_identifier": null,
+                  "customer_identifier": {
+                            "int": 1452260
+                  },
+                  "account_identifier": {
+                            "int": 4135606
+                  }
         },
         "value": {
-            "betstream_id": {
-                "string": "33710866-9193-40c1-90f6-23555af5f080"
-            },
-            "transaction_group": 35,
-            "version_number": 13,
-            "business_date": 20221229,
-            "transaction_date_time": 1672302823000,
-            "event_date": {
-                "int": 20221229
-            },
-            "original_bet_date_time": null,
-            "hub": "TTBWAWFP",
-            "community": "NSW",
-            "source": "NDIA",
-            "branch": "8705",
-            "window": 79,
-            "teller_number": {
-                "int": 850089
-            },
-            "customer_session_number": {
-                "int": 1045445221
-            },
-            "tx_type": "SPORT_BET",
-            "serial_number": {
-                "string": "1F5CBB8CB1DB882234BBCA08EC0F58837D25A1D7"
-            },
-            "guest_id": {
-                "string": "40020000014#1925513 %TNN"
-            },
-            "identifier_detail": {
-                "string": "Cheetham"
-            },
-            "identifier2_detail": {
-                "string": "Sean"
-            },
-            "retail_outlet_name": null,
-            "currency": "AUD",
-            "account_number": {
-                "int": 1925513
-            },
-            "outlet_number": null,
-            "customer_number": {
-                "int": 1878892
-            },
-            "loyalty_number": null,
-            "bet_amount": {
-                "string": "40.00"
-            },
-            "price": {
-                "string": "70"
-            },
-            "bet_liability": {
-                "string": "1400.00"
-            },
-            "total_cost": {
-                "string": "40.00"
-            },
-            "surcharge": null,
-            "base_win_value": {
-                "string": "20.00"
-            },
-            "base_place_value": {
-                "string": "20.00"
-            },
-            "bet_type": "EW",
-            "number_of_legs": {
-                "int": 2
-            },
-            "propositions": [
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "153216",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "61"
-                    },
-                    "combo_base_value": {
-                        "string": "20.00"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "1220.00"
-                    },
-                    "description": {
-                        "string": "GARDEN QUARTZ"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "WABEBELMW6"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "HORSERACE"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "BELMONT_R6"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 1111
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 2
-                    },
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "153216p",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "9"
-                    },
-                    "combo_base_value": {
-                        "string": "20.00"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "180.00"
-                    },
-                    "description": {
-                        "string": "GARDEN QUARTZ"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "WABEBELMW6"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "HORSERACE"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "BELMONT_R6"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 1111
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 2
-                    },
-                    "tournament_name": null
-                }
-            ],
-            "formula_string": null,
-            "flexi_percent": null,
-            "combinations": {
-                "int": 2
-            },
-            "reject_code": null,
-            "reject_message": null,
-            "risk_rating": null,
-            "promo_string": null
+                  "betstream_id":"fc514cc3-735b-4ec3-be0e-74fed2dbc466",
+                  "transaction_group": 35,
+                  "version_number": 13,
+                  "business_date": 20221229,
+                  "transaction_date_time": 1672302785000,
+                  "event_date": 20221229,
+                  "original_bet_date_time": null,
+                  "hub": "TTBWAWFP",
+                  "community": "NSW",
+                  "source": "NDIA",
+                  "branch": "8705",
+                  "window": 7,
+                  "teller_number": 81031,
+                  "customer_session_number": 1045444494,
+                  "tx_type": "SPORT_BET",
+                  "serial_number": "DB19C0D8DEF8F1B74A90CD2C71AA70A97C89001C",
+                  "guest_id": "40020000014#4135606 %TNN",
+                  "retail_outlet_name": null,
+                  "currency": "AUD",
+                  "account_number": 4135606,
+                  "outlet_number": null,
+                  "customer_number":1452260,
+                  "loyalty_number": null,
+                  "bet_amount": "100.00",
+                  "price": "2.900",
+                  "bet_liability": "290.00",
+                  "total_cost": "100.00",
+                  "surcharge": null,
+                  "base_win_value": "100.00",
+                  "base_place_value": null,
+                  "bet_type": "WN",
+                  "number_of_legs": 1,
+                  "propositions": [
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "150946",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "2.9"
+                                      },
+                                      "combo_base_value": {
+                                                "string": "100.00"
+                                      },
+                                      "win_place_combo_payout": {
+                                                "string": "290.00"
+                                      },
+                                      "description": {
+                                                "string": "ULTIMATE FOCUS"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "VICRCRANW6"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "HORSERACE"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "CRANBOUR12"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 1108
+                                      },
+                                      "competition_name": null,
+                                      "tournament": {
+                                                "int": 8
+                                      },
+                                      "tournament_name": null
+                            }
+                  ],
+                  "formula_string": null,
+                  "flexi_percent": null,
+                  "combinations": {
+                            "int": 1
+                  },
+                  "reject_code": null,
+                  "reject_message": null,
+                  "risk_rating": null,
+                  "promo_string": null
         },
-        "__confluent_index": 761
-    },
-    {
+        "__confluent_index": 6
+},
+{
         "topic": "au.wagering.spectrum.prod.betstream.avro",
         "partition": 0,
-        "offset": 1316185296,
-        "timestamp": 1672302823904,
+        "offset": 1316184554,
+        "timestamp": 1672302785399,
         "timestampType": "CREATE_TIME",
         "headers": [],
         "key": {
-            "outlet_identifier": null,
-            "customer_identifier": {
-                "int": 666665
-            },
-            "account_identifier": {
-                "int": 566665
-            }
+                  "outlet_identifier": null,
+                  "customer_identifier": {
+                            "int": 1923047
+                  },
+                  "account_identifier": {
+                            "int": 1970947
+                  }
         },
         "value": {
-            "betstream_id": {
-                "string": "49d8e8d8-affe-4a0f-b23a-7dae16258372"
-            },
-            "transaction_group": 35,
-            "version_number": 13,
-            "business_date": 20221229,
-            "transaction_date_time": 1672302823000,
-            "event_date": {
-                "int": 20221229
-            },
-            "original_bet_date_time": null,
-            "hub": "TTBWAWFP",
-            "community": "NSW",
-            "source": "NDIA",
-            "branch": "8705",
-            "window": 78,
-            "teller_number": {
-                "int": 850080
-            },
-            "customer_session_number": {
-                "int": 1045445220
-            },
-            "tx_type": "SPORT_BET",
-            "serial_number": {
-                "string": "5C70FF306C488F7A4C1CEED6C20DEAA8021AB388"
-            },
-            "guest_id": {
-                "string": "40020000014#566665  %TNN"
-            },
-            "identifier_detail": {
-                "string": "Haddad"
-            },
-            "identifier2_detail": {
-                "string": "Elias"
-            },
-            "retail_outlet_name": null,
-            "currency": "AUD",
-            "account_number": {
-                "int": 566665
-            },
-            "outlet_number": null,
-            "customer_number": {
-                "int": 666665
-            },
-            "loyalty_number": null,
-            "bet_amount": {
-                "string": "6.00"
-            },
-            "price": {
-                "string": "28"
-            },
-            "bet_liability": {
-                "string": "84.00"
-            },
-            "total_cost": {
-                "string": "6.00"
-            },
-            "surcharge": null,
-            "base_win_value": {
-                "string": "3.00"
-            },
-            "base_place_value": {
-                "string": "3.00"
-            },
-            "bet_type": "EW",
-            "number_of_legs": {
-                "int": 2
-            },
-            "propositions": [
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "150969",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "23"
-                    },
-                    "combo_base_value": {
-                        "string": "3.00"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "69.00"
-                    },
-                    "description": {
-                        "string": "DANERICH DAN"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "VICRCRANW7"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "HORSERACE"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "CRANBOUR13"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 1108
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 8
-                    },
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "150969p",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "5"
-                    },
-                    "combo_base_value": {
-                        "string": "3.00"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "15.00"
-                    },
-                    "description": {
-                        "string": "DANERICH DAN"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "VICRCRANW7"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "HORSERACE"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "CRANBOUR13"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 1108
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 8
-                    },
-                    "tournament_name": null
-                }
-            ],
-            "formula_string": null,
-            "flexi_percent": null,
-            "combinations": {
-                "int": 2
-            },
-            "reject_code": null,
-            "reject_message": null,
-            "risk_rating": null,
-            "promo_string": null
+                  "betstream_id":"92a32ae6-f271-4565-bc9a-00c87b1a24ff",
+                  "transaction_group": 35,
+                  "version_number": 13,
+                  "business_date": 20221229,
+                  "transaction_date_time": 1672302785000,
+                  "event_date": 20221230,
+                  "original_bet_date_time": null,
+                  "hub": "TTBWAWFP",
+                  "community": "VIC",
+                  "source": "VDIA",
+                  "branch": "8700",
+                  "window": 64,
+                  "teller_number": 856309,
+                  "customer_session_number": 1045444495,
+                  "tx_type": "SPORT_BET",
+                  "serial_number":"CC9218DFF6097EB49356341CDB013A0252DA95B7",
+                  "guest_id": "40020000014#1970947 %TVV",
+                  "identifier_detail":"Gillen",
+                  "identifier2_detail": "Richard",
+                  "retail_outlet_name": null,
+                  "currency": "AUD",
+                  "account_number": 1970947,
+                  "outlet_number": null,
+                  "customer_number": 1923047,
+                  "loyalty_number": null,
+                  "bet_amount": "1.00",
+                  "price": "7.12",
+                  "bet_liability":"7.12",
+                  "total_cost": "1.00",
+                  "surcharge": null,
+                  "base_win_value": "1.00",
+                  "base_place_value": null,
+                  "bet_type": "ML",
+                  "number_of_legs": 13,
+                  "propositions": [
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "361912",
+                                      "start_combo_parlay": {
+                                                "int": 1
+                                      },
+                                      "price": {
+                                                "string": "1.03"
+                                      },
+                                      "combo_base_value": {
+                                                "string": "1.00"
+                                      },
+                                      "win_place_combo_payout": {
+                                                "string": "7.12"
+                                      },
+                                      "description": {
+                                                "string": "A Madrid - Draw"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "SLAMECDC"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "SOCCER"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "AMdrvElce"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 828
+                                      },
+                                      "competition_name": null,
+                                      "tournament": null,
+                                      "tournament_name": null
+                            },
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "311834",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "1.12"
+                                      },
+                                      "combo_base_value": null,
+                                      "win_place_combo_payout": null,
+                                      "description": {
+                                                "string": "Sporting Lisbon"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "PSSLPARE"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "SOCCER"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "SLsbvPacF"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 858
+                                      },
+                                      "competition_name": null,
+                                      "tournament": null,
+                                      "tournament_name": null
+                            },
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "351080",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "1.04"
+                                      },
+                                      "combo_base_value": null,
+                                      "win_place_combo_payout": null,
+                                      "description": {
+                                                "string": "Man United - Draw"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "EPMCBRDC"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "SOCCER"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "MchUvBrmt"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 801
+                                      },
+                                      "competition_name": null,
+                                      "tournament": null,
+                                      "tournament_name": null
+                            },
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "230581",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "1.09"
+                                      },
+                                      "combo_base_value": null,
+                                      "win_place_combo_payout": null,
+                                      "description": {
+                                                "string": "Zamalek - Draw"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "8DZAIMDC"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "SOCCER"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "ZamavImly"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 7489
+                                      },
+                                      "competition_name": null,
+                                      "tournament": null,
+                                      "tournament_name": null
+                            },
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "200572",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "1.05"
+                                      },
+                                      "combo_base_value": null,
+                                      "win_place_combo_payout": null,
+                                      "description": {
+                                                "string": "Hyderabad - Draw"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "ISHBNODC"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "SOCCER"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "HydrvNrtU"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 8644
+                                      },
+                                      "competition_name": null,
+                                      "tournament": null,
+                                      "tournament_name": null
+                            },
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "150172",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "1.15"
+                                      },
+                                      "combo_base_value": null,
+                                      "win_place_combo_payout": null,
+                                      "description": {
+                                                "string": "SOME CHEVRON"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "HNPNPENRW3"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "HARNESS"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "PENRITH_R3"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 4004
+                                      },
+                                      "competition_name": null,
+                                      "tournament": {
+                                                "int": 18
+                                      },
+                                      "tournament_name": null
+                            },
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "150609p",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "1.14"
+                                      },
+                                      "combo_base_value": null,
+                                      "win_place_combo_payout": null,
+                                      "description": {
+                                                "string": "MIYAGI BOY"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "HVCRCRANW6"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "HARNESS"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "CRANBOURN5"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 4005
+                                      },
+                                      "competition_name": null,
+                                      "tournament": {
+                                                "int": 8
+                                      },
+                                      "tournament_name": null
+                            },
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "249566",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "1.14"
+                                      },
+                                      "combo_base_value": null,
+                                      "win_place_combo_payout": null,
+                                      "description": {
+                                                "string": "Manchester City"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "EPMCETRE"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "SOCCER"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "MnCtvEvrt"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 801
+                                      },
+                                      "competition_name": null,
+                                      "tournament": null,
+                                      "tournament_name": null
+                            },
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "426800",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "1.07"
+                                      },
+                                      "combo_base_value": null,
+                                      "win_place_combo_payout": null,
+                                      "description": {
+                                                "string": "Sheff Wed - Draw"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "E9SWCUDC"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "SOCCER"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "SefWvCmUd"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 852
+                                      },
+                                      "competition_name": null,
+                                      "tournament": null,
+                                      "tournament_name": null
+                            },
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "431551",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "1.14"
+                                      },
+                                      "combo_base_value": null,
+                                      "win_place_combo_payout": null,
+                                      "description": {
+                                                "string": "Derby - Draw"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "E9DBACDC"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "SOCCER"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "DerbvAccS"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 852
+                                      },
+                                      "competition_name": null,
+                                      "tournament": null,
+                                      "tournament_name": null
+                            },
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "432030",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "1.09"
+                                      },
+                                      "combo_base_value": null,
+                                      "win_place_combo_payout": null,
+                                      "description": {
+                                                "string": "Stevenage - Draw"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "E8STGLDC"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "SOCCER"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "StgevGill"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 853
+                                      },
+                                      "competition_name": null,
+                                      "tournament": null,
+                                      "tournament_name": null
+                            },
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "155588",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "1.45"
+                                      },
+                                      "combo_base_value": null,
+                                      "win_place_combo_payout": null,
+                                      "description": {
+                                                "string": "GONDOLA"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "GSAPANGLW2"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "GREYHOUNDS"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "ANGLE_PK_1"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 5006
+                                      },
+                                      "competition_name": null,
+                                      "tournament": {
+                                                "int": 1
+                                      },
+                                      "tournament_name": null
+                            },
+                            {
+                                      "bundle_number": null,
+                                      "prop_type": "",
+                                      "bundle_price": null,
+                                      "prop_id": "155591",
+                                      "start_combo_parlay": null,
+                                      "price": {
+                                                "string": "1.8"
+                                      },
+                                      "combo_base_value": null,
+                                      "win_place_combo_payout": null,
+                                      "description": {
+                                                "string": "MALLEE MAGIC"
+                                      },
+                                      "runner_number": null,
+                                      "future_id": {
+                                                "string": "GSAPANGLW3"
+                                      },
+                                      "future_description": null,
+                                      "future_live_status": null,
+                                      "future_bet_type": null,
+                                      "sport": {
+                                                "string": "GREYHOUNDS"
+                                      },
+                                      "sport_name": null,
+                                      "match": {
+                                                "string": "ANGLE_PK_2"
+                                      },
+                                      "match_name": null,
+                                      "match_time": null,
+                                      "competition": {
+                                                "int": 5006
+                                      },
+                                      "competition_name": null,
+                                      "tournament": {
+                                                "int": 1
+                                      },
+                                      "tournament_name": null
+                            }
+                  ],
+                  "formula_string": null,
+                  "flexi_percent": null,
+                  "combinations": {
+                            "int": 1
+                  },
+                  "reject_code": null,
+                  "reject_message": null,
+                  "risk_rating": null,
+                  "promo_string": null
         },
-        "__confluent_index": 762
-    },
-    {
-        "topic": "au.wagering.spectrum.prod.betstream.avro",
-        "partition": 0,
-        "offset": 1316185295,
-        "timestamp": 1672302823904,
-        "timestampType": "CREATE_TIME",
-        "headers": [],
-        "key": {
-            "outlet_identifier": null,
-            "customer_identifier": {
-                "int": 4399745
-            },
-            "account_identifier": {
-                "int": 4523604
-            }
-        },
-        "value": {
-            "betstream_id": {
-                "string": "73449c59-1b2e-468c-90df-35fee1182b66"
-            },
-            "transaction_group": 35,
-            "version_number": 13,
-            "business_date": 20221229,
-            "transaction_date_time": 1672302823000,
-            "event_date": {
-                "int": 20221229
-            },
-            "original_bet_date_time": null,
-            "hub": "TTBWAWFP",
-            "community": "NSW",
-            "source": "NDIA",
-            "branch": "8705",
-            "window": 77,
-            "teller_number": {
-                "int": 850072
-            },
-            "customer_session_number": {
-                "int": 1045445219
-            },
-            "tx_type": "SPORT_BET",
-            "serial_number": {
-                "string": "81BA1489ED1AFA53E02F6353333E855AA1C55317"
-            },
-            "guest_id": {
-                "string": "40020000016#4523604 %TNN"
-            },
-            "identifier_detail": {
-                "string": "Sohr"
-            },
-            "identifier2_detail": {
-                "string": "Stephen"
-            },
-            "retail_outlet_name": null,
-            "currency": "AUD",
-            "account_number": {
-                "int": 4523604
-            },
-            "outlet_number": null,
-            "customer_number": {
-                "int": 4399745
-            },
-            "loyalty_number": null,
-            "bet_amount": {
-                "string": "6.50"
-            },
-            "price": {
-                "string": "8.300"
-            },
-            "bet_liability": {
-                "string": "25.80"
-            },
-            "total_cost": {
-                "string": "6.50"
-            },
-            "surcharge": null,
-            "base_win_value": {
-                "string": "3.00"
-            },
-            "base_place_value": {
-                "string": "3.50"
-            },
-            "bet_type": "EW",
-            "number_of_legs": {
-                "int": 2
-            },
-            "propositions": [
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "156401",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "6.5"
-                    },
-                    "combo_base_value": {
-                        "string": "3.00"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "19.50"
-                    },
-                    "description": {
-                        "string": "CRACKERJACK KING"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "GVSDSANDW2"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "GREYHOUNDS"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "SANDOWN_R2"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 5004
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 8
-                    },
-                    "tournament_name": null
-                },
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "156401p",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.8"
-                    },
-                    "combo_base_value": {
-                        "string": "3.50"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "6.30"
-                    },
-                    "description": {
-                        "string": "CRACKERJACK KING"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "GVSDSANDW2"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "GREYHOUNDS"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "SANDOWN_R2"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 5004
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 8
-                    },
-                    "tournament_name": null
-                }
-            ],
-            "formula_string": null,
-            "flexi_percent": null,
-            "combinations": {
-                "int": 2
-            },
-            "reject_code": null,
-            "reject_message": null,
-            "risk_rating": null,
-            "promo_string": null
-        },
-        "__confluent_index": 763
-    },
-    {
-        "topic": "au.wagering.spectrum.prod.betstream.avro",
-        "partition": 0,
-        "offset": 1316185294,
-        "timestamp": 1672302823854,
-        "timestampType": "CREATE_TIME",
-        "headers": [],
-        "key": {
-            "outlet_identifier": null,
-            "customer_identifier": {
-                "int": 573166
-            },
-            "account_identifier": {
-                "int": 448940
-            }
-        },
-        "value": {
-            "betstream_id": {
-                "string": "d2574f33-46e6-48ef-a321-02330cf76f62"
-            },
-            "transaction_group": 35,
-            "version_number": 13,
-            "business_date": 20221229,
-            "transaction_date_time": 1672302823000,
-            "event_date": {
-                "int": 20221229
-            },
-            "original_bet_date_time": null,
-            "hub": "TTBWAWFP",
-            "community": "VIC",
-            "source": "VDII",
-            "branch": "8701",
-            "window": 96,
-            "teller_number": {
-                "int": 860293
-            },
-            "customer_session_number": {
-                "int": 1045445218
-            },
-            "tx_type": "SPORT_BET",
-            "serial_number": {
-                "string": "B8CCDB1F8658D61E28AC61D8B7B18268287256BC"
-            },
-            "guest_id": {
-                "string": "40020000014#448940  %TVQ"
-            },
-            "identifier_detail": {
-                "string": "Kennedy"
-            },
-            "identifier2_detail": {
-                "string": "Jarrod"
-            },
-            "retail_outlet_name": null,
-            "currency": "AUD",
-            "account_number": {
-                "int": 448940
-            },
-            "outlet_number": null,
-            "customer_number": {
-                "int": 573166
-            },
-            "loyalty_number": null,
-            "bet_amount": {
-                "string": "25.00"
-            },
-            "price": {
-                "string": "1.650"
-            },
-            "bet_liability": {
-                "string": "41.25"
-            },
-            "total_cost": {
-                "string": "25.00"
-            },
-            "surcharge": null,
-            "base_win_value": {
-                "string": "25.00"
-            },
-            "base_place_value": null,
-            "bet_type": "WN",
-            "number_of_legs": {
-                "int": 1
-            },
-            "propositions": [
-                {
-                    "bundle_number": null,
-                    "prop_type": "",
-                    "bundle_price": null,
-                    "prop_id": "156404",
-                    "start_combo_parlay": null,
-                    "price": {
-                        "string": "1.65"
-                    },
-                    "combo_base_value": {
-                        "string": "25.00"
-                    },
-                    "win_place_combo_payout": {
-                        "string": "41.25"
-                    },
-                    "description": {
-                        "string": "CRUISE MODE"
-                    },
-                    "runner_number": null,
-                    "future_id": {
-                        "string": "GVSDSANDW2"
-                    },
-                    "future_description": null,
-                    "future_live_status": null,
-                    "future_bet_type": null,
-                    "sport": {
-                        "string": "GREYHOUNDS"
-                    },
-                    "sport_name": null,
-                    "match": {
-                        "string": "SANDOWN_R2"
-                    },
-                    "match_name": null,
-                    "match_time": null,
-                    "competition": {
-                        "int": 5004
-                    },
-                    "competition_name": null,
-                    "tournament": {
-                        "int": 8
-                    },
-                    "tournament_name": null
-                }
-            ],
-            "formula_string": null,
-            "flexi_percent": null,
-            "combinations": {
-                "int": 1
-            },
-            "reject_code": null,
-            "reject_message": null,
-            "risk_rating": {
-                "int": 4
-            },
-            "promo_string": null
-        },
-        "__confluent_index": 764
-    }
-]
+        "__confluent_index": 7
+}
+  ]

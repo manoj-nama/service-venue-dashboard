@@ -1,6 +1,10 @@
 const inputUserVenueFormatter = (userVenues) => {
 	const formattedInput = userVenues.map(v => ({
 	    ...v,
+		"venueId": v.venueId?.double,
+        "venueName": v.venueName?.string,
+        "venueType": v.venueType?.string,
+        "venueState": v.venueState?.string,
 		location: {
 			type: "Point",
 			coordinates: [
