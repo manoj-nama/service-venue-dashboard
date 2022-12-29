@@ -7,6 +7,7 @@ const get = require('./config');
 const { initialiseKafkaTopics, shutdown } = require('./kafka');
 const betStatsScheduler = require('./bet-stats-scheduler');
 const redis = require('./redis');
+const seeds = require('../seeds');
 
 const start = async () => {
   const cfg = get();
@@ -27,6 +28,9 @@ const start = async () => {
       redis.createRedis(cfg);
       // Scheduler for bets
       betStatsScheduler.run();
+      // Run seed file
+      seeds();
+
       log.info(`${pkg.name} listening at ${app.opts.port}`);
     }).catch((dbError) => {
       log.error(dbError, 'Error while connecting with DB');
