@@ -29,6 +29,7 @@
     "dayjs": "^1.11.6",
     "javascript-stringify": "^2.1.0",
     "mongoose": "^6.8.1",
+    "mongoose-long": "^0.6.0",
     "nodemon": "^2.0.19",
     "prettier": "^2.7.1",
     "qs": "^6.11.0",
