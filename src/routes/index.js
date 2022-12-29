@@ -1,12 +1,11 @@
 const apiRouter = require('@tabdigital/connect-router');
 
+const betStatsRoutes = require('./bet-stats');
 const schemas = require('./validation/message-schemas');
-
-const discovery = require('./controllers/discovery-controller');
+const discovery = require('../controllers/discovery-controller');
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const routes = () => {
-  const router = apiRouter();
+const router = apiRouter();
 
   router.get({
     path: {
@@ -28,7 +27,7 @@ const routes = () => {
     handlers: [],
   });
 
-  return router;
-};
 
-module.exports = routes;
+const mergedRoutes = () => apiRouter.merge(router, betStatsRoutes);
+
+module.exports = mergedRoutes;
