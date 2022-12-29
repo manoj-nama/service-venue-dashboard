@@ -4,16 +4,29 @@ const server = require('./server');
 const log = require('./log');
 const pkg = require('../package.json');
 const get = require('./config');
+const { initialiseKafkaTopics, shutdown } = require('./kafka');
+const betStatsScheduler = require('./bet-stats-scheduler');
+const redis = require('./redis');
 
 const start = async () => {
   const cfg = get();
   log.info('Connected to MongoDB', `${cfg.mongoose.url}${cfg.mongoose.dbName}`);
 
+  process.on("SIGTERM", () => {
+    shutdown();
+  });
+
   try {
     mongoose.connect(`${cfg.mongoose.url}${cfg.mongoose.dbName}`).then(async () => {
       log.info('Connected to MongoDB', `${cfg.mongoose.url}${cfg.mongoose.dbName}`);
+      // Initialising Kafka topics
+      initialiseKafkaTopics();
       const app = server();
       await app.start();
+      // Redis
+      redis.createRedis(cfg);
+      // Scheduler for bets
+      betStatsScheduler.run();
       log.info(`${pkg.name} listening at ${app.opts.port}`);
     }).catch((dbError) => {
       log.error(dbError, 'Error while connecting with DB');
