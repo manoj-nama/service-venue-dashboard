@@ -5,6 +5,7 @@ const schemas = require('./validation/message-schemas');
 const discovery = require('../controllers/discovery-controller');
 const getActiveVenuesAndUser = require('../controllers/active-venues-controller');
 const { createUser } = require('../controllers/user-controller');
+const getMostActiveUser = require('../controllers/most-active-users-controller');
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const router = apiRouter();
@@ -35,6 +36,14 @@ const router = apiRouter();
       path: '/v1/service-venue/active-venues-users',
     },
     handlers: [getActiveVenuesAndUser],
+  });
+
+  router.get({
+    path: {
+      name: 'getMostActiveUser',
+      path: '/v1/service-venue/most-active-users',
+    },
+    handlers: [getMostActiveUser],
   });
 
   router.post({
