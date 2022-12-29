@@ -16,15 +16,15 @@ const pointSchema = new mongoose.Schema({
 
 const userSchema = new mongoose.Schema(
   {
-    accountNumber: { type: Number, required: true },
-    customerNumber: { type: Number, required: true },
+    accountNumber: { type: Schema.Types.Long, required: true },
+    customerNumber: { type: Schema.Types.Long, required: true },
     timestamp: { type: Number, required: true },
     event: { type: Number },
     currentState: { type: Number },
-    venueId: { default: null, type: Number },
-    venueName: { default: null, type: String },
-    venueType: { default: null, type: String },
-    venueState: { default: null, type: String },
+    venueId: { default: null, type: Schema.Types.Mixed },
+    venueName: { default: null, type: Schema.Types.Mixed },
+    venueType: { default: null, type: Schema.Types.Mixed },
+    venueState: { default: null, type: Schema.Types.Mixed },
     location: {
       type: pointSchema,
       required: true
