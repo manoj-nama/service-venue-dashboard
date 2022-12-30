@@ -54,8 +54,8 @@ const getEntireDistribution = async () => {
   return response;
 };
 
-const mostBetsPlacedPerVenue = async () => {
-  const result = await BetModel.aggregate([
+const mostBetsPlacedPerVenue = async (limit) => {
+  let pipeline = [
     {
       $match: {
         venueId: {
@@ -97,12 +97,14 @@ const mostBetsPlacedPerVenue = async () => {
         venueName: 1,
       },
     },
-  ]);
+  ];
+  if (limit) { pipeline = [...pipeline, { $limit: limit }]; }
+  const result = await BetModel.aggregate(pipeline);
   return result;
 };
 
-const mostAmountSpentPerVenue = async () => {
-  const result = await BetModel.aggregate([
+const mostAmountSpentPerVenue = async (limit) => {
+  let pipeline = [
     {
       $match: {
         venueId: {
@@ -144,7 +146,9 @@ const mostAmountSpentPerVenue = async () => {
         venueName: 1,
       },
     },
-  ]);
+  ];
+  if (limit) { pipeline = [...pipeline, { $limit: limit }]; }
+  const result = await BetModel.aggregate(pipeline);
   return result;
 };
 
