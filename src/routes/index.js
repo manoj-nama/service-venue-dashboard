@@ -3,30 +3,31 @@ const betStatsRoutes = require('./bet-stats');
 const schemas = require('./validation/message-schemas');
 const discovery = require('../controllers/discovery-controller');
 const getActiveVenuesAndUser = require('../controllers/active-venues-controller');
-const { createUser } = require('../controllers/user-controller');
+const { createUser,getMostActiveUser } = require('../controllers/user-controller');
+
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const router = apiRouter();
 
-router.get({
-  path: {
-    name: 'discovery',
-    path: '/v1/service-venue',
-  },
-  handlers: [discovery],
-});
+  router.get({
+    path: {
+      name: "discovery",
+      path: "/v1/service-venue",
+    },
+    handlers: [discovery],
+  });
 
-router.post({
-  path: {
-    name: 'scan-document',
-    path: '/v1/service-venue/:id',
-  },
-  validate: {
-    body: schemas.SCAN_DOCUMENT_REQ,
-    params: schemas.DOCUMENT_TYPE,
-  },
-  handlers: [],
-});
+  router.post({
+    path: {
+      name: "scan-document",
+      path: "/v1/service-venue/:id",
+    },
+    validate: {
+      body: schemas.SCAN_DOCUMENT_REQ,
+      params: schemas.DOCUMENT_TYPE,
+    },
+    handlers: [],
+  });
 
 router.get({
   path: {
@@ -36,13 +37,21 @@ router.get({
   handlers: [getActiveVenuesAndUser],
 });
 
-router.post({
+router.get({
   path: {
-    name: 'createUser',
-    path: '/v1/service-venue/add-users',
+    name: 'getMostActiveUser',
+    path: '/v1/service-venue/most-active-users',
   },
-  handlers: [createUser],
+  handlers: [getMostActiveUser],
 });
+
+  router.post({
+    path: {
+      name: 'createUser',
+      path: '/v1/service-venue/add-users',
+    },
+    handlers: [createUser],
+  });
 
 
 const mergedRoutes = () => apiRouter.merge(router, betStatsRoutes);

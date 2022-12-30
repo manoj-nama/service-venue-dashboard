@@ -1,4 +1,5 @@
-const { createUser } = require('../services/user-service');
+const { createUser,getMostActiveUser } = require('../services/user-service');
+
 
 module.exports.createUser = async (req, res) => {
   try {
@@ -14,3 +15,11 @@ module.exports.createUser = async (req, res) => {
     console.log(' Error : ', error);
   }
 };
+
+module.exports.getMostActiveUser = async (req, res) => {
+  const limit = +req.query.limit||1000;
+  const data = await getMostActiveUser(limit);
+  return res.send(200, { active_users: data });
+};
+
+
