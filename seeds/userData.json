@@ -513,10 +513,405 @@
         "timestamp": 1672040481806,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 1352 },
-        "venueName": { "string": "Wyong RLF Club, Kanwal" },
-        "venueType": { "string": "ClubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 1352
+        },
+        "venueName": {
+          "string": "Wyong RLF Club, Kanwal"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.25202756314906,
+        "longitude": 151.49599894740493,
+        "geoUncertainty": 65
+      }
+    },
+    "__confluent_index": 14
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885041,
+    "timestamp": 1672040481761,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+      "timestamp": 1672040481806,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+        "timestamp": 1672040481806,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2140478,
+        "customerNumber": 2089526,
+        "timestamp": 1672040481806,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 1352
+        },
+        "venueName": {
+          "string": "Wyong RLF Club, Kanwal"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.25202756314906,
+        "longitude": 151.49599894740493,
+        "geoUncertainty": 65
+      }
+    },
+    "__confluent_index": 14
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885041,
+    "timestamp": 1672040481761,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+      "timestamp": 1672040481806,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+        "timestamp": 1672040481806,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2149978,
+        "customerNumber": 2089526,
+        "timestamp": 1672040481806,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 1352
+        },
+        "venueName": {
+          "string": "Wyong RLF Club, Kanwal"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.25202756314906,
+        "longitude": 151.49599894740493,
+        "geoUncertainty": 65
+      }
+    },
+    "__confluent_index": 14
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885041,
+    "timestamp": 1672040481761,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+      "timestamp": 1672040481806,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+        "timestamp": 1672040481806,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2220478,
+        "customerNumber": 2089526,
+        "timestamp": 1672040481806,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 1352
+        },
+        "venueName": {
+          "string": "Wyong RLF Club, Kanwal"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.25202756314906,
+        "longitude": 151.49599894740493,
+        "geoUncertainty": 65
+      }
+    },
+    "__confluent_index": 14
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885041,
+    "timestamp": 1672040481761,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+      "timestamp": 1672040481806,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+        "timestamp": 1672040481806,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2155478,
+        "customerNumber": 2089526,
+        "timestamp": 1672040481806,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 1352
+        },
+        "venueName": {
+          "string": "Wyong RLF Club, Kanwal"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.25202756314906,
+        "longitude": 151.49599894740493,
+        "geoUncertainty": 65
+      }
+    },
+    "__confluent_index": 14
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885041,
+    "timestamp": 1672040481761,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+      "timestamp": 1672040481806,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+        "timestamp": 1672040481806,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2110478,
+        "customerNumber": 2089526,
+        "timestamp": 1672040481806,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 1352
+        },
+        "venueName": {
+          "string": "Wyong RLF Club, Kanwal"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.25202756314906,
+        "longitude": 151.49599894740493,
+        "geoUncertainty": 65
+      }
+    },
+    "__confluent_index": 14
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885041,
+    "timestamp": 1672040481761,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+      "timestamp": 1672040481806,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+        "timestamp": 1672040481806,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 1240478,
+        "customerNumber": 2089526,
+        "timestamp": 1672040481806,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 1352
+        },
+        "venueName": {
+          "string": "Wyong RLF Club, Kanwal"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.25202756314906,
+        "longitude": 151.49599894740493,
+        "geoUncertainty": 65
+      }
+    },
+    "__confluent_index": 14
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885041,
+    "timestamp": 1672040481761,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+      "timestamp": 1672040481806,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+        "timestamp": 1672040481806,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2140748,
+        "customerNumber": 2089526,
+        "timestamp": 1672040481806,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 1352
+        },
+        "venueName": {
+          "string": "Wyong RLF Club, Kanwal"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.25202756314906,
+        "longitude": 151.49599894740493,
+        "geoUncertainty": 65
+      }
+    },
+    "__confluent_index": 14
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885041,
+    "timestamp": 1672040481761,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+      "timestamp": 1672040481806,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+        "timestamp": 1672040481806,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2146578,
+        "customerNumber": 2089526,
+        "timestamp": 1672040481806,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 1352
+        },
+        "venueName": {
+          "string": "Wyong RLF Club, Kanwal"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.25202756314906,
+        "longitude": 151.49599894740493,
+        "geoUncertainty": 65
+      }
+    },
+    "__confluent_index": 14
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885041,
+    "timestamp": 1672040481761,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+      "timestamp": 1672040481806,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "5e3b0b85-2b47-400d-9f77-41d2061e5520",
+        "timestamp": 1672040481806,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 1961240,
+        "customerNumber": 2089526,
+        "timestamp": 1672040481806,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 1352
+        },
+        "venueName": {
+          "string": "Wyong RLF Club, Kanwal"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -33.25202756314906,
         "longitude": 151.49599894740493,
         "geoUncertainty": 65
@@ -723,10 +1118,534 @@
         "timestamp": 1672040481872,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 2601 },
-        "venueName": { "string": "Royal Oak Hotel, Double Bay" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 2601
+        },
+        "venueName": {
+          "string": "Royal Oak Hotel, Double Bay"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.8770649,
+        "longitude": 151.2413146,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 20
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885047,
+    "timestamp": 1672040481871,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+      "timestamp": 1672040481872,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+        "timestamp": 1672040481872,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2981184,
+        "customerNumber": 2898390,
+        "timestamp": 1672040481872,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 2601
+        },
+        "venueName": {
+          "string": "Royal Oak Hotel, Double Bay"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.8770649,
+        "longitude": 151.2413146,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 20
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885047,
+    "timestamp": 1672040481871,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+      "timestamp": 1672040481872,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+        "timestamp": 1672040481872,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2989984,
+        "customerNumber": 2898390,
+        "timestamp": 1672040481872,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 2601
+        },
+        "venueName": {
+          "string": "Royal Oak Hotel, Double Bay"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.8770649,
+        "longitude": 151.2413146,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 20
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885047,
+    "timestamp": 1672040481871,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+      "timestamp": 1672040481872,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+        "timestamp": 1672040481872,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2989004,
+        "customerNumber": 2898390,
+        "timestamp": 1672040481872,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 2601
+        },
+        "venueName": {
+          "string": "Royal Oak Hotel, Double Bay"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.8770649,
+        "longitude": 151.2413146,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 20
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885047,
+    "timestamp": 1672040481871,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+      "timestamp": 1672040481872,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+        "timestamp": 1672040481872,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 5589584,
+        "customerNumber": 2898390,
+        "timestamp": 1672040481872,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 2601
+        },
+        "venueName": {
+          "string": "Royal Oak Hotel, Double Bay"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.8770649,
+        "longitude": 151.2413146,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 20
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885047,
+    "timestamp": 1672040481871,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+      "timestamp": 1672040481872,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+        "timestamp": 1672040481872,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2989334,
+        "customerNumber": 2898390,
+        "timestamp": 1672040481872,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 2601
+        },
+        "venueName": {
+          "string": "Royal Oak Hotel, Double Bay"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.8770649,
+        "longitude": 151.2413146,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 20
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885047,
+    "timestamp": 1672040481871,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+      "timestamp": 1672040481872,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+        "timestamp": 1672040481872,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2922484,
+        "customerNumber": 2898390,
+        "timestamp": 1672040481872,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 2601
+        },
+        "venueName": {
+          "string": "Royal Oak Hotel, Double Bay"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.8770649,
+        "longitude": 151.2413146,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 20
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885047,
+    "timestamp": 1672040481871,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+      "timestamp": 1672040481872,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+        "timestamp": 1672040481872,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 1189584,
+        "customerNumber": 2898390,
+        "timestamp": 1672040481872,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 2601
+        },
+        "venueName": {
+          "string": "Royal Oak Hotel, Double Bay"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.8770649,
+        "longitude": 151.2413146,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 20
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885047,
+    "timestamp": 1672040481871,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+      "timestamp": 1672040481872,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+        "timestamp": 1672040481872,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2989511,
+        "customerNumber": 2898390,
+        "timestamp": 1672040481872,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 2601
+        },
+        "venueName": {
+          "string": "Royal Oak Hotel, Double Bay"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.8770649,
+        "longitude": 151.2413146,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 20
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885047,
+    "timestamp": 1672040481871,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+      "timestamp": 1672040481872,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+        "timestamp": 1672040481872,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2911584,
+        "customerNumber": 2898390,
+        "timestamp": 1672040481872,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 2601
+        },
+        "venueName": {
+          "string": "Royal Oak Hotel, Double Bay"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.8770649,
+        "longitude": 151.2413146,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 20
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885047,
+    "timestamp": 1672040481871,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+      "timestamp": 1672040481872,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+        "timestamp": 1672040481872,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2981184,
+        "customerNumber": 2898390,
+        "timestamp": 1672040481872,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 2601
+        },
+        "venueName": {
+          "string": "Royal Oak Hotel, Double Bay"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.8770649,
+        "longitude": 151.2413146,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 20
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885047,
+    "timestamp": 1672040481871,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+      "timestamp": 1672040481872,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+        "timestamp": 1672040481872,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2989114,
+        "customerNumber": 2898390,
+        "timestamp": 1672040481872,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 2601
+        },
+        "venueName": {
+          "string": "Royal Oak Hotel, Double Bay"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.8770649,
+        "longitude": 151.2413146,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 20
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885047,
+    "timestamp": 1672040481871,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+      "timestamp": 1672040481872,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "b59b2582-ddfb-426a-b52d-c15d12264ebe",
+        "timestamp": 1672040481872,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2911584,
+        "customerNumber": 2898390,
+        "timestamp": 1672040481872,
+        "event": 15,
+        "currentState": 1,
+        "venueId": {
+          "double": 2601
+        },
+        "venueName": {
+          "string": "Royal Oak Hotel, Double Bay"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -33.8770649,
         "longitude": 151.2413146,
         "geoUncertainty": 13
@@ -863,10 +1782,706 @@
         "timestamp": 1672040481911,
         "event": 4,
         "currentState": 1,
-        "venueId": { "double": 7588 },
-        "venueName": { "string": "Full Moon Hotel" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "QLD" },
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
+        "latitude": -27.3210375,
+        "longitude": 153.07373,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 24
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885051,
+    "timestamp": 1672040481910,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+      "timestamp": 1672040481911,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+        "timestamp": 1672040481911,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3110238,
+        "customerNumber": 555290,
+        "timestamp": 1672040481911,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
+        "latitude": -27.3210375,
+        "longitude": 153.07373,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 24
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885051,
+    "timestamp": 1672040481910,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+      "timestamp": 1672040481911,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+        "timestamp": 1672040481911,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3265538,
+        "customerNumber": 555290,
+        "timestamp": 1672040481911,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
+        "latitude": -27.3210375,
+        "longitude": 153.07373,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 24
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885051,
+    "timestamp": 1672040481910,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+      "timestamp": 1672040481911,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+        "timestamp": 1672040481911,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3264438,
+        "customerNumber": 555290,
+        "timestamp": 1672040481911,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
+        "latitude": -27.3210375,
+        "longitude": 153.07373,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 24
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885051,
+    "timestamp": 1672040481910,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+      "timestamp": 1672040481911,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+        "timestamp": 1672040481911,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3233238,
+        "customerNumber": 555290,
+        "timestamp": 1672040481911,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
+        "latitude": -27.3210375,
+        "longitude": 153.07373,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 24
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885051,
+    "timestamp": 1672040481910,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+      "timestamp": 1672040481911,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+        "timestamp": 1672040481911,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3542238,
+        "customerNumber": 555290,
+        "timestamp": 1672040481911,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
+        "latitude": -27.3210375,
+        "longitude": 153.07373,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 24
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885051,
+    "timestamp": 1672040481910,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+      "timestamp": 1672040481911,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+        "timestamp": 1672040481911,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3110238,
+        "customerNumber": 555290,
+        "timestamp": 1672040481911,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
+        "latitude": -27.3210375,
+        "longitude": 153.07373,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 24
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885051,
+    "timestamp": 1672040481910,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+      "timestamp": 1672040481911,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+        "timestamp": 1672040481911,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3210000,
+        "customerNumber": 555290,
+        "timestamp": 1672040481911,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
+        "latitude": -27.3210375,
+        "longitude": 153.07373,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 24
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885051,
+    "timestamp": 1672040481910,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+      "timestamp": 1672040481911,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+        "timestamp": 1672040481911,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3210099,
+        "customerNumber": 555290,
+        "timestamp": 1672040481911,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
+        "latitude": -27.3210375,
+        "longitude": 153.07373,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 24
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885051,
+    "timestamp": 1672040481910,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+      "timestamp": 1672040481911,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+        "timestamp": 1672040481911,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3210088,
+        "customerNumber": 555290,
+        "timestamp": 1672040481911,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
+        "latitude": -27.3210375,
+        "longitude": 153.07373,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 24
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885051,
+    "timestamp": 1672040481910,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+      "timestamp": 1672040481911,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+        "timestamp": 1672040481911,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3210077,
+        "customerNumber": 555290,
+        "timestamp": 1672040481911,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
+        "latitude": -27.3210375,
+        "longitude": 153.07373,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 24
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885051,
+    "timestamp": 1672040481910,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+      "timestamp": 1672040481911,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+        "timestamp": 1672040481911,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3210066,
+        "customerNumber": 555290,
+        "timestamp": 1672040481911,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
+        "latitude": -27.3210375,
+        "longitude": 153.07373,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 24
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885051,
+    "timestamp": 1672040481910,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+      "timestamp": 1672040481911,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+        "timestamp": 1672040481911,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3210055,
+        "customerNumber": 555290,
+        "timestamp": 1672040481911,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
+        "latitude": -27.3210375,
+        "longitude": 153.07373,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 24
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885051,
+    "timestamp": 1672040481910,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+      "timestamp": 1672040481911,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+        "timestamp": 1672040481911,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3210044,
+        "customerNumber": 555290,
+        "timestamp": 1672040481911,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
+        "latitude": -27.3210375,
+        "longitude": 153.07373,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 24
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885051,
+    "timestamp": 1672040481910,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+      "timestamp": 1672040481911,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+        "timestamp": 1672040481911,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3210033,
+        "customerNumber": 555290,
+        "timestamp": 1672040481911,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
+        "latitude": -27.3210375,
+        "longitude": 153.07373,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 24
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885051,
+    "timestamp": 1672040481910,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+      "timestamp": 1672040481911,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+        "timestamp": 1672040481911,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3210022,
+        "customerNumber": 555290,
+        "timestamp": 1672040481911,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
+        "latitude": -27.3210375,
+        "longitude": 153.07373,
+        "geoUncertainty": 13
+      }
+    },
+    "__confluent_index": 24
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885051,
+    "timestamp": 1672040481910,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+      "timestamp": 1672040481911,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "2cac6f85-0b9c-47f8-bdab-97eab543352a",
+        "timestamp": 1672040481911,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3210011,
+        "customerNumber": 555290,
+        "timestamp": 1672040481911,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 7588
+        },
+        "venueName": {
+          "string": "Full Moon Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
         "latitude": -27.3210375,
         "longitude": 153.07373,
         "geoUncertainty": 13
@@ -1563,10 +3178,835 @@
         "timestamp": 1672040482442,
         "event": 4,
         "currentState": 1,
-        "venueId": { "double": 2792 },
-        "venueName": { "string": "Walshs Hotel, Queanbeyan" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3158010,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3158011,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3158014,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3158059,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3157019,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 2158019,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3152019,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3158719,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3158049,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3151217,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3258019,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3158219,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3238019,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 31543019,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3158029,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3234019,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3151234,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3152129,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -35.35417766122636,
+        "longitude": 149.2329748243664,
+        "geoUncertainty": 35
+      }
+    },
+    "__confluent_index": 44
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885104,
+    "timestamp": 1672040482398,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+      "timestamp": 1672040482442,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "28eca2ff-89c5-44c4-bd50-2e36bc6a97b2",
+        "timestamp": 1672040482442,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 3158019,
+        "customerNumber": 948506,
+        "timestamp": 1672040482442,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 2792
+        },
+        "venueName": {
+          "string": "Walshs Hotel, Queanbeyan"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -35.35417766122636,
         "longitude": 149.2329748243664,
         "geoUncertainty": 35
@@ -2753,10 +5193,878 @@
         "timestamp": 1672040482089,
         "event": 4,
         "currentState": 1,
-        "venueId": { "double": 1664 },
-        "venueName": { "string": "Pennant Hills Inn" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4646391,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4646392,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4646393,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4646394,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4646395,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4646396,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4646397,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4646398,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4646399,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4646310,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4646320,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4643390,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4446390,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4546390,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4686390,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4686590,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4241390,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4643340,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 4321390,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
+        "latitude": -33.7386676,
+        "longitude": 151.0724756,
+        "geoUncertainty": 12
+      }
+    },
+    "__confluent_index": 78
+  },
+  {
+    "topic": "au.digital.source.geotransactions.geo-location-finder.avro",
+    "partition": 0,
+    "offset": 2551885070,
+    "timestamp": 1672040482045,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": {
+      "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+      "timestamp": 1672040482089,
+      "application": "geotransactions"
+    },
+    "value": {
+      "header": {
+        "messageId": "ec2da995-1b14-4360-8ba5-20ff8316ca1b",
+        "timestamp": 1672040482089,
+        "application": "geotransactions"
+      },
+      "body": {
+        "accountNumber": 423490,
+        "customerNumber": 4517322,
+        "timestamp": 1672040482089,
+        "event": 4,
+        "currentState": 1,
+        "venueId": {
+          "double": 1664
+        },
+        "venueName": {
+          "string": "Pennant Hills Inn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -33.7386676,
         "longitude": 151.0724756,
         "geoUncertainty": 12
@@ -3243,10 +6551,18 @@
         "timestamp": 1672040483100,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 555 },
-        "venueName": { "string": "Hoppers Crossing Club" },
-        "venueType": { "string": "ClubTab" },
-        "venueState": { "string": "VIC" },
+        "venueId": {
+          "double": 555
+        },
+        "venueName": {
+          "string": "Hoppers Crossing Club"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "VIC"
+        },
         "latitude": -37.8700682005441,
         "longitude": 144.69215644713586,
         "geoUncertainty": 26
@@ -3698,10 +7014,18 @@
         "timestamp": 1672040483000,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 1411 },
-        "venueName": { "string": "Port Macquarie Panthers" },
-        "venueType": { "string": "ClubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 1411
+        },
+        "venueName": {
+          "string": "Port Macquarie Panthers"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -31.426145,
         "longitude": 152.8962885,
         "geoUncertainty": 14
@@ -3873,10 +7197,18 @@
         "timestamp": 1672040482949,
         "event": 4,
         "currentState": 1,
-        "venueId": { "double": 170 },
-        "venueName": { "string": "Millers Inn Hotel" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "VIC" },
+        "venueId": {
+          "double": 170
+        },
+        "venueName": {
+          "string": "Millers Inn Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "VIC"
+        },
         "latitude": -37.8352845,
         "longitude": 144.8469675,
         "geoUncertainty": 32
@@ -3908,10 +7240,18 @@
         "timestamp": 1672040482942,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 7076 },
-        "venueName": { "string": "Bathurst Harness Racing Club" },
-        "venueType": { "string": "Oncourse" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 7076
+        },
+        "venueName": {
+          "string": "Bathurst Harness Racing Club"
+        },
+        "venueType": {
+          "string": "Oncourse"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -33.4514559,
         "longitude": 149.5744981,
         "geoUncertainty": 53
@@ -3978,10 +7318,18 @@
         "timestamp": 1672040482941,
         "event": 4,
         "currentState": 1,
-        "venueId": { "double": 6101 },
-        "venueName": { "string": "Koala Tavern - Capalaba" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "QLD" },
+        "venueId": {
+          "double": 6101
+        },
+        "venueName": {
+          "string": "Koala Tavern - Capalaba"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
         "latitude": -27.524296146245042,
         "longitude": 153.196623168725,
         "geoUncertainty": 1
@@ -4083,10 +7431,18 @@
         "timestamp": 1672040482908,
         "event": 4,
         "currentState": 1,
-        "venueId": { "double": 2240 },
-        "venueName": { "string": "Umina Beach Bowling Club" },
-        "venueType": { "string": "ClubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 2240
+        },
+        "venueName": {
+          "string": "Umina Beach Bowling Club"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -33.52510378754065,
         "longitude": 151.3131667650235,
         "geoUncertainty": 1141
@@ -4153,10 +7509,18 @@
         "timestamp": 1672040482873,
         "event": 2,
         "currentState": 1,
-        "venueId": { "double": 1923 },
-        "venueName": { "string": "Oatley Hotel" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 1923
+        },
+        "venueName": {
+          "string": "Oatley Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -33.9803437,
         "longitude": 151.0805539,
         "geoUncertainty": 14
@@ -4293,10 +7657,18 @@
         "timestamp": 1672040482830,
         "event": 1,
         "currentState": 1,
-        "venueId": { "double": 1084 },
-        "venueName": { "string": "Harold Park Hotel, Glebe" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 1084
+        },
+        "venueName": {
+          "string": "Harold Park Hotel, Glebe"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -33.880205,
         "longitude": 151.1807417,
         "geoUncertainty": 21
@@ -4818,10 +8190,18 @@
         "timestamp": 1672040482706,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 6246 },
-        "venueName": { "string": "Clifton Arms Hotel" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "QLD" },
+        "venueId": {
+          "double": 6246
+        },
+        "venueName": {
+          "string": "Clifton Arms Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
         "latitude": -27.93077814068957,
         "longitude": 151.90568720075234,
         "geoUncertainty": 35
@@ -4923,10 +8303,18 @@
         "timestamp": 1672040482692,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 1513 },
-        "venueName": { "string": "Gordon Hotel, Goulburn" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 1513
+        },
+        "venueName": {
+          "string": "Gordon Hotel, Goulburn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -34.74136728408562,
         "longitude": 149.73438634521975,
         "geoUncertainty": 40
@@ -5098,10 +8486,18 @@
         "timestamp": 1672040482667,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 1407 },
-        "venueName": { "string": "St George Masonic Club, Mortdale" },
-        "venueType": { "string": "ClubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 1407
+        },
+        "venueName": {
+          "string": "St George Masonic Club, Mortdale"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -33.96929376296137,
         "longitude": 151.06399370371463,
         "geoUncertainty": 37
@@ -5168,10 +8564,18 @@
         "timestamp": 1672040482650,
         "event": 1,
         "currentState": 1,
-        "venueId": { "double": 4411 },
-        "venueName": { "string": "Pink Hill Hotel" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "VIC" },
+        "venueId": {
+          "double": 4411
+        },
+        "venueName": {
+          "string": "Pink Hill Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "VIC"
+        },
         "latitude": -38.0536453,
         "longitude": 145.3830639,
         "geoUncertainty": 12
@@ -5518,10 +8922,18 @@
         "timestamp": 1672040483673,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 9737 },
-        "venueName": { "string": "Ian's Western Hotel" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "SA" },
+        "venueId": {
+          "double": 9737
+        },
+        "venueName": {
+          "string": "Ian's Western Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "SA"
+        },
         "latitude": -32.48386009291313,
         "longitude": 137.7585611585261,
         "geoUncertainty": 23
@@ -5588,10 +9000,18 @@
         "timestamp": 1672040483654,
         "event": 4,
         "currentState": 1,
-        "venueId": { "double": 6145 },
-        "venueName": { "string": "Hope Island Tavern" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "QLD" },
+        "venueId": {
+          "double": 6145
+        },
+        "venueName": {
+          "string": "Hope Island Tavern"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
         "latitude": -27.877563094283484,
         "longitude": 153.3660106368558,
         "geoUncertainty": 15
@@ -5763,10 +9183,18 @@
         "timestamp": 1672040483629,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 2329 },
-        "venueName": { "string": "Exchange Hotel, Hamilton" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 2329
+        },
+        "venueName": {
+          "string": "Exchange Hotel, Hamilton"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -32.92526165742111,
         "longitude": 151.74684590593301,
         "geoUncertainty": 40
@@ -5868,10 +9296,18 @@
         "timestamp": 1672040483614,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 352 },
-        "venueName": { "string": "Gateway Hotel" },
-        "venueType": { "string": "Kiosk Pub" },
-        "venueState": { "string": "VIC" },
+        "venueId": {
+          "double": 352
+        },
+        "venueName": {
+          "string": "Gateway Hotel"
+        },
+        "venueType": {
+          "string": "Kiosk Pub"
+        },
+        "venueState": {
+          "string": "VIC"
+        },
         "latitude": -38.080723570110244,
         "longitude": 144.36411564475398,
         "geoUncertainty": 1183
@@ -6113,10 +9549,18 @@
         "timestamp": 1672040483545,
         "event": 2,
         "currentState": 1,
-        "venueId": { "double": 519 },
-        "venueName": { "string": "Palace Hotel, Camberwell" },
-        "venueType": { "string": "Kiosk Pub" },
-        "venueState": { "string": "VIC" },
+        "venueId": {
+          "double": 519
+        },
+        "venueName": {
+          "string": "Palace Hotel, Camberwell"
+        },
+        "venueType": {
+          "string": "Kiosk Pub"
+        },
+        "venueState": {
+          "string": "VIC"
+        },
         "latitude": -37.82622528076172,
         "longitude": 145.05747985839844,
         "geoUncertainty": 1
@@ -6848,10 +10292,18 @@
         "timestamp": 1672040483239,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 1285 },
-        "venueName": { "string": "Lightning Ridge Bowling Club" },
-        "venueType": { "string": "ClubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 1285
+        },
+        "venueName": {
+          "string": "Lightning Ridge Bowling Club"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -29.42764876546833,
         "longitude": 147.9774174864765,
         "geoUncertainty": 36
@@ -7268,10 +10720,18 @@
         "timestamp": 1672040483189,
         "event": 1,
         "currentState": 1,
-        "venueId": { "double": 96 },
-        "venueName": { "string": "Malvern Vale Club Hotel" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "VIC" },
+        "venueId": {
+          "double": 96
+        },
+        "venueName": {
+          "string": "Malvern Vale Club Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "VIC"
+        },
         "latitude": -37.85247704603077,
         "longitude": 145.03791667891807,
         "geoUncertainty": 18
@@ -7793,10 +11253,18 @@
         "timestamp": 1672040484322,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 1940 },
-        "venueName": { "string": "Time & Tide Hotel, Dee Why" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 1940
+        },
+        "venueName": {
+          "string": "Time & Tide Hotel, Dee Why"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -33.74190005324856,
         "longitude": 151.28776050343208,
         "geoUncertainty": 35
@@ -7898,10 +11366,18 @@
         "timestamp": 1672040484263,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 9562 },
-        "venueName": { "string": "Esplanade Hotel" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "SA" },
+        "venueId": {
+          "double": 9562
+        },
+        "venueName": {
+          "string": "Esplanade Hotel"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "SA"
+        },
         "latitude": -35.01692332330627,
         "longitude": 138.5147930124202,
         "geoUncertainty": 30
@@ -8458,10 +11934,18 @@
         "timestamp": 1672040484081,
         "event": 2,
         "currentState": 1,
-        "venueId": { "double": 2574 },
-        "venueName": { "string": "Moruya Golf Club" },
-        "venueType": { "string": "Kiosk Club" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 2574
+        },
+        "venueName": {
+          "string": "Moruya Golf Club"
+        },
+        "venueType": {
+          "string": "Kiosk Club"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -35.9140078,
         "longitude": 150.07521,
         "geoUncertainty": 14
@@ -9858,10 +13342,18 @@
         "timestamp": 1672040485216,
         "event": 4,
         "currentState": 1,
-        "venueId": { "double": 432 },
-        "venueName": { "string": "The Sporting Globe, Fountain Gate" },
-        "venueType": { "string": "TAB Express Pub" },
-        "venueState": { "string": "VIC" },
+        "venueId": {
+          "double": 432
+        },
+        "venueName": {
+          "string": "The Sporting Globe, Fountain Gate"
+        },
+        "venueType": {
+          "string": "TAB Express Pub"
+        },
+        "venueState": {
+          "string": "VIC"
+        },
         "latitude": -38.0181155,
         "longitude": 145.3028046,
         "geoUncertainty": 16
@@ -10033,10 +13525,18 @@
         "timestamp": 1672040485133,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 973 },
-        "venueName": { "string": "Warrnambool Greyhounds" },
-        "venueType": { "string": "Oncourse" },
-        "venueState": { "string": "VIC" },
+        "venueId": {
+          "double": 973
+        },
+        "venueName": {
+          "string": "Warrnambool Greyhounds"
+        },
+        "venueType": {
+          "string": "Oncourse"
+        },
+        "venueState": {
+          "string": "VIC"
+        },
         "latitude": -38.3776307957345,
         "longitude": 142.46822741540203,
         "geoUncertainty": 197
@@ -10943,10 +14443,18 @@
         "timestamp": 1672040484676,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 508 },
-        "venueName": { "string": "North Pier Hotel (Continental Hotel)" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "VIC" },
+        "venueId": {
+          "double": 508
+        },
+        "venueName": {
+          "string": "North Pier Hotel (Continental Hotel)"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "VIC"
+        },
         "latitude": -38.4485116762234,
         "longitude": 145.24169446779692,
         "geoUncertainty": 2034
@@ -11328,10 +14836,18 @@
         "timestamp": 1672040484551,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 2474 },
-        "venueName": { "string": "Hibernian Hotel, Goulburn" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 2474
+        },
+        "venueName": {
+          "string": "Hibernian Hotel, Goulburn"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -34.75620982581327,
         "longitude": 149.71742519954216,
         "geoUncertainty": 35
@@ -11398,10 +14914,18 @@
         "timestamp": 1672040484545,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 7135 },
-        "venueName": { "string": "Leeton Harness Racing Club" },
-        "venueType": { "string": "Oncourse" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 7135
+        },
+        "venueName": {
+          "string": "Leeton Harness Racing Club"
+        },
+        "venueType": {
+          "string": "Oncourse"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -34.55887958594272,
         "longitude": 146.40381073010337,
         "geoUncertainty": 274
@@ -11468,10 +14992,18 @@
         "timestamp": 1672040484535,
         "event": 12,
         "currentState": 1,
-        "venueId": { "double": 1940 },
-        "venueName": { "string": "Time & Tide Hotel, Dee Why" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 1940
+        },
+        "venueName": {
+          "string": "Time & Tide Hotel, Dee Why"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -33.741891856137045,
         "longitude": 151.28779034822563,
         "geoUncertainty": 35
@@ -11853,10 +15385,18 @@
         "timestamp": 1672040485886,
         "event": 2,
         "currentState": 1,
-        "venueId": { "double": 5154 },
-        "venueName": { "string": "Murrumbudgee Country Cl" },
-        "venueType": { "string": "ClubTab" },
-        "venueState": { "string": "ACT" },
+        "venueId": {
+          "double": 5154
+        },
+        "venueName": {
+          "string": "Murrumbudgee Country Cl"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "ACT"
+        },
         "latitude": -35.3857846,
         "longitude": 149.0401041,
         "geoUncertainty": 14
@@ -12483,10 +16023,18 @@
         "timestamp": 1672040485676,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 6141 },
-        "venueName": { "string": "Springwood Hotel " },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "QLD" },
+        "venueId": {
+          "double": 6141
+        },
+        "venueName": {
+          "string": "Springwood Hotel "
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
         "latitude": -27.611321307216173,
         "longitude": 153.12392549982377,
         "geoUncertainty": 35
@@ -13393,10 +16941,18 @@
         "timestamp": 1672040485441,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 155 },
-        "venueName": { "string": "Werribee Plaza Tavern" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "VIC" },
+        "venueId": {
+          "double": 155
+        },
+        "venueName": {
+          "string": "Werribee Plaza Tavern"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "VIC"
+        },
         "latitude": -37.8760496,
         "longitude": 144.6822303,
         "geoUncertainty": 32
@@ -13603,10 +17159,18 @@
         "timestamp": 1672040485372,
         "event": 1,
         "currentState": 1,
-        "venueId": { "double": 1069 },
-        "venueName": { "string": "Great Northern Hotel, West Kempsey" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 1069
+        },
+        "venueName": {
+          "string": "Great Northern Hotel, West Kempsey"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -31.07996951325897,
         "longitude": 152.8304935434394,
         "geoUncertainty": 11
@@ -14233,10 +17797,18 @@
         "timestamp": 1672040486503,
         "event": 4,
         "currentState": 1,
-        "venueId": { "double": 4833 },
-        "venueName": { "string": "Lake Hotel, The Entrance" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 4833
+        },
+        "venueName": {
+          "string": "Lake Hotel, The Entrance"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -33.34412542311717,
         "longitude": 151.496639855007,
         "geoUncertainty": 35
@@ -14758,10 +18330,18 @@
         "timestamp": 1672040486295,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 6583 },
-        "venueName": { "string": "Mooloolaba S.L.S.C." },
-        "venueType": { "string": "ClubTab" },
-        "venueState": { "string": "QLD" },
+        "venueId": {
+          "double": 6583
+        },
+        "venueName": {
+          "string": "Mooloolaba S.L.S.C."
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
         "latitude": -26.68143467210114,
         "longitude": 153.1216078964022,
         "geoUncertainty": 35
@@ -15003,10 +18583,18 @@
         "timestamp": 1672040486237,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 1526 },
-        "venueName": { "string": "Coach & Horses Hotel, Randwick" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 1526
+        },
+        "venueName": {
+          "string": "Coach & Horses Hotel, Randwick"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -33.91320313036606,
         "longitude": 151.24289380976447,
         "geoUncertainty": 56
@@ -15143,10 +18731,18 @@
         "timestamp": 1672040486175,
         "event": 2,
         "currentState": 1,
-        "venueId": { "double": 3648 },
-        "venueName": { "string": "Eastlakes" },
-        "venueType": { "string": "Agency" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 3648
+        },
+        "venueName": {
+          "string": "Eastlakes"
+        },
+        "venueType": {
+          "string": "Agency"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -33.9233929,
         "longitude": 151.2111409,
         "geoUncertainty": 24
@@ -15458,10 +19054,18 @@
         "timestamp": 1672040486099,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 961 },
-        "venueName": { "string": "Geelong Harness" },
-        "venueType": { "string": "Oncourse" },
-        "venueState": { "string": "VIC" },
+        "venueId": {
+          "double": 961
+        },
+        "venueName": {
+          "string": "Geelong Harness"
+        },
+        "venueType": {
+          "string": "Oncourse"
+        },
+        "venueState": {
+          "string": "VIC"
+        },
         "latitude": -38.06216069500713,
         "longitude": 144.38001651330327,
         "geoUncertainty": 50
@@ -15948,10 +19552,18 @@
         "timestamp": 1672040487326,
         "event": 4,
         "currentState": 1,
-        "venueId": { "double": 1274 },
-        "venueName": { "string": "Singleton Returned Servicemens Club" },
-        "venueType": { "string": "ClubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 1274
+        },
+        "venueName": {
+          "string": "Singleton Returned Servicemens Club"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -32.54903335013464,
         "longitude": 151.16177308804504,
         "geoUncertainty": 35
@@ -16508,10 +20120,18 @@
         "timestamp": 1672040487112,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 7076 },
-        "venueName": { "string": "Bathurst Harness Racing Club" },
-        "venueType": { "string": "Oncourse" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 7076
+        },
+        "venueName": {
+          "string": "Bathurst Harness Racing Club"
+        },
+        "venueType": {
+          "string": "Oncourse"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -33.451568081610944,
         "longitude": 149.57487595162195,
         "geoUncertainty": 150
@@ -16753,10 +20373,18 @@
         "timestamp": 1672040487047,
         "event": 12,
         "currentState": 1,
-        "venueId": { "double": 46 },
-        "venueName": { "string": "Crown Casino Las Vegas Room" },
-        "venueType": { "string": "Agency" },
-        "venueState": { "string": "VIC" },
+        "venueId": {
+          "double": 46
+        },
+        "venueName": {
+          "string": "Crown Casino Las Vegas Room"
+        },
+        "venueType": {
+          "string": "Agency"
+        },
+        "venueState": {
+          "string": "VIC"
+        },
         "latitude": -37.82469156442359,
         "longitude": 144.95832624248425,
         "geoUncertainty": 46
@@ -17208,10 +20836,18 @@
         "timestamp": 1672040486858,
         "event": 4,
         "currentState": 1,
-        "venueId": { "double": 106 },
-        "venueName": { "string": "Mentone RSL" },
-        "venueType": { "string": "Kiosk Club" },
-        "venueState": { "string": "VIC" },
+        "venueId": {
+          "double": 106
+        },
+        "venueName": {
+          "string": "Mentone RSL"
+        },
+        "venueType": {
+          "string": "Kiosk Club"
+        },
+        "venueState": {
+          "string": "VIC"
+        },
         "latitude": -37.98956298828125,
         "longitude": 145.06658935546875,
         "geoUncertainty": 1
@@ -17768,10 +21404,18 @@
         "timestamp": 1672040486720,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 7063 },
-        "venueName": { "string": "Dubbo Harness" },
-        "venueType": { "string": "Oncourse" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 7063
+        },
+        "venueName": {
+          "string": "Dubbo Harness"
+        },
+        "venueType": {
+          "string": "Oncourse"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -32.248312322644075,
         "longitude": 148.614111749347,
         "geoUncertainty": 5
@@ -18748,10 +22392,18 @@
         "timestamp": 1672040487756,
         "event": 4,
         "currentState": 1,
-        "venueId": { "double": 6573 },
-        "venueName": { "string": "Taigum Tavern" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "QLD" },
+        "venueId": {
+          "double": 6573
+        },
+        "venueName": {
+          "string": "Taigum Tavern"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "QLD"
+        },
         "latitude": -27.350450687485125,
         "longitude": 153.04705424373736,
         "geoUncertainty": 35
@@ -19133,10 +22785,18 @@
         "timestamp": 1672040487613,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 1001004 },
-        "venueName": { "string": "Swan Hotel" },
-        "venueType": { "string": "Digital Retail" },
-        "venueState": { "string": "VIC" },
+        "venueId": {
+          "double": 1001004
+        },
+        "venueName": {
+          "string": "Swan Hotel"
+        },
+        "venueType": {
+          "string": "Digital Retail"
+        },
+        "venueState": {
+          "string": "VIC"
+        },
         "latitude": -37.8258912483444,
         "longitude": 144.99797622588449,
         "geoUncertainty": 5
@@ -19413,10 +23073,18 @@
         "timestamp": 1672040487527,
         "event": 1,
         "currentState": 1,
-        "venueId": { "double": 1089 },
-        "venueName": { "string": "Diggers at The Entrance, Long Jetty" },
-        "venueType": { "string": "ClubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 1089
+        },
+        "venueName": {
+          "string": "Diggers at The Entrance, Long Jetty"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -33.35217002316698,
         "longitude": 151.489172699071,
         "geoUncertainty": 8
@@ -19588,10 +23256,18 @@
         "timestamp": 1672040487450,
         "event": 15,
         "currentState": 1,
-        "venueId": { "double": 1440 },
-        "venueName": { "string": "Thomas Blamey Tavern, Wagga Wagga" },
-        "venueType": { "string": "PubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 1440
+        },
+        "venueName": {
+          "string": "Thomas Blamey Tavern, Wagga Wagga"
+        },
+        "venueType": {
+          "string": "PubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -35.16723100884229,
         "longitude": 147.38234790486874,
         "geoUncertainty": 35
@@ -19728,10 +23404,18 @@
         "timestamp": 1672040487392,
         "event": 4,
         "currentState": 1,
-        "venueId": { "double": 1153 },
-        "venueName": { "string": "Club Macquarie, Argenton" },
-        "venueType": { "string": "ClubTab" },
-        "venueState": { "string": "NSW" },
+        "venueId": {
+          "double": 1153
+        },
+        "venueName": {
+          "string": "Club Macquarie, Argenton"
+        },
+        "venueType": {
+          "string": "ClubTab"
+        },
+        "venueState": {
+          "string": "NSW"
+        },
         "latitude": -32.94129899015955,
         "longitude": 151.624503796644,
         "geoUncertainty": 229
