@@ -1,10 +1,10 @@
-const { createUser } = require('../services/user-service');
-const mostActiveUsers = require('../services/mostActiveUsers');
+const { createUser,getMostActiveUser } = require('../services/user-service');
+
 
 module.exports.createUser = async (req, res) => {
   try {
     const { userData } = req.body;
-    
+
     if (!userData) {
       res.send(400, { message: 'Required data is missing.' });
       return;
@@ -18,7 +18,7 @@ module.exports.createUser = async (req, res) => {
 
 module.exports.getMostActiveUser = async (req, res) => {
   const limit = +req.query.limit||1000;
-  const data = await mostActiveUsers.getMostActiveUser(limit);
+  const data = await getMostActiveUser(limit);
   return res.send(200, { active_users: data });
 };
 
