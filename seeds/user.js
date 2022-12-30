@@ -7,7 +7,7 @@ const seedUser = async () =>{
     if(!len){
         const dataArr = [];
         for(let i=0;i<userData.length;i++){
-            dataArr.push(userData[i].value.body);
+            dataArr.push(userData[i].value);
         }
         const result = await createUser(dataArr);
         console.log('Added datalength is',result.length);

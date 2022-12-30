@@ -2,7 +2,7 @@ const inputUserVenueFormatter = (userVenues) => {
 	const formattedInput = userVenues.map(v => ({
 	    ...v.body,
 		venueId: v.body.venueId?.double,
-        venueName: v.bodyvenueName?.string,
+        venueName: v.body.venueName?.string,
         venueType: v.body.venueType?.string,
         venueState: v.body.venueState?.string,
 		location: {
