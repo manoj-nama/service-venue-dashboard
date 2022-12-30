@@ -3,7 +3,7 @@ const { createUser } = require('../services/user-service');
 module.exports.createUser = async (req, res) => {
   try {
     const { userData } = req.body;
-    
+
     if (!userData) {
       res.send(400, { message: 'Required data is missing.' });
       return;

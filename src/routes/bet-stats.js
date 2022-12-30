@@ -60,4 +60,21 @@ router.post({
   handlers: [betStatsController.addBetDetails],
 });
 
+router.get({
+  path: {
+    name: 'bets-placed-per-venue',
+    path: '/v1/service-venue/bet-stats/bets-placed',
+  },
+  handlers: [betStatsController.mostBetsPlacedPerVenue],
+});
+
+router.get({
+  path: {
+    name: 'amount-spent-per-venue',
+    path: '/v1/service-venue/bet-stats/amount-spent',
+  },
+  handlers: [betStatsController.mostAmountSpentPerVenue],
+});
+
+
 module.exports = router;
