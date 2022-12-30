@@ -20,6 +20,19 @@ const createServer = () => {
     showStackTrace: false,
   });
 
+  server.before((restifyServer) => {
+    const corsMiddleware = require('restify-cors-middleware');
+    const cors = corsMiddleware({
+      preflightMaxAge: 5, //Optional
+      origins: ['*'],
+      allowHeaders: ['API-Token', 'tabcorpauth'],
+      exposeHeaders: ['API-Token-Expiry']
+    });
+
+    restifyServer.pre(cors.preflight);
+    restifyServer.use(cors.actual);
+  });
+
   server.route(routes);
   server.uncaughtExceptions(
     (req, res, route, err) => {
