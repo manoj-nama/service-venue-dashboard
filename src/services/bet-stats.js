@@ -79,7 +79,7 @@ const mostBetsPlacedPerVenue = async (limit) => {
             '$bets', 0,
           ],
         },
-        frequency_of_bets: '$frequency_of_bets',
+        frequency_of_bets: 1,
       },
     }, {
       $project: {
@@ -87,7 +87,7 @@ const mostBetsPlacedPerVenue = async (limit) => {
         venueId: '$location.venueId',
         venueState: '$location.venueState',
         venueType: '$location.venueType',
-        frequency_of_bets: '$frequency_of_bets',
+        frequency_of_bets: 1,
         _id: 0,
       },
     },
@@ -128,7 +128,7 @@ const mostAmountSpentPerVenue = async (limit) => {
             '$bets', 0,
           ],
         },
-        frequency_of_total_amount_spent: '$frequency_of_total_amount_spent',
+        frequency_of_total_amount_spent: 1,
       },
     }, {
       $project: {
@@ -136,7 +136,7 @@ const mostAmountSpentPerVenue = async (limit) => {
         venueId: '$location.venueId',
         venueState: '$location.venueState',
         venueType: '$location.venueType',
-        frequency_of_total_amount_spent: '$frequency_of_total_amount_spent',
+        frequency_of_total_amount_spent: 1,
         _id: 0,
       },
     },
