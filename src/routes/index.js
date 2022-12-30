@@ -5,7 +5,7 @@ const schemas = require('./validation/message-schemas');
 const discovery = require('../controllers/discovery-controller');
 const getActiveVenuesAndUser = require('../controllers/active-venues-controller');
 const { createUser } = require('../controllers/user-controller');
-const getMostActiveUser = require('../controllers/most-active-users-controller');
+const {getMostActiveUser} = require('../controllers/user-controller');
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const router = apiRouter();

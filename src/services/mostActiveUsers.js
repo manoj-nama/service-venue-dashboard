@@ -1,36 +1,50 @@
 const UserModel = require('../models/users');
 
-module.exports.getMostActiveUser = async () => {
-    const allActiveUsers = await UserModel.find({ currentState:1 });
-    console.log('d,f.d,f.df.',allActiveUsers.length);
-    const ActiveUserObject = allActiveUsers.reduce((acc,users)=>{
-        const venueId = users.venueId;
-        const sameVenue = acc[venueId] ?? [];
+module.exports.getMostActiveUser = async (limit) => {
 
-        return {...acc,
-                [venueId]:[
-                    ...sameVenue,
-                    users
-                ]
-        };
-    },{})
-    console.log('kdlfldfldd',Object.keys(ActiveUserObject).length);
-    const ActiveUserInVenue = [];
-    for(const key in ActiveUserObject){
-        const venueObj = ActiveUserObject[key];
-        const obj = {
-            "venueId":venueObj[0].venueId,
-            "venueName":venueObj[0].venueName,
-            "active_users":venueObj.length,
-            "venueType":venueObj[0].venueType,
-            "venueState":venueObj[0].venueState
+    const ActiveUserInVenue = await UserModel.aggregate([
+        {
+          '$match': {
+            'currentState': 1
+          }
+        }, {
+          '$group': {
+            '_id': '$venueId', 
+            'venues': {
+              '$push': '$$ROOT'
+            }, 
+            'active_users': {
+              '$sum': 1
+            }
+          }
+        }, {
+          '$project': {
+            '_id': 0, 
+            'active_users': 1, 
+            'location': {
+              '$arrayElemAt': [
+                '$venues', 0
+              ]
+            }
+          }
+        }, {
+          '$project': {
+            'venueId': '$location.venueId', 
+            'active_users': 1, 
+            'venueName': '$location.venueName', 
+            'venueType': '$location.venueType', 
+            'venueState': '$location.venueState'
+          }
+        }, {
+          '$sort': {
+            'active_users': -1, 
+            'venueName': 1
+          }
+        },
+        {
+            '$limit': limit
         }
-        ActiveUserInVenue.push(obj);
-    }
-    
-    ActiveUserInVenue.sort(function(a,b){
-        return a.active_users-b.active_users > 0 ? -1 : 1;
-    });
+      ]);
 
     return ActiveUserInVenue;
 }
