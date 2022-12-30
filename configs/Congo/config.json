@@ -2,6 +2,12 @@
   "serverPort": 3000,
   "publicUrl": "http://13.211.126.67:3000",
   "basePath": "/v1/service-venue",
+  "identityService": {
+    "enabled": true,
+    "url": "https://api.congo.beta.tab.com.au/oauth/token",
+    "clientId": "e4791916-e177-439d-a34b-20467d4049c5",
+    "clientSecret": "241af377-d48a-43c1-9e1f-112ab3e099a5"
+  },
   "redis": {
     "connectionString": "redis://10.13.152.23:6379",
     "prefix": "bet-distribution:"
@@ -16,6 +22,8 @@
     "liveBetsCount": 10
   },
   "kafka": {
+    "sslAuthEnabled": false,
+    "producerDeliveryReport": false,
     "brokerList": "localhost:9092",
     "schemaRegistry": "http://kafka-schema-registry.kafka.dev.analytics.in.cld:8081/",
     "betsConsumer": {

@@ -19,13 +19,13 @@ const start = async () => {
     mongoose.connect(`${cfg.mongoose.url}${cfg.mongoose.dbName}?authMechanism=DEFAULT&authSource=admin`).then(async () => {
       log.info('Connected to MongoDB', `${cfg.mongoose.url}${cfg.mongoose.dbName}`);
       // Initialising Kafka topics
-      // initialiseKafkaTopics();
+      initialiseKafkaTopics();
       const app = server();
       await app.start();
       // Redis
-      // redis.createRedis(cfg);
+      redis.createRedis(cfg);
       // Scheduler for bets
-      // betStatsScheduler.run();
+      betStatsScheduler.run();
       // Run seed file
       seeds();
 

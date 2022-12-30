@@ -15,8 +15,8 @@ const getHeatMapData = async (req, res) => {
   return res.send(200, response);
 };
 
-const getBetsEntireDistribution = async (req, res) => {
-  const response = await betStatsService.getEntireDistribution();
+const getBetsDistribution = async (req, res) => {
+  const response = await betStatsService.getBetsDistribution(req);
   return res.send(200, response);
 };
 
@@ -61,7 +61,7 @@ module.exports = {
   getLiveBets,
   getBigBets,
   getHeatMapData,
-  getBetsEntireDistribution,
+  getBetsDistribution,
   addBetDetails,
   mostAmountSpentPerVenue,
   mostBetsPlacedPerVenue,
