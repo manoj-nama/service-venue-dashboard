@@ -2,7 +2,8 @@ const Promise = require('bluebird');
 
 const { ApiClient, ApiAuthentication } = require('@tabdigital/api-client');
 
-const { log } = require('./log');
+const log = require('./log');
+const config = require('./config');
 
 let client;
 
@@ -24,10 +25,17 @@ const getClient = (config) => {
   return client;
 };
 
-const get = (url, urlParams, resolveResponse = false) => Promise.resolve(getClient().get(url, {
+const get = (url, urlParams, resolveResponse = false) => {
+  const cfg = config();
+  return Promise.resolve(getClient(cfg).get(url, {
     urlParams,
     resolveResponse,
   }).catch((err) => {
     log.error(err, { failRequest: { url, urlParams } });
     throw err;
-  }));
+  }))
+};
+
+module.exports = {
+  get,
+};

@@ -5,6 +5,12 @@ const configSchema = new s.objectWithOnly({
   serverPort: new s.number(),
   publicUrl: new s.url(),
   basePath: new s.string(),
+  identityService: new s.objectWithOnly({
+    enabled: new s.boolean(),
+    url: new s.url(),
+    clientId: new s.string(),
+    clientSecret: new s.string(),
+  }),
   mongoose: {
     url: new s.url(),
     dbName: new s.string(),
@@ -19,6 +25,8 @@ const configSchema = new s.objectWithOnly({
     liveBetsCount: new s.number(),
   },
   kafka: {
+    sslAuthEnabled: new s.boolean(),
+    producerDeliveryReport: new s.boolean(),
     brokerList: new s.string(),
     schemaRegistry: new s.string(),
     betsConsumer: {

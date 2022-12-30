@@ -43,12 +43,45 @@ router.get({
     discoveryName: 'bet-stats:distribution',
     path: '/v1/service-venue/bet-stats/distribution',
     query: {
-      mandatory: ['jurisdiction'],
-      optional: ['sportId', 'competitionId', 'tournamentId', 'matchId'],
+      mandatory: ['jurisdiction', 'longitude', 'latitude'],
+      optional: ['radius', 'sort'],
     },
   },
+    //:TODO Add middleware for param validations
   handlers: [
-    betStatsController.getBetsEntireDistribution
+    betStatsController.getBetsDistribution
+  ],
+});
+
+router.get({
+  path: {
+    name: 'bet-stats:match:distribution',
+    discoveryName: 'bet-stats:match:distribution',
+    path: '/v1/service-venue/bet-stats/sports/:sportName/competitions/:competitionName/matches/:matchName/distribution',
+    query: {
+      mandatory: ['jurisdiction', 'longitude', 'latitude'],
+      optional: ['radius', 'sort'],
+    },
+  },
+  //:TODO Add middleware for param validations
+  handlers: [
+    betStatsController.getBetsDistribution
+  ],
+});
+
+router.get({
+  path: {
+    name: 'bet-stats:tournament:match:distribution',
+    discoveryName: 'bet-stats:tournament:match:distribution',
+    path: '/v1/service-venue/bet-stats/sports/:sportName/competitions/:competitionName/tournaments/:tournamentName/matches/:matchName/distribution',
+    query: {
+      mandatory: ['jurisdiction', 'longitude', 'latitude'],
+      optional: ['radius', 'sort'],
+    },
+  },
+    //:TODO Add middleware for param validations
+  handlers: [
+    betStatsController.getBetsDistribution
   ],
 });
 

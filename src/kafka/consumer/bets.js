@@ -36,6 +36,7 @@ module.exports = class SportsBetsConsumer {
       commitIntervalInMs,
       batchMessageHandler,
       log,
+      isSSL: cfg.kafka.sslAuthEnabled,
     });
     this.topic = topic;
     this.schemaRegistry = useSchemaRegistry ? schemaRegistry : undefined;

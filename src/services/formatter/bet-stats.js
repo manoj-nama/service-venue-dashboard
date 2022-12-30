@@ -1,21 +1,44 @@
-const liveBetsFormatter = (bets) => {
+const liveBetsFormatter = ({
+	bets, count
+}) => {
 	const formattedData = bets.map(b => (
 		{
 			betType: "sport",
 			betAmount: b.bet_amount,
-			startTime: "",
+			matchStartTime: b.match_start_time,
 			betDetails: {
-				sportName: b.sport,
-				competitionName: "",
-				tournamentName: null,
-				matchName: b.match,
-				marketName: ""
+				sportName: b.sport_name,
+				competitionName: b.competition_name,
+				tournamentName: b.tournament_name,
+				matchName: b.match_name,
+				marketName: b.market_name,
+				betOption: b.bet_option,
+				propositionName: b.proposition_name,
+				propositionId: b.prop_id,
+			}
+		}
+	)).splice(0, count);
+	return formattedData;
+};
+
+const heatMapFormatter = (bets) => {
+	const formattedData = bets.map(b => (
+		{
+			coordinates: b.location.coordinates,
+			betDetails: {
+				sportName: b.sport_name,
+				competitionName: b.competition_name,
+				tournamentName: b.tournament_name,
+				matchName: b.match_name,
+				marketName: b.market_name,
+				betOption: b.bet_option,
+				propositionName: b.proposition_name,
+				propositionId: b.prop_id,
 			}
 		}
 	));
 	return formattedData;
 };
-
 // Formatting bets for bulk insertion
 const inputBetsFormatter = (bets) => {
 	let formattedData = [];
@@ -67,4 +90,5 @@ module.exports = {
 	liveBetsFormatter,
 	inputBetsFormatter,
 	formatBetDistribution,
+	heatMapFormatter,
 };
