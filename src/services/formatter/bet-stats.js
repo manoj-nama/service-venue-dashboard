@@ -3,17 +3,17 @@ const liveBetsFormatter = ({
 }) => {
 	const formattedData = bets.map(b => (
 		{
-			betType: "sport",
+			betType: b.bet_type,
 			betAmount: b.bet_amount,
-			matchStartTime: b.match_start_time,
 			betDetails: {
 				sportName: b.sport_name,
 				competitionName: b.competition_name,
 				tournamentName: b.tournament_name,
 				matchName: b.match_name,
+				matchStartTime: b.match_start_time,
 				marketName: b.market_name,
 				betOption: b.bet_option,
-				propositionName: b.proposition_name,
+				propositionName: b.prop_name,
 				propositionId: b.prop_id,
 			}
 		}
@@ -24,15 +24,16 @@ const liveBetsFormatter = ({
 const heatMapFormatter = (bets) => {
 	const formattedData = bets.map(b => (
 		{
-			coordinates: b.location.coordinates,
+			coordinates: b.bet?.location?.coordinates,
 			betDetails: {
 				sportName: b.sport_name,
 				competitionName: b.competition_name,
 				tournamentName: b.tournament_name,
 				matchName: b.match_name,
+				matchStartTime: b.match_start_time,
 				marketName: b.market_name,
 				betOption: b.bet_option,
-				propositionName: b.proposition_name,
+				propositionName: b.prop_name,
 				propositionId: b.prop_id,
 			}
 		}
@@ -59,6 +60,18 @@ const inputBetsFormatter = (bets) => {
 		})
 	});
 	return formattedData;
+};
+
+const bigBetsFormatter = (bets) => {
+	const formattedResponse = bets.map(b => ({
+		totalBetAmount: b.total_bet_amount,
+		count: b.count,
+		matchName: b.match_name,
+		matchStartTime: b.match_start_time,
+		marketName: b.market_name,
+		marketUniqueId: b.market_unique_id,
+	}));
+	return formattedResponse;
 };
 
 const formatBetDistribution = ({
@@ -91,4 +104,5 @@ module.exports = {
 	inputBetsFormatter,
 	formatBetDistribution,
 	heatMapFormatter,
+	bigBetsFormatter,
 };
