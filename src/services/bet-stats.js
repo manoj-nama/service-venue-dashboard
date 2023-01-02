@@ -245,13 +245,17 @@ const getBetsDistribution = async ({ query, params }) => {
   return response;
 };
 
-const mostBetsPlacedPerVenue = async (limit) => {
+const mostBetsPlacedPerVenue = async (limit, skip, frmDateUTC, toDateUTC) => {
   let pipeline = [
     {
       $match: {
         venueId: {
           $ne: null,
         },
+        transaction_date_time :{
+          $gte: frmDateUTC,
+          $lte: toDateUTC
+        }
       },
     }, {
       $group: {
@@ -287,20 +291,28 @@ const mostBetsPlacedPerVenue = async (limit) => {
         frequency_of_bets: -1,
         venueName: 1,
       },
+    }, {
+      $skip: skip,
+    },
+    {
+      $limit: limit,
     },
   ];
-  if (limit) { pipeline = [...pipeline, { $limit: limit }]; }
   const result = await BetModel.aggregate(pipeline);
   return result;
 };
 
-const mostAmountSpentPerVenue = async (limit) => {
+const mostAmountSpentPerVenue = async (limit, skip,frmDateUTC, toDateUTC) => {
   let pipeline = [
     {
       $match: {
         venueId: {
           $ne: null,
         },
+        transaction_date_time :{
+          $gte: frmDateUTC,
+          $lte: toDateUTC
+        }
       },
     }, {
       $group: {
@@ -336,9 +348,13 @@ const mostAmountSpentPerVenue = async (limit) => {
         frequency_of_total_amount_spent: -1,
         venueName: 1,
       },
+    }, {
+      $skip: skip,
+    },
+    {
+      $limit: limit,
     },
   ];
-  if (limit) { pipeline = [...pipeline, { $limit: limit }]; }
   const result = await BetModel.aggregate(pipeline);
   return result;
 };
