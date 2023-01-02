@@ -1,6 +1,6 @@
 const Promise = require('bluebird');
 
-const { BetModel, UserModel, PropositionModel } = require('../models')
+const { BetModel, UserModel, PropositionModel } = require('../models');
 const redis = require('../redis');
 const {
   liveBetsFormatter,
@@ -20,59 +20,64 @@ const DEFAULT_LONGITUDE = '';
 const DEFAULT_LATITUDE = '';
 
 const getPropDetails = async (props) => {
-	let propDetails = [];
-	try {
-		log.info('Fetching prop details for', props);
-    const baseUrl = 'https://api.congo.beta.tab.com.au/v1/tab-info-service/search/proposition';
-    const params = `?jurisdiction=nsw&details=true&${props.map((p) => `number=914396`).join('&')}`;
-		propDetails = await get(`${baseUrl}${params}`);
-		propDetails = propDetails.propositions.filter(detail => detail.type === 'sport').map((d, i) => ({
-      bet_type: d.type,
-			prop_name: d.propositionDetails?.name,
-			prop_id: d.propositionNumber,
-      bet_option: d.market?.betOption,
-			market_name: d.market?.name,
-      market_unique_id: `${d.market?.marketUniqueId}${i}`,
-			market_close_time: d.market?.closeTime,
-      sport_name: d.sport?.name,
-			sport_id: d.sport?.id,
-			match_id: d.match?.id,
-			match_name: d.match?.name,
-			match_start_time: d.match?.startTime,
-			competition_id: d.competition?.id,
-			competition_name: d.competition?.name,
-			tournament_name: d?.tournament?.name,
-      tournament_id: d.tournament?.id,
-		}));
-    propDetails.forEach(det => {
-      const existingProp = props.find(p => Number(p.id) === det.prop_id);
+  let propDetails = [];
+  try {
+    log.info('Fetching prop details for', props);
+    const baseUrl =
+      'https://api.congo.beta.tab.com.au/v1/tab-info-service/search/proposition';
+    const params = `?jurisdiction=nsw&details=true&${props
+      .map((p) => `number=914396`)
+      .join('&')}`;
+    propDetails = await get(`${baseUrl}${params}`);
+    propDetails = propDetails.propositions
+      .filter((detail) => detail.type === 'sport')
+      .map((d, i) => ({
+        bet_type: d.type,
+        prop_name: d.propositionDetails?.name,
+        prop_id: d.propositionNumber,
+        bet_option: d.market?.betOption,
+        market_name: d.market?.name,
+        market_unique_id: `${d.market?.marketUniqueId}${i}`,
+        market_close_time: d.market?.closeTime,
+        sport_name: d.sport?.name,
+        sport_id: d.sport?.id,
+        match_id: d.match?.id,
+        match_name: d.match?.name,
+        match_start_time: d.match?.startTime,
+        competition_id: d.competition?.id,
+        competition_name: d.competition?.name,
+        tournament_name: d?.tournament?.name,
+        tournament_id: d.tournament?.id,
+      }));
+    propDetails.forEach((det) => {
+      const existingProp = props.find((p) => Number(p.id) === det.prop_id);
       if (existingProp) det.price = existingProp.price;
     });
-	} catch(e) {
+  } catch (e) {
     propDetails = [];
-		log.error(e, 'Error while fetching prop details');
-	}
+    log.error(e, 'Error while fetching prop details');
+  }
   return propDetails;
 };
 
 const getBetWithLoc = async (bet) => {
-	let betDetail;
-	try {
-    log.info(`Fetching location details for ${bet.account_number}`)
-		const userInfo = await UserModel.findOne({ accountNumber: 1271223 });
-		if (userInfo && userInfo.location) {
+  let betDetail;
+  try {
+    log.info(`Fetching location details for ${bet.account_number}`);
+    const userInfo = await UserModel.findOne({ accountNumber: 1271223 });
+    if (userInfo && userInfo.location) {
       log.info(`Found location for ${bet.account_number}`);
-			betDetail = bet;
-			betDetail.venueId = userInfo.venueId;
-			betDetail.venueName = userInfo.venueName;
-			betDetail.venueType = userInfo.venueType;
-			betDetail.venueState = userInfo.venueState;
-			betDetail.location = userInfo.location;
-		}
-	} catch(e) {
+      betDetail = bet;
+      betDetail.venueId = userInfo.venueId;
+      betDetail.venueName = userInfo.venueName;
+      betDetail.venueType = userInfo.venueType;
+      betDetail.venueState = userInfo.venueState;
+      betDetail.location = userInfo.location;
+    }
+  } catch (e) {
     betDetail = null;
-		log.error(e, 'Error while fetching location details');
-	}
+    log.error(e, 'Error while fetching location details');
+  }
   return betDetail;
 };
 
@@ -80,9 +85,9 @@ const createPropDetailsForBet = async (bets) => {
   try {
     log.info('Processing propositions for bets');
     const propsToBeCreated = [];
-    await Promise.map(bets, async b => {
+    await Promise.map(bets, async (b) => {
       const propDetails = await getPropDetails(b.propositions);
-      propDetails.forEach(p => p.bet = b._id);
+      propDetails.forEach((p) => (p.bet = b._id));
       propsToBeCreated.push(...propDetails);
     });
     log.info(`Creating ${propsToBeCreated.length} propositions in database`);
@@ -97,25 +102,25 @@ const createBets = async (betDetails) => {
   try {
     log.info('Bets creation process started');
     if (betDetails && betDetails.length) {
-      response = await Promise.map(betDetails, async bet => {
+      response = await Promise.map(betDetails, async (bet) => {
         const updatedBetDetails = await getBetWithLoc(bet);
         if (updatedBetDetails) {
-          updatedBetDetails.propositions = bet.propositions.map(p => ({
+          updatedBetDetails.propositions = bet.propositions.map((p) => ({
             id: p.prop_id,
             price: Number(p.price?.string || 0),
           }));
           return updatedBetDetails;
         }
       });
-      response = response.filter(r => !!r);
+      response = response.filter((r) => !!r);
       if (response.length) {
-        log.info(`Creating ${response.length} bets`)
+        log.info(`Creating ${response.length} bets`);
         response = await BetModel.insertMany(response);
         await createPropDetailsForBet(response);
         log.info('Bets created');
       }
     }
-  } catch(e) {
+  } catch (e) {
     response = [];
     log.error(e, 'Error while creating bets', e);
   }
@@ -149,24 +154,30 @@ const getBigBets = async ({
   competitionName,
   tournamentName,
   matchName,
-  sort
+  sort,
 }) => {
   log.info('Fetching big bets');
   let response = [];
+
+  // default sort on totalBetAmount
+  let sortOptions = { totalBetAmount: -1 };
   try {
-    //TODO: Add sorting based on bet amount else what comes in sort param
+    //Sorting based on bet amount else what comes in sort param
+    if (sort === 'count') sortOptions = { count: -1 };
+
     response = await PropositionModel.aggregate([
       {
         $group: {
           _id: '$market_unique_id',
-          total_bet_amount: { $sum: "price" },
+          total_bet_amount: { $sum: 'price' },
           count: { $sum: 1 },
-          "match_name": { "$first": "$match_name"},
-          "match_start_time": { "$first": "$match_start_time"},
-          "market_name": { "$first": "$market_name"},
-          "market_unique_id": { "$first": "$market_unique_id"},
+          match_name: { $first: '$match_name' },
+          match_start_time: { $first: '$match_start_time' },
+          market_name: { $first: '$market_name' },
+          market_unique_id: { $first: '$market_unique_id' },
         },
       },
+      { $sort: sortOptions },
     ]);
   } catch (e) {
     response = [];
@@ -182,7 +193,7 @@ const getHeatMapData = async ({
   matchName,
   radius = DEFAULT_RADIUS,
   longitude = DEFAULT_LONGITUDE,
-  latitude = DEFAULT_LATITUDE
+  latitude = DEFAULT_LATITUDE,
 }) => {
   let response = [];
   try {
@@ -201,9 +212,10 @@ const getHeatMapData = async ({
               },
             },
           },
-        }
-      }).exec();
-    return heatMapFormatter(response);  
+        },
+      })
+      .exec();
+    return heatMapFormatter(response);
   } catch (e) {
     response = [];
     log.error('Error while fetching heat map data', e);
@@ -219,14 +231,14 @@ const getBetsDistribution = async ({ query, params }) => {
     sportName,
     competitionName,
     tournamentName,
-    matchName
+    matchName,
   });
   const bigBets = await getBigBets({
     sportName,
     competitionName,
     tournamentName,
     matchName,
-    sort
+    sort,
   });
   const heatMap = await getHeatMapData({
     sportName,
@@ -235,7 +247,7 @@ const getBetsDistribution = async ({ query, params }) => {
     matchName,
     radius,
     longitude,
-    latitude
+    latitude,
   });
   const response = formatBetDistribution({
     liveBets,
@@ -253,7 +265,8 @@ const mostBetsPlacedPerVenue = async (limit) => {
           $ne: null,
         },
       },
-    }, {
+    },
+    {
       $group: {
         _id: '$venueId',
         bets: {
@@ -263,16 +276,16 @@ const mostBetsPlacedPerVenue = async (limit) => {
           $sum: 1,
         },
       },
-    }, {
+    },
+    {
       $project: {
         location: {
-          $arrayElemAt: [
-            '$bets', 0,
-          ],
+          $arrayElemAt: ['$bets', 0],
         },
         frequency_of_bets: 1,
       },
-    }, {
+    },
+    {
       $project: {
         venueName: '$location.venueName',
         venueId: '$location.venueId',
@@ -289,7 +302,9 @@ const mostBetsPlacedPerVenue = async (limit) => {
       },
     },
   ];
-  if (limit) { pipeline = [...pipeline, { $limit: limit }]; }
+  if (limit) {
+    pipeline = [...pipeline, { $limit: limit }];
+  }
   const result = await BetModel.aggregate(pipeline);
   return result;
 };
@@ -302,7 +317,8 @@ const mostAmountSpentPerVenue = async (limit) => {
           $ne: null,
         },
       },
-    }, {
+    },
+    {
       $group: {
         _id: '$venueId',
         bets: {
@@ -312,16 +328,16 @@ const mostAmountSpentPerVenue = async (limit) => {
           $sum: '$price',
         },
       },
-    }, {
+    },
+    {
       $project: {
         location: {
-          $arrayElemAt: [
-            '$bets', 0,
-          ],
+          $arrayElemAt: ['$bets', 0],
         },
         frequency_of_total_amount_spent: 1,
       },
-    }, {
+    },
+    {
       $project: {
         venueName: '$location.venueName',
         venueId: '$location.venueId',
@@ -338,7 +354,9 @@ const mostAmountSpentPerVenue = async (limit) => {
       },
     },
   ];
-  if (limit) { pipeline = [...pipeline, { $limit: limit }]; }
+  if (limit) {
+    pipeline = [...pipeline, { $limit: limit }];
+  }
   const result = await BetModel.aggregate(pipeline);
   return result;
 };
