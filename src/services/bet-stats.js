@@ -208,7 +208,10 @@ const getHeatMapData = async ({
       match_name: matchName,
     };
 
+    if (!sportName) delete findOptions['sport_name'];
+    if (!competitionName) delete findOptions['competition_name'];
     if (!tournamentName) delete findOptions['tournament_name'];
+    if (!matchName) delete findOptions['match_name'];
 
     response = await PropositionModel.find(findOptions)
       .populate({
