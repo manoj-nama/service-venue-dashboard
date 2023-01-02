@@ -1,6 +1,7 @@
 const apiRouter = require('@tabdigital/connect-router');
 
 const betStatsController = require('../controllers/bet-stats-controller');
+const betStatsMiddleware = require('../middlewares/bet-stats-middleware');
 
 const router = apiRouter();
 
@@ -47,8 +48,8 @@ router.get({
       optional: ['radius', 'sort'],
     },
   },
-  // :TODO Add middleware for param validations
   handlers: [
+    betStatsMiddleware.validateParam,
     betStatsController.getBetsDistribution,
   ],
 });
@@ -63,8 +64,8 @@ router.get({
       optional: ['radius', 'sort'],
     },
   },
-  // :TODO Add middleware for param validations
   handlers: [
+    betStatsMiddleware.validateParam,
     betStatsController.getBetsDistribution,
   ],
 });
@@ -79,8 +80,8 @@ router.get({
       optional: ['radius', 'sort'],
     },
   },
-  // :TODO Add middleware for param validations
   handlers: [
+    betStatsMiddleware.validateParam,
     betStatsController.getBetsDistribution,
   ],
 });
@@ -108,6 +109,5 @@ router.get({
   },
   handlers: [betStatsController.mostAmountSpentPerVenue],
 });
-
 
 module.exports = router;
