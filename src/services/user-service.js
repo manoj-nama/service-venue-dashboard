@@ -36,7 +36,7 @@ const makeUser = async (userData) => {
       return updatedUser;
 }
 
-module.exports.getMostActiveUser = async (limit) => {
+module.exports.getMostActiveUser = async (limit,skip) => {
 
   const ActiveUserInVenue = await UserModel.aggregate([
       {
@@ -76,11 +76,8 @@ module.exports.getMostActiveUser = async (limit) => {
           'active_users': -1, 
           'venueName': 1
         }
-      },
-      {
-          '$limit': limit
       }
-    ]);
+    ]).skip(skip).limit(limit);
 
   return ActiveUserInVenue;
 }
