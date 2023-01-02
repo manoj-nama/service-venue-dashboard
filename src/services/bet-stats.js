@@ -28,8 +28,6 @@ const getPropDetails = async (props) => {
 		propDetails = await get(`${baseUrl}${params}`);
 		propDetails = propDetails.propositions.filter(detail => detail.type === 'sport').map((d, i) => ({
       bet_type: d.type,
-			prop_name: d.propositionDetails?.name,
-			prop_id: d.propositionNumber,
       bet_option: d.market?.betOption,
 			market_name: d.market?.name,
       market_unique_id: `${d.market?.marketUniqueId}${i}`,
@@ -43,9 +41,20 @@ const getPropDetails = async (props) => {
 			competition_name: d.competition?.name,
 			tournament_name: d?.tournament?.name,
       tournament_id: d.tournament?.id,
+      proposition: {
+        name: d.propositionDetails?.name,
+			  id: d.propositionNumber,
+        returnWin: d.propositionDetails?.returnWin,
+        returnPlace: d.propositionDetails?.returnPlace,
+        differential: d.propositionDetails?.differential,
+        bettingStatus: d.propositionDetails?.bettingStatus,
+        allowPlace: d.propositionDetails?.allowPlace,
+        isOpen: d.propositionDetails?.isOpen,
+        number: d.propositionDetails?.number
+      }
 		}));
     propDetails.forEach(det => {
-      const existingProp = props.find(p => Number(p.id) === det.prop_id);
+      const existingProp = props.find(p => Number(p.id) === det.proposition.id);
       if (existingProp) det.price = existingProp.price;
     });
 	} catch(e) {
@@ -203,7 +212,7 @@ const getHeatMapData = async ({
           },
         }
       }).exec();
-    return heatMapFormatter(response);  
+    return heatMapFormatter(response);
   } catch (e) {
     response = [];
     log.error('Error while fetching heat map data', e);

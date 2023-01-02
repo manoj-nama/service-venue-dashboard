@@ -1,13 +1,11 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 const SchemaTypes = mongoose.Schema.Types;
 
 const propositionSchema = new mongoose.Schema(
   {
     bet_type: String,
-    prop_id: Number,
-    prop_name: String,
     bet_option: String,
     market_name: String,
     market_unique_id: String,
@@ -22,7 +20,18 @@ const propositionSchema = new mongoose.Schema(
     tournament_name: SchemaTypes.Mixed,
     tournament_id: SchemaTypes.Mixed,
     price: Number,
-    bet: { type: 'ObjectId', ref: 'Bet' }
+    bet: { type: 'ObjectId', ref: 'Bet' },
+    proposition: {
+      id: Number,
+      name: String,
+      returnWin: Number,
+      returnPlace: Number,
+      differential: SchemaTypes.Mixed,
+      bettingStatus: String,
+      allowPlace: Boolean,
+      number: Number,
+      isOpen: Boolean,
+    },
   },
   { timestamps: true },
 );
