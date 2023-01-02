@@ -22,16 +22,16 @@ const liveBetsFormatter = ({
 };
 
 const heatMapFormatter = (bets) => {
-	let formattedData = {};
-	bets.forEach((currBet) => {
+	let formattedData;
+	formattedData = bets.reduce((acc,currBet) => {
 		const key = `${currBet?._doc?.sport_name}:${currBet?._doc?.match_name}:${currBet?._doc?.market_name}`;
-		if(formattedData[key]){
-			formattedData[key]['coordinates'].push({
+		if(acc[key]){
+			acc[key]['coordinates'].push({
 				longitude: currBet?._doc?.bet?.location?.coordinates[0],
 				latitude: currBet?._doc?.bet?.location?.coordinates[1]
 			})
 		} else {
-			formattedData[key] = {
+			acc[key] = {
 				sportName: currBet?._doc?.sport_name,
 				matchName: currBet?._doc?.match_name,
 				marketName: currBet?._doc?.market_name,
@@ -41,7 +41,8 @@ const heatMapFormatter = (bets) => {
 				}],
 			}
 		}
-	});
+		return acc;
+	}, {});
 	return Object.values(formattedData);
 };
 // Formatting bets for bulk insertion
