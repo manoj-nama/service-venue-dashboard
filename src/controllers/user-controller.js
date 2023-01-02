@@ -17,10 +17,11 @@ module.exports.createUser = async (req, res) => {
 };
 
 module.exports.getMostActiveUser = async (req, res) => {
-  const limit = +req.query.limit||10;
+  const limit = +req.query.limit||1000;
   const page = +req.query.page||1;
+  const searchText = req.query.searchText||"";
   const skip = (page-1)*limit;
-  const data = await getMostActiveUser(limit,skip);
+  const data = await getMostActiveUser(limit,skip,searchText);
   return res.send(200, { active_users: data });
 };
 
