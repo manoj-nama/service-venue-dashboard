@@ -215,7 +215,7 @@ const getHeatMapData = async ({
     return heatMapFormatter(response);
   } catch (e) {
     response = [];
-    log.error('Error while fetching heat map data', e);
+    log.error(e,'Error while fetching heat map data');
   }
   return heatMapFormatter(response);
 };
@@ -254,17 +254,13 @@ const getBetsDistribution = async ({ query, params }) => {
   return response;
 };
 
-const mostBetsPlacedPerVenue = async (limit, skip, frmDateUTC, toDateUTC) => {
+const mostBetsPlacedPerVenue = async (limit) => {
   let pipeline = [
     {
       $match: {
         venueId: {
           $ne: null,
         },
-        transaction_date_time :{
-          $gte: frmDateUTC,
-          $lte: toDateUTC
-        }
       },
     }, {
       $group: {
@@ -300,28 +296,20 @@ const mostBetsPlacedPerVenue = async (limit, skip, frmDateUTC, toDateUTC) => {
         frequency_of_bets: -1,
         venueName: 1,
       },
-    }, {
-      $skip: skip,
-    },
-    {
-      $limit: limit,
     },
   ];
+  if (limit) { pipeline = [...pipeline, { $limit: limit }]; }
   const result = await BetModel.aggregate(pipeline);
   return result;
 };
 
-const mostAmountSpentPerVenue = async (limit, skip,frmDateUTC, toDateUTC) => {
+const mostAmountSpentPerVenue = async (limit) => {
   let pipeline = [
     {
       $match: {
         venueId: {
           $ne: null,
         },
-        transaction_date_time :{
-          $gte: frmDateUTC,
-          $lte: toDateUTC
-        }
       },
     }, {
       $group: {
@@ -357,13 +345,9 @@ const mostAmountSpentPerVenue = async (limit, skip,frmDateUTC, toDateUTC) => {
         frequency_of_total_amount_spent: -1,
         venueName: 1,
       },
-    }, {
-      $skip: skip,
-    },
-    {
-      $limit: limit,
     },
   ];
+  if (limit) { pipeline = [...pipeline, { $limit: limit }]; }
   const result = await BetModel.aggregate(pipeline);
   return result;
 };
