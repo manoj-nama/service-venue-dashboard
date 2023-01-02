@@ -11,7 +11,7 @@ router.get({
     path: '/v1/service-venue/bet-stats/live-bets-ticker',
   },
   handlers: [
-    betStatsController.getLiveBets
+    betStatsController.getLiveBets,
   ],
 });
 
@@ -22,7 +22,7 @@ router.get({
     path: '/v1/service-venue/bet-stats/big-bets',
   },
   handlers: [
-    betStatsController.getBigBets
+    betStatsController.getBigBets,
   ],
 });
 
@@ -33,7 +33,7 @@ router.get({
     path: '/v1/service-venue/bet-stats/heat-map',
   },
   handlers: [
-    betStatsController.getHeatMapData
+    betStatsController.getHeatMapData,
   ],
 });
 
@@ -47,9 +47,9 @@ router.get({
       optional: ['radius', 'sort'],
     },
   },
-    //:TODO Add middleware for param validations
+  // :TODO Add middleware for param validations
   handlers: [
-    betStatsController.getBetsDistribution
+    betStatsController.getBetsDistribution,
   ],
 });
 
@@ -63,9 +63,9 @@ router.get({
       optional: ['radius', 'sort'],
     },
   },
-  //:TODO Add middleware for param validations
+  // :TODO Add middleware for param validations
   handlers: [
-    betStatsController.getBetsDistribution
+    betStatsController.getBetsDistribution,
   ],
 });
 
@@ -79,9 +79,9 @@ router.get({
       optional: ['radius', 'sort'],
     },
   },
-    //:TODO Add middleware for param validations
+  // :TODO Add middleware for param validations
   handlers: [
-    betStatsController.getBetsDistribution
+    betStatsController.getBetsDistribution,
   ],
 });
 
