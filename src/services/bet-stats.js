@@ -245,13 +245,17 @@ const getBetsDistribution = async ({ query, params }) => {
   return response;
 };
 
-const mostBetsPlacedPerVenue = async (limit, skip) => {
+const mostBetsPlacedPerVenue = async (limit, skip, frmDateUTC, toDateUTC) => {
   let pipeline = [
     {
       $match: {
         venueId: {
           $ne: null,
         },
+        transaction_date_time :{
+          $gte: frmDateUTC,
+          $lte: toDateUTC
+        }
       },
     }, {
       $group: {
@@ -298,14 +302,17 @@ const mostBetsPlacedPerVenue = async (limit, skip) => {
   return result;
 };
 
-const mostAmountSpentPerVenue = async (limit, skip) => {
-  console.log("helooooooooooooooooooo",limit,skip)
+const mostAmountSpentPerVenue = async (limit, skip,frmDateUTC, toDateUTC) => {
   let pipeline = [
     {
       $match: {
         venueId: {
           $ne: null,
         },
+        transaction_date_time :{
+          $gte: frmDateUTC,
+          $lte: toDateUTC
+        }
       },
     }, {
       $group: {

@@ -46,7 +46,7 @@ const inputBetsFormatter = (bets) => {
 	bets.map(b => {
 		b.propositions.map(p => {
 			formattedData.push({
-				transaction_date_time: toString(b.transaction_date_time),
+				transaction_date_time: Date.parse(new Date(toString(b.transaction_date_time)).toUTCString()),
 				proposition_id: p.prop_id,
 				bet_description: p.description?.string,
 				competition_id: b.competition?.int,
