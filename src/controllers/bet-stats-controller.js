@@ -37,9 +37,11 @@ const addBetDetails = async (req, res) => {
 
 const mostBetsPlacedPerVenue = async (req, res) => {
   try {
-    const { limit } = req.query;
-    let result;
-    if (limit) { result = await betStatsService.mostBetsPlacedPerVenue(+limit); } else { result = await betStatsService.mostBetsPlacedPerVenue(); }
+    let { limit, page } = req.query;
+    limit = limit * 1 || 10;
+    page = page * 1 || 1;
+    const skip = (page - 1) * limit;
+    const result = await betStatsService.mostBetsPlacedPerVenue(limit, skip);
     res.send(200, { data: result });
   } catch (err) {
     console.error(err);
@@ -48,9 +50,11 @@ const mostBetsPlacedPerVenue = async (req, res) => {
 
 const mostAmountSpentPerVenue = async (req, res) => {
   try {
-    const { limit } = req.query;
-    let result;
-    if (limit) { result = await betStatsService.mostAmountSpentPerVenue(+limit); } else { result = await betStatsService.mostAmountSpentPerVenue(); }
+    let { limit, page } = req.query;
+    limit = limit * 1 || 10;
+    page = page * 1 || 1;
+    const skip = (page - 1) * limit;
+    const result = await betStatsService.mostAmountSpentPerVenue(limit, skip);
     res.send(200, { data: result });
   } catch (err) {
     console.error(err);
