@@ -8,7 +8,7 @@ const inputUserVenueFormatter = (userVenues) => {
 		location: {
 			type: "Point",
 			coordinates: [
-				v.bodylongitude, v.body.latitude
+				v.body.longitude, v.body.latitude
 			]
 		},
 	}));
