@@ -200,7 +200,17 @@ const getHeatMapData = async ({
   let response = [];
   try {
     log.info('Fetching heat map data');
-    response = await PropositionModel.find()
+
+    const findOptions = {
+      sport_name: sportName,
+      competition_name: competitionName,
+      tournament_name: tournamentName,
+      match_name: matchName,
+    };
+
+    if (!tournamentName) delete findOptions['tournament_name'];
+
+    response = await PropositionModel.find(findOptions)
       .populate({
         path: 'bet',
         select: 'location',
@@ -217,6 +227,7 @@ const getHeatMapData = async ({
         },
       })
       .exec();
+
     return heatMapFormatter(response);
   } catch (e) {
     response = [];
