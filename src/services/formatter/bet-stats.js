@@ -24,17 +24,14 @@ const liveBetsFormatter = ({
 const heatMapFormatter = (bets) => {
 	const formattedData = bets.map(b => (
 		{
-			coordinates: b.bet?.location?.coordinates,
+			coordinates: {
+				longitude: b.bet?.location?.coordinates[0],
+				latitude: b.bet?.location?.coordinates[1]
+			},
 			betDetails: {
 				sportName: b.sport_name,
-				competitionName: b.competition_name,
-				tournamentName: b.tournament_name,
 				matchName: b.match_name,
-				matchStartTime: b.match_start_time,
 				marketName: b.market_name,
-				betOption: b.bet_option,
-				propositionName: b.prop_name,
-				propositionId: b.prop_id,
 			}
 		}
 	));
