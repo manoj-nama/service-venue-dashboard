@@ -37,9 +37,13 @@ const addBetDetails = async (req, res) => {
 
 const mostBetsPlacedPerVenue = async (req, res) => {
   try {
-    const { limit } = req.query;
-    let result;
-    if (limit) { result = await betStatsService.mostBetsPlacedPerVenue(+limit); } else { result = await betStatsService.mostBetsPlacedPerVenue(); }
+    let { limit, page, frmDateUTC, toDateUTC } = req.query;
+    frmDateUTC = frmDateUTC * 1 || 0,
+    toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
+    limit = limit * 1 || 10;
+    page = page * 1 || 1;
+    const skip = (page - 1) * limit;
+    const result = await betStatsService.mostBetsPlacedPerVenue(limit, skip, frmDateUTC, toDateUTC);
     res.send(200, { data: result });
   } catch (err) {
     console.error(err);
@@ -48,9 +52,13 @@ const mostBetsPlacedPerVenue = async (req, res) => {
 
 const mostAmountSpentPerVenue = async (req, res) => {
   try {
-    const { limit } = req.query;
-    let result;
-    if (limit) { result = await betStatsService.mostAmountSpentPerVenue(+limit); } else { result = await betStatsService.mostAmountSpentPerVenue(); }
+    let { limit, page, frmDateUTC, toDateUTC } = req.query;
+    frmDateUTC = frmDateUTC * 1 || 0,
+    toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
+    limit = limit * 1 || 10;
+    page = page * 1 || 1;
+    const skip = (page - 1) * limit;
+    const result = await betStatsService.mostAmountSpentPerVenue(limit, skip, frmDateUTC,toDateUTC);
     res.send(200, { data: result });
   } catch (err) {
     console.error(err);
