@@ -13,8 +13,7 @@ const liveBetsFormatter = ({
 				matchStartTime: b.match_start_time,
 				marketName: b.market_name,
 				betOption: b.bet_option,
-				propositionName: b.prop_name,
-				propositionId: b.prop_id,
+				proposition: b.proposition,
 			}
 		}
 	)).splice(0, count);
