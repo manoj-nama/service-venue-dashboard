@@ -44,7 +44,6 @@ const betSchema = mongoose.Schema({
   customer_number: Number,
   bet_amount: String,
   total_cost: String,
-  price: SchemaTypes.Mixed,
   bet_type: String,
   number_of_legs: Number,
   prop_type: String,
