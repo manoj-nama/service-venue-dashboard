@@ -11,7 +11,7 @@ const seeds = require('../seeds');
 
 const start = async () => {
   const cfg = get();
-  process.on("SIGTERM", () => {
+  process.on('SIGTERM', () => {
     shutdown();
   });
 
@@ -33,8 +33,7 @@ const start = async () => {
     }).catch((dbError) => {
       log.error(dbError, 'Error while connecting with DB');
       process.exit(1);
-    }) ;
-   
+    });
   } catch (e) {
     log.error(e, 'Error starting server');
     process.exit(1);

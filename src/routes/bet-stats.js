@@ -11,7 +11,9 @@ router.get({
     discoveryName: 'bet-stats:live-bets-ticker',
     path: '/v1/service-venue/bet-stats/live-bets-ticker',
   },
-  handlers: [betStatsController.getLiveBets],
+  handlers: [
+    betStatsController.getLiveBets,
+  ],
 });
 
 router.get({
@@ -20,7 +22,9 @@ router.get({
     discoveryName: 'bet-stats:big-bets',
     path: '/v1/service-venue/bet-stats/big-bets',
   },
-  handlers: [betStatsController.getBigBets],
+  handlers: [
+    betStatsController.getBigBets,
+  ],
 });
 
 router.get({
@@ -29,7 +33,9 @@ router.get({
     discoveryName: 'bet-stats:heat-map',
     path: '/v1/service-venue/bet-stats/heat-map',
   },
-  handlers: [betStatsController.getHeatMapData],
+  handlers: [
+    betStatsController.getHeatMapData,
+  ],
 });
 
 router.get({
@@ -42,7 +48,6 @@ router.get({
       optional: ['radius', 'sort'],
     },
   },
-
   handlers: [
     betStatsMiddleware.validateParam,
     betStatsController.getBetsDistribution,
@@ -59,7 +64,6 @@ router.get({
       optional: ['radius', 'sort'],
     },
   },
-
   handlers: [
     betStatsMiddleware.validateParam,
     betStatsController.getBetsDistribution,
@@ -76,7 +80,6 @@ router.get({
       optional: ['radius', 'sort'],
     },
   },
-
   handlers: [
     betStatsMiddleware.validateParam,
     betStatsController.getBetsDistribution,
