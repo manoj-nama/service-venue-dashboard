@@ -64,7 +64,9 @@ const getBetWithLoc = async (bet) => {
   let betDetail;
   try {
     log.info(`Fetching location details for ${bet.account_number}`);
-    const userInfo = await UserModel.findOne({ accountNumber: 1271223 });
+    const userInfo = await UserModel.findOne({
+      accountNumber: bet.account_number,
+    });
     if (userInfo && userInfo.location) {
       log.info(`Found location for ${bet.account_number}`);
       betDetail = bet;
