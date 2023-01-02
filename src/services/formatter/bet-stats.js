@@ -68,12 +68,15 @@ const inputBetsFormatter = (bets) => {
 
 const bigBetsFormatter = (bets) => {
 	const formattedResponse = bets.map(b => ({
-		totalBetAmount: b.total_bet_amount,
 		count: b.count,
+		sportName: b.sport_name,
 		matchName: b.match_name,
 		matchStartTime: b.match_start_time,
 		marketName: b.market_name,
 		marketUniqueId: b.market_unique_id,
+		competitionName: b.competition_name,
+		tournamentName: b.tournament_name,
+		// TODO: Add discovery key and navigation to redirect to market screen
 	}));
 	return formattedResponse;
 };

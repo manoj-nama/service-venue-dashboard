@@ -138,6 +138,7 @@ const getBetsUsingCount = async (count) => {
   return bets;
 };
 
+// TODO: Add filtering based on params in live bets
 const getLiveBetsFromRedis = async () => {
   log.info('Fetching live bets');
   let response = [];
@@ -155,6 +156,7 @@ const getLiveBetsFromRedis = async () => {
   return response;
 };
 
+// TODO: Add filtering based on params in big bets
 const getBigBets = async ({
   sportName,
   competitionName,
@@ -164,26 +166,22 @@ const getBigBets = async ({
 }) => {
   log.info('Fetching big bets');
   let response = [];
-
-  // default sort on totalBetAmount
-  let sortOptions = { totalBetAmount: -1 };
   try {
-    //Sorting based on bet amount else what comes in sort param
-    if (sort === 'count') sortOptions = { count: -1 };
-
     response = await PropositionModel.aggregate([
       {
         $group: {
           _id: '$market_unique_id',
-          total_bet_amount: { $sum: 'price' },
           count: { $sum: 1 },
+          sport_name: { $first: '$sport_name' },
           match_name: { $first: '$match_name' },
+          competition_name: { $first: '$competition_name' },
+          tournament_name: { $first: '$tournament_name' },
           match_start_time: { $first: '$match_start_time' },
           market_name: { $first: '$market_name' },
           market_unique_id: { $first: '$market_unique_id' },
         },
       },
-      { $sort: sortOptions },
+      { $sort: { count: -1 } },
     ]);
   } catch (e) {
     response = [];
