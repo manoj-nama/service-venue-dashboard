@@ -1,6 +1,6 @@
 const Promise = require('bluebird');
 
-const { BetModel, UserModel, PropositionModel } = require('../models')
+const { BetModel, UserModel, PropositionModel } = require('../models');
 const redis = require('../redis');
 const {
   liveBetsFormatter,
@@ -27,18 +27,6 @@ const getPropDetails = async (props) => {
     const baseUrl = 'https://api.congo.beta.tab.com.au/v1/tab-info-service/search/proposition';
     const params = `?jurisdiction=nsw&details=true&${props.map((p) => `number=914396`).join('&')}`;
     propDetails = await get(`${baseUrl}${params}`);
-    const contestants = [
-      {
-        isHome: true,
-        position: 'Home',
-        name: 'GEELONG'
-      },
-      {
-        isHome: false,
-        position: 'Away',
-        name: 'Sydney'
-      }
-    ]
     propDetails = propDetails.propositions.filter(detail => detail.type === 'sport').map((d, i) => ({
       bet_type: d.type,
       bet_option: d.market?.betOption,
@@ -87,8 +75,10 @@ const getPropDetails = async (props) => {
 const getBetWithLoc = async (bet) => {
   let betDetail;
   try {
-    log.info(`Fetching location details for ${bet.account_number}`)
-    const userInfo = await UserModel.findOne({ accountNumber: bet.account_number });
+    log.info(`Fetching location details for ${bet.account_number}`);
+    const userInfo = await UserModel.findOne({
+      accountNumber: bet.account_number,
+    });
     if (userInfo && userInfo.location) {
       log.info(`Found location for ${bet.account_number}`);
       betDetail = bet;
@@ -109,9 +99,9 @@ const createPropDetailsForBet = async (bets) => {
   try {
     log.info('Processing propositions for bets');
     const propsToBeCreated = [];
-    await Promise.map(bets, async b => {
+    await Promise.map(bets, async (b) => {
       const propDetails = await getPropDetails(b.propositions);
-      propDetails.forEach(p => p.bet = b._id);
+      propDetails.forEach((p) => (p.bet = b._id));
       propsToBeCreated.push(...propDetails);
     });
     log.info(`Creating ${propsToBeCreated.length} propositions in database`);
@@ -126,19 +116,19 @@ const createBets = async (betDetails) => {
   try {
     log.info('Bets creation process started');
     if (betDetails && betDetails.length) {
-      response = await Promise.map(betDetails, async bet => {
+      response = await Promise.map(betDetails, async (bet) => {
         const updatedBetDetails = await getBetWithLoc(bet);
         if (updatedBetDetails) {
-          updatedBetDetails.propositions = bet.propositions.map(p => ({
+          updatedBetDetails.propositions = bet.propositions.map((p) => ({
             id: p.prop_id,
             price: Number(p.price?.string || 0),
           }));
           return updatedBetDetails;
         }
       });
-      response = response.filter(r => !!r);
+      response = response.filter((r) => !!r);
       if (response.length) {
-        log.info(`Creating ${response.length} bets`)
+        log.info(`Creating ${response.length} bets`);
         response = await BetModel.insertMany(response);
         await createPropDetailsForBet(response);
         log.info('Bets created');
@@ -156,6 +146,7 @@ const getBetsUsingCount = async (count) => {
   return bets;
 };
 
+// TODO: Add filtering based on params in live bets
 const getLiveBetsFromRedis = async () => {
   log.info('Fetching live bets');
   let response = [];
@@ -173,29 +164,32 @@ const getLiveBetsFromRedis = async () => {
   return response;
 };
 
+// TODO: Add filtering based on params in big bets
 const getBigBets = async ({
   sportName,
   competitionName,
   tournamentName,
   matchName,
-  sort
+  sort,
 }) => {
   log.info('Fetching big bets');
   let response = [];
   try {
-    //TODO: Add sorting based on bet amount else what comes in sort param
     response = await PropositionModel.aggregate([
       {
         $group: {
           _id: '$market_unique_id',
-          total_bet_amount: { $sum: "price" },
           count: { $sum: 1 },
-          "match_name": { "$first": "$match_name" },
-          "match_start_time": { "$first": "$match_start_time" },
-          "market_name": { "$first": "$market_name" },
-          "market_unique_id": { "$first": "$market_unique_id" },
+          sport_name: { $first: '$sport_name' },
+          match_name: { $first: '$match_name' },
+          competition_name: { $first: '$competition_name' },
+          tournament_name: { $first: '$tournament_name' },
+          match_start_time: { $first: '$match_start_time' },
+          market_name: { $first: '$market_name' },
+          market_unique_id: { $first: '$market_unique_id' },
         },
       },
+      { $sort: { count: -1 } },
     ]);
   } catch (e) {
     response = [];
@@ -211,12 +205,24 @@ const getHeatMapData = async ({
   matchName,
   radius = DEFAULT_RADIUS,
   longitude = DEFAULT_LONGITUDE,
-  latitude = DEFAULT_LATITUDE
+  latitude = DEFAULT_LATITUDE,
 }) => {
   let response = [];
   try {
     log.info('Fetching heat map data');
-    response = await PropositionModel.find()
+
+    const findOptions = {
+      sport_name: sportName,
+      competition_name: competitionName,
+      tournament_name: tournamentName,
+      match_name: matchName,
+    };
+
+    Object.keys(findOptions).forEach(
+      (k) => !findOptions[k] && delete findOptions[k]
+    );
+
+    response = await PropositionModel.find(findOptions)
       .populate({
         path: 'bet',
         select: 'location',
@@ -252,6 +258,16 @@ const getVersusMapData = async ({
   let response = [];
   try {
     log.info('Fetching versus map data');
+    const findOptions = {
+      sport_name: sportName,
+      competition_name: competitionName,
+      tournament_name: tournamentName,
+      match_name: matchName,
+    };
+
+    Object.keys(findOptions).forEach(
+      (k) => !findOptions[k] && delete findOptions[k]
+    );
     response = await PropositionModel.aggregate([
       {
         $lookup:
@@ -268,18 +284,18 @@ const getVersusMapData = async ({
       { $project: { betInfo: 0 } },
       {
         $match: {
-          sport_name : sportName,
-          competition_name: competitionName,
-          match_name: matchName,
-          location: {
-            $near: {
-              $maxDistance: radius,
-              $geometry: {
-                type: 'Point',
-                coordinates: [Number(longitude), Number(latitude)],
+          ...findOptions,
+          ...{
+            location: {
+              $near: {
+                $maxDistance: radius,
+                $geometry: {
+                  type: 'Point',
+                  coordinates: [Number(longitude), Number(latitude)],
+                },
               },
             },
-          },
+          }
         }
       },
       {
@@ -355,14 +371,14 @@ const getBetsDistribution = async ({ query, params }) => {
     sportName,
     competitionName,
     tournamentName,
-    matchName
+    matchName,
   });
   const bigBets = await getBigBets({
     sportName,
     competitionName,
     tournamentName,
     matchName,
-    sort
+    sort,
   });
   const heatMap = await getHeatMapData({
     sportName,
@@ -371,7 +387,7 @@ const getBetsDistribution = async ({ query, params }) => {
     matchName,
     radius,
     longitude,
-    latitude
+    latitude,
   });
 
   let versusMap;
@@ -393,15 +409,20 @@ const getBetsDistribution = async ({ query, params }) => {
   return response;
 };
 
-const mostBetsPlacedPerVenue = async (limit) => {
+const mostBetsPlacedPerVenue = async (limit, skip, fromDateUTC, toDateUTC, searchText) => {
   let pipeline = [
     {
       $match: {
         venueId: {
           $ne: null,
         },
+        transaction_date_time: {
+          $gte: fromDateUTC,
+          $lte: toDateUTC
+        }
       },
-    }, {
+    },
+    {
       $group: {
         _id: '$venueId',
         bets: {
@@ -411,16 +432,16 @@ const mostBetsPlacedPerVenue = async (limit) => {
           $sum: 1,
         },
       },
-    }, {
+    },
+    {
       $project: {
         location: {
-          $arrayElemAt: [
-            '$bets', 0,
-          ],
+          $arrayElemAt: ['$bets', 0],
         },
         frequency_of_bets: 1,
       },
-    }, {
+    },
+    {
       $project: {
         venueName: '$location.venueName',
         venueId: '$location.venueId',
@@ -435,22 +456,31 @@ const mostBetsPlacedPerVenue = async (limit) => {
         frequency_of_bets: -1,
         venueName: 1,
       },
+    }, {
+      $skip: skip,
+    },
+    {
+      $limit: limit,
     },
   ];
-  if (limit) { pipeline = [...pipeline, { $limit: limit }]; }
   const result = await BetModel.aggregate(pipeline);
   return result;
 };
 
-const mostAmountSpentPerVenue = async (limit) => {
+const mostAmountSpentPerVenue = async (limit, skip, fromDateUTC, toDateUTC, searchText) => {
   let pipeline = [
     {
       $match: {
         venueId: {
           $ne: null,
         },
+        transaction_date_time: {
+          $gte: fromDateUTC,
+          $lte: toDateUTC
+        }
       },
-    }, {
+    },
+    {
       $group: {
         _id: '$venueId',
         bets: {
@@ -460,16 +490,16 @@ const mostAmountSpentPerVenue = async (limit) => {
           $sum: '$price',
         },
       },
-    }, {
+    },
+    {
       $project: {
         location: {
-          $arrayElemAt: [
-            '$bets', 0,
-          ],
+          $arrayElemAt: ['$bets', 0],
         },
         frequency_of_total_amount_spent: 1,
       },
-    }, {
+    },
+    {
       $project: {
         venueName: '$location.venueName',
         venueId: '$location.venueId',
@@ -484,9 +514,13 @@ const mostAmountSpentPerVenue = async (limit) => {
         frequency_of_total_amount_spent: -1,
         venueName: 1,
       },
+    }, {
+      $skip: skip,
+    },
+    {
+      $limit: limit,
     },
   ];
-  if (limit) { pipeline = [...pipeline, { $limit: limit }]; }
   const result = await BetModel.aggregate(pipeline);
   return result;
 };

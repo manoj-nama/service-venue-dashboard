@@ -38,14 +38,14 @@ const addBetDetails = async (req, res) => {
 const mostBetsPlacedPerVenue = async (req, res) => {
   try {
     let {
-      limit, page, frmDateUTC, toDateUTC,
+      limit, page, fromDateUTC, toDateUTC, searchText,
     } = req.query;
-    frmDateUTC = frmDateUTC * 1 || 0,
+    fromDateUTC = fromDateUTC * 1 || 0,
     toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
-    limit = limit * 1 || 10;
+    limit = limit * 1 || 1000;
     page = page * 1 || 1;
     const skip = (page - 1) * limit;
-    const result = await betStatsService.mostBetsPlacedPerVenue(limit, skip, frmDateUTC, toDateUTC);
+    const result = await betStatsService.mostBetsPlacedPerVenue(limit, skip, fromDateUTC, toDateUTC);
     res.send(200, { data: result });
   } catch (err) {
     console.error(err);
@@ -55,14 +55,14 @@ const mostBetsPlacedPerVenue = async (req, res) => {
 const mostAmountSpentPerVenue = async (req, res) => {
   try {
     let {
-      limit, page, frmDateUTC, toDateUTC,
+      limit, page, fromDateUTC, toDateUTC,
     } = req.query;
-    frmDateUTC = frmDateUTC * 1 || 0,
+    fromDateUTC = fromDateUTC * 1 || 0,
     toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
-    limit = limit * 1 || 10;
+    limit = limit * 1 || 1000;
     page = page * 1 || 1;
     const skip = (page - 1) * limit;
-    const result = await betStatsService.mostAmountSpentPerVenue(limit, skip, frmDateUTC, toDateUTC);
+    const result = await betStatsService.mostAmountSpentPerVenue(limit, skip, fromDateUTC, toDateUTC);
     res.send(200, { data: result });
   } catch (err) {
     console.error(err);
