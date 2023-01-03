@@ -29,12 +29,12 @@ router.get({
 
 router.get({
   path: {
-    name: 'bet-stats:versus-map',
-    discoveryName: 'bet-stats:versus-map',
-    path: '/v1/service-venue/bet-stats/versus-map',
+    name: 'bet-stats:heat-map',
+    discoveryName: 'bet-stats:heat-map',
+    path: '/v1/service-venue/bet-stats/heat-map',
   },
   handlers: [
-    betStatsController.getVersusMapData,
+    betStatsController.getHeatMapData,
   ],
 });
 
