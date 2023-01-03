@@ -3,11 +3,12 @@ const betStatsRoutes = require('./bet-stats');
 const discovery = require('../controllers/discovery-controller');
 const getActiveVenuesAndUser = require('../controllers/active-venues-controller');
 const { createUser,getMostActiveUser } = require('../controllers/user-controller');
-
+const { signupUser,loginUser } = require('../controllers/signup-controller');
+const { auth }= require('../middlewares/auth');
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const router = apiRouter();
-
+  
   router.get({
     path: {
       name: "discovery",
@@ -29,8 +30,24 @@ router.get({
     name: 'getMostActiveUser',
     path: '/v1/service-venue/most-active-users',
   },
-  handlers: [getMostActiveUser],
+  handlers: [auth,getMostActiveUser],
 });
+
+  router.post({
+    path: {
+      name:'signupUser',
+      path: '/v1/service-venue/signup-user',
+    },
+    handlers: [signupUser],
+  })
+
+  router.post({
+    path: {
+      name:'signupUser',
+      path: '/v1/service-venue/login-user',
+    },
+    handlers: [loginUser],
+  })
 
   router.post({
     path: {
