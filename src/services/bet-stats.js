@@ -145,9 +145,7 @@ const getBetsUsingCount = async (count) => {
   return bets;
 };
 
-let NEW_LIVE = [];
 let CACHED = [];
-// TODO: Add filtering based on params in live bets
 const getLiveBetsFromRedis = async ({
   sportName,
   competitionName,
@@ -175,7 +173,10 @@ const getLiveBetsFromRedis = async ({
         createdAt: -1,
       });
 
-      NEW_LIVE = [...liveBets];
+      CACHED = liveBets.map((r) => {
+        r['new'] = true;
+        return r;
+      });
     } else {
       const newBets = await PropositionModel.find({
         ...findOptions,
@@ -184,33 +185,23 @@ const getLiveBetsFromRedis = async ({
         createdAt: -1,
       });
 
-      NEW_LIVE = [...newBets];
-    }
-    // const liveBets = await redis.getRedis().get('live-bets');
-
-    // response = liveBetsFormatter({
-    //   bets: [
-    //     ...NEW_LIVE.map((r) => {
-    //       r['new'] = true;
-    //       return r;
-    //     }),
-    //     ...CACHED,
-    //   ],
-    //   count: cfg.betStatsScheduler.liveBetsCount,
-    // });
-    response = {
-      bets: [
-        ...NEW_LIVE.map((r) => {
+      // Add new true to latest and false to old ones
+      CACHED = [
+        ...newBets.map((r) => {
           r['new'] = true;
           return r;
         }),
-        ...CACHED,
-      ],
-      count: cfg.betStatsScheduler.liveBetsCount,
-    };
+        ...CACHED.map((r) => {
+          r['new'] = false;
+          return r;
+        }),
+      ];
+    }
 
-    CACHED = [...NEW_LIVE, ...CACHED];
-    NEW_LIVE = [];
+    response = liveBetsFormatter({
+      bets: CACHED,
+      count: cfg.betStatsScheduler.liveBetsCount,
+    });
   } catch (e) {
     response = [];
     log.error('Error fetching live bets from redis', e);
