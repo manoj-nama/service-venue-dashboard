@@ -168,16 +168,11 @@ const getLiveBetsFromRedis = async ({
       (k) => !findOptions[k] && delete findOptions[k]
     );
 
-    // const liveBets = await PropositionModel.find(findOptions).sort({
-    //   createdAt: -1,
-    // });
+    const liveBets = await PropositionModel.find(findOptions).sort({
+      createdAt: -1,
+    });
 
-    // response = liveBetsFormatter({
-    //   bets: liveBets,
-    //   count: cfg.betStatsScheduler.liveBetsCount,
-    // });
-
-    const liveBets = await redis.getRedis().get('live-bets');
+    // const liveBets = await redis.getRedis().get('live-bets');
 
     response = liveBetsFormatter({
       bets: liveBets,
@@ -318,15 +313,26 @@ const getBetsDistribution = async ({ query, params }) => {
   return response;
 };
 
-const mostBetsPlacedPerVenue = async (limit, skip, frmDateUTC, toDateUTC) => {
+const mostBetsPlacedPerVenue = async (
+  limit,
+  skip,
+  fromDateUTC,
+  toDateUTC,
+  searchText
+) => {
   let pipeline = [
     {
       $match: {
         venueId: {
           $ne: null,
         },
+        $or: [
+          { venueType: { $regex: searchText, $options: '$i' } },
+          { venueState: { $regex: searchText, $options: '$i' } },
+          { venueName: { $regex: searchText, $options: '$i' } },
+        ],
         transaction_date_time: {
-          $gte: frmDateUTC,
+          $gte: fromDateUTC,
           $lte: toDateUTC,
         },
       },
@@ -377,15 +383,26 @@ const mostBetsPlacedPerVenue = async (limit, skip, frmDateUTC, toDateUTC) => {
   return result;
 };
 
-const mostAmountSpentPerVenue = async (limit, skip, frmDateUTC, toDateUTC) => {
+const mostAmountSpentPerVenue = async (
+  limit,
+  skip,
+  fromDateUTC,
+  toDateUTC,
+  searchText
+) => {
   let pipeline = [
     {
       $match: {
         venueId: {
           $ne: null,
         },
+        $or: [
+          { venueType: { $regex: searchText, $options: '$i' } },
+          { venueState: { $regex: searchText, $options: '$i' } },
+          { venueName: { $regex: searchText, $options: '$i' } },
+        ],
         transaction_date_time: {
-          $gte: frmDateUTC,
+          $gte: fromDateUTC,
           $lte: toDateUTC,
         },
       },
