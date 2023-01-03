@@ -145,6 +145,8 @@ const getBetsUsingCount = async (count) => {
   return bets;
 };
 
+let NEW_LIVE = [];
+let CACHED = [];
 // TODO: Add filtering based on params in live bets
 const getLiveBetsFromRedis = async ({
   sportName,
@@ -168,16 +170,47 @@ const getLiveBetsFromRedis = async ({
       (k) => !findOptions[k] && delete findOptions[k]
     );
 
-    const liveBets = await PropositionModel.find(findOptions).sort({
-      createdAt: -1,
-    });
+    if (CACHED.length === 0) {
+      const liveBets = await PropositionModel.find(findOptions).sort({
+        createdAt: -1,
+      });
 
+      NEW_LIVE = [...liveBets];
+    } else {
+      const newBets = await PropositionModel.find({
+        ...findOptions,
+        createdAt: { $gt: CACHED[0]?.createdAt },
+      }).sort({
+        createdAt: -1,
+      });
+
+      NEW_LIVE = [...newBets];
+    }
     // const liveBets = await redis.getRedis().get('live-bets');
 
-    response = liveBetsFormatter({
-      bets: liveBets,
+    // response = liveBetsFormatter({
+    //   bets: [
+    //     ...NEW_LIVE.map((r) => {
+    //       r['new'] = true;
+    //       return r;
+    //     }),
+    //     ...CACHED,
+    //   ],
+    //   count: cfg.betStatsScheduler.liveBetsCount,
+    // });
+    response = {
+      bets: [
+        ...NEW_LIVE.map((r) => {
+          r['new'] = true;
+          return r;
+        }),
+        ...CACHED,
+      ],
       count: cfg.betStatsScheduler.liveBetsCount,
-    });
+    };
+
+    CACHED = [...NEW_LIVE, ...CACHED];
+    NEW_LIVE = [];
   } catch (e) {
     response = [];
     log.error('Error fetching live bets from redis', e);
