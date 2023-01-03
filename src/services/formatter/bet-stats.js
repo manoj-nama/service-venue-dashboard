@@ -24,12 +24,12 @@ const liveBetsFormatter = ({
 const heatMapFormatter = (bets) => {
 	let formattedData;
 	formattedData = bets.reduce((acc,currBet) => {
-		const key = `${currBet?._doc?.sport_name}:${currBet?._doc?.match_name}:${currBet?._doc?.market_name}`;
+		const key = `${currBet?._doc?.sport_name}:${currBet?._doc?.competition_name}:${currBet?._doc?.match_name}`;
 		if(acc[key] && currBet?._doc?.bet){
 			acc[key]['coordinates'].push({
 				longitude: currBet?._doc?.bet?.location?.coordinates[0],
 				latitude: currBet?._doc?.bet?.location?.coordinates[1]
-			})
+			});
 		} else {
 			acc[key] = {
 				sportName: currBet?._doc?.sport_name,
@@ -44,6 +44,17 @@ const heatMapFormatter = (bets) => {
 		return acc;
 	}, {});
 	return Object.values(formattedData);
+};
+
+const versusMapFormatter = (teamInfo) => {
+	const DEFAULT_HEX_CODES = ['#24C4F0','#E92912'];
+	teamInfo.teams = (teamInfo.teams || []).map((item,i)=> {
+		item.coordinates = item.coordinates.filter(cord => cord.latitude && cord.longitude);
+		item.icon.hexCode = DEFAULT_HEX_CODES[i];
+		return item;
+	});
+
+	return teamInfo;
 };
 // Formatting bets for bulk insertion
 const inputBetsFormatter = (bets) => {
@@ -82,7 +93,8 @@ const bigBetsFormatter = (bets) => {
 const formatBetDistribution = ({
 	liveBets,
 	bigBets,
-	heatMap
+	heatMap,
+	versusMap
 }) => {
 	const formattedResponse = {
     type: "app.bets.distribution",
@@ -99,6 +111,12 @@ const formatBetDistribution = ({
 				type: "app.bets.distribution.heatMap",
 				data: heatMap
 			},
+			...(
+				versusMap ? {
+					type: 'app.bets.distribution.versusMap',
+					data: versusMap,
+			} : {}
+			)
 		]
 	};
 	return formattedResponse;
@@ -110,4 +128,5 @@ module.exports = {
 	formatBetDistribution,
 	heatMapFormatter,
 	bigBetsFormatter,
+	versusMapFormatter
 };
