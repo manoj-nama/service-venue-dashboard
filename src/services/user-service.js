@@ -1,3 +1,4 @@
+const regex = require('strummer/lib/matchers/regex');
 const UserModel = require('../models/users');
 const { inputUserVenueFormatter } = require('./formatter/user-venue');
 
@@ -36,12 +37,13 @@ const makeUser = async (userData) => {
       return updatedUser;
 }
 
-module.exports.getMostActiveUser = async (limit,skip) => {
-
+module.exports.getMostActiveUser = async (limit,skip,searchText) => {
+  
   const ActiveUserInVenue = await UserModel.aggregate([
       {
         '$match': {
-          'currentState': 1
+          'currentState': 1,
+          'venueName': {$regex: searchText,$options:"$i"}
         }
       }, {
         '$group': {
@@ -76,8 +78,16 @@ module.exports.getMostActiveUser = async (limit,skip) => {
           'active_users': -1, 
           'venueName': 1
         }
+      },
+      {
+        $skip:skip
+      },
+      {
+        $limit:limit
       }
-    ]).skip(skip).limit(limit);
+    ]);
 
   return ActiveUserInVenue;
 }
+
+
