@@ -156,7 +156,29 @@ const getLiveBetsFromRedis = async ({
   let response = [];
   try {
     const cfg = config();
+
+    const findOptions = {
+      sport_name: sportName,
+      competition_name: competitionName,
+      tournament_name: tournamentName,
+      match_name: matchName,
+    };
+
+    Object.keys(findOptions).forEach(
+      (k) => !findOptions[k] && delete findOptions[k]
+    );
+
+    // const liveBets = await PropositionModel.find(findOptions).sort({
+    //   createdAt: -1,
+    // });
+
+    // response = liveBetsFormatter({
+    //   bets: liveBets,
+    //   count: cfg.betStatsScheduler.liveBetsCount,
+    // });
+
     const liveBets = await redis.getRedis().get('live-bets');
+
     response = liveBetsFormatter({
       bets: liveBets,
       count: cfg.betStatsScheduler.liveBetsCount,
