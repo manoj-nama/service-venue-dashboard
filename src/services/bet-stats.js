@@ -391,14 +391,14 @@ const getBetsDistribution = async ({ query, params }) => {
   });
 
   let versusMap;
-  // if(sportName & matchName){
-  versusMap = await getVersusMapData({
-    sportName,
-    competitionName,
-    tournamentName,
-    matchName
-  });
-  // }
+  if (sportName & matchName) {
+    versusMap = await getVersusMapData({
+      sportName,
+      competitionName,
+      tournamentName,
+      matchName
+    });
+  }
 
   const response = formatBetDistribution({
     liveBets,
