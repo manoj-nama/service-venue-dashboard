@@ -43,7 +43,6 @@ module.exports.getMostActiveUser = async (limit,skip,searchText) => {
       {
         '$match': {
           'currentState': 1,
-          'venueName': {$regex: searchText,$options:"$i"}
         }
       }, {
         '$group': {

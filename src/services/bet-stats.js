@@ -279,9 +279,6 @@ const mostBetsPlacedPerVenue = async (limit, skip, fromDateUTC, toDateUTC, searc
         venueId: {
           $ne: null,
         },
-        $or: [{ venueType: { $regex: searchText, $options: "$i" } },
-        { venueState: { $regex: searchText, $options: "$i" } },
-        { venueName: { $regex: searchText, $options: "$i" } }],
         transaction_date_time: {
           $gte: fromDateUTC,
           $lte: toDateUTC
@@ -340,9 +337,6 @@ const mostAmountSpentPerVenue = async (limit, skip, fromDateUTC, toDateUTC, sear
         venueId: {
           $ne: null,
         },
-        $or: [{ venueType: { $regex: searchText, $options: "$i" } },
-        { venueState: { $regex: searchText, $options: "$i" } },
-        { venueName: { $regex: searchText, $options: "$i" } }],
         transaction_date_time: {
           $gte: fromDateUTC,
           $lte: toDateUTC
