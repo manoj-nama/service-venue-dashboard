@@ -209,6 +209,7 @@ const getLiveBetsFromRedis = async ({
   return response;
 };
 
+// TODO: Add amount sorting as well but in the end response there should be no amount field
 const getBigBets = async ({
   sportName,
   competitionName,
