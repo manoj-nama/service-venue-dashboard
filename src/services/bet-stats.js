@@ -20,30 +20,30 @@ const DEFAULT_LONGITUDE = '';
 const DEFAULT_LATITUDE = '';
 
 const getPropDetails = async (props) => {
-	let propDetails = [];
-	try {
-		log.info('Fetching prop details for', props);
+  let propDetails = [];
+  try {
+    log.info('Fetching prop details for', props);
     const baseUrl = 'https://api.congo.beta.tab.com.au/v1/tab-info-service/search/proposition';
     const params = `?jurisdiction=nsw&details=true&${props.map((p) => `number=914396`).join('&')}`;
-		propDetails = await get(`${baseUrl}${params}`);
-		propDetails = propDetails.propositions.filter(detail => detail.type === 'sport').map((d, i) => ({
+    propDetails = await get(`${baseUrl}${params}`);
+    propDetails = propDetails.propositions.filter(detail => detail.type === 'sport').map((d, i) => ({
       bet_type: d.type,
       bet_option: d.market?.betOption,
-			market_name: d.market?.name,
+      market_name: d.market?.name,
       market_unique_id: `${d.market?.marketUniqueId}${i}`,
-			market_close_time: d.market?.closeTime,
+      market_close_time: d.market?.closeTime,
       sport_name: d.sport?.name,
-			sport_id: d.sport?.id,
-			match_id: d.match?.id,
-			match_name: d.match?.name,
-			match_start_time: d.match?.startTime,
-			competition_id: d.competition?.id,
-			competition_name: d.competition?.name,
-			tournament_name: d?.tournament?.name,
+      sport_id: d.sport?.id,
+      match_id: d.match?.id,
+      match_name: d.match?.name,
+      match_start_time: d.match?.startTime,
+      competition_id: d.competition?.id,
+      competition_name: d.competition?.name,
+      tournament_name: d?.tournament?.name,
       tournament_id: d.tournament?.id,
       proposition: {
         name: d.propositionDetails?.name,
-			  id: d.propositionNumber,
+        id: d.propositionNumber,
         returnWin: d.propositionDetails?.returnWin,
         returnPlace: d.propositionDetails?.returnPlace,
         differential: d.propositionDetails?.differential,
@@ -52,7 +52,7 @@ const getPropDetails = async (props) => {
         isOpen: d.propositionDetails?.isOpen,
         number: d.propositionDetails?.number
       }
-		}));
+    }));
     propDetails.forEach(det => {
       const existingProp = props.find(p => Number(p.id) === det.proposition.id);
       if (existingProp) det.price = existingProp.price;
@@ -233,7 +233,7 @@ const getHeatMapData = async ({
     return heatMapFormatter(response);
   } catch (e) {
     response = [];
-    log.error(e,'Error while fetching heat map data');
+    log.error(e, 'Error while fetching heat map data');
   }
   return heatMapFormatter(response);
 };
@@ -272,15 +272,15 @@ const getBetsDistribution = async ({ query, params }) => {
   return response;
 };
 
-const mostBetsPlacedPerVenue = async (limit, skip, frmDateUTC, toDateUTC) => {
+const mostBetsPlacedPerVenue = async (limit, skip, fromDateUTC, toDateUTC, searchText) => {
   let pipeline = [
     {
       $match: {
         venueId: {
           $ne: null,
         },
-        transaction_date_time :{
-          $gte: frmDateUTC,
+        transaction_date_time: {
+          $gte: fromDateUTC,
           $lte: toDateUTC
         }
       },
@@ -330,15 +330,15 @@ const mostBetsPlacedPerVenue = async (limit, skip, frmDateUTC, toDateUTC) => {
   return result;
 };
 
-const mostAmountSpentPerVenue = async (limit, skip,frmDateUTC, toDateUTC) => {
+const mostAmountSpentPerVenue = async (limit, skip, fromDateUTC, toDateUTC, searchText) => {
   let pipeline = [
     {
       $match: {
         venueId: {
           $ne: null,
         },
-        transaction_date_time :{
-          $gte: frmDateUTC,
+        transaction_date_time: {
+          $gte: fromDateUTC,
           $lte: toDateUTC
         }
       },
