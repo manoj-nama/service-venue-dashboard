@@ -99,6 +99,7 @@ const bigBetsFormatter = (bets) => {
     marketUniqueId: b.market_unique_id,
     competitionName: b.competition_name,
     tournamentName: b.tournament_name,
+		betOption: b.bet_option,
     // TODO: Add discovery key and navigation to redirect to market screen
   }));
   return formattedResponse;
