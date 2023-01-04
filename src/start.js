@@ -25,7 +25,7 @@ const start = async () => {
       // Redis
       redis.createRedis(cfg);
       // Scheduler for bets
-      betStatsScheduler.run();
+      // betStatsScheduler.run();
       // Run seed file
       seeds();
 

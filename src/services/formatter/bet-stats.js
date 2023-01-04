@@ -67,39 +67,41 @@ const versusMapFormatter = (versusData = {}) => {
 };
 // Formatting bets for bulk insertion
 const inputBetsFormatter = (bets) => {
-	let formattedData = [];
-	bets.map(b => {
-		b.propositions.map(p => {
-			formattedData.push({
-				transaction_date_time: Date.parse(new Date(toString(b.transaction_date_time)).toUTCString()),
-				proposition_id: p.prop_id,
-				bet_description: p.description?.string,
-				competition_id: b.competition?.int,
-				tournament_id: b.tournament?.int,
-				sport: b.sport?.string,
-				match: b.match?.string,
-				bet_amount: b.bet_amount,
-				tx_type: b.tx_type,
-				account_number: b.account_number
-			})
-		})
-	});
-	return formattedData;
+  let formattedData = [];
+  bets.map((b) => {
+    b.propositions.map((p) => {
+      formattedData.push({
+        transaction_date_time: Date.parse(
+          new Date(toString(b.transaction_date_time)).toUTCString()
+        ),
+        proposition_id: p.prop_id,
+        bet_description: p.description?.string,
+        competition_id: b.competition?.int,
+        tournament_id: b.tournament?.int,
+        sport: b.sport?.string,
+        match: b.match?.string,
+        bet_amount: b.bet_amount,
+        tx_type: b.tx_type,
+        account_number: b.account_number,
+      });
+    });
+  });
+  return formattedData;
 };
 
 const bigBetsFormatter = (bets) => {
-	const formattedResponse = bets.map(b => ({
-		count: b.count,
-		sportName: b.sport_name,
-		matchName: b.match_name,
-		matchStartTime: b.match_start_time,
-		marketName: b.market_name,
-		marketUniqueId: b.market_unique_id,
-		competitionName: b.competition_name,
-		tournamentName: b.tournament_name,
-		// TODO: Add discovery key and navigation to redirect to market screen
-	}));
-	return formattedResponse;
+  const formattedResponse = bets.map((b) => ({
+    count: b.count,
+    sportName: b.sport_name,
+    matchName: b.match_name,
+    matchStartTime: b.match_start_time,
+    marketName: b.market_name,
+    marketUniqueId: b.market_unique_id,
+    competitionName: b.competition_name,
+    tournamentName: b.tournament_name,
+    // TODO: Add discovery key and navigation to redirect to market screen
+  }));
+  return formattedResponse;
 };
 
 const formatBetDistribution = ({

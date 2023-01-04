@@ -149,7 +149,6 @@ const getBetsUsingCount = async (count) => {
   return bets;
 };
 
-// TODO: Add filtering based on params in live bets
 const getLiveBetsFromRedis = async ({
   sportName,
   competitionName,
@@ -158,8 +157,11 @@ const getLiveBetsFromRedis = async ({
 }) => {
   log.info('Fetching live bets');
   let response = [];
+
   try {
     const cfg = config();
+    let newLiveBets = [];
+    let betStringFindKey = 'global';
 
     const findOptions = {
       sport_name: sportName,
@@ -172,18 +174,46 @@ const getLiveBetsFromRedis = async ({
       (k) => !findOptions[k] && delete findOptions[k]
     );
 
-    const liveBets = await PropositionModel.find(findOptions).sort({
-      createdAt: -1,
-    });
+    if (sportName && competitionName && tournamentName && matchName)
+      betStringFindKey = `${sportName}:${competitionName}:${tournamentName}:${matchName}`;
+    else if (sportName && competitionName && matchName)
+      betStringFindKey = `${sportName}:${competitionName}:${matchName}`;
 
-    // const liveBets = await redis.getRedis().get('live-bets');
+    const cachedBets = (await redis.getRedis().get(betStringFindKey)) || [];
+
+    if (!cachedBets || cachedBets.length === 0) {
+      newLiveBets = await PropositionModel.find(findOptions).sort({
+        createdAt: -1,
+      });
+    } else if (cachedBets.length > 0) {
+      newLiveBets = await PropositionModel.find({
+        ...findOptions,
+        createdAt: { $gt: cachedBets[0]?.createdAt },
+      }).sort({
+        createdAt: -1,
+      });
+    }
+
+    response = [
+      ...newLiveBets.map((r) => {
+        r['new'] = true;
+        return r;
+      }),
+      ...cachedBets.map((r) => {
+        r['new'] = false;
+        return r;
+      }),
+    ];
+
+    await redis.getRedis().set(betStringFindKey, response);
 
     response = liveBetsFormatter({
-      bets: liveBets,
+      bets: response,
       count: cfg.betStatsScheduler.liveBetsCount,
     });
   } catch (e) {
     response = [];
+    console.log(e.message);
     log.error('Error fetching live bets from redis', e);
   }
   return response;
@@ -198,6 +228,10 @@ const getBigBets = async ({
 }) => {
   log.info('Fetching big bets');
   let response = [];
+  // default sort on totalBetAmount
+  let sortOptions = { totalBetAmount: -1 };
+  if (sort === 'count') sortOptions = { count: -1 };
+
   try {
     const findOptions = {
       sport_name: sportName,
@@ -215,6 +249,7 @@ const getBigBets = async ({
       {
         $group: {
           _id: '$market_unique_id',
+          total_bet_amount: { $sum: 'price' },
           count: { $sum: 1 },
           sport_name: { $first: '$sport_name' },
           match_name: { $first: '$match_name' },
@@ -225,7 +260,7 @@ const getBigBets = async ({
           market_unique_id: { $first: '$market_unique_id' },
         },
       },
-      { $sort: { count: -1 } },
+      { $sort: sortOptions },
     ]);
   } catch (e) {
     response = [];
