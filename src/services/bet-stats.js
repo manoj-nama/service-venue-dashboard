@@ -23,38 +23,45 @@ const getPropDetails = async (props) => {
   let propDetails = [];
   try {
     log.info('Fetching prop details for', props);
-    const baseUrl = 'https://api.congo.beta.tab.com.au/v1/tab-info-service/search/proposition';
-    const params = `?jurisdiction=nsw&details=true&${props.map((p) => `number=914396`).join('&')}`;
+    const baseUrl =
+      'https://api.congo.beta.tab.com.au/v1/tab-info-service/search/proposition';
+    const params = `?jurisdiction=nsw&details=true&${props
+      .map((p) => `number=914396`)
+      .join('&')}`;
     propDetails = await get(`${baseUrl}${params}`);
-    propDetails = propDetails.propositions.filter(detail => detail.type === 'sport').map((d, i) => ({
-      bet_type: d.type,
-      bet_option: d.market?.betOption,
-      market_name: d.market?.name,
-      market_unique_id: `${d.market?.marketUniqueId}${i}`,
-      market_close_time: d.market?.closeTime,
-      sport_name: d.sport?.name,
-      sport_id: d.sport?.id,
-      match_id: d.match?.id,
-      match_name: d.match?.name,
-      match_start_time: d.match?.startTime,
-      competition_id: d.competition?.id,
-      competition_name: d.competition?.name,
-      tournament_name: d?.tournament?.name,
-      tournament_id: d.tournament?.id,
-      proposition: {
-        name: d.propositionDetails?.name,
-        id: d.propositionNumber,
-        returnWin: d.propositionDetails?.returnWin,
-        returnPlace: d.propositionDetails?.returnPlace,
-        differential: d.propositionDetails?.differential,
-        bettingStatus: d.propositionDetails?.bettingStatus,
-        allowPlace: d.propositionDetails?.allowPlace,
-        isOpen: d.propositionDetails?.isOpen,
-        number: d.propositionDetails?.number
-      }
-    }));
-    propDetails.forEach(det => {
-      const existingProp = props.find(p => Number(p.id) === det.proposition.id);
+    propDetails = propDetails.propositions
+      .filter((detail) => detail.type === 'sport')
+      .map((d, i) => ({
+        bet_type: d.type,
+        bet_option: d.market?.betOption,
+        market_name: d.market?.name,
+        market_unique_id: `${d.market?.marketUniqueId}${i}`,
+        market_close_time: d.market?.closeTime,
+        sport_name: d.sport?.name,
+        sport_id: d.sport?.id,
+        match_id: d.match?.id,
+        match_name: d.match?.name,
+        match_start_time: d.match?.startTime,
+        competition_id: d.competition?.id,
+        competition_name: d.competition?.name,
+        tournament_name: d?.tournament?.name,
+        tournament_id: d.tournament?.id,
+        proposition: {
+          name: d.propositionDetails?.name,
+          id: d.propositionNumber,
+          returnWin: d.propositionDetails?.returnWin,
+          returnPlace: d.propositionDetails?.returnPlace,
+          differential: d.propositionDetails?.differential,
+          bettingStatus: d.propositionDetails?.bettingStatus,
+          allowPlace: d.propositionDetails?.allowPlace,
+          isOpen: d.propositionDetails?.isOpen,
+          number: d.propositionDetails?.number,
+        },
+      }));
+    propDetails.forEach((det) => {
+      const existingProp = props.find(
+        (p) => Number(p.id) === det.proposition.id
+      );
       if (existingProp) det.price = existingProp.price;
     });
   } catch (e) {
@@ -139,12 +146,34 @@ const getBetsUsingCount = async (count) => {
 };
 
 // TODO: Add filtering based on params in live bets
-const getLiveBetsFromRedis = async () => {
+const getLiveBetsFromRedis = async ({
+  sportName,
+  competitionName,
+  tournamentName,
+  matchName,
+}) => {
   log.info('Fetching live bets');
   let response = [];
   try {
     const cfg = config();
-    const liveBets = await redis.getRedis().get('live-bets');
+
+    const findOptions = {
+      sport_name: sportName,
+      competition_name: competitionName,
+      tournament_name: tournamentName,
+      match_name: matchName,
+    };
+
+    Object.keys(findOptions).forEach(
+      (k) => !findOptions[k] && delete findOptions[k]
+    );
+
+    const liveBets = await PropositionModel.find(findOptions).sort({
+      createdAt: -1,
+    });
+
+    // const liveBets = await redis.getRedis().get('live-bets');
+
     response = liveBetsFormatter({
       bets: liveBets,
       count: cfg.betStatsScheduler.liveBetsCount,
@@ -156,7 +185,6 @@ const getLiveBetsFromRedis = async () => {
   return response;
 };
 
-// TODO: Add filtering based on params in big bets
 const getBigBets = async ({
   sportName,
   competitionName,
@@ -167,7 +195,19 @@ const getBigBets = async ({
   log.info('Fetching big bets');
   let response = [];
   try {
+    const findOptions = {
+      sport_name: sportName,
+      competition_name: competitionName,
+      tournament_name: tournamentName,
+      match_name: matchName,
+    };
+
+    Object.keys(findOptions).forEach(
+      (k) => !findOptions[k] && delete findOptions[k]
+    );
+
     response = await PropositionModel.aggregate([
+      { $match: findOptions },
       {
         $group: {
           _id: '$market_unique_id',
@@ -228,8 +268,9 @@ const getHeatMapData = async ({
               },
             },
           },
-        }
-      }).exec();
+        },
+      })
+      .exec();
     return heatMapFormatter(response);
   } catch (e) {
     response = [];
@@ -272,7 +313,12 @@ const getBetsDistribution = async ({ query, params }) => {
   return response;
 };
 
-const mostBetsPlacedPerVenue = async (limit, skip, fromDateUTC, toDateUTC, searchText) => {
+const mostBetsPlacedPerVenue = async (
+  limit,
+  skip,
+  fromDateUTC,
+  toDateUTC
+) => {
   let pipeline = [
     {
       $match: {
@@ -281,8 +327,8 @@ const mostBetsPlacedPerVenue = async (limit, skip, fromDateUTC, toDateUTC, searc
         },
         transaction_date_time: {
           $gte: fromDateUTC,
-          $lte: toDateUTC
-        }
+          $lte: toDateUTC,
+        },
       },
     },
     {
@@ -319,7 +365,8 @@ const mostBetsPlacedPerVenue = async (limit, skip, fromDateUTC, toDateUTC, searc
         frequency_of_bets: -1,
         venueName: 1,
       },
-    }, {
+    },
+    {
       $skip: skip,
     },
     {
@@ -330,7 +377,65 @@ const mostBetsPlacedPerVenue = async (limit, skip, fromDateUTC, toDateUTC, searc
   return result;
 };
 
-const mostAmountSpentPerVenue = async (limit, skip, fromDateUTC, toDateUTC, searchText) => {
+const searchMostBetsPlacedPerVenue = async (text) => {
+  text = text || '.';
+  let pipeline = [
+    {
+      $match: {
+        venueId: {
+          $ne: null,
+        },
+        $or: [{ venueType: { $regex: new RegExp(text, 'i') } },
+        { venueState: { $regex: new RegExp(text, 'i') } },
+        { venueName: { $regex: new RegExp(text, 'i') } }],
+      },
+    },
+    {
+      $group: {
+        _id: '$venueId',
+        bets: {
+          $push: '$$ROOT',
+        },
+        frequency_of_bets: {
+          $sum: 1,
+        },
+      },
+    },
+    {
+      $project: {
+        location: {
+          $arrayElemAt: ['$bets', 0],
+        },
+        frequency_of_bets: 1,
+      },
+    },
+    {
+      $project: {
+        venueName: '$location.venueName',
+        venueId: '$location.venueId',
+        venueState: '$location.venueState',
+        venueType: '$location.venueType',
+        frequency_of_bets: 1,
+        _id: 0,
+      },
+    },
+    {
+      $sort: {
+        frequency_of_bets: -1,
+        venueName: 1,
+      },
+    },
+  ];
+  const result = await BetModel.aggregate(pipeline);
+  return result;
+};
+
+const mostAmountSpentPerVenue = async (
+  limit,
+  skip,
+  fromDateUTC,
+  toDateUTC
+) => {
   let pipeline = [
     {
       $match: {
@@ -339,8 +444,8 @@ const mostAmountSpentPerVenue = async (limit, skip, fromDateUTC, toDateUTC, sear
         },
         transaction_date_time: {
           $gte: fromDateUTC,
-          $lte: toDateUTC
-        }
+          $lte: toDateUTC,
+        },
       },
     },
     {
@@ -377,11 +482,65 @@ const mostAmountSpentPerVenue = async (limit, skip, fromDateUTC, toDateUTC, sear
         frequency_of_total_amount_spent: -1,
         venueName: 1,
       },
-    }, {
+    },
+    {
       $skip: skip,
     },
     {
       $limit: limit,
+    },
+  ];
+  const result = await BetModel.aggregate(pipeline);
+  return result;
+};
+
+const searchMostAmountSpentPerVenue = async (text) => {
+  text = text || '.';
+  let pipeline = [
+    {
+      $match: {
+        venueId: {
+          $ne: null,
+        },
+        $or: [{ venueType: { $regex: new RegExp(text, 'i') } },
+        { venueState: { $regex: new RegExp(text, 'i') } },
+        { venueName: { $regex: new RegExp(text, 'i') } }],
+      },
+    },
+    {
+      $group: {
+        _id: '$venueId',
+        bets: {
+          $push: '$$ROOT',
+        },
+        frequency_of_total_amount_spent: {
+          $sum: '$price',
+        },
+      },
+    },
+    {
+      $project: {
+        location: {
+          $arrayElemAt: ['$bets', 0],
+        },
+        frequency_of_total_amount_spent: 1,
+      },
+    },
+    {
+      $project: {
+        venueName: '$location.venueName',
+        venueId: '$location.venueId',
+        venueState: '$location.venueState',
+        venueType: '$location.venueType',
+        frequency_of_total_amount_spent: 1,
+        _id: 0,
+      },
+    },
+    {
+      $sort: {
+        frequency_of_total_amount_spent: -1,
+        venueName: 1,
+      },
     },
   ];
   const result = await BetModel.aggregate(pipeline);
@@ -395,4 +554,6 @@ module.exports = {
   getBetsDistribution,
   mostAmountSpentPerVenue,
   mostBetsPlacedPerVenue,
+  searchMostAmountSpentPerVenue,
+  searchMostBetsPlacedPerVenue
 };
