@@ -258,6 +258,7 @@ const getBigBets = async ({
           match_start_time: { $first: '$match_start_time' },
           market_name: { $first: '$market_name' },
           market_unique_id: { $first: '$market_unique_id' },
+          bet_option: { $first: '$bet_option' },
         },
       },
       { $sort: sortOptions },
