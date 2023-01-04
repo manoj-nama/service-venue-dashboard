@@ -2,7 +2,7 @@ const apiRouter = require('@tabdigital/connect-router');
 const betStatsRoutes = require('./bet-stats');
 const discovery = require('../controllers/discovery-controller');
 const getActiveVenuesAndUser = require('../controllers/active-venues-controller');
-
+const { getVenueInfo } = require('../controllers/venue-info-controller')
 const { createUser, getMostActiveUser, searchMostActiveUser } = require('../controllers/user-controller');
 const { signupUser,loginUser } = require('../controllers/signup-controller');
 const { auth }= require('../middlewares/auth');
@@ -67,6 +67,13 @@ router.get({
     handlers: [createUser],
   });
 
+router.get({
+  path: {
+    name: 'getVenueInfo',
+    path: '/v1/venue-info/:venueId',
+  },
+  handlers: [getVenueInfo],
+});
 
 const mergedRoutes = () => apiRouter.merge(router, betStatsRoutes);
 
