@@ -70,7 +70,7 @@ router.post({
 router.get({
   path: {
     name: 'getVenueInfo',
-    path: '/v1/venue-info/:venueId',
+    path: '/v1/service-venue/venue-info/:venueId',
   },
   handlers: [getVenueInfo],
 });
