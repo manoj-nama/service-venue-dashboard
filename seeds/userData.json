@@ -7330,8 +7330,8 @@
         "venueState": {
           "string": "QLD"
         },
-        "latitude": -27.524296146245042,
-        "longitude": 153.196623168725,
+        "latitude": -19.90407990829808,
+        "longitude": 140.35394696610393,
         "geoUncertainty": 1
       }
     },
@@ -7365,8 +7365,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -33.814377473351996,
-        "longitude": 150.9537021969022,
+        "latitude": -24.4039163911073,
+        "longitude": 142.18304971927193,
         "geoUncertainty": 47
       }
     },
@@ -7400,8 +7400,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -34.8926343,
-        "longitude": 138.6308864,
+        "latitude": -22.823809536558585,
+        "longitude": 118.66601432139772,
         "geoUncertainty": 51
       }
     },
@@ -7443,8 +7443,8 @@
         "venueState": {
           "string": "NSW"
         },
-        "latitude": -33.52510378754065,
-        "longitude": 151.3131667650235,
+        "latitude": -31.416624596044652,
+        "longitude": 117.62081274815887,
         "geoUncertainty": 1141
       }
     },
@@ -7478,8 +7478,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -37.747215408219915,
-        "longitude": 144.81696329498823,
+        "latitude": -31.86154887138502,
+        "longitude": 144.63927341638325,
         "geoUncertainty": 329
       }
     },
@@ -7521,8 +7521,8 @@
         "venueState": {
           "string": "NSW"
         },
-        "latitude": -33.9803437,
-        "longitude": 151.0805539,
+        "latitude": -30.790172228599875,
+        "longitude": 126.34824588470327,
         "geoUncertainty": 14
       }
     },
@@ -7556,8 +7556,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -36.71218222997166,
-        "longitude": 144.2857630476653,
+        "latitude": -37.02977805612144,
+        "longitude": 140.87654775272335,
         "geoUncertainty": 10
       }
     },
@@ -8350,8 +8350,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -38.3726895757078,
-        "longitude": 144.78086049040795,
+        "latitude": -32.56897601746942,
+        "longitude": 146.4161160908893,
         "geoUncertainty": 35
       }
     },
@@ -8420,8 +8420,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -32.9394262,
-        "longitude": 151.7478321,
+        "latitude": -33.67528577898823,
+        "longitude": 138.5265790084572,
         "geoUncertainty": 17
       }
     },
@@ -8455,8 +8455,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -32.805537451622676,
-        "longitude": 151.64645837966643,
+        "latitude": -30.769217153812775,
+        "longitude": 142.03499936202903,
         "geoUncertainty": 148
       }
     },
@@ -8498,8 +8498,8 @@
         "venueState": {
           "string": "NSW"
         },
-        "latitude": -33.96929376296137,
-        "longitude": 151.06399370371463,
+        "latitude": -27.51672651481934,
+        "longitude": 144.78378807220463,
         "geoUncertainty": 37
       }
     },
@@ -8533,8 +8533,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -38.2246173,
-        "longitude": 144.3208438,
+        "latitude": -37.23659448550919,
+        "longitude": 141.76569243904135,
         "geoUncertainty": 46
       }
     },
@@ -8576,8 +8576,8 @@
         "venueState": {
           "string": "VIC"
         },
-        "latitude": -38.0536453,
-        "longitude": 145.3830639,
+        "latitude": -36.946967351261634,
+        "longitude": 147.77688311932312,
         "geoUncertainty": 12
       }
     },
@@ -8611,8 +8611,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -38.41656763575822,
-        "longitude": 145.07748171700632,
+        "latitude": -37.01307903415664,
+        "longitude": 139.93290633754694,
         "geoUncertainty": 2989
       }
     },
@@ -8646,8 +8646,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -27.914554014117112,
-        "longitude": 153.3012248744987,
+        "latitude": -37.836618881517886,
+        "longitude": 144.67784717975533,
         "geoUncertainty": 14
       }
     },
@@ -8681,8 +8681,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -38.162233944486076,
-        "longitude": 145.18319195222028,
+        "latitude": -37.83329986345557,
+        "longitude": 145.19811102638488,
         "geoUncertainty": 8
       }
     },
@@ -8716,8 +8716,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -37.788081531382026,
-        "longitude": 144.97771563748174,
+        "latitude": -37.772096676670124,
+        "longitude": 144.43316538798135,
         "geoUncertainty": 8
       }
     },
@@ -8751,8 +8751,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -37.82303358897378,
-        "longitude": 145.16019375076996,
+        "latitude": -37.99912022610957,
+        "longitude": 145.11900696447643,
         "geoUncertainty": 5
       }
     },
@@ -8786,8 +8786,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -33.7465719,
-        "longitude": 150.6987624,
+        "latitude": -37.59053946612256,
+        "longitude": 144.91693925566378,
         "geoUncertainty": 16
       }
     },
@@ -8821,8 +8821,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -33.935850110307015,
-        "longitude": 151.17966278143945,
+        "latitude": -37.78337052980692,
+        "longitude": 144.82779173693405,
         "geoUncertainty": 53
       }
     },
@@ -8856,8 +8856,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -33.87875252710392,
-        "longitude": 150.96985710259702,
+        "latitude": -38.16551028318756,
+        "longitude": 144.63102496264455,
         "geoUncertainty": 11
       }
     },
@@ -8891,8 +8891,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -34.02160240905168,
-        "longitude": 150.72859297395968,
+        "latitude": -38.24215374458996,
+        "longitude": 145.17240753022259,
         "geoUncertainty": 24
       }
     },
@@ -8934,8 +8934,8 @@
         "venueState": {
           "string": "SA"
         },
-        "latitude": -32.48386009291313,
-        "longitude": 137.7585611585261,
+        "latitude": -38.234795680039376,
+        "longitude": 146.39542966567845,
         "geoUncertainty": 23
       }
     },
@@ -8969,8 +8969,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -30.34228567520848,
-        "longitude": 153.0857529130718,
+        "latitude": -37.85031263991782,
+        "longitude": 144.880994341788,
         "geoUncertainty": 14
       }
     },
@@ -9012,8 +9012,8 @@
         "venueState": {
           "string": "QLD"
         },
-        "latitude": -27.877563094283484,
-        "longitude": 153.3660106368558,
+        "latitude": -37.80600838399579,
+        "longitude": 144.79942962121663,
         "geoUncertainty": 15
       }
     },
@@ -9047,8 +9047,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -28.7693166,
-        "longitude": 153.3418608,
+        "latitude": -37.728363906215776,
+        "longitude": 144.93014784298612,
         "geoUncertainty": 15
       }
     },
@@ -9082,8 +9082,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -26.783501568236062,
-        "longitude": 153.08564827896552,
+        "latitude": -37.851190694089205,
+        "longitude": 144.78721680916937,
         "geoUncertainty": 1918
       }
     },
@@ -9117,8 +9117,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -33.88608734459625,
-        "longitude": 151.08023876375603,
+        "latitude": -31.3452879039069,
+        "longitude": 149.73291886505697,
         "geoUncertainty": 1074
       }
     },
@@ -9152,8 +9152,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -38.120724066032125,
-        "longitude": 144.65370689775784,
+        "latitude": -38.020640053252684,
+        "longitude": 146.48139444094744,
         "geoUncertainty": 6
       }
     },
@@ -9195,8 +9195,8 @@
         "venueState": {
           "string": "NSW"
         },
-        "latitude": -32.92526165742111,
-        "longitude": 151.74684590593301,
+        "latitude": -35.10153889224494,
+        "longitude": 147.37197879776673,
         "geoUncertainty": 40
       }
     },
@@ -9230,8 +9230,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -38.1751317,
-        "longitude": 144.4398126,
+        "latitude": -34.12285784613976,
+        "longitude": 142.03504516615132,
         "geoUncertainty": 37
       }
     },
@@ -9265,8 +9265,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -34.9301708,
-        "longitude": 138.6367232,
+        "latitude": -34.81441893585442,
+        "longitude": 138.74149841906774,
         "geoUncertainty": 15
       }
     },
@@ -9308,8 +9308,8 @@
         "venueState": {
           "string": "VIC"
         },
-        "latitude": -38.080723570110244,
-        "longitude": 144.36411564475398,
+        "latitude": -35.44223033424492,
+        "longitude": 138.4616334577344,
         "geoUncertainty": 1183
       }
     },
@@ -9343,8 +9343,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -36.141614796443,
-        "longitude": 147.0101319770075,
+        "latitude": -35.546394215382506,
+        "longitude": 138.21375307091313,
         "geoUncertainty": 11
       }
     },
@@ -9378,8 +9378,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -34.892874654137294,
-        "longitude": 150.60490033908465,
+        "latitude": -38.13676634789814,
+        "longitude": 144.33047321168996,
         "geoUncertainty": 949
       }
     },
@@ -9413,8 +9413,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -37.67258477577893,
-        "longitude": 176.2346521518198,
+        "latitude": -38.42403542081154,
+        "longitude": 144.92347279722608,
         "geoUncertainty": 27
       }
     },
@@ -9448,8 +9448,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -33.72564772133339,
-        "longitude": 150.94788595031963,
+        "latitude": -38.33507190990812,
+        "longitude": 145.32358436045672,
         "geoUncertainty": 17
       }
     },
@@ -9483,8 +9483,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -34.857515161946445,
-        "longitude": 138.48785554218583,
+        "latitude": -38.48897801429846,
+        "longitude": 145.21009816858756,
         "geoUncertainty": 35
       }
     },
@@ -9518,8 +9518,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -33.789735,
-        "longitude": 150.7502467,
+        "latitude": -38.32708266036925,
+        "longitude": 144.70959498055436,
         "geoUncertainty": 14
       }
     },
@@ -9561,8 +9561,8 @@
         "venueState": {
           "string": "VIC"
         },
-        "latitude": -37.82622528076172,
-        "longitude": 145.05747985839844,
+        "latitude": -37.07314509144019,
+        "longitude": 144.17753717696166,
         "geoUncertainty": 1
       }
     },
@@ -9596,8 +9596,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -37.59722770538441,
-        "longitude": 143.8663425929422,
+        "latitude": -36.98469860934587,
+        "longitude": 141.8049536128493,
         "geoUncertainty": 27
       }
     },
@@ -9666,8 +9666,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -28.213118250402694,
-        "longitude": 153.51180402280121,
+        "latitude": -36.71458863913034,
+        "longitude": 147.14753419533233,
         "geoUncertainty": 35
       }
     },
@@ -9701,8 +9701,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -35.0838218,
-        "longitude": 138.4996592,
+        "latitude": -33.68501907894806,
+        "longitude": 149.23542879266122,
         "geoUncertainty": 20
       }
     },
@@ -9736,8 +9736,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -27.6911666,
-        "longitude": 153.1900552,
+        "latitude": -29.947516755501525,
+        "longitude": 150.05020143100165,
         "geoUncertainty": 20
       }
     },
@@ -9771,8 +9771,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -33.84126063548671,
-        "longitude": 151.10981368269765,
+        "latitude": -32.923460146532385,
+        "longitude": 117.0407982347345,
         "geoUncertainty": 58
       }
     },
@@ -9841,8 +9841,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -36.24229945472283,
-        "longitude": 149.1253568984702,
+        "latitude": -30.458658239118222,
+        "longitude": 121.3864740044603,
         "geoUncertainty": 65
       }
     },
@@ -9876,8 +9876,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -31.909734476176194,
-        "longitude": 152.45356957415305,
+        "latitude": -28.683496081646737,
+        "longitude": 114.9338039221402,
         "geoUncertainty": 8
       }
     },
@@ -9911,8 +9911,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -33.9689818,
-        "longitude": 151.1504315,
+        "latitude": -34.07645065686658,
+        "longitude": 135.80621633127762,
         "geoUncertainty": 13
       }
     },
@@ -9946,8 +9946,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -35.14591738716509,
-        "longitude": 138.51743924965922,
+        "latitude": -37.8590564206159,
+        "longitude": 144.43815113961045,
         "geoUncertainty": 22
       }
     },
@@ -9981,8 +9981,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -33.91516390278517,
-        "longitude": 151.15127940107087,
+        "latitude": -37.61135817692266,
+        "longitude": 145.29946923041928,
         "geoUncertainty": 6
       }
     },
@@ -10016,8 +10016,8 @@
         "venueName": null,
         "venueType": null,
         "venueState": null,
-        "latitude": -33.9187674,
-        "longitude": 151.022142,
+        "latitude": -37.866783632537384,
+        "longitude": 144.74157001250902,
         "geoUncertainty": 12
       }
     },
