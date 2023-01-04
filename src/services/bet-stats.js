@@ -183,7 +183,7 @@ const createBets = async (betDetails) => {
   return response;
 };
 
-const createBetFromFE = async ({ coordinates, accountNumber, customerNumber, bets, ticketCost }) => {
+const createBetFromFE = async ({ coordinates, accountNumber, customerNumber, bets, ticketCost, venueDetails = {} }) => {
   try {
     log.info('Creating bet details via front-end');
     const betsToBeCreated = bets.map(bet => {
@@ -206,6 +206,7 @@ const createBetFromFE = async ({ coordinates, accountNumber, customerNumber, bet
         customer_number: customerNumber,
         number_of_legs: bet.legs?.length,
         propositions: props,
+        ...venueDetails,
       };
     });
     log.info(`Creating ${betsToBeCreated.length} bets`);
