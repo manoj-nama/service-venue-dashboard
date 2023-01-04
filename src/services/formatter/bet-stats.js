@@ -99,6 +99,7 @@ const bigBetsFormatter = (bets) => {
     marketUniqueId: b.market_unique_id,
     competitionName: b.competition_name,
     tournamentName: b.tournament_name,
+		totalBetAmount: b.total_bet_amount,
 		betOption: b.bet_option,
     // TODO: Add discovery key and navigation to redirect to market screen
   }));
@@ -127,7 +128,7 @@ const formatBetDistribution = ({
 				data: heatMap
 			},
 			...(
-				versusMap && versusMap.length ? [{
+				versusMap && versusMap?.teams?.length ? [{
 					type: 'app.bets.distribution.versusMap',
 					data: versusMap,
 				}] : []
