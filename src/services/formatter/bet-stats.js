@@ -100,6 +100,7 @@ const bigBetsFormatter = (bets) => {
     competitionName: b.competition_name,
     tournamentName: b.tournament_name,
 		totalBetAmount: b.total_bet_amount
+		betOption: b.bet_option,
     // TODO: Add discovery key and navigation to redirect to market screen
   }));
   return formattedResponse;
