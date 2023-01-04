@@ -43,29 +43,29 @@ router.get({
   handlers: [searchMostActiveUser],
 });
 
-  router.post({
-    path: {
-      name:'signupUser',
-      path: '/v1/service-venue/signup-user',
-    },
-    handlers: [signupUser],
-  })
+router.post({
+  path: {
+    name:'signupUser',
+    path: '/v1/service-venue/signup-user',
+  },
+  handlers: [signupUser],
+})
 
-  router.post({
-    path: {
-      name:'signupUser',
-      path: '/v1/service-venue/login-user',
-    },
-    handlers: [loginUser],
-  })
+router.post({
+  path: {
+    name:'signupUser',
+    path: '/v1/service-venue/login-user',
+  },
+  handlers: [loginUser],
+})
 
-  router.post({
-    path: {
-      name: 'createUser',
-      path: '/v1/service-venue/add-users',
-    },
-    handlers: [createUser],
-  });
+router.post({
+  path: {
+    name: 'createUser',
+    path: '/v1/service-venue/add-users',
+  },
+  handlers: [createUser],
+});
 
 router.get({
   path: {
