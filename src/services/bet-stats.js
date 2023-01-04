@@ -27,8 +27,49 @@ const getPropDetails = async (props) => {
     const baseUrl =
       'https://api.congo.beta.tab.com.au/v1/tab-info-service/search/proposition';
     const params = `?jurisdiction=nsw&details=true&${props
-      .map((p) => `number=914396`)
+      .map((p) => `number=914396`) // TODO: Update prop id
       .join('&')}`;
+
+    const contestants = [
+      {
+        "name": "Sydney",
+        "position": "HOME",
+        "isHome": true,
+        "image": [
+          {
+            "size": "svg",
+            "url": "https://metadata.beta.tab.com.au/icons/NBA%20logos/Milwaukee%20Bucks.svg"
+          },
+          {
+            "size": "xxhdpi",
+            "url": "https://metadata.beta.tab.com.au/icons/NBA%20logos/Milwaukee%20Bucks_xxhdpi.png"
+          },
+          {
+            "size": "2x",
+            "url": "https://metadata.beta.tab.com.au/icons/NBA%20logos/Milwaukee%20Bucks%402x.png"
+          }
+        ]
+      },
+      {
+        "name": "Washington",
+        "position": "AWAY",
+        "isHome": false,
+        "image": [
+          {
+            "size": "svg",
+            "url": "https://metadata.beta.tab.com.au/icons/NBA%20logos/Washington%20Wizards.svg"
+          },
+          {
+            "size": "xxhdpi",
+            "url": "https://metadata.beta.tab.com.au/icons/NBA%20logos/Washington%20Wizards_xxhdpi.png"
+          },
+          {
+            "size": "2x",
+            "url": "https://metadata.beta.tab.com.au/icons/NBA%20logos/Washington%20Wizards%402x.png"
+          }
+        ]
+      }
+    ];
     propDetails = await get(`${baseUrl}${params}`);
     propDetails = propDetails.propositions.filter(detail => detail.type === 'sport').map((d, i) => ({
       bet_type: d.type,
@@ -56,13 +97,11 @@ const getPropDetails = async (props) => {
         isOpen: d.propositionDetails?.isOpen,
         number: d.propositionDetails?.number
       },
-      contestants: d.match.contestants.reduce((acc, curr) => {
-        const { image } = (curr.images || []).find(i => i.size === 'svg');
-        delete curr.images;
-        acc.push({
-          ...curr, ...{ image }
-        })
-      }, [])
+      contestants: contestants.map((item,i) => {              // TODO : Remove contestants and use api returned contestants
+        return {
+          imageUrl: item?.image[i]?.url, ...item
+        };
+      })
     }));
     propDetails.forEach(det => {
       const existingProp = props.find(p => Number(p.id) === det.proposition.id);
@@ -374,7 +413,9 @@ const getVersusMapData = async ({
         $match: { account_number: { $ne: null }, ...findOptions }
       },
       {
-        $unwind: "$contestants",
+        $unwind: {
+          path: "$contestants",
+        },
       },
       {
         $addFields: { result: { $regexMatch: { input: "$proposition.name", regex: '$contestants.name', options: "i" } } }
@@ -383,7 +424,7 @@ const getVersusMapData = async ({
         $group: {
           _id: {
             'teamName': '$contestants.name',
-            'imageUrl': '$contestants.image',
+            'imageUrl': '$contestants.imageUrl',
             'result': '$result'
           },
           props: {
@@ -456,12 +497,15 @@ const getBetsDistribution = async ({ query, params }) => {
     });
 
     let versusMap;
-    if (sportName & matchName) {
+    if (sportName && matchName) {
       versusMap = await getVersusMapData({
         sportName,
         competitionName,
         tournamentName,
-        matchName
+        matchName,
+        radius,
+        longitude,
+        latitude,
       });
     }
 
