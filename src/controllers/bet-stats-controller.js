@@ -1,4 +1,4 @@
-const betStatsService = require('../services/bet-stats');
+const betStatsService = require('../services/bet-stats-service');
 
 const getLiveBets = async (req, res) => {
   const response = await betStatsService.getLiveBetsFromRedis();
@@ -30,25 +30,19 @@ const addBetDetails = async (req, res) => {
     const result = await betStatsService.createBets(betDetails);
     res.send(201, { message: 'Success', data: result });
   } catch (error) {
-    console.log(' Error : ', error);
-    res.send(400, error);
+    throw error
   }
 };
 
 const mostBetsPlacedPerVenue = async (req, res) => {
   try {
     let {
-      limit, page, fromDateUTC, toDateUTC, searchText,
+      limit, page, fromDateUTC, toDateUTC,
     } = req.query;
-    fromDateUTC = fromDateUTC * 1 || 0,
-    toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
-    limit = limit * 1 || 1000;
-    page = page * 1 || 1;
-    const skip = (page - 1) * limit;
-    const result = await betStatsService.mostBetsPlacedPerVenue(limit, skip, fromDateUTC, toDateUTC);
+    const result = await betStatsService.mostBetsPlacedPerVenue(limit, page, fromDateUTC, toDateUTC);
     res.send(200, { data: result });
   } catch (err) {
-    console.error(err);
+    throw err
   }
 };
 
@@ -57,15 +51,10 @@ const mostAmountSpentPerVenue = async (req, res) => {
     let {
       limit, page, fromDateUTC, toDateUTC,
     } = req.query;
-    fromDateUTC = fromDateUTC * 1 || 0,
-    toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
-    limit = limit * 1 || 1000;
-    page = page * 1 || 1;
-    const skip = (page - 1) * limit;
-    const result = await betStatsService.mostAmountSpentPerVenue(limit, skip, fromDateUTC, toDateUTC);
+    const result = await betStatsService.mostAmountSpentPerVenue(limit, page, fromDateUTC, toDateUTC);
     res.send(200, { data: result });
   } catch (err) {
-    console.error(err);
+    throw err
   }
 };
 
@@ -75,7 +64,7 @@ const searchMostAmountSpentPerVenue = async (req, res) => {
     const result = await betStatsService.searchMostAmountSpentPerVenue(text);
     res.send(200, { data: result });
   } catch (err) {
-    console.error(err);
+    throw err
   }
 };
 
@@ -85,7 +74,7 @@ const searchMostBetsPlacedPerVenue = async (req, res) => {
     const result = await betStatsService.searchMostBetsPlacedPerVenue(text);
     res.send(200, { data: result });
   } catch (err) {
-    console.error(err);
+    throw err
   }
 };
 
