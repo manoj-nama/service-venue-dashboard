@@ -145,7 +145,6 @@ const getBetsUsingCount = async (count) => {
   return bets;
 };
 
-let CACHED = [];
 const getLiveBetsFromRedis = async ({
   sportName,
   competitionName,
@@ -154,8 +153,11 @@ const getLiveBetsFromRedis = async ({
 }) => {
   log.info('Fetching live bets');
   let response = [];
+
   try {
     const cfg = config();
+    let newLiveBets = [];
+    let betStringFindKey = 'global';
 
     const findOptions = {
       sport_name: sportName,
@@ -168,48 +170,51 @@ const getLiveBetsFromRedis = async ({
       (k) => !findOptions[k] && delete findOptions[k]
     );
 
-    if (CACHED.length === 0) {
-      const liveBets = await PropositionModel.find(findOptions).sort({
+    if (sportName && competitionName && tournamentName && matchName)
+      betStringFindKey = `${sportName}:${competitionName}:${tournamentName}:${matchName}`;
+    else if (sportName && competitionName && matchName)
+      betStringFindKey = `${sportName}:${competitionName}:${matchName}`;
+
+    const cachedBets = (await redis.getRedis().get(betStringFindKey)) || [];
+
+    if (!cachedBets || cachedBets.length === 0) {
+      newLiveBets = await PropositionModel.find(findOptions).sort({
         createdAt: -1,
       });
-
-      CACHED = liveBets.map((r) => {
-        r['new'] = true;
-        return r;
-      });
-    } else {
-      const newBets = await PropositionModel.find({
+    } else if (cachedBets.length > 0) {
+      newLiveBets = await PropositionModel.find({
         ...findOptions,
-        createdAt: { $gt: CACHED[0]?.createdAt },
+        createdAt: { $gt: cachedBets[0]?.createdAt },
       }).sort({
         createdAt: -1,
       });
-
-      // Add new true to latest and false to old ones
-      CACHED = [
-        ...newBets.map((r) => {
-          r['new'] = true;
-          return r;
-        }),
-        ...CACHED.map((r) => {
-          r['new'] = false;
-          return r;
-        }),
-      ];
     }
 
+    response = [
+      ...newLiveBets.map((r) => {
+        r['new'] = true;
+        return r;
+      }),
+      ...cachedBets.map((r) => {
+        r['new'] = false;
+        return r;
+      }),
+    ];
+
+    await redis.getRedis().set(betStringFindKey, response);
+
     response = liveBetsFormatter({
-      bets: CACHED,
+      bets: response,
       count: cfg.betStatsScheduler.liveBetsCount,
     });
   } catch (e) {
     response = [];
+    console.log(e.message);
     log.error('Error fetching live bets from redis', e);
   }
   return response;
 };
 
-// TODO: Add amount sorting as well but in the end response there should be no amount field
 const getBigBets = async ({
   sportName,
   competitionName,
