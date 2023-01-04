@@ -99,7 +99,7 @@ const getPropDetails = async (props) => {
       },
       contestants: contestants.map((item,i) => {              // TODO : Remove contestants and use api returned contestants
         return {
-          imageUrl: item?.image[i]?.url, ...item
+          imageUrl: item?.image[0]?.url, ...item
         };
       })
     }));
