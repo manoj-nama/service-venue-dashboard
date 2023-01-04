@@ -1,4 +1,4 @@
-const { createUser,getMostActiveUser } = require('../services/user-service');
+const { createUser, getMostActiveUser, searchMostActiveUser } = require('../services/user-service');
 
 
 module.exports.createUser = async (req, res) => {
@@ -22,4 +22,10 @@ module.exports.getMostActiveUser = async (req, res) => {
   const skip = (page - 1)*limit;
   const data = await getMostActiveUser(limit, skip);
   return res.send(200, { active_users: data });
+};
+
+module.exports.searchMostActiveUser = async (req, res) => {
+ const { text } = req.query;
+  const result = await searchMostActiveUser(text);
+  return res.send(200, { data: result });
 };

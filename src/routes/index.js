@@ -2,7 +2,7 @@ const apiRouter = require('@tabdigital/connect-router');
 const betStatsRoutes = require('./bet-stats');
 const discovery = require('../controllers/discovery-controller');
 const getActiveVenuesAndUser = require('../controllers/active-venues-controller');
-const { createUser,getMostActiveUser } = require('../controllers/user-controller');
+const { createUser, getMostActiveUser, searchMostActiveUser } = require('../controllers/user-controller');
 
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -30,6 +30,14 @@ router.get({
     path: '/v1/service-venue/most-active-users',
   },
   handlers: [getMostActiveUser],
+});
+
+router.get({
+  path: {
+    name: 'getMostActiveUser',
+    path: '/v1/service-venue/most-active-users/search',
+  },
+  handlers: [searchMostActiveUser],
 });
 
   router.post({
