@@ -110,4 +110,20 @@ router.get({
   handlers: [betStatsController.mostAmountSpentPerVenue],
 });
 
+router.get({
+  path: {
+    name: 'search-most-amount-spent-per-venue',
+    path: '/v1/service-venue/bet-stats/amount-spent/search',
+  },
+  handlers: [betStatsController.searchMostAmountSpentPerVenue],
+});
+
+router.get({
+  path: {
+    name: 'search-most-bets-placed-per-venue',
+    path: '/v1/service-venue/bet-stats/bets-placed/search',
+  },
+  handlers: [betStatsController.searchMostBetsPlacedPerVenue],
+});
+
 module.exports = router;

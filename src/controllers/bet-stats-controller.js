@@ -69,6 +69,26 @@ const mostAmountSpentPerVenue = async (req, res) => {
   }
 };
 
+const searchMostAmountSpentPerVenue = async (req, res) => {
+  try {
+    const { text } = req.query;
+    const result = await betStatsService.searchMostAmountSpentPerVenue(text);
+    res.send(200, { data: result });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const searchMostBetsPlacedPerVenue = async (req, res) => {
+  try {
+    const { text } = req.query;
+    const result = await betStatsService.searchMostBetsPlacedPerVenue(text);
+    res.send(200, { data: result });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 module.exports = {
   getLiveBets,
   getBigBets,
@@ -77,4 +97,6 @@ module.exports = {
   addBetDetails,
   mostAmountSpentPerVenue,
   mostBetsPlacedPerVenue,
+  searchMostAmountSpentPerVenue,
+  searchMostBetsPlacedPerVenue,
 };
