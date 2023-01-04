@@ -268,13 +268,29 @@ const getVersusMapData = async ({
     Object.keys(findOptions).forEach(
       (k) => !findOptions[k] && delete findOptions[k]
     );
+
     response = await PropositionModel.aggregate([
       {
-        $lookup:
-        {
-          from: 'Bet',
-          localField: 'bet',
-          foreignField: '_id',
+        $lookup: {
+          from: 'bets',
+          let: { betId: "$bet" },
+          pipeline: [
+            {
+              $geoNear: {
+                near: {
+                  type: "Point",
+                  coordinates: [Number(longitude), Number(latitude)]
+                },
+                distanceField: "distance",
+                maxDistance: radius,
+                query: {
+                  $expr: {
+                    $eq: ["$_id", "$$betId"]
+                  }
+                }
+              }
+            }
+          ],
           as: 'betInfo'
         }
       },
@@ -283,20 +299,7 @@ const getVersusMapData = async ({
       },
       { $project: { betInfo: 0 } },
       {
-        $match: {
-          ...findOptions,
-          ...{
-            location: {
-              $near: {
-                $maxDistance: radius,
-                $geometry: {
-                  type: 'Point',
-                  coordinates: [Number(longitude), Number(latitude)],
-                },
-              },
-            },
-          }
-        }
+        $match: { account_number: { $ne: null }, ...findOptions }
       },
       {
         $unwind: "$contestants",
@@ -304,7 +307,6 @@ const getVersusMapData = async ({
       {
         $addFields: { result: { $regexMatch: { input: "$proposition.name", regex: '$contestants.name', options: "i" } } }
       },
-
       {
         $group: {
           _id: {
@@ -337,16 +339,7 @@ const getVersusMapData = async ({
         $project: {
           teamName: 1,
           icon: 1,
-          coordinates: {
-            $map: {
-              input: "$props",
-              as: "prop",
-              in: {
-                longitude: { $arrayElemAt: ['$location.coordinates', 0] },
-                latitude: { $arrayElemAt: ['$location.coordinates', 1] }
-              }
-            }
-          },
+          props: 1,
           count: {
             $size: '$props'
           }
@@ -354,59 +347,62 @@ const getVersusMapData = async ({
       }
     ]);
 
-    return versusMapFormatter(response);
+    return versusMapFormatter({ response, sportName, competitionName, matchName });
   } catch (e) {
     response = [];
     log.error(e, 'Error while fetching versus map data');
   }
-  return versusMapFormatter(response);
+  return versusMapFormatter({ response, sportName, competitionName, matchName });
 };
 
 
 const getBetsDistribution = async ({ query, params }) => {
   const { sportName, competitionName, tournamentName, matchName } = params;
   const { sort, radius, longitude, latitude } = query;
-
-  const liveBets = await getLiveBetsFromRedis({
-    sportName,
-    competitionName,
-    tournamentName,
-    matchName,
-  });
-  const bigBets = await getBigBets({
-    sportName,
-    competitionName,
-    tournamentName,
-    matchName,
-    sort,
-  });
-  const heatMap = await getHeatMapData({
-    sportName,
-    competitionName,
-    tournamentName,
-    matchName,
-    radius,
-    longitude,
-    latitude,
-  });
-
-  let versusMap;
-  if (sportName & matchName) {
-    versusMap = await getVersusMapData({
+  try {
+    const liveBets = await getLiveBetsFromRedis({
       sportName,
       competitionName,
       tournamentName,
-      matchName
+      matchName,
     });
-  }
+    const bigBets = await getBigBets({
+      sportName,
+      competitionName,
+      tournamentName,
+      matchName,
+      sort,
+    });
+    const heatMap = await getHeatMapData({
+      sportName,
+      competitionName,
+      tournamentName,
+      matchName,
+      radius,
+      longitude,
+      latitude,
+    });
 
-  const response = formatBetDistribution({
-    liveBets,
-    bigBets,
-    heatMap,
-    versusMap
-  });
-  return response;
+    let versusMap;
+    if (sportName & matchName) {
+      versusMap = await getVersusMapData({
+        sportName,
+        competitionName,
+        tournamentName,
+        matchName
+      });
+    }
+
+    const response = formatBetDistribution({
+      liveBets,
+      bigBets,
+      heatMap,
+      versusMap
+    });
+    return response;
+  } catch (err) {
+    log.info(err, 'Controller error: ')
+  }
 };
 
 const mostBetsPlacedPerVenue = async (limit, skip, fromDateUTC, toDateUTC, searchText) => {
