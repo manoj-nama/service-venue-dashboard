@@ -73,19 +73,19 @@ const getPropDetails = async (props) => {
     propDetails = await get(`${baseUrl}${params}`);
     propDetails = propDetails.propositions.filter(detail => detail.type === 'sport').map((d, i) => ({
       bet_type: d.type,
-      bet_option: d.market?.betOption,
-      market_name: d.market?.name,
-      market_unique_id: `${d.market?.marketUniqueId}${i}`,
-      market_close_time: d.market?.closeTime,
-      sport_name: d.sport?.name,
-      sport_id: d.sport?.id,
-      match_id: d.match?.id,
-      match_name: d.match?.name,
+      bet_option: d?.market?.betOption,
+      market_name: d?.market?.name,
+      market_unique_id: `${d?.market?.marketUniqueId}${i}`,
+      market_close_time: d?.market?.closeTime,
+      sport_name: d?.sport?.name,
+      sport_id: d?.sport?.id,
+      match_id: d?.match?.id,
+      match_name: d?.match?.name,
       match_start_time: d.match?.startTime,
-      competition_id: d.competition?.id,
-      competition_name: d.competition?.name,
+      competition_id: d?.competition?.id,
+      competition_name: d?.competition?.name,
       tournament_name: d?.tournament?.name,
-      tournament_id: d.tournament?.id,
+      tournament_id: d?.tournament?.id,
       proposition: {
         name: d.propositionDetails?.name,
         id: d.propositionNumber,
@@ -97,9 +97,15 @@ const getPropDetails = async (props) => {
         isOpen: d.propositionDetails?.isOpen,
         number: d.propositionDetails?.number
       },
-      contestants: contestants.map((item, i) => {              // TODO : Remove contestants and use api returned contestants
+      contestants: (d?.match?.contestants || contestants).map((item, i) => {
+        if (d.match?.contestants && !d.match?.contestants.image) {
+          d.match.contestants[0].image = contestants[0].image;
+          d.match.contestants[1].image = contestants[1].image;
+        }
+        // TODO : Remove contestants and use api returned contestants
         return {
-          imageUrl: item?.image[0]?.url, ...item
+          imageUrl: item?.image[0]?.url,
+          ...item
         };
       })
     }));
