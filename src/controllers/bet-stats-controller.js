@@ -37,7 +37,9 @@ const addBetDetails = async (req, res) => {
 
 const mostBetsPlacedPerVenue = async (req, res) => {
   try {
-    let { limit, page, fromDateUTC, toDateUTC, searchText } = req.query;
+    let {
+      limit, page, fromDateUTC, toDateUTC, searchText,
+    } = req.query;
     fromDateUTC = fromDateUTC * 1 || 0,
     toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
     limit = limit * 1 || 1000;
@@ -52,7 +54,9 @@ const mostBetsPlacedPerVenue = async (req, res) => {
 
 const mostAmountSpentPerVenue = async (req, res) => {
   try {
-    let { limit, page, fromDateUTC, toDateUTC } = req.query;
+    let {
+      limit, page, fromDateUTC, toDateUTC,
+    } = req.query;
     fromDateUTC = fromDateUTC * 1 || 0,
     toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
     limit = limit * 1 || 1000;

@@ -8,6 +8,7 @@ const {
   formatBetDistribution,
   heatMapFormatter,
   bigBetsFormatter,
+  versusMapFormatter
 } = require('./formatter/bet-stats');
 const { get } = require('../request');
 const log = require('../log');
@@ -29,39 +30,42 @@ const getPropDetails = async (props) => {
       .map((p) => `number=914396`)
       .join('&')}`;
     propDetails = await get(`${baseUrl}${params}`);
-    propDetails = propDetails.propositions
-      .filter((detail) => detail.type === 'sport')
-      .map((d, i) => ({
-        bet_type: d.type,
-        bet_option: d.market?.betOption,
-        market_name: d.market?.name,
-        market_unique_id: `${d.market?.marketUniqueId}${i}`,
-        market_close_time: d.market?.closeTime,
-        sport_name: d.sport?.name,
-        sport_id: d.sport?.id,
-        match_id: d.match?.id,
-        match_name: d.match?.name,
-        match_start_time: d.match?.startTime,
-        competition_id: d.competition?.id,
-        competition_name: d.competition?.name,
-        tournament_name: d?.tournament?.name,
-        tournament_id: d.tournament?.id,
-        proposition: {
-          name: d.propositionDetails?.name,
-          id: d.propositionNumber,
-          returnWin: d.propositionDetails?.returnWin,
-          returnPlace: d.propositionDetails?.returnPlace,
-          differential: d.propositionDetails?.differential,
-          bettingStatus: d.propositionDetails?.bettingStatus,
-          allowPlace: d.propositionDetails?.allowPlace,
-          isOpen: d.propositionDetails?.isOpen,
-          number: d.propositionDetails?.number,
-        },
-      }));
-    propDetails.forEach((det) => {
-      const existingProp = props.find(
-        (p) => Number(p.id) === det.proposition.id
-      );
+    propDetails = propDetails.propositions.filter(detail => detail.type === 'sport').map((d, i) => ({
+      bet_type: d.type,
+      bet_option: d.market?.betOption,
+      market_name: d.market?.name,
+      market_unique_id: `${d.market?.marketUniqueId}${i}`,
+      market_close_time: d.market?.closeTime,
+      sport_name: d.sport?.name,
+      sport_id: d.sport?.id,
+      match_id: d.match?.id,
+      match_name: d.match?.name,
+      match_start_time: d.match?.startTime,
+      competition_id: d.competition?.id,
+      competition_name: d.competition?.name,
+      tournament_name: d?.tournament?.name,
+      tournament_id: d.tournament?.id,
+      proposition: {
+        name: d.propositionDetails?.name,
+        id: d.propositionNumber,
+        returnWin: d.propositionDetails?.returnWin,
+        returnPlace: d.propositionDetails?.returnPlace,
+        differential: d.propositionDetails?.differential,
+        bettingStatus: d.propositionDetails?.bettingStatus,
+        allowPlace: d.propositionDetails?.allowPlace,
+        isOpen: d.propositionDetails?.isOpen,
+        number: d.propositionDetails?.number
+      },
+      contestants: d.match.contestants.reduce((acc, curr) => {
+        const { image } = (curr.images || []).find(i => i.size === 'svg');
+        delete curr.images;
+        acc.push({
+          ...curr, ...{ image }
+        })
+      }, [])
+    }));
+    propDetails.forEach(det => {
+      const existingProp = props.find(p => Number(p.id) === det.proposition.id);
       if (existingProp) det.price = existingProp.price;
     });
   } catch (e) {
@@ -279,38 +283,163 @@ const getHeatMapData = async ({
   return heatMapFormatter(response);
 };
 
+const getVersusMapData = async ({
+  sportName,
+  competitionName,
+  tournamentName,
+  matchName,
+  radius = DEFAULT_RADIUS,
+  longitude = DEFAULT_LONGITUDE,
+  latitude = DEFAULT_LATITUDE
+}) => {
+  let response = [];
+  try {
+    log.info('Fetching versus map data');
+    const findOptions = {
+      sport_name: sportName,
+      competition_name: competitionName,
+      tournament_name: tournamentName,
+      match_name: matchName,
+    };
+
+    Object.keys(findOptions).forEach(
+      (k) => !findOptions[k] && delete findOptions[k]
+    );
+
+    response = await PropositionModel.aggregate([
+      {
+        $lookup: {
+          from: 'bets',
+          let: { betId: "$bet" },
+          pipeline: [
+            {
+              $geoNear: {
+                near: {
+                  type: "Point",
+                  coordinates: [Number(longitude), Number(latitude)]
+                },
+                distanceField: "distance",
+                maxDistance: radius,
+                query: {
+                  $expr: {
+                    $eq: ["$_id", "$$betId"]
+                  }
+                }
+              }
+            }
+          ],
+          as: 'betInfo'
+        }
+      },
+      {
+        $replaceRoot: { newRoot: { $mergeObjects: [{ $arrayElemAt: ["$betInfo", 0] }, "$$ROOT"] } }
+      },
+      { $project: { betInfo: 0 } },
+      {
+        $match: { account_number: { $ne: null }, ...findOptions }
+      },
+      {
+        $unwind: "$contestants",
+      },
+      {
+        $addFields: { result: { $regexMatch: { input: "$proposition.name", regex: '$contestants.name', options: "i" } } }
+      },
+      {
+        $group: {
+          _id: {
+            'teamName': '$contestants.name',
+            'imageUrl': '$contestants.image',
+            'result': '$result'
+          },
+          props: {
+            $push: '$$ROOT'
+          },
+        }
+      },
+      {
+        $project: {
+          _id: 0,
+          teamName: '$_id.teamName',
+          icon: {
+            imageUrl: '$_id.imageUrl'
+          },
+          props: {
+            $filter: {
+              input: "$props",
+              as: "prop",
+              cond: { $eq: ["$$prop.result", true] }
+            }
+          },
+        }
+      },
+      {
+        $project: {
+          teamName: 1,
+          icon: 1,
+          props: 1,
+          count: {
+            $size: '$props'
+          }
+        }
+      }
+    ]);
+
+    return versusMapFormatter({ response, sportName, competitionName, matchName });
+  } catch (e) {
+    response = [];
+    log.error(e, 'Error while fetching versus map data');
+  }
+  return versusMapFormatter({ response, sportName, competitionName, matchName });
+};
+
+
 const getBetsDistribution = async ({ query, params }) => {
   const { sportName, competitionName, tournamentName, matchName } = params;
   const { sort, radius, longitude, latitude } = query;
+  try {
+    const liveBets = await getLiveBetsFromRedis({
+      sportName,
+      competitionName,
+      tournamentName,
+      matchName,
+    });
+    const bigBets = await getBigBets({
+      sportName,
+      competitionName,
+      tournamentName,
+      matchName,
+      sort,
+    });
+    const heatMap = await getHeatMapData({
+      sportName,
+      competitionName,
+      tournamentName,
+      matchName,
+      radius,
+      longitude,
+      latitude,
+    });
 
-  const liveBets = await getLiveBetsFromRedis({
-    sportName,
-    competitionName,
-    tournamentName,
-    matchName,
-  });
-  const bigBets = await getBigBets({
-    sportName,
-    competitionName,
-    tournamentName,
-    matchName,
-    sort,
-  });
-  const heatMap = await getHeatMapData({
-    sportName,
-    competitionName,
-    tournamentName,
-    matchName,
-    radius,
-    longitude,
-    latitude,
-  });
-  const response = formatBetDistribution({
-    liveBets,
-    bigBets,
-    heatMap,
-  });
-  return response;
+    let versusMap;
+    if (sportName & matchName) {
+      versusMap = await getVersusMapData({
+        sportName,
+        competitionName,
+        tournamentName,
+        matchName
+      });
+    }
+
+    const response = formatBetDistribution({
+      liveBets,
+      bigBets,
+      heatMap,
+      versusMap
+    });
+    return response;
+  } catch (err) {
+    log.info(err, 'Controller error: ')
+  }
 };
 
 const mostBetsPlacedPerVenue = async (

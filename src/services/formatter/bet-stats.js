@@ -13,7 +13,11 @@ const liveBetsFormatter = ({
 				matchStartTime: b.match_start_time,
 				marketName: b.market_name,
 				betOption: b.bet_option,
-				proposition: b.proposition,
+				proposition: { ...b.proposition, ...{ id: b.proposition.id.toString() } },
+				icon: {
+					imageUrl: (b.contestants.find(i => b.proposition.name.match(i.name)) || {}).image,
+					hexCode: '#E92912'
+				}
 			}
 		}
 	)).splice(0, count);
@@ -22,13 +26,13 @@ const liveBetsFormatter = ({
 
 const heatMapFormatter = (bets) => {
 	let formattedData;
-	formattedData = bets.reduce((acc,currBet) => {
-		const key = `${currBet?._doc?.sport_name}:${currBet?._doc?.match_name}:${currBet?._doc?.market_name}`;
-		if(acc[key] && currBet?._doc?.bet){
+	formattedData = bets.reduce((acc, currBet) => {
+		const key = `${currBet?._doc?.sport_name}:${currBet?._doc?.competition_name}:${currBet?._doc?.match_name}`;
+		if (acc[key] && currBet?._doc?.bet) {
 			acc[key]['coordinates'].push({
 				longitude: currBet?._doc?.bet?.location?.coordinates[0],
 				latitude: currBet?._doc?.bet?.location?.coordinates[1]
-			})
+			});
 		} else {
 			acc[key] = {
 				sportName: currBet?._doc?.sport_name,
@@ -43,6 +47,23 @@ const heatMapFormatter = (bets) => {
 		return acc;
 	}, {});
 	return Object.values(formattedData);
+};
+
+const versusMapFormatter = (versusData = {}) => {
+	let { response: teamInfo, sportName, matchName, competitionName } = versusData
+	const DEFAULT_HEX_CODES = ['#24C4F0', '#E92912'];
+
+	teamInfo = (teamInfo || []).map((item, i) => {
+		item.coordinates = item.props.map(prop => ({ longitude: prop.location.coordinates[0], latitude: prop.location.coordinates[1] }));
+		delete item.props;
+		item.icon.hexCode = DEFAULT_HEX_CODES[Math.round(Math.random())];
+		return item;
+	});
+	const formattedData = {
+		sportName, matchName, competitionName,
+		teams: teamInfo
+	}
+	return formattedData;
 };
 // Formatting bets for bulk insertion
 const inputBetsFormatter = (bets) => {
@@ -84,10 +105,11 @@ const bigBetsFormatter = (bets) => {
 const formatBetDistribution = ({
 	liveBets,
 	bigBets,
-	heatMap
+	heatMap,
+	versusMap
 }) => {
 	const formattedResponse = {
-    type: "app.bets.distribution",
+		type: "app.bets.distribution",
 		data: [
 			{
 				type: "app.bets.distribution.liveBets",
@@ -101,6 +123,12 @@ const formatBetDistribution = ({
 				type: "app.bets.distribution.heatMap",
 				data: heatMap
 			},
+			...(
+				versusMap && versusMap.length ? [{
+					type: 'app.bets.distribution.versusMap',
+					data: versusMap,
+				}] : []
+			)
 		]
 	};
 	return formattedResponse;
@@ -112,4 +140,5 @@ module.exports = {
 	formatBetDistribution,
 	heatMapFormatter,
 	bigBetsFormatter,
+	versusMapFormatter
 };
