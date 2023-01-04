@@ -3,6 +3,7 @@ const liveBetsFormatter = ({
 }) => {
 	const formattedData = bets.map(b => (
 		{
+			new: b.new,
 			betType: b.bet_type,
 			betAmount: b.bet_amount,
 			betDetails: {
