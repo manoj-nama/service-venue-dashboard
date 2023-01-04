@@ -1,11 +1,8 @@
-const regex = require('strummer/lib/matchers/regex');
-
 const UserModel = require('../models/users');
 const { inputUserVenueFormatter } = require('./formatter/user-venue');
 
 module.exports.getActiveUsersCount = async () => {
-  const activeUsers = await UserModel.find({ currentState: 1 }).count();
-  return activeUsers;
+  return await UserModel.find({ currentState: 1 }).count();
 };
 
 module.exports.createUser = async (userData) => {
@@ -15,8 +12,7 @@ module.exports.createUser = async (userData) => {
     const promise = await makeUser(formattedUsersData[i]);
     promises.push(promise);
   }
-  const result = await Promise.all(promises);
-  return result;
+  return await Promise.all(promises);
 };
 
 const makeUser = async (userData) => {
@@ -30,15 +26,15 @@ const makeUser = async (userData) => {
   }
 
   const updatedUser = await UserModel.updateOne({ accountNumber: userData.accountNumber },
-    {
-      $set:
-            userData,
-    }, { new: true });
+    { $set: userData }, { new: true });
 
   return updatedUser;
 };
 
-module.exports.getMostActiveUser = async (limit, skip, searchText) => {
+module.exports.getMostActiveUser = async (limit, page) => {
+  limit = limit * 1 || 1000;
+  page = page * 1 || 1;
+  const skip = (page - 1) * limit;
   const ActiveUserInVenue = await UserModel.aggregate([
     {
       $match: {
@@ -89,15 +85,14 @@ module.exports.getMostActiveUser = async (limit, skip, searchText) => {
   return ActiveUserInVenue;
 };
 
-module.exports.searchMostActiveUser = async (text) => {
-  text = text || '.';
+module.exports.searchMostActiveUser = async (text='.') => {
   const ActiveUserInVenue = await UserModel.aggregate([
     {
       $match: {
         currentState: 1,
         $or: [{ venueType: { $regex: new RegExp(text, 'i') } },
-          { venueState: { $regex: new RegExp(text, 'i') } },
-          { venueName: { $regex: new RegExp(text, 'i') } }],
+        { venueState: { $regex: new RegExp(text, 'i') } },
+        { venueName: { $regex: new RegExp(text, 'i') } }],
       },
     }, {
       $group: {

@@ -97,7 +97,7 @@ const getPropDetails = async (props) => {
         isOpen: d.propositionDetails?.isOpen,
         number: d.propositionDetails?.number
       },
-      contestants: contestants.map((item,i) => {              // TODO : Remove contestants and use api returned contestants
+      contestants: contestants.map((item, i) => {              // TODO : Remove contestants and use api returned contestants
         return {
           imageUrl: item?.image[0]?.url, ...item
         };
@@ -558,10 +558,15 @@ const getBetsDistribution = async ({ query, params }) => {
 
 const mostBetsPlacedPerVenue = async (
   limit,
-  skip,
+  page,
   fromDateUTC,
   toDateUTC
 ) => {
+  fromDateUTC = fromDateUTC * 1 || 0,
+  toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
+  limit = limit * 1 || 1000;
+  page = page * 1 || 1;
+  const skip = (page - 1) * limit;
   let pipeline = [
     {
       $match: {
@@ -616,12 +621,10 @@ const mostBetsPlacedPerVenue = async (
       $limit: limit,
     },
   ];
-  const result = await BetModel.aggregate(pipeline);
-  return result;
+  return BetModel.aggregate(pipeline);
 };
 
-const searchMostBetsPlacedPerVenue = async (text) => {
-  text = text || '.';
+const searchMostBetsPlacedPerVenue = async (text='.') => {
   let pipeline = [
     {
       $match: {
@@ -669,16 +672,20 @@ const searchMostBetsPlacedPerVenue = async (text) => {
       },
     },
   ];
-  const result = await BetModel.aggregate(pipeline);
-  return result;
+  return BetModel.aggregate(pipeline);
 };
 
 const mostAmountSpentPerVenue = async (
   limit,
-  skip,
+  page,
   fromDateUTC,
   toDateUTC
 ) => {
+  fromDateUTC = fromDateUTC * 1 || 0,
+  toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
+  limit = limit * 1 || 1000;
+  page = page * 1 || 1;
+  const skip = (page - 1) * limit;
   let pipeline = [
     {
       $match: {
@@ -733,12 +740,10 @@ const mostAmountSpentPerVenue = async (
       $limit: limit,
     },
   ];
-  const result = await BetModel.aggregate(pipeline);
-  return result;
+  return BetModel.aggregate(pipeline);
 };
 
-const searchMostAmountSpentPerVenue = async (text) => {
-  text = text || '.';
+const searchMostAmountSpentPerVenue = async (text='.') => {
   let pipeline = [
     {
       $match: {
@@ -786,8 +791,7 @@ const searchMostAmountSpentPerVenue = async (text) => {
       },
     },
   ];
-  const result = await BetModel.aggregate(pipeline);
-  return result;
+  return BetModel.aggregate(pipeline);
 };
 
 module.exports = {

@@ -1,6 +1,6 @@
 const { BatchMessageHandler } = require("@tabdigital/kafka-tcp-client");
 
-const { createBets } = require('../../services/bet-stats');
+const { createBets } = require('../../services/bet-stats-service');
 const log = require('../../log');
 
 const checkBetType = (message) => {
