@@ -24,16 +24,19 @@ const requiredValuesFilter = (message) => {
 };
 
 module.exports = async (messages) => {
-  log.info(
-    `PopularBetsMessageHandler :: Received ${messages.length} raw message(s).`
-  );
-  const vindicatedMessages = messages.filter(requiredValuesFilter);
-  if (vindicatedMessages.length < 1) {
+  try {
     log.info(
-      `Exiting PopularBetsMessageHandler. No message passed requiredValuesFilter.`
+      `PopularBetsMessageHandler :: Received ${messages.length} raw message(s).`
     );
-    return;
+    const vindicatedMessages = messages.filter(requiredValuesFilter);
+    if (vindicatedMessages.length < 1) {
+      log.info(
+        `Exiting PopularBetsMessageHandler. No message passed requiredValuesFilter.`
+      );
+      return;
+    }
+    await createBets(vindicatedMessages);
+  } catch (e) {
+    log.error(e, 'Error in bet message handler - kafka');
   }
-  await createBets(vindicatedMessages);
-  
 }
