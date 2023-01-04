@@ -1,51 +1,69 @@
-const liveBetsFormatter = ({ bets, count }) => {
-  const formattedData = bets
-    .map((b) => ({
-      isNew: b?.new ? true : false,
-      betType: b.bet_type,
-      betAmount: b.bet_amount,
-      betDetails: {
-        sportName: b.sport_name,
-        competitionName: b.competition_name,
-        tournamentName: b.tournament_name,
-        matchName: b.match_name,
-        matchStartTime: b.match_start_time,
-        marketName: b.market_name,
-        betOption: b.bet_option,
-        proposition: b.proposition,
-      },
-    }))
-    .splice(0, count);
-  return formattedData;
+const liveBetsFormatter = ({
+	bets, count
+}) => {
+	const formattedData = bets.map(b => (
+		{
+			betType: b.bet_type,
+			betAmount: b.bet_amount,
+			betDetails: {
+				sportName: b.sport_name,
+				competitionName: b.competition_name,
+				tournamentName: b.tournament_name,
+				matchName: b.match_name,
+				matchStartTime: b.match_start_time,
+				marketName: b.market_name,
+				betOption: b.bet_option,
+				proposition: { ...b.proposition, ...{ id: b.proposition.id.toString() } },
+				icon: {
+					imageUrl: (b.contestants.find(i => b.proposition.name.match(i.name)) || {}).image,
+					hexCode: '#E92912'
+				}
+			}
+		}
+	)).splice(0, count);
+	return formattedData;
 };
 
 const heatMapFormatter = (bets) => {
-  let formattedData;
-  formattedData = bets.reduce((acc, currBet) => {
-    const key = `${currBet?._doc?.sport_name}:${currBet?._doc?.match_name}:${currBet?._doc?.market_name}`;
-    if (acc[key] && currBet?._doc?.bet) {
-      acc[key]['coordinates'].push({
-        longitude: currBet?._doc?.bet?.location?.coordinates[0],
-        latitude: currBet?._doc?.bet?.location?.coordinates[1],
-      });
-    } else {
-      acc[key] = {
-        sportName: currBet?._doc?.sport_name,
-        matchName: currBet?._doc?.match_name,
-        marketName: currBet?._doc?.market_name,
-        coordinates: currBet?._doc?.bet
-          ? [
-              {
-                longitude: currBet?._doc?.bet?.location?.coordinates[0],
-                latitude: currBet?._doc?.bet?.location?.coordinates[1],
-              },
-            ]
-          : [],
-      };
-    }
-    return acc;
-  }, {});
-  return Object.values(formattedData);
+	let formattedData;
+	formattedData = bets.reduce((acc, currBet) => {
+		const key = `${currBet?._doc?.sport_name}:${currBet?._doc?.competition_name}:${currBet?._doc?.match_name}`;
+		if (acc[key] && currBet?._doc?.bet) {
+			acc[key]['coordinates'].push({
+				longitude: currBet?._doc?.bet?.location?.coordinates[0],
+				latitude: currBet?._doc?.bet?.location?.coordinates[1]
+			});
+		} else {
+			acc[key] = {
+				sportName: currBet?._doc?.sport_name,
+				matchName: currBet?._doc?.match_name,
+				marketName: currBet?._doc?.market_name,
+				coordinates: currBet?._doc?.bet ? [{
+					longitude: currBet?._doc?.bet?.location?.coordinates[0],
+					latitude: currBet?._doc?.bet?.location?.coordinates[1]
+				}] : [],
+			}
+		}
+		return acc;
+	}, {});
+	return Object.values(formattedData);
+};
+
+const versusMapFormatter = (versusData = {}) => {
+	let { response: teamInfo, sportName, matchName, competitionName } = versusData
+	const DEFAULT_HEX_CODES = ['#24C4F0', '#E92912'];
+
+	teamInfo = (teamInfo || []).map((item, i) => {
+		item.coordinates = item.props.map(prop => ({ longitude: prop.location.coordinates[0], latitude: prop.location.coordinates[1] }));
+		delete item.props;
+		item.icon.hexCode = DEFAULT_HEX_CODES[Math.round(Math.random())];
+		return item;
+	});
+	const formattedData = {
+		sportName, matchName, competitionName,
+		teams: teamInfo
+	}
+	return formattedData;
 };
 // Formatting bets for bulk insertion
 const inputBetsFormatter = (bets) => {
@@ -86,31 +104,43 @@ const bigBetsFormatter = (bets) => {
   return formattedResponse;
 };
 
-const formatBetDistribution = ({ liveBets, bigBets, heatMap }) => {
-  const formattedResponse = {
-    type: 'app.bets.distribution',
-    data: [
-      {
-        type: 'app.bets.distribution.liveBets',
-        data: liveBets,
-      },
-      {
-        type: 'app.bets.distribution.bigBets',
-        data: bigBets,
-      },
-      {
-        type: 'app.bets.distribution.heatMap',
-        data: heatMap,
-      },
-    ],
-  };
-  return formattedResponse;
+const formatBetDistribution = ({
+	liveBets,
+	bigBets,
+	heatMap,
+	versusMap
+}) => {
+	const formattedResponse = {
+		type: "app.bets.distribution",
+		data: [
+			{
+				type: "app.bets.distribution.liveBets",
+				data: liveBets
+			},
+			{
+				type: "app.bets.distribution.bigBets",
+				data: bigBets
+			},
+			{
+				type: "app.bets.distribution.heatMap",
+				data: heatMap
+			},
+			...(
+				versusMap && versusMap.length ? [{
+					type: 'app.bets.distribution.versusMap',
+					data: versusMap,
+				}] : []
+			)
+		]
+	};
+	return formattedResponse;
 };
 
 module.exports = {
-  liveBetsFormatter,
-  inputBetsFormatter,
-  formatBetDistribution,
-  heatMapFormatter,
-  bigBetsFormatter,
+	liveBetsFormatter,
+	inputBetsFormatter,
+	formatBetDistribution,
+	heatMapFormatter,
+	bigBetsFormatter,
+	versusMapFormatter
 };
