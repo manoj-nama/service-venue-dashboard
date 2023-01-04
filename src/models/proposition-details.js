@@ -32,6 +32,14 @@ const propositionSchema = new mongoose.Schema(
       number: Number,
       isOpen: Boolean,
     },
+    contestants: [
+      {
+        isHome: Boolean,
+        position: String,
+        name: String,
+        image: String,
+      },
+    ],
   },
   { timestamps: true },
 );
