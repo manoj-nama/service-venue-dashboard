@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 
-const signupSchema = new mongoose.Schema({
+const adminSchema = new mongoose.Schema({
     userName: {
         type: String,
         required: true,
@@ -21,10 +21,10 @@ const signupSchema = new mongoose.Schema({
     }
 })
 
-signupSchema.methods.generateAuthToken = function(){
+adminSchema.methods.generateAuthToken = function(){
     const token = jwt.sign({ _id:this._id,isAdmin:this.isAdmin },'jwtPrivateKey');
     return token;
 }
 
-module.exports = mongoose.model('signUp',signupSchema);
+module.exports = mongoose.model('admin',adminSchema);
 
