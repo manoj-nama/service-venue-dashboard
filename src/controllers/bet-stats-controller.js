@@ -1,5 +1,10 @@
 const betStatsService = require('../services/bet-stats');
 
+const createBet = async (req, res) => {
+  const response = await betStatsService.createBetFromFE(req.body);
+  return res.send(200, response);
+};
+
 const getLiveBets = async (req, res) => {
   const response = await betStatsService.getLiveBetsFromRedis();
   return res.send(200, response);
@@ -90,6 +95,7 @@ const searchMostBetsPlacedPerVenue = async (req, res) => {
 };
 
 module.exports = {
+  createBet,
   getLiveBets,
   getBigBets,
   getHeatMapData,

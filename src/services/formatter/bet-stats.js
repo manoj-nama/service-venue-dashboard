@@ -27,7 +27,7 @@ const liveBetsFormatter = ({
 
 const heatMapFormatter = (bets) => {
 	let formattedData;
-	formattedData = bets.reduce((acc, currBet) => {
+	formattedData = bets.filter(b => b.bet).reduce((acc, currBet) => {
 		const key = `${currBet?._doc?.sport_name}:${currBet?._doc?.competition_name}:${currBet?._doc?.match_name}`;
 		if (acc[key] && currBet?._doc?.bet) {
 			acc[key]['coordinates'].push({

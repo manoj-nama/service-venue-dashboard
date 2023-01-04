@@ -1,6 +1,7 @@
 const Promise = require('bluebird');
 
 const { BetModel, UserModel, PropositionModel } = require('../models');
+const { makeUser } = require('./user-service');
 const redis = require('../redis');
 const {
   liveBetsFormatter,
@@ -16,20 +17,13 @@ const { ListFormat } = require('typescript');
 const config = require('../config');
 
 // TODO: Move to constants
-const DEFAULT_RADIUS = 10000000;
+const DEFAULT_RADIUS = 1000000000;
 const DEFAULT_LONGITUDE = '';
 const DEFAULT_LATITUDE = '';
 
 const getPropDetails = async (props) => {
   let propDetails = [];
   try {
-    log.info('Fetching prop details for', props);
-    const baseUrl =
-      'https://api.congo.beta.tab.com.au/v1/tab-info-service/search/proposition';
-    const params = `?jurisdiction=nsw&details=true&${props
-      .map((p) => `number=914396`) // TODO: Update prop id
-      .join('&')}`;
-
     const contestants = [
       {
         "name": "Sydney",
@@ -70,6 +64,12 @@ const getPropDetails = async (props) => {
         ]
       }
     ];
+    log.info('Fetching prop details for', props);
+    const baseUrl =
+      'https://api.congo.beta.tab.com.au/v1/tab-info-service/search/proposition';
+    const params = `?jurisdiction=nsw&details=true&${props
+      .map((p) => `number=${Number(p.id)}`)
+      .join('&')}`;
     propDetails = await get(`${baseUrl}${params}`);
     propDetails = propDetails.propositions.filter(detail => detail.type === 'sport').map((d, i) => ({
       bet_type: d.type,
@@ -183,6 +183,40 @@ const createBets = async (betDetails) => {
   return response;
 };
 
+const createBetFromFE = async ({ coordinates, accountNumber, customerNumber, bets, ticketCost }) => {
+  try {
+    log.info('Creating bet details via front-end');
+    const betsToBeCreated = bets.map(bet => {
+      const props = bet.legs.map(l => {
+        return {
+          id: `${l.propositionId}`,
+          price: Number(bet.betCost),
+        }
+      })
+      return {
+        account_number: accountNumber,
+        transaction_date_time: Date.now(bet.betSellTime),
+        location: {
+          type: 'Point',
+          coordinates,
+        },
+        price: Number(ticketCost),
+        bet_amount: ticketCost,
+        currency: 'AUD',
+        customer_number: customerNumber,
+        number_of_legs: bet.legs?.length,
+        propositions: props,
+      };
+    });
+    log.info(`Creating ${betsToBeCreated.length} bets`);
+    const betResponse = await BetModel.insertMany(betsToBeCreated);
+    await createPropDetailsForBet(betResponse);
+    log.info('Bets created');
+  } catch (e) {
+    log.error(e, 'Error while creating bet from front end')
+  }
+};
+
 const getBetsUsingCount = async (count) => {
   const bets = PropositionModel.find().sort({ createdAt: -1 }).limit(count);
   return bets;
@@ -288,7 +322,7 @@ const getBigBets = async ({
       {
         $group: {
           _id: '$market_unique_id',
-          total_bet_amount: { $sum: 'price' },
+          total_bet_amount: { $sum: '$price' },
           count: { $sum: 1 },
           sport_name: { $first: '$sport_name' },
           match_name: { $first: '$match_name' },
@@ -468,7 +502,6 @@ const getVersusMapData = async ({
   }
   return versusMapFormatter({ response, sportName, competitionName, matchName });
 };
-
 
 const getBetsDistribution = async ({ query, params }) => {
   const { sportName, competitionName, tournamentName, matchName } = params;
@@ -758,6 +791,7 @@ const searchMostAmountSpentPerVenue = async (text) => {
 
 module.exports = {
   createBets,
+  createBetFromFE,
   getBetsUsingCount,
   getLiveBetsFromRedis,
   getBetsDistribution,
