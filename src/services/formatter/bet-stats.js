@@ -16,7 +16,7 @@ const liveBetsFormatter = ({
 				proposition: { ...b.proposition, ...{ id: b.proposition.id.toString() } },
 				icon: {
 					imageUrl: (b.contestants.find(i => b.proposition.name.match(i.name)) || {}).image,
-					hexCode: 'E92912'
+					hexCode: '#E92912'
 				}
 			}
 		}
