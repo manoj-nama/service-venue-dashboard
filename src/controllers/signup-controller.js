@@ -21,7 +21,7 @@ module.exports.loginUser = async (req,res) => {
     try{
         const result = await loginUser(req.body);
         res.header('x-auth-token',result.token);
-        return res.send(200, { message: 'Login Successful', data: result.data });
+        return res.send(200, { message: 'Login Successful', token: result.token });
     }
     catch(error){
         console.log(' Error : ', error);
