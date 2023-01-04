@@ -317,8 +317,7 @@ const mostBetsPlacedPerVenue = async (
   limit,
   skip,
   fromDateUTC,
-  toDateUTC,
-  searchText
+  toDateUTC
 ) => {
   let pipeline = [
     {
@@ -378,12 +377,64 @@ const mostBetsPlacedPerVenue = async (
   return result;
 };
 
+const searchMostBetsPlacedPerVenue = async (text) => {
+  text = text || '.';
+  let pipeline = [
+    {
+      $match: {
+        venueId: {
+          $ne: null,
+        },
+        $or: [{ venueType: { $regex: new RegExp(text, 'i') } },
+        { venueState: { $regex: new RegExp(text, 'i') } },
+        { venueName: { $regex: new RegExp(text, 'i') } }],
+      },
+    },
+    {
+      $group: {
+        _id: '$venueId',
+        bets: {
+          $push: '$$ROOT',
+        },
+        frequency_of_bets: {
+          $sum: 1,
+        },
+      },
+    },
+    {
+      $project: {
+        location: {
+          $arrayElemAt: ['$bets', 0],
+        },
+        frequency_of_bets: 1,
+      },
+    },
+    {
+      $project: {
+        venueName: '$location.venueName',
+        venueId: '$location.venueId',
+        venueState: '$location.venueState',
+        venueType: '$location.venueType',
+        frequency_of_bets: 1,
+        _id: 0,
+      },
+    },
+    {
+      $sort: {
+        frequency_of_bets: -1,
+        venueName: 1,
+      },
+    },
+  ];
+  const result = await BetModel.aggregate(pipeline);
+  return result;
+};
+
 const mostAmountSpentPerVenue = async (
   limit,
   skip,
   fromDateUTC,
-  toDateUTC,
-  searchText
+  toDateUTC
 ) => {
   let pipeline = [
     {
@@ -443,6 +494,59 @@ const mostAmountSpentPerVenue = async (
   return result;
 };
 
+const searchMostAmountSpentPerVenue = async (text) => {
+  text = text || '.';
+  let pipeline = [
+    {
+      $match: {
+        venueId: {
+          $ne: null,
+        },
+        $or: [{ venueType: { $regex: new RegExp(text, 'i') } },
+        { venueState: { $regex: new RegExp(text, 'i') } },
+        { venueName: { $regex: new RegExp(text, 'i') } }],
+      },
+    },
+    {
+      $group: {
+        _id: '$venueId',
+        bets: {
+          $push: '$$ROOT',
+        },
+        frequency_of_total_amount_spent: {
+          $sum: '$price',
+        },
+      },
+    },
+    {
+      $project: {
+        location: {
+          $arrayElemAt: ['$bets', 0],
+        },
+        frequency_of_total_amount_spent: 1,
+      },
+    },
+    {
+      $project: {
+        venueName: '$location.venueName',
+        venueId: '$location.venueId',
+        venueState: '$location.venueState',
+        venueType: '$location.venueType',
+        frequency_of_total_amount_spent: 1,
+        _id: 0,
+      },
+    },
+    {
+      $sort: {
+        frequency_of_total_amount_spent: -1,
+        venueName: 1,
+      },
+    },
+  ];
+  const result = await BetModel.aggregate(pipeline);
+  return result;
+};
+
 module.exports = {
   createBets,
   getBetsUsingCount,
@@ -450,4 +554,6 @@ module.exports = {
   getBetsDistribution,
   mostAmountSpentPerVenue,
   mostBetsPlacedPerVenue,
+  searchMostAmountSpentPerVenue,
+  searchMostBetsPlacedPerVenue
 };
