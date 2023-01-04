@@ -219,6 +219,10 @@ const getBigBets = async ({
 }) => {
   log.info('Fetching big bets');
   let response = [];
+  // default sort on totalBetAmount
+  let sortOptions = { totalBetAmount: -1 };
+  if (sort === 'count') sortOptions = { count: -1 };
+
   try {
     const findOptions = {
       sport_name: sportName,
@@ -236,6 +240,7 @@ const getBigBets = async ({
       {
         $group: {
           _id: '$market_unique_id',
+          total_bet_amount: { $sum: 'price' },
           count: { $sum: 1 },
           sport_name: { $first: '$sport_name' },
           match_name: { $first: '$match_name' },
@@ -246,7 +251,7 @@ const getBigBets = async ({
           market_unique_id: { $first: '$market_unique_id' },
         },
       },
-      { $sort: { count: -1 } },
+      { $sort: sortOptions },
     ]);
   } catch (e) {
     response = [];
