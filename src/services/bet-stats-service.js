@@ -436,38 +436,42 @@ const getVersusMapData = async ({
     Object.keys(findOptions).forEach(
       (k) => !findOptions[k] && delete findOptions[k]
     );
+    let nearByCordsBet = await BetModel.aggregate([
+      {
+        $geoNear: {
+          near: {
+            type: "Point",
+            coordinates: [Number(longitude), Number(latitude)]
+          },
+          distanceField: "distance",
+          maxDistance: radius,
+        }
+      },
+      {
+        $project: {
+          _id: 1
+        }
+      }
+    ]);
+
+    nearByCordsBet = nearByCordsBet.map(i => i._id);
 
     response = await PropositionModel.aggregate([
       {
-        $lookup: {
+        $lookup:
+        {
           from: 'bets',
-          let: { betId: "$bet" },
-          pipeline: [
-            {
-              $geoNear: {
-                near: {
-                  type: "Point",
-                  coordinates: [Number(longitude), Number(latitude)]
-                },
-                distanceField: "distance",
-                maxDistance: radius,
-                query: {
-                  $expr: {
-                    $eq: ["$_id", "$$betId"]
-                  }
-                }
-              }
-            }
-          ],
+          localField: 'bet',
+          foreignField: '_id',
           as: 'betInfo'
-        }
+        },
       },
       {
         $replaceRoot: { newRoot: { $mergeObjects: [{ $arrayElemAt: ["$betInfo", 0] }, "$$ROOT"] } }
       },
       { $project: { betInfo: 0 } },
       {
-        $match: { account_number: { $ne: null }, ...findOptions }
+        $match: { bet: { $in: nearByCordsBet },  account_number: { $ne: null }, ...findOptions }
       },
       {
         $unwind: {
