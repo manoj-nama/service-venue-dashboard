@@ -31,10 +31,11 @@ const makeUser = async (userData) => {
   return updatedUser;
 };
 
-module.exports.getMostActiveUser = async (limit, page) => {
+module.exports.getMostActiveUser = async (limit, page, sort) => {
   limit = limit * 1 || 1000;
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
+  sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
   const ActiveUserInVenue = await UserModel.aggregate([
     {
       $match: {
@@ -70,7 +71,7 @@ module.exports.getMostActiveUser = async (limit, page) => {
       },
     }, {
       $sort: {
-        active_users: -1,
+        active_users: sort,
         venueName: 1,
       },
     },

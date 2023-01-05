@@ -31,6 +31,7 @@ const getPropDetails = async (props) => {
       .map((p) => `number=${Number(p.id)}`)
       .join('&')}`;
 
+    // TODO: To be removed once correct data is there on env
     const contestants = [
       {
         "name": "Sydney",
@@ -99,6 +100,7 @@ const getPropDetails = async (props) => {
         number: d.propositionDetails?.number
       },
       contestants: (d?.match?.contestants || contestants).map((item, i) => {
+        // TODO: To be removed once correct data is there on env
         if (d.match?.contestants && !d.match?.contestants[0].image) {
           d.match.contestants[0].image = contestants[0].image;
           d.match.contestants[1].image = contestants[1].image;
@@ -195,34 +197,41 @@ const createBets = async (betDetails) => {
   return response;
 };
 
-const createBetFromFE = async ({ coordinates, accountNumber, customerNumber, bets, ticketCost, venueDetails = {} }) => {
+// TODO: To be removed once correct data is coming via kafka topic
+const createBetFromFE = async ({ data = [] }) => {
   try {
     log.info('Creating bet details via front-end');
-    const betsToBeCreated = bets.map(bet => {
-      const props = bet.legs.map(l => {
+    let totalBetsToBeCreated = [];
+    await Promise.map(data, async ({
+      coordinates, accountNumber, customerNumber, bets, ticketCost, venueDetails = {},
+    }) => {
+      const betsToBeCreated = bets.map(bet => {
+        const props = bet.legs.map(l => {
+          return {
+            id: `${l.propositionId}`,
+            price: Number(bet.betCost),
+          }
+        })
         return {
-          id: `${l.propositionId}`,
-          price: Number(bet.betCost),
-        }
-      })
-      return {
-        account_number: accountNumber,
-        transaction_date_time: Date.now(bet.betSellTime),
-        location: {
-          type: 'Point',
-          coordinates,
-        },
-        price: Number(ticketCost),
-        bet_amount: ticketCost,
-        currency: 'AUD',
-        customer_number: customerNumber,
-        number_of_legs: bet.legs?.length,
-        propositions: props,
-        ...venueDetails,
-      };
+          account_number: accountNumber,
+          transaction_date_time: Date.now(bet.betSellTime),
+          location: {
+            type: 'Point',
+            coordinates,
+          },
+          price: Number(ticketCost),
+          bet_amount: ticketCost,
+          currency: 'AUD',
+          customer_number: customerNumber,
+          number_of_legs: bet.legs?.length,
+          propositions: props,
+          ...venueDetails,
+        };
+      });
+      totalBetsToBeCreated.push(...betsToBeCreated);
     });
-    log.info(`Creating ${betsToBeCreated.length} bets`);
-    const betResponse = await BetModel.insertMany(betsToBeCreated);
+    log.info(`Creating ${totalBetsToBeCreated.length} bets`);
+    const betResponse = await BetModel.insertMany(totalBetsToBeCreated);
     await createPropDetailsForBet(betResponse);
     log.info('Bets created');
   } catch (e) {
@@ -427,38 +436,42 @@ const getVersusMapData = async ({
     Object.keys(findOptions).forEach(
       (k) => !findOptions[k] && delete findOptions[k]
     );
+    let nearByCordsBet = await BetModel.aggregate([
+      {
+        $geoNear: {
+          near: {
+            type: "Point",
+            coordinates: [Number(longitude), Number(latitude)]
+          },
+          distanceField: "distance",
+          maxDistance: radius,
+        }
+      },
+      {
+        $project: {
+          _id: 1
+        }
+      }
+    ]);
+
+    nearByCordsBet = nearByCordsBet.map(i => i._id);
 
     response = await PropositionModel.aggregate([
       {
-        $lookup: {
+        $lookup:
+        {
           from: 'bets',
-          let: { betId: "$bet" },
-          pipeline: [
-            {
-              $geoNear: {
-                near: {
-                  type: "Point",
-                  coordinates: [Number(longitude), Number(latitude)]
-                },
-                distanceField: "distance",
-                maxDistance: radius,
-                query: {
-                  $expr: {
-                    $eq: ["$_id", "$$betId"]
-                  }
-                }
-              }
-            }
-          ],
+          localField: 'bet',
+          foreignField: '_id',
           as: 'betInfo'
-        }
+        },
       },
       {
         $replaceRoot: { newRoot: { $mergeObjects: [{ $arrayElemAt: ["$betInfo", 0] }, "$$ROOT"] } }
       },
       { $project: { betInfo: 0 } },
       {
-        $match: { account_number: { $ne: null }, ...findOptions }
+        $match: { bet: { $in: nearByCordsBet },  account_number: { $ne: null }, ...findOptions }
       },
       {
         $unwind: {
@@ -581,13 +594,15 @@ const mostBetsPlacedPerVenue = async (
   limit,
   page,
   fromDateUTC,
-  toDateUTC
+  toDateUTC,
+  sort
 ) => {
   fromDateUTC = fromDateUTC * 1 || 0,
     toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
   limit = limit * 1 || 1000;
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
+  sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
   let pipeline = [
     {
       $match: {
@@ -631,7 +646,7 @@ const mostBetsPlacedPerVenue = async (
     },
     {
       $sort: {
-        frequency_of_bets: -1,
+        frequency_of_bets: sort,
         venueName: 1,
       },
     },
@@ -700,13 +715,15 @@ const mostAmountSpentPerVenue = async (
   limit,
   page,
   fromDateUTC,
-  toDateUTC
+  toDateUTC,
+  sort
 ) => {
   fromDateUTC = fromDateUTC * 1 || 0,
     toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
   limit = limit * 1 || 1000;
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
+  sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
   let pipeline = [
     {
       $match: {
@@ -750,7 +767,7 @@ const mostAmountSpentPerVenue = async (
     },
     {
       $sort: {
-        frequency_of_total_amount_spent: -1,
+        frequency_of_total_amount_spent: sort,
         venueName: 1,
       },
     },

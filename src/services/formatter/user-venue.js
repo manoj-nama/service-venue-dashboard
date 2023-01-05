@@ -1,5 +1,5 @@
 const inputUserVenueFormatter = (userVenues) => {
-	const formattedInput = userVenues.map(v => ({
+	const formattedInput = userVenues.map(({value:v}) => ({
 	    ...v.body,
 		venueId: v.body.venueId?.double,
         venueName: v.body.venueName?.string,
