@@ -2,6 +2,7 @@ const apiRouter = require('@tabdigital/connect-router');
 
 const betStatsController = require('../controllers/bet-stats-controller');
 const betStatsMiddleware = require('../middlewares/bet-stats-middleware');
+const { auth } = require('../middlewares/auth');
 
 const router = apiRouter();
 
@@ -12,6 +13,7 @@ router.post({
     path: '/v1/service-venue/bet-stats-fe',
   },
   handlers: [
+    auth,
     betStatsController.createBet,
   ],
 }),
@@ -23,6 +25,7 @@ router.get({
     path: '/v1/service-venue/bet-stats/live-bets-ticker',
   },
   handlers: [
+    auth,
     betStatsController.getLiveBets,
   ],
 });
@@ -34,6 +37,7 @@ router.get({
     path: '/v1/service-venue/bet-stats/big-bets',
   },
   handlers: [
+    auth,
     betStatsController.getBigBets,
   ],
 });
@@ -45,6 +49,7 @@ router.get({
     path: '/v1/service-venue/bet-stats/heat-map',
   },
   handlers: [
+    auth,
     betStatsController.getHeatMapData,
   ],
 });
@@ -60,6 +65,7 @@ router.get({
     },
   },
   handlers: [
+    auth,
     betStatsMiddleware.validateParam,
     betStatsController.getBetsDistribution,
   ],
@@ -76,6 +82,7 @@ router.get({
     },
   },
   handlers: [
+    auth,
     betStatsMiddleware.validateParam,
     betStatsController.getBetsDistribution,
   ],
@@ -92,6 +99,7 @@ router.get({
     },
   },
   handlers: [
+    auth,
     betStatsMiddleware.validateParam,
     betStatsController.getBetsDistribution,
   ],
@@ -102,7 +110,7 @@ router.post({
     name: 'add-transactions',
     path: '/v1/service-venue/bet-stats',
   },
-  handlers: [betStatsController.addBetDetails],
+  handlers: [auth,betStatsController.addBetDetails],
 });
 
 router.get({
@@ -110,7 +118,7 @@ router.get({
     name: 'bets-placed-per-venue',
     path: '/v1/service-venue/bet-stats/bets-placed',
   },
-  handlers: [betStatsController.mostBetsPlacedPerVenue],
+  handlers: [auth,betStatsController.mostBetsPlacedPerVenue],
 });
 
 router.get({
@@ -118,7 +126,7 @@ router.get({
     name: 'amount-spent-per-venue',
     path: '/v1/service-venue/bet-stats/amount-spent',
   },
-  handlers: [betStatsController.mostAmountSpentPerVenue],
+  handlers: [auth,betStatsController.mostAmountSpentPerVenue],
 });
 
 router.get({
@@ -126,7 +134,7 @@ router.get({
     name: 'search-most-amount-spent-per-venue',
     path: '/v1/service-venue/bet-stats/amount-spent/search',
   },
-  handlers: [betStatsController.searchMostAmountSpentPerVenue],
+  handlers: [auth,betStatsController.searchMostAmountSpentPerVenue],
 });
 
 router.get({
@@ -134,7 +142,7 @@ router.get({
     name: 'search-most-bets-placed-per-venue',
     path: '/v1/service-venue/bet-stats/bets-placed/search',
   },
-  handlers: [betStatsController.searchMostBetsPlacedPerVenue],
+  handlers: [auth,betStatsController.searchMostBetsPlacedPerVenue],
 });
 
 module.exports = router;
