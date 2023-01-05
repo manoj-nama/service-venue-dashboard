@@ -525,13 +525,15 @@ const mostBetsPlacedPerVenue = async (
   limit,
   page,
   fromDateUTC,
-  toDateUTC
+  toDateUTC,
+  sort
 ) => {
   fromDateUTC = fromDateUTC * 1 || 0,
   toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
   limit = limit * 1 || 1000;
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
+  sort = sort === 'asc' ? 1 : -1;
   let pipeline = [
     {
       $match: {
@@ -575,7 +577,7 @@ const mostBetsPlacedPerVenue = async (
     },
     {
       $sort: {
-        frequency_of_bets: -1,
+        frequency_of_bets: sort,
         venueName: 1,
       },
     },
@@ -644,13 +646,14 @@ const mostAmountSpentPerVenue = async (
   limit,
   page,
   fromDateUTC,
-  toDateUTC
+  toDateUTC, sort
 ) => {
   fromDateUTC = fromDateUTC * 1 || 0,
   toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
   limit = limit * 1 || 1000;
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
+  sort = sort === 'asc' ? 1 : -1
   let pipeline = [
     {
       $match: {
@@ -694,7 +697,7 @@ const mostAmountSpentPerVenue = async (
     },
     {
       $sort: {
-        frequency_of_total_amount_spent: -1,
+        frequency_of_total_amount_spent: sort,
         venueName: 1,
       },
     },

@@ -17,8 +17,8 @@ module.exports.createUser = async (req, res) => {
 
 module.exports.getMostActiveUser = async (req, res) => {
   try {
-    const { limit, page } = req.query
-    const data = await getMostActiveUser(limit, page);
+    const { limit, page, sort } = req.query
+    const data = await getMostActiveUser(limit, page, sort);
     return res.send(200, { active_users: data });
   } catch (err) {
     throw err
