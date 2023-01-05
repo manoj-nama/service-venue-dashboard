@@ -103,7 +103,7 @@ router.post({
     name: 'add-transactions',
     path: '/v1/service-venue/bet-stats',
   },
-  handlers: [auth,betStatsController.addBetDetails],
+  handlers: [betStatsController.addBetDetails],
 });
 
 router.get({
