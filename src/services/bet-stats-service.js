@@ -195,34 +195,40 @@ const createBets = async (betDetails) => {
   return response;
 };
 
-const createBetFromFE = async ({ coordinates, accountNumber, customerNumber, bets, ticketCost, venueDetails = {} }) => {
+const createBetFromFE = async ({ data = [] }) => {
   try {
     log.info('Creating bet details via front-end');
-    const betsToBeCreated = bets.map(bet => {
-      const props = bet.legs.map(l => {
+    let totalBetsToBeCreated = [];
+    await Promise.map(data, async ({
+      coordinates, accountNumber, customerNumber, bets, ticketCost, venueDetails = {},
+    }) => {
+      const betsToBeCreated = bets.map(bet => {
+        const props = bet.legs.map(l => {
+          return {
+            id: `${l.propositionId}`,
+            price: Number(bet.betCost),
+          }
+        })
         return {
-          id: `${l.propositionId}`,
-          price: Number(bet.betCost),
-        }
-      })
-      return {
-        account_number: accountNumber,
-        transaction_date_time: Date.now(bet.betSellTime),
-        location: {
-          type: 'Point',
-          coordinates,
-        },
-        price: Number(ticketCost),
-        bet_amount: ticketCost,
-        currency: 'AUD',
-        customer_number: customerNumber,
-        number_of_legs: bet.legs?.length,
-        propositions: props,
-        ...venueDetails,
-      };
+          account_number: accountNumber,
+          transaction_date_time: Date.now(bet.betSellTime),
+          location: {
+            type: 'Point',
+            coordinates,
+          },
+          price: Number(ticketCost),
+          bet_amount: ticketCost,
+          currency: 'AUD',
+          customer_number: customerNumber,
+          number_of_legs: bet.legs?.length,
+          propositions: props,
+          ...venueDetails,
+        };
+      });
+      totalBetsToBeCreated.push(...betsToBeCreated);
     });
-    log.info(`Creating ${betsToBeCreated.length} bets`);
-    const betResponse = await BetModel.insertMany(betsToBeCreated);
+    log.info(`Creating ${totalBetsToBeCreated.length} bets`);
+    const betResponse = await BetModel.insertMany(totalBetsToBeCreated);
     await createPropDetailsForBet(betResponse);
     log.info('Bets created');
   } catch (e) {
