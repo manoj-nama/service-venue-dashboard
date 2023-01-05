@@ -6,7 +6,7 @@ const Scheduler = require('@tabdigital/scheduler');
 
 const config = require('../config');
 const log = require('../log');
-const { getBetsUsingCount } = require('../services/bet-stats');
+const { getBetsUsingCount } = require('../services/bet-stats-service');
 const redis = require('../redis');
 const { ListFormat } = require('typescript');
 

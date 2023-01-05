@@ -37,6 +37,7 @@ const propositionSchema = new mongoose.Schema(
         isHome: Boolean,
         position: String,
         name: String,
+        regex: String,
         imageUrl: String,
       },
     ],

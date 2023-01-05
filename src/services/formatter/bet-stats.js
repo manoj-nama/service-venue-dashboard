@@ -3,6 +3,7 @@ const liveBetsFormatter = ({
 }) => {
 	const formattedData = bets.map(b => (
 		{
+			new: b.new,
 			betType: b.bet_type,
 			betAmount: b.bet_amount,
 			betDetails: {
@@ -15,7 +16,7 @@ const liveBetsFormatter = ({
 				betOption: b.bet_option,
 				proposition: { ...b.proposition, ...{ id: b.proposition.id.toString() } },
 				icon: {
-					imageUrl: (b.contestants.find(i => b.proposition.name.match(i.name)) || {}).image,
+					imageUrl: (b.contestants.find(i => b.proposition.name.match(i.name)) || {}).imageUrl || '',
 					hexCode: '#E92912'
 				}
 			}
@@ -26,7 +27,7 @@ const liveBetsFormatter = ({
 
 const heatMapFormatter = (bets) => {
 	let formattedData;
-	formattedData = bets.reduce((acc, currBet) => {
+	formattedData = bets.filter(b => b.bet).reduce((acc, currBet) => {
 		const key = `${currBet?._doc?.sport_name}:${currBet?._doc?.competition_name}:${currBet?._doc?.match_name}`;
 		if (acc[key] && currBet?._doc?.bet) {
 			acc[key]['coordinates'].push({

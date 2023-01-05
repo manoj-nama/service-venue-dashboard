@@ -27,7 +27,7 @@
     "brokerList": "localhost:9092",
     "schemaRegistry": "http://kafka-schema-registry.kafka.dev.analytics.in.cld:8081/",
     "betsConsumer": {
-      "topic": "au.wagering.spectrum.murray.betstream.avro",
+      "topic": "au.wagering.spectrum.congo.betstream.avro",
       "clientIdPrefix": "popular-bets-worker-consumer-dev",
       "groupId": "au.marketing.rtp.murray.popular-bets-worker",
       "batchSize": 25,
