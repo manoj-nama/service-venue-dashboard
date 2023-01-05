@@ -1,6 +1,7 @@
 const Promise = require('bluebird');
 
 const { BetModel, UserModel, PropositionModel } = require('../models');
+const { makeUser } = require('./user-service');
 const redis = require('../redis');
 const {
   liveBetsFormatter,
@@ -16,7 +17,7 @@ const { ListFormat } = require('typescript');
 const config = require('../config');
 
 // TODO: Move to constants
-const DEFAULT_RADIUS = 10000000;
+const DEFAULT_RADIUS = 1000000000;
 const DEFAULT_LONGITUDE = '';
 const DEFAULT_LATITUDE = '';
 
@@ -27,24 +28,66 @@ const getPropDetails = async (props) => {
     const baseUrl =
       'https://api.congo.beta.tab.com.au/v1/tab-info-service/search/proposition';
     const params = `?jurisdiction=nsw&details=true&${props
-      .map((p) => `number=914396`)
+      .map((p) => `number=${Number(p.id)}`)
       .join('&')}`;
+
+    // TODO: To be removed once correct data is there on env
+    const contestants = [
+      {
+        "name": "Sydney",
+        "position": "HOME",
+        "isHome": true,
+        "image": [
+          {
+            "size": "svg",
+            "url": "https://metadata.beta.tab.com.au/icons/NBA%20logos/Milwaukee%20Bucks.svg"
+          },
+          {
+            "size": "xxhdpi",
+            "url": "https://metadata.beta.tab.com.au/icons/NBA%20logos/Milwaukee%20Bucks_xxhdpi.png"
+          },
+          {
+            "size": "2x",
+            "url": "https://metadata.beta.tab.com.au/icons/NBA%20logos/Milwaukee%20Bucks%402x.png"
+          }
+        ]
+      },
+      {
+        "name": "Washington",
+        "position": "AWAY",
+        "isHome": false,
+        "image": [
+          {
+            "size": "svg",
+            "url": "https://metadata.beta.tab.com.au/icons/NBA%20logos/Washington%20Wizards.svg"
+          },
+          {
+            "size": "xxhdpi",
+            "url": "https://metadata.beta.tab.com.au/icons/NBA%20logos/Washington%20Wizards_xxhdpi.png"
+          },
+          {
+            "size": "2x",
+            "url": "https://metadata.beta.tab.com.au/icons/NBA%20logos/Washington%20Wizards%402x.png"
+          }
+        ]
+      }
+    ];
     propDetails = await get(`${baseUrl}${params}`);
     propDetails = propDetails.propositions.filter(detail => detail.type === 'sport').map((d, i) => ({
       bet_type: d.type,
-      bet_option: d.market?.betOption,
-      market_name: d.market?.name,
-      market_unique_id: `${d.market?.marketUniqueId}${i}`,
-      market_close_time: d.market?.closeTime,
-      sport_name: d.sport?.name,
-      sport_id: d.sport?.id,
-      match_id: d.match?.id,
-      match_name: d.match?.name,
+      bet_option: d?.market?.betOption,
+      market_name: d?.market?.name,
+      market_unique_id: `${d?.market?.marketUniqueId}${i}`,
+      market_close_time: d?.market?.closeTime,
+      sport_name: d?.sport?.name,
+      sport_id: d?.sport?.id,
+      match_id: d?.match?.id,
+      match_name: d?.match?.name,
       match_start_time: d.match?.startTime,
-      competition_id: d.competition?.id,
-      competition_name: d.competition?.name,
+      competition_id: d?.competition?.id,
+      competition_name: d?.competition?.name,
       tournament_name: d?.tournament?.name,
-      tournament_id: d.tournament?.id,
+      tournament_id: d?.tournament?.id,
       proposition: {
         name: d.propositionDetails?.name,
         id: d.propositionNumber,
@@ -56,13 +99,23 @@ const getPropDetails = async (props) => {
         isOpen: d.propositionDetails?.isOpen,
         number: d.propositionDetails?.number
       },
-      contestants: d.match.contestants.reduce((acc, curr) => {
-        const { image } = (curr.images || []).find(i => i.size === 'svg');
-        delete curr.images;
-        acc.push({
-          ...curr, ...{ image }
-        })
-      }, [])
+      contestants: (d?.match?.contestants || contestants).map((item, i) => {
+        // TODO: To be removed once correct data is there on env
+        if (d.match?.contestants && !d.match?.contestants[0].image) {
+          d.match.contestants[0].image = contestants[0].image;
+          d.match.contestants[1].image = contestants[1].image;
+        }
+        item.regex = Array.from(new Set(item.name.match(/\(|\)/g))).reduce((acc, curr) => {
+          const regex = new RegExp(`\\${curr}`, 'g');
+          return acc.replace(regex, `\\${curr}`);
+        }, item.name);
+
+        // TODO : Remove contestants and use api returned contestants
+        return {
+          imageUrl: item?.image[0]?.url || '',
+          ...item
+        };
+      })
     }));
     propDetails.forEach(det => {
       const existingProp = props.find(p => Number(p.id) === det.proposition.id);
@@ -142,6 +195,48 @@ const createBets = async (betDetails) => {
     log.error(e, 'Error while creating bets', e);
   }
   return response;
+};
+
+// TODO: To be removed once correct data is coming via kafka topic
+const createBetFromFE = async ({ data = [] }) => {
+  try {
+    log.info('Creating bet details via front-end');
+    let totalBetsToBeCreated = [];
+    await Promise.map(data, async ({
+      coordinates, accountNumber, customerNumber, bets, ticketCost, venueDetails = {},
+    }) => {
+      const betsToBeCreated = bets.map(bet => {
+        const props = bet.legs.map(l => {
+          return {
+            id: `${l.propositionId}`,
+            price: Number(bet.betCost),
+          }
+        })
+        return {
+          account_number: accountNumber,
+          transaction_date_time: Date.now(bet.betSellTime),
+          location: {
+            type: 'Point',
+            coordinates,
+          },
+          price: Number(ticketCost),
+          bet_amount: ticketCost,
+          currency: 'AUD',
+          customer_number: customerNumber,
+          number_of_legs: bet.legs?.length,
+          propositions: props,
+          ...venueDetails,
+        };
+      });
+      totalBetsToBeCreated.push(...betsToBeCreated);
+    });
+    log.info(`Creating ${totalBetsToBeCreated.length} bets`);
+    const betResponse = await BetModel.insertMany(totalBetsToBeCreated);
+    await createPropDetailsForBet(betResponse);
+    log.info('Bets created');
+  } catch (e) {
+    log.error(e, 'Error while creating bet from front end')
+  }
 };
 
 const getBetsUsingCount = async (count) => {
@@ -249,7 +344,7 @@ const getBigBets = async ({
       {
         $group: {
           _id: '$market_unique_id',
-          total_bet_amount: { $sum: 'price' },
+          total_bet_amount: { $sum: '$price' },
           count: { $sum: 1 },
           sport_name: { $first: '$sport_name' },
           match_name: { $first: '$match_name' },
@@ -375,16 +470,20 @@ const getVersusMapData = async ({
         $match: { account_number: { $ne: null }, ...findOptions }
       },
       {
-        $unwind: "$contestants",
+        $unwind: {
+          path: "$contestants",
+        },
       },
       {
-        $addFields: { result: { $regexMatch: { input: "$proposition.name", regex: '$contestants.name', options: "i" } } }
+        $addFields: {
+          result: { $regexMatch: { input: "$proposition.name", regex: '$contestants.regex', options: "i" } },
+        }
       },
       {
         $group: {
           _id: {
             'teamName': '$contestants.name',
-            'imageUrl': '$contestants.image',
+            'imageUrl': '$contestants.imageUrl',
             'result': '$result'
           },
           props: {
@@ -420,6 +519,13 @@ const getVersusMapData = async ({
       }
     ]);
 
+    response = response.reduce((acc, curr) => {
+      teamCount = response.filter(i => i.teamName === curr.teamName).length == 1;
+      if (teamCount || curr.count) {
+        acc.push(curr);
+      }
+      return acc;
+    }, []);
     return versusMapFormatter({ response, sportName, competitionName, matchName });
   } catch (e) {
     response = [];
@@ -427,7 +533,6 @@ const getVersusMapData = async ({
   }
   return versusMapFormatter({ response, sportName, competitionName, matchName });
 };
-
 
 const getBetsDistribution = async ({ query, params }) => {
   const { sportName, competitionName, tournamentName, matchName } = params;
@@ -457,12 +562,15 @@ const getBetsDistribution = async ({ query, params }) => {
     });
 
     let versusMap;
-    if (sportName & matchName) {
+    if (sportName && matchName) {
       versusMap = await getVersusMapData({
         sportName,
         competitionName,
         tournamentName,
-        matchName
+        matchName,
+        radius,
+        longitude,
+        latitude,
       });
     }
 
@@ -480,10 +588,17 @@ const getBetsDistribution = async ({ query, params }) => {
 
 const mostBetsPlacedPerVenue = async (
   limit,
-  skip,
+  page,
   fromDateUTC,
-  toDateUTC
+  toDateUTC,
+  sort
 ) => {
+  fromDateUTC = fromDateUTC * 1 || 0,
+    toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
+  limit = limit * 1 || 1000;
+  page = page * 1 || 1;
+  const skip = (page - 1) * limit;
+  sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
   let pipeline = [
     {
       $match: {
@@ -527,7 +642,7 @@ const mostBetsPlacedPerVenue = async (
     },
     {
       $sort: {
-        frequency_of_bets: -1,
+        frequency_of_bets: sort,
         venueName: 1,
       },
     },
@@ -538,12 +653,10 @@ const mostBetsPlacedPerVenue = async (
       $limit: limit,
     },
   ];
-  const result = await BetModel.aggregate(pipeline);
-  return result;
+  return BetModel.aggregate(pipeline);
 };
 
-const searchMostBetsPlacedPerVenue = async (text) => {
-  text = text || '.';
+const searchMostBetsPlacedPerVenue = async (text = '.') => {
   let pipeline = [
     {
       $match: {
@@ -591,16 +704,22 @@ const searchMostBetsPlacedPerVenue = async (text) => {
       },
     },
   ];
-  const result = await BetModel.aggregate(pipeline);
-  return result;
+  return BetModel.aggregate(pipeline);
 };
 
 const mostAmountSpentPerVenue = async (
   limit,
-  skip,
+  page,
   fromDateUTC,
-  toDateUTC
+  toDateUTC,
+  sort
 ) => {
+  fromDateUTC = fromDateUTC * 1 || 0,
+    toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
+  limit = limit * 1 || 1000;
+  page = page * 1 || 1;
+  const skip = (page - 1) * limit;
+  sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
   let pipeline = [
     {
       $match: {
@@ -644,7 +763,7 @@ const mostAmountSpentPerVenue = async (
     },
     {
       $sort: {
-        frequency_of_total_amount_spent: -1,
+        frequency_of_total_amount_spent: sort,
         venueName: 1,
       },
     },
@@ -655,12 +774,10 @@ const mostAmountSpentPerVenue = async (
       $limit: limit,
     },
   ];
-  const result = await BetModel.aggregate(pipeline);
-  return result;
+  return BetModel.aggregate(pipeline);
 };
 
-const searchMostAmountSpentPerVenue = async (text) => {
-  text = text || '.';
+const searchMostAmountSpentPerVenue = async (text = '.') => {
   let pipeline = [
     {
       $match: {
@@ -708,12 +825,12 @@ const searchMostAmountSpentPerVenue = async (text) => {
       },
     },
   ];
-  const result = await BetModel.aggregate(pipeline);
-  return result;
+  return BetModel.aggregate(pipeline);
 };
 
 module.exports = {
   createBets,
+  createBetFromFE,
   getBetsUsingCount,
   getLiveBetsFromRedis,
   getBetsDistribution,

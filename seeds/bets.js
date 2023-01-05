@@ -1,5 +1,5 @@
 const betData = require('./bet.json');
-const { createBets } = require('../src/services/bet-stats');
+const { createBets } = require('../src/services/bet-stats-service');
 const betModel = require('../src/models/bet');
 
 const seedBets = async () => {

@@ -5,11 +5,7 @@ const userModel = require('../src/models/users');
 const seedUser = async () =>{
     const len = await userModel.find().count();
     if(!len){
-        const dataArr = [];
-        for(let i=0;i<userData.length;i++){
-            dataArr.push(userData[i].value);
-        }
-        const result = await createUser(dataArr);
+        const result = await createUser(userData);
         console.log('Added datalength is',result.length);
     }
     else{

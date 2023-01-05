@@ -3,6 +3,7 @@ const liveBetsFormatter = ({
 }) => {
 	const formattedData = bets.map(b => (
 		{
+			new: b.new,
 			betType: b.bet_type,
 			betAmount: b.bet_amount,
 			betDetails: {
@@ -15,7 +16,7 @@ const liveBetsFormatter = ({
 				betOption: b.bet_option,
 				proposition: { ...b.proposition, ...{ id: b.proposition.id.toString() } },
 				icon: {
-					imageUrl: (b.contestants.find(i => b.proposition.name.match(i.name)) || {}).image,
+					imageUrl: (b.contestants.find(i => b.proposition.name.match(i.regex)) || {}).imageUrl || '',
 					hexCode: '#E92912'
 				}
 			}
@@ -26,7 +27,7 @@ const liveBetsFormatter = ({
 
 const heatMapFormatter = (bets) => {
 	let formattedData;
-	formattedData = bets.reduce((acc, currBet) => {
+	formattedData = bets.filter(b => b.bet).reduce((acc, currBet) => {
 		const key = `${currBet?._doc?.sport_name}:${currBet?._doc?.competition_name}:${currBet?._doc?.match_name}`;
 		if (acc[key] && currBet?._doc?.bet) {
 			acc[key]['coordinates'].push({
@@ -99,6 +100,7 @@ const bigBetsFormatter = (bets) => {
     marketUniqueId: b.market_unique_id,
     competitionName: b.competition_name,
     tournamentName: b.tournament_name,
+		totalBetAmount: b.total_bet_amount,
 		betOption: b.bet_option,
     // TODO: Add discovery key and navigation to redirect to market screen
   }));
@@ -127,7 +129,7 @@ const formatBetDistribution = ({
 				data: heatMap
 			},
 			...(
-				versusMap && versusMap.length ? [{
+				versusMap && versusMap?.teams?.length ? [{
 					type: 'app.bets.distribution.versusMap',
 					data: versusMap,
 				}] : []

@@ -5,6 +5,17 @@ const betStatsMiddleware = require('../middlewares/bet-stats-middleware');
 
 const router = apiRouter();
 
+router.post({
+  path: {
+    name: 'bet-stats:create',
+    discoveryName: 'bet-stats:create',
+    path: '/v1/service-venue/bet-stats-fe',
+  },
+  handlers: [
+    betStatsController.createBet,
+  ],
+}),
+
 router.get({
   path: {
     name: 'bet-stats:live-bets-ticker',
