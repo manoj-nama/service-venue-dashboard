@@ -103,8 +103,9 @@ const getPropDetails = async (props) => {
           d.match.contestants[0].image = contestants[0].image;
           d.match.contestants[1].image = contestants[1].image;
         }
-        item.regex = item.name.match(/\(|\)/g).reduce((acc, curr) => {
-          return acc.replace(curr, `\\${curr}`);
+        item.regex = Array.from(new Set(item.name.match(/\(|\)/g))).reduce((acc, curr) => {
+          const regex = new RegExp(`\\${curr}`, 'g');
+          return acc.replace(regex, `\\${curr}`);
         }, item.name);
 
         // TODO : Remove contestants and use api returned contestants
@@ -511,7 +512,7 @@ const getVersusMapData = async ({
 
     response = response.reduce((acc, curr) => {
       teamCount = response.filter(i => i.teamName === curr.teamName).length == 1;
-      if( teamCount || curr.count){
+      if (teamCount || curr.count) {
         acc.push(curr);
       }
       return acc;
