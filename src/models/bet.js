@@ -42,8 +42,14 @@ const betSchema = mongoose.Schema({
   tx_type: String,
   currency: String,
   customer_number: Number,
-  bet_amount: String,
-  total_cost: String,
+  bet_amount: {
+    type: Number,
+    default:0
+  },
+  total_cost: {
+    type: Number,
+    default: 0
+  }, 
   bet_type: String,
   number_of_legs: Number,
   prop_type: String,

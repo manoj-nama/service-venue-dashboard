@@ -42,9 +42,9 @@ const addBetDetails = async (req, res) => {
 const mostBetsPlacedPerVenue = async (req, res) => {
   try {
     let {
-      limit, page, fromDateUTC, toDateUTC,
+      limit, page, fromDateUTC, toDateUTC, sort
     } = req.query;
-    const result = await betStatsService.mostBetsPlacedPerVenue(limit, page, fromDateUTC, toDateUTC);
+    const result = await betStatsService.mostBetsPlacedPerVenue(limit, page, fromDateUTC, toDateUTC, sort);
     res.send(200, { data: result });
   } catch (err) {
     throw err
@@ -54,9 +54,9 @@ const mostBetsPlacedPerVenue = async (req, res) => {
 const mostAmountSpentPerVenue = async (req, res) => {
   try {
     let {
-      limit, page, fromDateUTC, toDateUTC,
+      limit, page, fromDateUTC, toDateUTC, sort
     } = req.query;
-    const result = await betStatsService.mostAmountSpentPerVenue(limit, page, fromDateUTC, toDateUTC);
+    const result = await betStatsService.mostAmountSpentPerVenue(limit, page, fromDateUTC, toDateUTC, sort);
     res.send(200, { data: result });
   } catch (err) {
     throw err
