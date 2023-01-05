@@ -10,14 +10,14 @@ module.exports.signupUser = async (req, res) => {
   }
   catch (error) {
     console.log(' Error : ', error);
-    return res.send(400, error);
+    return res.send(400, { message: error });
   }
 }
 
 module.exports.loginUser = async (req, res) => {
   const { userName, password } = req.body;
   if (!userName || !password) return res.send(400, { message: 'Required data is missing.' });
-
+  
   try {
     const result = await loginUser(req.body);
     res.header('x-auth-token', result.token);
@@ -25,7 +25,7 @@ module.exports.loginUser = async (req, res) => {
   }
   catch (error) {
     console.log(' Error : ', error);
-    return res.send(400, error);
+    return res.send(400, { message: error});
   }
 
 }
