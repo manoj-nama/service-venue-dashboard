@@ -31,6 +31,7 @@ const getPropDetails = async (props) => {
       .map((p) => `number=${Number(p.id)}`)
       .join('&')}`;
 
+    // TODO: To be removed once correct data is there on env
     const contestants = [
       {
         "name": "Sydney",
@@ -99,6 +100,7 @@ const getPropDetails = async (props) => {
         number: d.propositionDetails?.number
       },
       contestants: (d?.match?.contestants || contestants).map((item, i) => {
+        // TODO: To be removed once correct data is there on env
         if (d.match?.contestants && !d.match?.contestants[0].image) {
           d.match.contestants[0].image = contestants[0].image;
           d.match.contestants[1].image = contestants[1].image;
@@ -195,6 +197,7 @@ const createBets = async (betDetails) => {
   return response;
 };
 
+// TODO: To be removed once correct data is coming via kafka topic
 const createBetFromFE = async ({ data = [] }) => {
   try {
     log.info('Creating bet details via front-end');
