@@ -533,7 +533,7 @@ const mostBetsPlacedPerVenue = async (
   limit = limit * 1 || 1000;
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
-  sort = (/^asc$/i).test(sort) ? 1 : -1;
+  sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
   let pipeline = [
     {
       $match: {
@@ -646,14 +646,15 @@ const mostAmountSpentPerVenue = async (
   limit,
   page,
   fromDateUTC,
-  toDateUTC,sort
+  toDateUTC,
+  sort
 ) => {
   fromDateUTC = fromDateUTC * 1 || 0,
   toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
   limit = limit * 1 || 1000;
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
-  sort = (/^asc$/i).test(sort) ? 1 : -1;
+  sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
   let pipeline = [
     {
       $match: {

@@ -35,7 +35,7 @@ module.exports.getMostActiveUser = async (limit, page, sort) => {
   limit = limit * 1 || 1000;
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
-  sort = (/^asc$/i).test(sort) ? 1 : -1;
+  sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
   const ActiveUserInVenue = await UserModel.aggregate([
     {
       $match: {
