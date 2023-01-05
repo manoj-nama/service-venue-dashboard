@@ -24,6 +24,14 @@ const DEFAULT_LATITUDE = '';
 const getPropDetails = async (props) => {
   let propDetails = [];
   try {
+    log.info('Fetching prop details for', props);
+    const baseUrl =
+      'https://api.congo.beta.tab.com.au/v1/tab-info-service/search/proposition';
+    const params = `?jurisdiction=nsw&details=true&${props
+      .map((p) => `number=${Number(p.id)}`)
+      .join('&')}`;
+
+    // TODO: To be removed once correct data is there on env
     const contestants = [
       {
         "name": "Sydney",
@@ -64,12 +72,6 @@ const getPropDetails = async (props) => {
         ]
       }
     ];
-    log.info('Fetching prop details for', props);
-    const baseUrl =
-      'https://api.congo.beta.tab.com.au/v1/tab-info-service/search/proposition';
-    const params = `?jurisdiction=nsw&details=true&${props
-      .map((p) => `number=${Number(p.id)}`)
-      .join('&')}`;
     propDetails = await get(`${baseUrl}${params}`);
     propDetails = propDetails.propositions.filter(detail => detail.type === 'sport').map((d, i) => ({
       bet_type: d.type,
@@ -98,13 +100,19 @@ const getPropDetails = async (props) => {
         number: d.propositionDetails?.number
       },
       contestants: (d?.match?.contestants || contestants).map((item, i) => {
-        if (d.match?.contestants && !d.match?.contestants.image) {
+        // TODO: To be removed once correct data is there on env
+        if (d.match?.contestants && !d.match?.contestants[0].image) {
           d.match.contestants[0].image = contestants[0].image;
           d.match.contestants[1].image = contestants[1].image;
         }
+        item.regex = Array.from(new Set(item.name.match(/\(|\)/g))).reduce((acc, curr) => {
+          const regex = new RegExp(`\\${curr}`, 'g');
+          return acc.replace(regex, `\\${curr}`);
+        }, item.name);
+
         // TODO : Remove contestants and use api returned contestants
         return {
-          imageUrl: item?.image[0]?.url,
+          imageUrl: item?.image[0]?.url || '',
           ...item
         };
       })
@@ -189,34 +197,41 @@ const createBets = async (betDetails) => {
   return response;
 };
 
-const createBetFromFE = async ({ coordinates, accountNumber, customerNumber, bets, ticketCost, venueDetails = {} }) => {
+// TODO: To be removed once correct data is coming via kafka topic
+const createBetFromFE = async ({ data = [] }) => {
   try {
     log.info('Creating bet details via front-end');
-    const betsToBeCreated = bets.map(bet => {
-      const props = bet.legs.map(l => {
+    let totalBetsToBeCreated = [];
+    await Promise.map(data, async ({
+      coordinates, accountNumber, customerNumber, bets, ticketCost, venueDetails = {},
+    }) => {
+      const betsToBeCreated = bets.map(bet => {
+        const props = bet.legs.map(l => {
+          return {
+            id: `${l.propositionId}`,
+            price: Number(bet.betCost),
+          }
+        })
         return {
-          id: `${l.propositionId}`,
-          price: Number(bet.betCost),
-        }
-      })
-      return {
-        account_number: accountNumber,
-        transaction_date_time: Date.now(bet.betSellTime),
-        location: {
-          type: 'Point',
-          coordinates,
-        },
-        price: Number(ticketCost),
-        bet_amount: ticketCost,
-        currency: 'AUD',
-        customer_number: customerNumber,
-        number_of_legs: bet.legs?.length,
-        propositions: props,
-        ...venueDetails,
-      };
+          account_number: accountNumber,
+          transaction_date_time: Date.now(bet.betSellTime),
+          location: {
+            type: 'Point',
+            coordinates,
+          },
+          price: Number(ticketCost),
+          bet_amount: ticketCost,
+          currency: 'AUD',
+          customer_number: customerNumber,
+          number_of_legs: bet.legs?.length,
+          propositions: props,
+          ...venueDetails,
+        };
+      });
+      totalBetsToBeCreated.push(...betsToBeCreated);
     });
-    log.info(`Creating ${betsToBeCreated.length} bets`);
-    const betResponse = await BetModel.insertMany(betsToBeCreated);
+    log.info(`Creating ${totalBetsToBeCreated.length} bets`);
+    const betResponse = await BetModel.insertMany(totalBetsToBeCreated);
     await createPropDetailsForBet(betResponse);
     log.info('Bets created');
   } catch (e) {
@@ -460,7 +475,9 @@ const getVersusMapData = async ({
         },
       },
       {
-        $addFields: { result: { $regexMatch: { input: "$proposition.name", regex: '$contestants.name', options: "i" } } }
+        $addFields: {
+          result: { $regexMatch: { input: "$proposition.name", regex: '$contestants.regex', options: "i" } },
+        }
       },
       {
         $group: {
@@ -502,6 +519,13 @@ const getVersusMapData = async ({
       }
     ]);
 
+    response = response.reduce((acc, curr) => {
+      teamCount = response.filter(i => i.teamName === curr.teamName).length == 1;
+      if (teamCount || curr.count) {
+        acc.push(curr);
+      }
+      return acc;
+    }, []);
     return versusMapFormatter({ response, sportName, competitionName, matchName });
   } catch (e) {
     response = [];
@@ -569,7 +593,7 @@ const mostBetsPlacedPerVenue = async (
   toDateUTC
 ) => {
   fromDateUTC = fromDateUTC * 1 || 0,
-  toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
+    toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
   limit = limit * 1 || 1000;
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
@@ -630,7 +654,7 @@ const mostBetsPlacedPerVenue = async (
   return BetModel.aggregate(pipeline);
 };
 
-const searchMostBetsPlacedPerVenue = async (text='.') => {
+const searchMostBetsPlacedPerVenue = async (text = '.') => {
   let pipeline = [
     {
       $match: {
@@ -688,7 +712,7 @@ const mostAmountSpentPerVenue = async (
   toDateUTC
 ) => {
   fromDateUTC = fromDateUTC * 1 || 0,
-  toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
+    toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
   limit = limit * 1 || 1000;
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
@@ -749,7 +773,7 @@ const mostAmountSpentPerVenue = async (
   return BetModel.aggregate(pipeline);
 };
 
-const searchMostAmountSpentPerVenue = async (text='.') => {
+const searchMostAmountSpentPerVenue = async (text = '.') => {
   let pipeline = [
     {
       $match: {
