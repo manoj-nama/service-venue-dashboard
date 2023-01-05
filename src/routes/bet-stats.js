@@ -13,7 +13,6 @@ router.post({
     path: '/v1/service-venue/bet-stats-fe',
   },
   handlers: [
-    auth,
     betStatsController.createBet,
   ],
 }),
@@ -25,7 +24,6 @@ router.get({
     path: '/v1/service-venue/bet-stats/live-bets-ticker',
   },
   handlers: [
-    auth,
     betStatsController.getLiveBets,
   ],
 });
@@ -37,7 +35,6 @@ router.get({
     path: '/v1/service-venue/bet-stats/big-bets',
   },
   handlers: [
-    auth,
     betStatsController.getBigBets,
   ],
 });
@@ -49,7 +46,6 @@ router.get({
     path: '/v1/service-venue/bet-stats/heat-map',
   },
   handlers: [
-    auth,
     betStatsController.getHeatMapData,
   ],
 });
@@ -65,7 +61,6 @@ router.get({
     },
   },
   handlers: [
-    auth,
     betStatsMiddleware.validateParam,
     betStatsController.getBetsDistribution,
   ],
@@ -82,7 +77,6 @@ router.get({
     },
   },
   handlers: [
-    auth,
     betStatsMiddleware.validateParam,
     betStatsController.getBetsDistribution,
   ],
@@ -99,7 +93,6 @@ router.get({
     },
   },
   handlers: [
-    auth,
     betStatsMiddleware.validateParam,
     betStatsController.getBetsDistribution,
   ],
