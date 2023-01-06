@@ -471,7 +471,7 @@ const getVersusMapData = async ({
       },
       { $project: { betInfo: 0 } },
       {
-        $match: {   account_number: { $ne: null }, ...findOptions }
+        $match: { bet: { $in: nearByCordsBet }, account_number: { $ne: null }, ...findOptions }
       },
       {
         $unwind: {
