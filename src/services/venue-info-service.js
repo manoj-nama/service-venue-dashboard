@@ -1,7 +1,8 @@
-const { BetModel } = require('../models');
 const axios = require('axios');
 
-const VENUE_LIST_API = 'https://api.congo.beta.tab.com.au/v1/invenue-service/public-venue-list'
+const { BetModel } = require('../models');
+
+const VENUE_LIST_API = 'https://api.congo.beta.tab.com.au/v1/invenue-service/public-venue-list';
 
 module.exports.getActiveVenuesCount = async () => {
   const activeVenudata = await axios({
@@ -22,14 +23,41 @@ module.exports.getVenueInfo = async (venueId) => {
         },
       },
     }, {
+      $group: {
+        _id: '$account_number',
+        venues: {
+          $push: '$$ROOT',
+        },
+        active_users: {
+          $sum: 1,
+        },
+      },
+    }, {
+      $unwind: {
+        path: '$venues',
+      },
+    }, {
       $project: {
         _id: {
-          $toString: '$_id',
+          $toString: '$venues._id',
         },
-        account_number: 1,
-        bet_amount: 1,
-        bet_type: 1,
-        transaction_date_time: 1,
+        active_users: 1,
+        account_number: '$venues.account_number',
+        bet_type: '$venues.bet_type',
+        transaction_date_time: '$venues.transaction_date_time',
+        venueName: '$venues.venueName',
+        venueType: '$venues.venueType',
+        venueState: '$venues.venueState',
+        longitude: {
+          $arrayElemAt: [
+            '$venues.location.coordinates', 0,
+          ],
+        },
+        latitude: {
+          $arrayElemAt: [
+            '$venues.location.coordinates', 1,
+          ],
+        },
       },
     }, {
       $lookup: {
@@ -47,6 +75,7 @@ module.exports.getVenueInfo = async (venueId) => {
               tournament_name: {
                 $toString: '$tournament_name',
               },
+              price: 1,
             },
           }, {
             $match: {
@@ -70,12 +99,17 @@ module.exports.getVenueInfo = async (venueId) => {
         tournament_name: '$propositions.tournament_name',
         _id: 0,
         account_number: 1,
-        bet_amount: 1,
+        bet_amount: '$propositions.price',
         bet_type: 1,
         bet_date_and_time: '$transaction_date_time',
+        venueName: 1,
+        venueType: 1,
+        venueState: 1,
+        latitude: 1,
+        longitude: 1,
+        active_users: 1,
       },
-    },
-    {
+    }, {
       $sort: {
         account_number: 1,
       },

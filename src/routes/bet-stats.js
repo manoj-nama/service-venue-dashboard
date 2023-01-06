@@ -2,6 +2,7 @@ const apiRouter = require('@tabdigital/connect-router');
 
 const betStatsController = require('../controllers/bet-stats-controller');
 const betStatsMiddleware = require('../middlewares/bet-stats-middleware');
+const { auth } = require('../middlewares/auth');
 
 const router = apiRouter();
 
@@ -110,7 +111,7 @@ router.get({
     name: 'bets-placed-per-venue',
     path: '/v1/service-venue/bet-stats/bets-placed',
   },
-  handlers: [betStatsController.mostBetsPlacedPerVenue],
+  handlers: [auth,betStatsController.mostBetsPlacedPerVenue],
 });
 
 router.get({
@@ -118,7 +119,7 @@ router.get({
     name: 'amount-spent-per-venue',
     path: '/v1/service-venue/bet-stats/amount-spent',
   },
-  handlers: [betStatsController.mostAmountSpentPerVenue],
+  handlers: [auth,betStatsController.mostAmountSpentPerVenue],
 });
 
 router.get({
@@ -126,7 +127,7 @@ router.get({
     name: 'search-most-amount-spent-per-venue',
     path: '/v1/service-venue/bet-stats/amount-spent/search',
   },
-  handlers: [betStatsController.searchMostAmountSpentPerVenue],
+  handlers: [auth,betStatsController.searchMostAmountSpentPerVenue],
 });
 
 router.get({
@@ -134,7 +135,7 @@ router.get({
     name: 'search-most-bets-placed-per-venue',
     path: '/v1/service-venue/bet-stats/bets-placed/search',
   },
-  handlers: [betStatsController.searchMostBetsPlacedPerVenue],
+  handlers: [auth,betStatsController.searchMostBetsPlacedPerVenue],
 });
 
 module.exports = router;
