@@ -774,7 +774,7 @@ const mostAmountSpentPerVenue = async (
           $push: '$$ROOT',
         },
         frequency_of_total_amount_spent: {
-          $sum: '$price',
+          $sum: '$bet_amount',
         },
       },
     },
@@ -852,7 +852,7 @@ const searchMostAmountSpentPerVenue = async (
           $push: '$$ROOT',
         },
         frequency_of_total_amount_spent: {
-          $sum: '$price',
+          $sum: '$bet_amount',
         },
       },
     },
