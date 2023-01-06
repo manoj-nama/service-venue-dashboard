@@ -57,7 +57,7 @@ const versusMapFormatter = (versusData = {}) => {
 	teamInfo = (teamInfo || []).map((item, i) => {
 		item.coordinates = item.props.map(prop => ({ longitude: prop.location.coordinates[0], latitude: prop.location.coordinates[1] }));
 		delete item.props;
-		item.icon.hexCode = DEFAULT_HEX_CODES[i];
+		item.icon.hexCode = DEFAULT_HEX_CODES[i] ||  '#24C4F0' ;
 		return item;
 	});
 	const formattedData = {

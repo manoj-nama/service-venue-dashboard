@@ -17,7 +17,7 @@ const { ListFormat } = require('typescript');
 const config = require('../config');
 
 // TODO: Move to constants
-const DEFAULT_RADIUS = 1000000000;
+const DEFAULT_RADIUS = 100000000;
 const DEFAULT_LONGITUDE = '';
 const DEFAULT_LATITUDE = '';
 
@@ -53,7 +53,7 @@ const getPropDetails = async (props) => {
         ]
       },
       {
-        "name": "Washington",
+        "name": "MELBOURNE",
         "position": "AWAY",
         "isHome": false,
         "image": [
@@ -99,9 +99,9 @@ const getPropDetails = async (props) => {
         isOpen: d.propositionDetails?.isOpen,
         number: d.propositionDetails?.number
       },
-      contestants: (d?.match?.contestants || contestants).map((item, i) => {
+      contestants: ((d?.match?.contestants?.length && d?.match?.contestants) || contestants).map((item, i) => {
         // TODO: To be removed once correct data is there on env
-        if (d.match?.contestants && !d.match?.contestants[0].image) {
+        if (d.match?.contestants?.length && !d.match?.contestants[0].image) {
           d.match.contestants[0].image = contestants[0].image;
           d.match.contestants[1].image = contestants[1].image;
         }
@@ -419,11 +419,11 @@ const getVersusMapData = async ({
   competitionName,
   tournamentName,
   matchName,
-  radius = DEFAULT_RADIUS,
   longitude = DEFAULT_LONGITUDE,
   latitude = DEFAULT_LATITUDE
 }) => {
   let response = [];
+  const DEFAULT_VERSUS_MAP_RADIUS = 100000;
   try {
     log.info('Fetching versus map data');
     const findOptions = {
@@ -444,7 +444,7 @@ const getVersusMapData = async ({
             coordinates: [Number(longitude), Number(latitude)]
           },
           distanceField: "distance",
-          maxDistance: radius,
+          maxDistance: Number(DEFAULT_VERSUS_MAP_RADIUS),
         }
       },
       {
@@ -471,7 +471,7 @@ const getVersusMapData = async ({
       },
       { $project: { betInfo: 0 } },
       {
-        $match: { bet: { $in: nearByCordsBet },  account_number: { $ne: null }, ...findOptions }
+        $match: { bet: { $in: nearByCordsBet }, account_number: { $ne: null }, ...findOptions }
       },
       {
         $unwind: {
@@ -572,7 +572,6 @@ const getBetsDistribution = async ({ query, params }) => {
         competitionName,
         tournamentName,
         matchName,
-        radius,
         longitude,
         latitude,
       });
