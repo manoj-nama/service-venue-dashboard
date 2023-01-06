@@ -53,7 +53,7 @@ const getPropDetails = async (props) => {
         ]
       },
       {
-        "name": "Washington",
+        "name": "MELBOURNE",
         "position": "AWAY",
         "isHome": false,
         "image": [
@@ -99,9 +99,9 @@ const getPropDetails = async (props) => {
         isOpen: d.propositionDetails?.isOpen,
         number: d.propositionDetails?.number
       },
-      contestants: (d?.match?.contestants || contestants).map((item, i) => {
+      contestants: ((d?.match?.contestants[0] && d?.match?.contestants) || contestants).map((item, i) => {
         // TODO: To be removed once correct data is there on env
-        if (d.match?.contestants && !d.match?.contestants[0].image) {
+        if (d.match?.contestants[0] && !d.match?.contestants[0].image) {
           d.match.contestants[0].image = contestants[0].image;
           d.match.contestants[1].image = contestants[1].image;
         }
