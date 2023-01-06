@@ -17,11 +17,11 @@ module.exports.createUser = async (req, res) => {
 
 module.exports.getMostActiveUser = async (req, res) => {
   try {
-    const { limit, page, sort } = req.query
+    const { limit, page, sort } = req.query;
     const data = await getMostActiveUser(limit, page, sort);
-    return res.send(200, { active_users: data });
+    return res.send(200, { active_users: data[0].paginatedResults, total_count: data[0].totalCount.length ? data[0].totalCount[0].count : 0 });
   } catch (err) {
-    throw err
+    throw err;
   }
 };
 

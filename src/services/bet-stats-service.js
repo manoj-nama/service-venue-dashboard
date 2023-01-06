@@ -651,11 +651,15 @@ const mostBetsPlacedPerVenue = async (
       },
     },
     {
-      $skip: skip,
-    },
-    {
-      $limit: limit,
-    },
+      $facet: {
+        paginatedResults: [{ $skip: skip }, { $limit: limit }],
+        totalCount: [
+          {
+            $count: 'count'
+          }
+        ]
+      }
+    }
   ];
   return BetModel.aggregate(pipeline);
 };
@@ -772,11 +776,15 @@ const mostAmountSpentPerVenue = async (
       },
     },
     {
-      $skip: skip,
-    },
-    {
-      $limit: limit,
-    },
+      $facet: {
+        paginatedResults: [{ $skip: skip }, { $limit: limit }],
+        totalCount: [
+          {
+            $count: 'count'
+          }
+        ]
+      }
+    }
   ];
   return BetModel.aggregate(pipeline);
 };
