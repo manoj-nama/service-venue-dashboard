@@ -75,12 +75,15 @@ module.exports.getMostActiveUser = async (limit, page, sort) => {
         venueName: 1,
       },
     },
-    {
-      $skip: skip,
-    },
-    {
-      $limit: limit,
-    },
+   { $facet: {
+      paginatedResults: [{ $skip: skip }, { $limit: limit }],
+      totalCount: [
+        {
+          $count: 'count'
+        }
+      ]
+    }
+  }
   ]);
 
   return ActiveUserInVenue;
