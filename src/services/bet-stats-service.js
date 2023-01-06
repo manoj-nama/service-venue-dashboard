@@ -173,6 +173,7 @@ const createBets = async (betDetails) => {
     log.info('Bets creation process started');
     if (betDetails && betDetails.length) {
       response = await Promise.map(betDetails, async (bet) => {
+        bet = bet.value || bet;
         const updatedBetDetails = await getBetWithLoc(bet);
         if (updatedBetDetails) {
           updatedBetDetails.propositions = bet.propositions.map((p) => ({
