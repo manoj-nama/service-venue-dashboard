@@ -101,7 +101,7 @@ const getPropDetails = async (props) => {
       },
       contestants: ((d?.match?.contestants?.length && d?.match?.contestants) || contestants).map((item, i) => {
         // TODO: To be removed once correct data is there on env
-        if (d.match?.contestants[0] && !d.match?.contestants[0].image) {
+        if (d.match?.contestants?.length && !d.match?.contestants[0].image) {
           d.match.contestants[0].image = contestants[0].image;
           d.match.contestants[1].image = contestants[1].image;
         }
