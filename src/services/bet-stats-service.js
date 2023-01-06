@@ -664,7 +664,20 @@ const mostBetsPlacedPerVenue = async (
   return BetModel.aggregate(pipeline);
 };
 
-const searchMostBetsPlacedPerVenue = async (text = '.') => {
+const searchMostBetsPlacedPerVenue = async (
+  text='.',
+  limit,
+  page,
+  fromDateUTC,
+  toDateUTC,
+  sort
+) => {
+  fromDateUTC = fromDateUTC * 1 || 0,
+    toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
+  limit = limit * 1 || 1000;
+  page = page * 1 || 1;
+  const skip = (page - 1) * limit;
+  sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
   let pipeline = [
     {
       $match: {
@@ -674,6 +687,10 @@ const searchMostBetsPlacedPerVenue = async (text = '.') => {
         $or: [{ venueType: { $regex: new RegExp(text, 'i') } },
         { venueState: { $regex: new RegExp(text, 'i') } },
         { venueName: { $regex: new RegExp(text, 'i') } }],
+        transaction_date_time: {
+          $gte: fromDateUTC,
+          $lte: toDateUTC,
+        },
       },
     },
     {
@@ -707,10 +724,20 @@ const searchMostBetsPlacedPerVenue = async (text = '.') => {
     },
     {
       $sort: {
-        frequency_of_bets: -1,
+        frequency_of_bets: sort,
         venueName: 1,
       },
     },
+    {
+      $facet: {
+        paginatedResults: [{ $skip: skip }, { $limit: limit }],
+        totalCount: [
+          {
+            $count: 'count'
+          }
+        ]
+      }
+    }
   ];
   return BetModel.aggregate(pipeline);
 };
@@ -747,7 +774,7 @@ const mostAmountSpentPerVenue = async (
           $push: '$$ROOT',
         },
         frequency_of_total_amount_spent: {
-          $sum: '$price',
+          $sum: '$bet_amount',
         },
       },
     },
@@ -789,7 +816,20 @@ const mostAmountSpentPerVenue = async (
   return BetModel.aggregate(pipeline);
 };
 
-const searchMostAmountSpentPerVenue = async (text = '.') => {
+const searchMostAmountSpentPerVenue = async (
+  text='.',
+  limit,
+  page,
+  fromDateUTC,
+  toDateUTC,
+  sort
+) => {
+  fromDateUTC = fromDateUTC * 1 || 0,
+    toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
+  limit = limit * 1 || 1000;
+  page = page * 1 || 1;
+  const skip = (page - 1) * limit;
+  sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
   let pipeline = [
     {
       $match: {
@@ -799,6 +839,10 @@ const searchMostAmountSpentPerVenue = async (text = '.') => {
         $or: [{ venueType: { $regex: new RegExp(text, 'i') } },
         { venueState: { $regex: new RegExp(text, 'i') } },
         { venueName: { $regex: new RegExp(text, 'i') } }],
+        transaction_date_time: {
+          $gte: fromDateUTC,
+          $lte: toDateUTC,
+        },
       },
     },
     {
@@ -808,7 +852,7 @@ const searchMostAmountSpentPerVenue = async (text = '.') => {
           $push: '$$ROOT',
         },
         frequency_of_total_amount_spent: {
-          $sum: '$price',
+          $sum: '$bet_amount',
         },
       },
     },
@@ -832,10 +876,20 @@ const searchMostAmountSpentPerVenue = async (text = '.') => {
     },
     {
       $sort: {
-        frequency_of_total_amount_spent: -1,
+        frequency_of_total_amount_spent: sort,
         venueName: 1,
       },
     },
+    {
+      $facet: {
+        paginatedResults: [{ $skip: skip }, { $limit: limit }],
+        totalCount: [
+          {
+            $count: 'count'
+          }
+        ]
+      }
+    }
   ];
   return BetModel.aggregate(pipeline);
 };
