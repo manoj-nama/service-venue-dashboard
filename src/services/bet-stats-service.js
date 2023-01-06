@@ -444,7 +444,7 @@ const getVersusMapData = async ({
             coordinates: [Number(longitude), Number(latitude)]
           },
           distanceField: "distance",
-          maxDistance: radius,
+          maxDistance: Number(radius),
         }
       },
       {
