@@ -63,7 +63,7 @@ const versusMapFormatter = (versusData = {}) => {
 			}
 		));
 		delete item.props;
-		item.icon = ICON_MAP[proposition.name]
+		item.icon = ICON_MAP[item.teamName]
 		return item;
 	})
 	teamInfo = teamInfo.sort((a, b) => b.count - a.count);

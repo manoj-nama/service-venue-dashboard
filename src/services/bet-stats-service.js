@@ -424,7 +424,7 @@ const getVersusMapData = async ({
   latitude = DEFAULT_LATITUDE
 }) => {
   let response = [];
-  const DEFAULT_VERSUS_MAP_RADIUS = 50000;
+  const DEFAULT_VERSUS_MAP_RADIUS = 1000000;
   try {
     log.info('Fetching versus map data');
     const findOptions = {
