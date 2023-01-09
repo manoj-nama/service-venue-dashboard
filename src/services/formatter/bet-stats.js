@@ -1,4 +1,5 @@
 const mockBigBets = require('../../../mocks/big-bets.json');
+const ICON_MAP = require('./constants');
 
 const liveBetsFormatter = ({
 	bets, count
@@ -54,12 +55,6 @@ const heatMapFormatter = (bets) => {
 
 const versusMapFormatter = (versusData = {}) => {
 	let { response: teamInfo, sportName, matchName, competitionName } = versusData;
-	const DEFAULT_HEX_CODES = ['#24C4F0', '#E92912'];
-	const DEFAULT_IMAGES = [
-		'https://cdn-icons-png.flaticon.com/128/197/197430.png',
-		'https://cdn-icons-png.flaticon.com/128/197/197626.png'
-	];
-
 	teamInfo = (teamInfo || []).map((item, i) => {
 		item.coordinates = item.props.map(prop => (
 			{
@@ -68,8 +63,7 @@ const versusMapFormatter = (versusData = {}) => {
 			}
 		));
 		delete item.props;
-		item.icon.hexCode = DEFAULT_HEX_CODES[i] || '#24C4F0';
-		item.icon.imageUrl = DEFAULT_IMAGES[i];
+		item.icon = ICON_MAP[proposition.name]
 		return item;
 	})
 	teamInfo = teamInfo.sort((a, b) => b.count - a.count);
