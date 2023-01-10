@@ -5,8 +5,9 @@ const userService = require('../services/user-service');
 
 module.exports.getActiveVenuesAndUser = async (req, res) => {
   try {
-    const venueCount = await venueService.getActiveVenuesCount();
-    const userCount = await userService.getActiveUsersCount();
+    const { jurisdiction } = req.query;
+    const venueCount = await venueService.getActiveVenuesCount(jurisdiction);
+    const userCount = await userService.getActiveUsersCount(jurisdiction);
     return res.send(200, { venueCount, userCount });
   } catch (err) {
     throw err;

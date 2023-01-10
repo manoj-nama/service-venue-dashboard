@@ -1,8 +1,12 @@
 const UserModel = require('../models/users');
 const { inputUserVenueFormatter } = require('./formatter/user-venue');
 
-module.exports.getActiveUsersCount = async () => {
-  return await UserModel.find({ currentState: 1 }).count();
+module.exports.getActiveUsersCount = async (jurisdiction) => {
+  const params = { currentState: 1 };
+  if (jurisdiction && jurisdiction.toLowerCase() !== "all") {
+    params['venueState'] = jurisdiction.toUpperCase();
+  }
+  return await UserModel.find(params).count();
 };
 
 module.exports.createUser = async (userData) => {
