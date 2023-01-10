@@ -1,16 +1,15 @@
 const { BetModel } = require('../models');
-const axios = require('axios');
+const redis = require("../redis");
 
-const VENUE_LIST_API = 'https://api.congo.beta.tab.com.au/v1/invenue-service/public-venue-list'
-
-module.exports.getActiveVenuesCount = async () => {
-  const activeVenudata = await axios({
-    method: 'get',
-    url: VENUE_LIST_API,
-  });
-
-  const activeVenueArr = activeVenudata.data;
-  return activeVenueArr.reduce((count, venue) => count + (venue.status === 'Active' ? 1 : 0), 0);
+module.exports.getActiveVenuesCount = async (jurisdiction) => {
+  const venues = await redis.getRedis().get('venues');
+  if (jurisdiction && jurisdiction.toLowerCase() !== "all") {
+    return venues.filter(it => (
+      it.status === 'Active' &&
+      it.jurisdiction === jurisdiction.toUpperCase()
+    )).length;
+  }
+  return venues.filter(it => (it.status === 'Active')).length;
 };
 
 module.exports.getVenueInfo = async (venueId) => {
