@@ -17,7 +17,7 @@ const { ListFormat } = require('typescript');
 const config = require('../config');
 
 // TODO: Move to constants
-const DEFAULT_RADIUS = 1000000000;
+const DEFAULT_RADIUS = 100000000;
 const DEFAULT_LONGITUDE = '';
 const DEFAULT_LATITUDE = '';
 
@@ -53,7 +53,7 @@ const getPropDetails = async (props) => {
         ]
       },
       {
-        "name": "Washington",
+        "name": "MELBOURNE",
         "position": "AWAY",
         "isHome": false,
         "image": [
@@ -99,9 +99,9 @@ const getPropDetails = async (props) => {
         isOpen: d.propositionDetails?.isOpen,
         number: d.propositionDetails?.number
       },
-      contestants: (d?.match?.contestants || contestants).map((item, i) => {
+      contestants: ((d?.match?.contestants?.length && d?.match?.contestants) || contestants).map((item, i) => {
         // TODO: To be removed once correct data is there on env
-        if (d.match?.contestants && !d.match?.contestants[0].image) {
+        if (d.match?.contestants?.length && !d.match?.contestants[0].image) {
           d.match.contestants[0].image = contestants[0].image;
           d.match.contestants[1].image = contestants[1].image;
         }
@@ -173,6 +173,7 @@ const createBets = async (betDetails) => {
     log.info('Bets creation process started');
     if (betDetails && betDetails.length) {
       response = await Promise.map(betDetails, async (bet) => {
+        bet = bet.value || bet;
         const updatedBetDetails = await getBetWithLoc(bet);
         if (updatedBetDetails) {
           updatedBetDetails.propositions = bet.propositions.map((p) => ({
@@ -419,11 +420,11 @@ const getVersusMapData = async ({
   competitionName,
   tournamentName,
   matchName,
-  radius = DEFAULT_RADIUS,
   longitude = DEFAULT_LONGITUDE,
   latitude = DEFAULT_LATITUDE
 }) => {
   let response = [];
+  const DEFAULT_VERSUS_MAP_RADIUS = 50000;
   try {
     log.info('Fetching versus map data');
     const findOptions = {
@@ -436,38 +437,42 @@ const getVersusMapData = async ({
     Object.keys(findOptions).forEach(
       (k) => !findOptions[k] && delete findOptions[k]
     );
+    let nearByCordsBet = await BetModel.aggregate([
+      {
+        $geoNear: {
+          near: {
+            type: "Point",
+            coordinates: [Number(longitude), Number(latitude)]
+          },
+          distanceField: "distance",
+          maxDistance: Number(DEFAULT_VERSUS_MAP_RADIUS),
+        }
+      },
+      {
+        $project: {
+          _id: 1
+        }
+      }
+    ]);
+
+    nearByCordsBet = nearByCordsBet.map(i => i._id);
 
     response = await PropositionModel.aggregate([
       {
-        $lookup: {
+        $lookup:
+        {
           from: 'bets',
-          let: { betId: "$bet" },
-          pipeline: [
-            {
-              $geoNear: {
-                near: {
-                  type: "Point",
-                  coordinates: [Number(longitude), Number(latitude)]
-                },
-                distanceField: "distance",
-                maxDistance: radius,
-                query: {
-                  $expr: {
-                    $eq: ["$_id", "$$betId"]
-                  }
-                }
-              }
-            }
-          ],
+          localField: 'bet',
+          foreignField: '_id',
           as: 'betInfo'
-        }
+        },
       },
       {
         $replaceRoot: { newRoot: { $mergeObjects: [{ $arrayElemAt: ["$betInfo", 0] }, "$$ROOT"] } }
       },
       { $project: { betInfo: 0 } },
       {
-        $match: { account_number: { $ne: null }, ...findOptions }
+        $match: { bet: { $in: nearByCordsBet }, account_number: { $ne: null }, ...findOptions }
       },
       {
         $unwind: {
@@ -568,7 +573,6 @@ const getBetsDistribution = async ({ query, params }) => {
         competitionName,
         tournamentName,
         matchName,
-        radius,
         longitude,
         latitude,
       });
@@ -590,13 +594,15 @@ const mostBetsPlacedPerVenue = async (
   limit,
   page,
   fromDateUTC,
-  toDateUTC
+  toDateUTC,
+  sort
 ) => {
   fromDateUTC = fromDateUTC * 1 || 0,
     toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
   limit = limit * 1 || 1000;
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
+  sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
   let pipeline = [
     {
       $match: {
@@ -640,21 +646,38 @@ const mostBetsPlacedPerVenue = async (
     },
     {
       $sort: {
-        frequency_of_bets: -1,
+        frequency_of_bets: sort,
         venueName: 1,
       },
     },
     {
-      $skip: skip,
-    },
-    {
-      $limit: limit,
-    },
+      $facet: {
+        paginatedResults: [{ $skip: skip }, { $limit: limit }],
+        totalCount: [
+          {
+            $count: 'count'
+          }
+        ]
+      }
+    }
   ];
   return BetModel.aggregate(pipeline);
 };
 
-const searchMostBetsPlacedPerVenue = async (text = '.') => {
+const searchMostBetsPlacedPerVenue = async (
+  text='.',
+  limit,
+  page,
+  fromDateUTC,
+  toDateUTC,
+  sort
+) => {
+  fromDateUTC = fromDateUTC * 1 || 0,
+    toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
+  limit = limit * 1 || 1000;
+  page = page * 1 || 1;
+  const skip = (page - 1) * limit;
+  sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
   let pipeline = [
     {
       $match: {
@@ -664,6 +687,10 @@ const searchMostBetsPlacedPerVenue = async (text = '.') => {
         $or: [{ venueType: { $regex: new RegExp(text, 'i') } },
         { venueState: { $regex: new RegExp(text, 'i') } },
         { venueName: { $regex: new RegExp(text, 'i') } }],
+        transaction_date_time: {
+          $gte: fromDateUTC,
+          $lte: toDateUTC,
+        },
       },
     },
     {
@@ -697,10 +724,20 @@ const searchMostBetsPlacedPerVenue = async (text = '.') => {
     },
     {
       $sort: {
-        frequency_of_bets: -1,
+        frequency_of_bets: sort,
         venueName: 1,
       },
     },
+    {
+      $facet: {
+        paginatedResults: [{ $skip: skip }, { $limit: limit }],
+        totalCount: [
+          {
+            $count: 'count'
+          }
+        ]
+      }
+    }
   ];
   return BetModel.aggregate(pipeline);
 };
@@ -709,13 +746,15 @@ const mostAmountSpentPerVenue = async (
   limit,
   page,
   fromDateUTC,
-  toDateUTC
+  toDateUTC,
+  sort
 ) => {
   fromDateUTC = fromDateUTC * 1 || 0,
     toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
   limit = limit * 1 || 1000;
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
+  sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
   let pipeline = [
     {
       $match: {
@@ -735,7 +774,7 @@ const mostAmountSpentPerVenue = async (
           $push: '$$ROOT',
         },
         frequency_of_total_amount_spent: {
-          $sum: '$price',
+          $sum: '$bet_amount',
         },
       },
     },
@@ -759,21 +798,38 @@ const mostAmountSpentPerVenue = async (
     },
     {
       $sort: {
-        frequency_of_total_amount_spent: -1,
+        frequency_of_total_amount_spent: sort,
         venueName: 1,
       },
     },
     {
-      $skip: skip,
-    },
-    {
-      $limit: limit,
-    },
+      $facet: {
+        paginatedResults: [{ $skip: skip }, { $limit: limit }],
+        totalCount: [
+          {
+            $count: 'count'
+          }
+        ]
+      }
+    }
   ];
   return BetModel.aggregate(pipeline);
 };
 
-const searchMostAmountSpentPerVenue = async (text = '.') => {
+const searchMostAmountSpentPerVenue = async (
+  text='.',
+  limit,
+  page,
+  fromDateUTC,
+  toDateUTC,
+  sort
+) => {
+  fromDateUTC = fromDateUTC * 1 || 0,
+    toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
+  limit = limit * 1 || 1000;
+  page = page * 1 || 1;
+  const skip = (page - 1) * limit;
+  sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
   let pipeline = [
     {
       $match: {
@@ -783,6 +839,10 @@ const searchMostAmountSpentPerVenue = async (text = '.') => {
         $or: [{ venueType: { $regex: new RegExp(text, 'i') } },
         { venueState: { $regex: new RegExp(text, 'i') } },
         { venueName: { $regex: new RegExp(text, 'i') } }],
+        transaction_date_time: {
+          $gte: fromDateUTC,
+          $lte: toDateUTC,
+        },
       },
     },
     {
@@ -792,7 +852,7 @@ const searchMostAmountSpentPerVenue = async (text = '.') => {
           $push: '$$ROOT',
         },
         frequency_of_total_amount_spent: {
-          $sum: '$price',
+          $sum: '$bet_amount',
         },
       },
     },
@@ -816,10 +876,20 @@ const searchMostAmountSpentPerVenue = async (text = '.') => {
     },
     {
       $sort: {
-        frequency_of_total_amount_spent: -1,
+        frequency_of_total_amount_spent: sort,
         venueName: 1,
       },
     },
+    {
+      $facet: {
+        paginatedResults: [{ $skip: skip }, { $limit: limit }],
+        totalCount: [
+          {
+            $count: 'count'
+          }
+        ]
+      }
+    }
   ];
   return BetModel.aggregate(pipeline);
 };

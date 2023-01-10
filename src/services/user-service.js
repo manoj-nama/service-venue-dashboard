@@ -35,10 +35,11 @@ const makeUser = async (userData) => {
   return updatedUser;
 };
 
-module.exports.getMostActiveUser = async (limit, page) => {
+module.exports.getMostActiveUser = async (limit, page, sort) => {
   limit = limit * 1 || 1000;
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
+  sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
   const ActiveUserInVenue = await UserModel.aggregate([
     {
       $match: {
@@ -74,31 +75,38 @@ module.exports.getMostActiveUser = async (limit, page) => {
       },
     }, {
       $sort: {
-        active_users: -1,
+        active_users: sort,
         venueName: 1,
       },
     },
-    {
-      $skip: skip,
-    },
-    {
-      $limit: limit,
-    },
+   { $facet: {
+      paginatedResults: [{ $skip: skip }, { $limit: limit }],
+      totalCount: [
+        {
+          $count: 'count'
+        }
+      ]
+    }
+  }
   ]);
 
   return ActiveUserInVenue;
 };
 
-module.exports.searchMostActiveUser = async (text = '.') => {
+module.exports.searchMostActiveUser = async (text='.', limit, page, sort) => {
+  limit = limit * 1 || 1000;
+  page = page * 1 || 1;
+  const skip = (page - 1) * limit;
+  sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
   const ActiveUserInVenue = await UserModel.aggregate([
     {
       $match: {
         currentState: 1,
-        $or: [{ venueType: { $regex: new RegExp(text, 'i') } },
-        { venueState: { $regex: new RegExp(text, 'i') } },
-        { venueName: { $regex: new RegExp(text, 'i') } }],
-      },
-    }, {
+      $or: [{ venueType: { $regex: new RegExp(text, 'i') } },
+      { venueState: { $regex: new RegExp(text, 'i') } },
+      { venueName: { $regex: new RegExp(text, 'i') } }],
+    }
+  }, {
       $group: {
         _id: '$venueId',
         venues: {
@@ -128,11 +136,22 @@ module.exports.searchMostActiveUser = async (text = '.') => {
       },
     }, {
       $sort: {
-        active_users: -1,
+        active_users: sort,
         venueName: 1,
       },
     },
+    {
+      $facet: {
+        paginatedResults: [{ $skip: skip }, { $limit: limit }],
+        totalCount: [
+          {
+            $count: 'count'
+          }
+        ]
+      }
+    }
   ]);
 
   return ActiveUserInVenue;
 };
+

@@ -1,0 +1,44 @@
+[
+    {
+        "count": 32,
+        "marketName": "AFW NMlb-Frem 07/01",
+        "marketUniqueId": "76982740",
+        "totalBetAmount": 145,
+        "betOption": "Result"
+    },
+    {
+        "count": 52,
+        "marketName": "AFW NMlb-Frem H2H",
+        "marketUniqueId": "76982730",
+        "totalBetAmount": 321,
+        "betOption": "Head To Head"
+    },
+    {
+        "count": 11,
+        "marketName": "AFW NMlb-Frem -1.5",
+        "marketUniqueId": "76982745",
+        "totalBetAmount": 897,
+        "betOption": "Line"
+    },
+    {
+        "count": 12,
+        "marketName": "AFW NMlb-Frem Margin",
+        "marketUniqueId": "76982754",
+        "totalBetAmount": 200,
+        "betOption": "Margin"
+    },
+    {
+        "count": 28,
+        "marketName": "AFW NMlb-Frem H2H/OvUn",
+        "marketUniqueId": "76962079",
+        "totalBetAmount": 1342,
+        "betOption": "HDtoHD/OverUnder Double"
+    },
+    {
+        "count": 31,
+        "marketName": "AFW NMlb-Frem PYOL",
+        "marketUniqueId": "76960679",
+        "totalBetAmount": 1222,
+        "betOption": "Pick Your Own Line"
+    }
+]

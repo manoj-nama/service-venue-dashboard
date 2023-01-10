@@ -42,10 +42,10 @@ const addBetDetails = async (req, res) => {
 const mostBetsPlacedPerVenue = async (req, res) => {
   try {
     let {
-      limit, page, fromDateUTC, toDateUTC,
+      limit, page, fromDateUTC, toDateUTC, sort
     } = req.query;
-    const result = await betStatsService.mostBetsPlacedPerVenue(limit, page, fromDateUTC, toDateUTC);
-    res.send(200, { data: result });
+    const result = await betStatsService.mostBetsPlacedPerVenue(limit, page, fromDateUTC, toDateUTC, sort);
+    res.send(200, { data: result[0].paginatedResults, total_count: result[0].totalCount.length ? result[0].totalCount[0].count : 0 });
   } catch (err) {
     throw err
   }
@@ -54,10 +54,10 @@ const mostBetsPlacedPerVenue = async (req, res) => {
 const mostAmountSpentPerVenue = async (req, res) => {
   try {
     let {
-      limit, page, fromDateUTC, toDateUTC,
+      limit, page, fromDateUTC, toDateUTC, sort
     } = req.query;
-    const result = await betStatsService.mostAmountSpentPerVenue(limit, page, fromDateUTC, toDateUTC);
-    res.send(200, { data: result });
+    const result = await betStatsService.mostAmountSpentPerVenue(limit, page, fromDateUTC, toDateUTC, sort);
+    res.send(200, { data: result[0].paginatedResults, total_count: result[0].totalCount.length ? result[0].totalCount[0].count : 0 });
   } catch (err) {
     throw err
   }
@@ -65,9 +65,9 @@ const mostAmountSpentPerVenue = async (req, res) => {
 
 const searchMostAmountSpentPerVenue = async (req, res) => {
   try {
-    const { text } = req.query;
-    const result = await betStatsService.searchMostAmountSpentPerVenue(text);
-    res.send(200, { data: result });
+    const { text, limit, page, fromDateUTC, toDateUTC, sort } = req.query;
+    const result = await betStatsService.searchMostAmountSpentPerVenue(text, limit, page, fromDateUTC, toDateUTC, sort);
+    res.send(200, { data: result[0].paginatedResults, total_count: result[0].totalCount.length ? result[0].totalCount[0].count : 0 });
   } catch (err) {
     throw err
   }
@@ -75,11 +75,11 @@ const searchMostAmountSpentPerVenue = async (req, res) => {
 
 const searchMostBetsPlacedPerVenue = async (req, res) => {
   try {
-    const { text } = req.query;
-    const result = await betStatsService.searchMostBetsPlacedPerVenue(text);
-    res.send(200, { data: result });
+    const { text, limit, page, fromDateUTC, toDateUTC, sort } = req.query;
+    const result = await betStatsService.searchMostBetsPlacedPerVenue(text, limit, page, fromDateUTC, toDateUTC, sort);
+    res.send(200, { data: result[0].paginatedResults, total_count: result[0].totalCount.length ? result[0].totalCount[0].count : 0 });
   } catch (err) {
-    throw err
+    throw err;
   }
 };
 

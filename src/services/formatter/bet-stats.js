@@ -1,3 +1,6 @@
+const mockBigBets = require('../../../mocks/big-bets.json');
+const ICON_MAP = require('./constants');
+
 const liveBetsFormatter = ({
 	bets, count
 }) => {
@@ -51,60 +54,75 @@ const heatMapFormatter = (bets) => {
 };
 
 const versusMapFormatter = (versusData = {}) => {
-	let { response: teamInfo, sportName, matchName, competitionName } = versusData
-	const DEFAULT_HEX_CODES = ['#24C4F0', '#E92912'];
-
+	let { response: teamInfo, sportName, matchName, competitionName } = versusData;
 	teamInfo = (teamInfo || []).map((item, i) => {
-		item.coordinates = item.props.map(prop => ({ longitude: prop.location.coordinates[0], latitude: prop.location.coordinates[1] }));
+		item.coordinates = item.props.map(prop => (
+			{
+				longitude: prop.location.coordinates[0],
+				latitude: prop.location.coordinates[1]
+			}
+		));
 		delete item.props;
-		item.icon.hexCode = DEFAULT_HEX_CODES[Math.round(Math.random())];
+		item.icon = ICON_MAP[item.teamName]
 		return item;
-	});
+	})
+	teamInfo = teamInfo.sort((a, b) => b.count - a.count);
 	const formattedData = {
-		sportName, matchName, competitionName,
-		teams: teamInfo
+		sportName,
+		matchName,
+		competitionName,
+		teams: teamInfo,
 	}
 	return formattedData;
 };
 // Formatting bets for bulk insertion
 const inputBetsFormatter = (bets) => {
-  let formattedData = [];
-  bets.map((b) => {
-    b.propositions.map((p) => {
-      formattedData.push({
-        transaction_date_time: Date.parse(
-          new Date(toString(b.transaction_date_time)).toUTCString()
-        ),
-        proposition_id: p.prop_id,
-        bet_description: p.description?.string,
-        competition_id: b.competition?.int,
-        tournament_id: b.tournament?.int,
-        sport: b.sport?.string,
-        match: b.match?.string,
-        bet_amount: b.bet_amount,
-        tx_type: b.tx_type,
-        account_number: b.account_number,
-      });
-    });
-  });
-  return formattedData;
+	let formattedData = [];
+	bets.map((b) => {
+		b.propositions.map((p) => {
+			formattedData.push({
+				transaction_date_time: Date.parse(
+					new Date(toString(b.transaction_date_time)).toUTCString()
+				),
+				proposition_id: p.prop_id,
+				bet_description: p.description?.string,
+				competition_id: b.competition?.int,
+				tournament_id: b.tournament?.int,
+				sport: b.sport?.string,
+				match: b.match?.string,
+				bet_amount: b.bet_amount,
+				tx_type: b.tx_type,
+				account_number: b.account_number,
+			});
+		});
+	});
+	return formattedData;
 };
 
-const bigBetsFormatter = (bets) => {
-  const formattedResponse = bets.map((b) => ({
-    count: b.count,
-    sportName: b.sport_name,
-    matchName: b.match_name,
-    matchStartTime: b.match_start_time,
-    marketName: b.market_name,
-    marketUniqueId: b.market_unique_id,
-    competitionName: b.competition_name,
-    tournamentName: b.tournament_name,
+const bigBetsFormatter = (bets = []) => {
+	let formattedResponse = bets.map((b) => ({
+		count: b.count,
+		sportName: b.sport_name,
+		matchName: b.match_name,
+		matchStartTime: b.match_start_time,
+		marketName: b.market_name,
+		marketUniqueId: b.market_unique_id,
+		competitionName: b.competition_name,
+		tournamentName: b.tournament_name,
 		totalBetAmount: b.total_bet_amount,
 		betOption: b.bet_option,
-    // TODO: Add discovery key and navigation to redirect to market screen
-  }));
-  return formattedResponse;
+	}));
+	// TODO: Added for demo purpose due single market available on env
+	if (formattedResponse.length === 1) {
+		let mockBigBetsData = mockBigBets.map(mb => {
+			return {
+				...formattedResponse[0],
+				...mb
+			}
+		});
+		formattedResponse = [...formattedResponse, ...mockBigBetsData];
+	}
+	return formattedResponse;
 };
 
 const formatBetDistribution = ({

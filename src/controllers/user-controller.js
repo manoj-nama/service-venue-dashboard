@@ -11,26 +11,28 @@ module.exports.createUser = async (req, res) => {
     const result = await createUser(userData);
     res.send(201, { message: 'Successful', data: result });
   } catch (error) {
-    throw error
+    throw error;
   }
 };
 
 module.exports.getMostActiveUser = async (req, res) => {
   try {
-    const { limit, page } = req.query
-    const data = await getMostActiveUser(limit, page);
-    return res.send(200, { active_users: data });
+    const { limit, page, sort } = req.query;
+    const data = await getMostActiveUser(limit, page, sort);
+    return res.send(200, { active_users: data[0].paginatedResults, total_count: data[0].totalCount.length ? data[0].totalCount[0].count : 0 });
   } catch (err) {
-    throw err
+    throw err;
   }
 };
 
 module.exports.searchMostActiveUser = async (req, res) => {
   try {
-    const { text } = req.query;
-    const result = await searchMostActiveUser(text);
-    return res.send(200, { data: result });
+    const {
+      text, limit, page, sort,
+    } = req.query;
+    const data = await searchMostActiveUser(text, limit, page, sort);
+    return res.send(200, { active_users: data[0].paginatedResults, total_count: data[0].totalCount.length ? data[0].totalCount[0].count : 0 });
   } catch (err) {
-    throw err
+    throw err;
   }
 };

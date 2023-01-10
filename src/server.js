@@ -25,7 +25,7 @@ const createServer = () => {
     const cors = corsMiddleware({
       preflightMaxAge: 5, //Optional
       origins: ['*'],
-      allowHeaders: ['API-Token', 'tabcorpauth', 'x-auth-token'],
+      allowHeaders: ['x-auth-token'],
       exposeHeaders: ['API-Token-Expiry']
     });
 

@@ -33,7 +33,7 @@ router.get({
     name: 'getActiveVenuesAndUser',
     path: '/v1/service-venue/active-venues-users',
   },
-  handlers: [getActiveVenuesAndUser],
+  handlers: [auth,getActiveVenuesAndUser],
 });
 
 router.get({
@@ -41,7 +41,7 @@ router.get({
     name: 'getMostActiveUser',
     path: '/v1/service-venue/most-active-users',
   },
-  handlers: [getMostActiveUser],
+  handlers: [auth,getMostActiveUser],
 });
 
 router.get({
@@ -49,7 +49,7 @@ router.get({
     name: 'getMostActiveUser',
     path: '/v1/service-venue/most-active-users/search',
   },
-  handlers: [searchMostActiveUser],
+  handlers: [auth,searchMostActiveUser],
 });
 
 router.post({
@@ -81,7 +81,7 @@ router.get({
     name: 'getVenueInfo',
     path: '/v1/service-venue/venue-info/:venueId',
   },
-  handlers: [getVenueInfo],
+  handlers: [auth,getVenueInfo],
 });
 
 const mergedRoutes = () => apiRouter.merge(router, betStatsRoutes);
