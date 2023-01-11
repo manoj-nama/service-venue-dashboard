@@ -9,6 +9,8 @@ const betStatsScheduler = require('./bet-stats-scheduler');
 const redis = require('./redis');
 const seeds = require('../seeds');
 
+const socket = require('./socket');
+
 const start = async () => {
   const cfg = get();
   process.on('SIGTERM', () => {
@@ -31,13 +33,8 @@ const start = async () => {
         await app.start();
 
         // Socket.io
-        const io = require('./socket').init(app.restifyServer);
-        io.on('connection', (socket) => {
-          console.log('Connection success', socket.id);
-          socket.on('disconnect', () => {
-            console.log('Connection disconnected', socket.id);
-          });
-        });
+        const io = socket.init(app.restifyServer);
+        await socket.afterConnect(io);
 
         // Redis
         redis.createRedis(cfg);
