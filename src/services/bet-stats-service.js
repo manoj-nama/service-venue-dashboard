@@ -265,15 +265,31 @@ const createBetFromFE = async ({ data = [] }) => {
       .limit(totalBetsToBeCreated.length);
 
     newLiveBets = liveBetsFormatter({
-      bets: newLiveBets.map((r) => {
-        r['new'] = true;
-        return r;
-      }),
+      bets: newLiveBets,
       count: totalBetsToBeCreated.length,
     });
 
-    // Socket Emit to listner
-    emitToListner('liveBet', newLiveBets);
+    // Socket Emit to listners
+    newLiveBets.forEach((betObj) => {
+      betObj['new'] = true;
+
+      // always emit to global
+      emitToListner('liveBet', betObj);
+      const { sportName, competitionName, tournamentName, matchName } =
+        betObj.betDetails;
+
+      let listner;
+      // select non tournaments
+      if (!tournamentName || tournamentName === '') {
+        listner = `${sportName}:${competitionName}:${matchName}`;
+      }
+      // select one with tournaments
+      else if (tournamentName && tournamentName.length !== '') {
+        listner = `${sportName}:${competitionName}:${tournamentName}:${matchName}`;
+      }
+
+      emitToListner(listner.trim().split(' ').join('_'), betObj);
+    });
   } catch (e) {
     log.error(e, 'Error while creating bet from front end');
   }
