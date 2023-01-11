@@ -255,8 +255,25 @@ const createBetFromFE = async ({ data = [] }) => {
     await createPropDetailsForBet(betResponse);
     log.info('Bets created');
 
+    // Fetching created liveBets again to get in a formatted way
+    let newLiveBets = await PropositionModel.find({
+      bet: { $in: betResponse.map(({ _id }) => _id) },
+    })
+      .sort({
+        createdAt: -1,
+      })
+      .limit(totalBetsToBeCreated.length);
+
+    newLiveBets = liveBetsFormatter({
+      bets: newLiveBets.map((r) => {
+        r['new'] = true;
+        return r;
+      }),
+      count: totalBetsToBeCreated.length,
+    });
+
     // Socket Emit to listner
-    emitToListner('liveBet', betResponse);
+    emitToListner('liveBet', newLiveBets);
   } catch (e) {
     log.error(e, 'Error while creating bet from front end');
   }
@@ -288,11 +305,11 @@ const getLiveBetsFromRedis = async ({
     Object.keys(findOptions).forEach(
       (k) => !findOptions[k] && delete findOptions[k]
     );
-    const newLiveBets = await PropositionModel.find(findOptions).sort({
+    const liveBets = await PropositionModel.find(findOptions).sort({
       createdAt: -1,
     });
 
-    response = newLiveBets.map((r) => {
+    response = liveBets.map((r) => {
       r['new'] = false;
       return r;
     });
