@@ -15,7 +15,7 @@ const { get } = require('../request');
 const log = require('../log');
 const { ListFormat } = require('typescript');
 const config = require('../config');
-const { emitToAll } = require('../socket');
+const { emitToListner } = require('../socket');
 
 // TODO: Move to constants
 const DEFAULT_RADIUS = 100000000;
@@ -255,8 +255,8 @@ const createBetFromFE = async ({ data = [] }) => {
     await createPropDetailsForBet(betResponse);
     log.info('Bets created');
 
-    // Socket Emit to all listners on liveBet
-    emitToAll('liveBet', betResponse);
+    // Socket Emit to listner
+    emitToListner('liveBet', betResponse);
   } catch (e) {
     log.error(e, 'Error while creating bet from front end');
   }
