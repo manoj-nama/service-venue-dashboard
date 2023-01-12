@@ -288,7 +288,8 @@ const createBetFromFE = async ({ data = [] }) => {
         listner = `${sportName}:${competitionName}:${tournamentName}:${matchName}`;
       }
 
-      emitToListner(listner.trim().split(' ').join('_'), betObj);
+      console.log(listner.split(' ').join(''));
+      emitToListner(listner.split(' ').join(''), betObj);
     });
   } catch (e) {
     log.error(e, 'Error while creating bet from front end');
