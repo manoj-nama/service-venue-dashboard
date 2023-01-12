@@ -172,7 +172,7 @@ const createPropDetailsForBet = async (bets) => {
       propsToBeCreated.push(...propDetails);
     });
     log.info(`Creating ${propsToBeCreated.length} propositions in database`);
-    await PropositionModel.insertMany(propsToBeCreated);
+    return await PropositionModel.insertMany(propsToBeCreated);
   } catch (e) {
     log.error('Error while creating propositions in db', e);
   }
@@ -252,20 +252,11 @@ const createBetFromFE = async ({ data = [] }) => {
     );
     log.info(`Creating ${totalBetsToBeCreated.length} bets`);
     const betResponse = await BetModel.insertMany(totalBetsToBeCreated);
-    await createPropDetailsForBet(betResponse);
+    const createdBets = await createPropDetailsForBet(betResponse);
     log.info('Bets created');
 
-    // Fetching created liveBets again to get in a formatted way
-    let newLiveBets = await PropositionModel.find({
-      bet: { $in: betResponse.map(({ _id }) => _id) },
-    })
-      .sort({
-        createdAt: -1,
-      })
-      .limit(totalBetsToBeCreated.length);
-
     newLiveBets = liveBetsFormatter({
-      bets: newLiveBets,
+      bets: createdBets,
       count: totalBetsToBeCreated.length,
     });
 
@@ -279,16 +270,16 @@ const createBetFromFE = async ({ data = [] }) => {
         betObj.betDetails;
 
       let listner;
-      // select non tournaments
+      // Select with no tournaments
       if (!tournamentName || tournamentName === '') {
         listner = `${sportName}:${competitionName}:${matchName}`;
       }
-      // select one with tournaments
+      // With tournaments
       else if (tournamentName && tournamentName.length !== '') {
         listner = `${sportName}:${competitionName}:${tournamentName}:${matchName}`;
       }
 
-      console.log(listner.split(' ').join(''));
+      // Emit based on listner key
       emitToListner(listner.split(' ').join(''), betObj);
     });
   } catch (e) {
