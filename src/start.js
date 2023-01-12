@@ -9,6 +9,8 @@ const betStatsScheduler = require('./bet-stats-scheduler');
 const redis = require('./redis');
 const seeds = require('../seeds');
 
+const socket = require('./socket');
+
 const start = async () => {
   const cfg = get();
   process.on('SIGTERM', () => {
@@ -16,24 +18,37 @@ const start = async () => {
   });
 
   try {
-    mongoose.connect(`${cfg.mongoose.url}${cfg.mongoose.dbName}?authMechanism=DEFAULT&authSource=admin`).then(async () => {
-      log.info('Connected to MongoDB', `${cfg.mongoose.url}${cfg.mongoose.dbName}`);
-      // Initialising Kafka topics
-      initialiseKafkaTopics();
-      const app = server();
-      await app.start();
-      // Redis
-      redis.createRedis(cfg);
-      // Scheduler for bets
-      // betStatsScheduler.run();
-      // Run seed file
-      seeds();
+    mongoose
+      .connect(
+        `${cfg.mongoose.url}${cfg.mongoose.dbName}?authMechanism=DEFAULT&authSource=admin`
+      )
+      .then(async () => {
+        log.info(
+          'Connected to MongoDB',
+          `${cfg.mongoose.url}${cfg.mongoose.dbName}`
+        );
+        // Initialising Kafka topics
+        initialiseKafkaTopics();
+        const app = server();
+        await app.start();
 
-      log.info(`${pkg.name} listening at ${app.opts.port}`);
-    }).catch((dbError) => {
-      log.error(dbError, 'Error while connecting with DB');
-      process.exit(1);
-    });
+        // Socket.io
+        const io = socket.init(app.restifyServer);
+        await socket.afterConnect(io);
+
+        // Redis
+        redis.createRedis(cfg);
+        // Scheduler for bets
+        // betStatsScheduler.run();
+        // Run seed file
+        seeds();
+
+        log.info(`${pkg.name} listening at ${app.opts.port}`);
+      })
+      .catch((dbError) => {
+        log.error(dbError, 'Error while connecting with DB');
+        process.exit(1);
+      });
   } catch (e) {
     log.error(e, 'Error starting server');
     process.exit(1);
