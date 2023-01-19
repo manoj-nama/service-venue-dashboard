@@ -99,7 +99,7 @@ module.exports.getMostActiveUser = async (limit, page, sort, jurisdiction) => {
   }
 };
 
-module.exports.searchMostActiveUser = async (text = '.', limit, page, sort) => {
+module.exports.searchMostActiveUser = async (text = '.', limit, page, sort, jurisdiction = "") => {
   limit = limit * 1 || 1000;
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
@@ -108,9 +108,11 @@ module.exports.searchMostActiveUser = async (text = '.', limit, page, sort) => {
     {
       $match: {
         currentState: 1,
-        $or: [{ venueType: { $regex: new RegExp(text, 'i') } },
-        { venueState: { $regex: new RegExp(text, 'i') } },
-        { venueName: { $regex: new RegExp(text, 'i') } }],
+        venueState: { $regex: new RegExp(jurisdiction, 'i') },
+        $or: [
+          { venueType: { $regex: new RegExp(text, 'i') } },
+          { venueName: { $regex: new RegExp(text, 'i') } }
+        ],
       }
     }, {
       $group: {

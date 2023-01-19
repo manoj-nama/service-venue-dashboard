@@ -36,3 +36,54 @@ module.exports.dashboard = async (req, res) => {
     amount
   });
 };
+
+module.exports.search = async (req, res) => {
+  const {
+    text,
+    limit,
+    page,
+    sort,
+    fromDateUTC,
+    toDateUTC,
+    jurisdiction = "",
+    type = "",
+  } = req.query;
+
+  let result = {};
+  switch (type.toLowerCase()) {
+    case "bets": {
+      result = await betStatsService.searchMostBetsPlacedPerVenue(
+        text,
+        limit,
+        page,
+        fromDateUTC,
+        toDateUTC,
+        sort,
+        jurisdiction,
+      );
+      break;
+    }
+    case "amount": {
+      result = await betStatsService.searchMostAmountSpentPerVenue(
+        text,
+        limit,
+        page,
+        fromDateUTC,
+        toDateUTC,
+        sort,
+        jurisdiction,
+      );
+      break;
+    }
+    default: {
+      result = await userService.searchMostActiveUser(
+        text,
+        limit,
+        page,
+        sort,
+        jurisdiction,
+      );
+    }
+  }
+  return res.send(200, result);
+};

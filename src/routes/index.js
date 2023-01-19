@@ -4,7 +4,7 @@ const discovery = require('../controllers/discovery-controller');
 const { getActiveVenuesAndUser } = require('../controllers/venue-info-controller');
 const { getVenueInfo } = require('../controllers/venue-info-controller')
 const { createUser, getMostActiveUser, searchMostActiveUser } = require('../controllers/user-controller');
-const { dashboard } = require('../controllers/bff-controller');
+const { dashboard, search } = require('../controllers/bff-controller');
 const { signupUser, loginUser } = require('../controllers/admin-controller');
 const { auth } = require('../middlewares/auth');
 
@@ -25,7 +25,15 @@ router.get({
     name: 'getDashboardMetrics',
     path: '/v1/service-venue/dashboard',
   },
-  handlers: [dashboard],
+  handlers: [auth, dashboard],
+});
+
+router.get({
+  path: {
+    name: 'getDashboardMetrics',
+    path: '/v1/service-venue/search',
+  },
+  handlers: [auth, search],
 });
 
 router.get({

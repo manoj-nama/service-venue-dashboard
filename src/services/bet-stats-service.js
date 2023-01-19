@@ -681,7 +681,8 @@ const searchMostBetsPlacedPerVenue = async (
   page,
   fromDateUTC,
   toDateUTC,
-  sort
+  sort,
+  jurisdiction = "",
 ) => {
   fromDateUTC = fromDateUTC * 1 || 0,
     toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
@@ -695,9 +696,11 @@ const searchMostBetsPlacedPerVenue = async (
         venueId: {
           $ne: null,
         },
-        $or: [{ venueType: { $regex: new RegExp(text, 'i') } },
-        { venueState: { $regex: new RegExp(text, 'i') } },
-        { venueName: { $regex: new RegExp(text, 'i') } }],
+        venueState: { $regex: new RegExp(jurisdiction, 'i') },
+        $or: [
+          { venueType: { $regex: new RegExp(text, 'i') } },
+          { venueName: { $regex: new RegExp(text, 'i') } }
+        ],
         transaction_date_time: {
           $gte: fromDateUTC,
           $lte: toDateUTC,
@@ -848,10 +851,11 @@ const searchMostAmountSpentPerVenue = async (
   page,
   fromDateUTC,
   toDateUTC,
-  sort
+  sort,
+  jurisdiction = "",
 ) => {
-  fromDateUTC = fromDateUTC * 1 || 0,
-    toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
+  fromDateUTC = fromDateUTC * 1 || 0;
+  toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
   limit = limit * 1 || 1000;
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
@@ -862,9 +866,11 @@ const searchMostAmountSpentPerVenue = async (
         venueId: {
           $ne: null,
         },
-        $or: [{ venueType: { $regex: new RegExp(text, 'i') } },
-        { venueState: { $regex: new RegExp(text, 'i') } },
-        { venueName: { $regex: new RegExp(text, 'i') } }],
+        venueState: { $regex: new RegExp(jurisdiction, 'i') },
+        $or: [
+          { venueType: { $regex: new RegExp(text, 'i') } },
+          { venueName: { $regex: new RegExp(text, 'i') } }
+        ],
         transaction_date_time: {
           $gte: fromDateUTC,
           $lte: toDateUTC,
