@@ -92,7 +92,7 @@ module.exports.getMostActiveUser = async (limit, page, sort, jurisdiction) => {
     const { paginatedResults, totalCount } = ActiveUserInVenue[0];
     return {
       data: paginatedResults,
-      totalCount: totalCount[0] && totalCount[0].count || 0,
+      total_count: totalCount[0] && totalCount[0].count || 0,
     };
   } catch (err) {
     console.log(err);
@@ -163,7 +163,7 @@ module.exports.searchMostActiveUser = async (text = '.', limit, page, sort, juri
   const { paginatedResults, totalCount } = ActiveUserInVenue[0];
   return {
     data: paginatedResults,
-    totalCount: totalCount[0] && totalCount[0].count || 0,
+    total_count: totalCount[0] && totalCount[0].count || 0,
   };
 };
 

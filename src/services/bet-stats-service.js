@@ -671,7 +671,7 @@ const mostBetsPlacedPerVenue = async (
   const { paginatedResults, totalCount } = response[0];
   return {
     data: paginatedResults,
-    totalCount: totalCount[0] && totalCount[0].count || 0,
+    total_count: totalCount[0] && totalCount[0].count || 0,
   };
 };
 
@@ -757,7 +757,7 @@ const searchMostBetsPlacedPerVenue = async (
   const { paginatedResults, totalCount } = response[0];
   return {
     data: paginatedResults,
-    totalCount: totalCount[0] && totalCount[0].count || 0,
+    total_count: totalCount[0] && totalCount[0].count || 0,
   };
 };
 
@@ -841,7 +841,7 @@ const mostAmountSpentPerVenue = async (
   const { paginatedResults, totalCount } = response[0];
   return {
     data: paginatedResults,
-    totalCount: totalCount[0] && totalCount[0].count || 0,
+    total_count: totalCount[0] && totalCount[0].count || 0,
   };
 };
 
@@ -927,7 +927,7 @@ const searchMostAmountSpentPerVenue = async (
   const { paginatedResults, totalCount } = response[0];
   return {
     data: paginatedResults,
-    totalCount: totalCount[0] && totalCount[0].count || 0,
+    total_count: totalCount[0] && totalCount[0].count || 0,
   };
 };
 
