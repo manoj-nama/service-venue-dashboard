@@ -99,7 +99,7 @@ const getPropDetails = async (props) => {
         isOpen: d.propositionDetails?.isOpen,
         number: d.propositionDetails?.number
       },
-      contestants: ((d?.match?.contestants?.length && d?.match?.contestants) || contestants).map((item, i) => {
+      contestants: (d?.match?.contestants || []).map((item, i) => {
         // TODO: To be removed once correct data is there on env
         if (d.match?.contestants?.length && !d.match?.contestants[0].image) {
           d.match.contestants[0].image = contestants[0].image;
@@ -472,7 +472,7 @@ const getVersusMapData = async ({
       },
       { $project: { betInfo: 0 } },
       {
-        $match: { bet: { $in: nearByCordsBet }, account_number: { $ne: null }, ...findOptions }
+        $match: { bet: { $in: nearByCordsBet }, account_number: { $ne: null }, ...findOptions, match_name: {$ne : '2023 AFL Premiership'} }
       },
       {
         $unwind: {
