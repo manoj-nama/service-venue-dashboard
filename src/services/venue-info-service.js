@@ -2,7 +2,7 @@ const { BetModel } = require('../models');
 const redis = require("../redis");
 
 module.exports.getActiveVenuesCount = async (jurisdiction) => {
-  const venues = await redis.getRedis().get('venues');
+  let venues = await redis.getRedis().get('venues') || [];
   if (jurisdiction && jurisdiction.toLowerCase() !== "all") {
     return venues.filter(it => (
       it.status === 'Active' &&
