@@ -19,7 +19,7 @@ module.exports.getMostActiveUser = async (req, res) => {
   try {
     const { limit, page, sort } = req.query;
     const data = await getMostActiveUser(limit, page, sort);
-    return res.send(200, { active_users: data[0].paginatedResults, total_count: data[0].totalCount.length ? data[0].totalCount[0].count : 0 });
+    return res.send(200, data);
   } catch (err) {
     throw err;
   }
@@ -31,7 +31,7 @@ module.exports.searchMostActiveUser = async (req, res) => {
       text, limit, page, sort,
     } = req.query;
     const data = await searchMostActiveUser(text, limit, page, sort);
-    return res.send(200, { active_users: data[0].paginatedResults, total_count: data[0].totalCount.length ? data[0].totalCount[0].count : 0 });
+    return res.send(200, data);
   } catch (err) {
     throw err;
   }

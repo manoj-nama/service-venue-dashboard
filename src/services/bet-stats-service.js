@@ -595,7 +595,8 @@ const mostBetsPlacedPerVenue = async (
   page,
   fromDateUTC,
   toDateUTC,
-  sort
+  sort,
+  jurisdiction,
 ) => {
   fromDateUTC = fromDateUTC * 1 || 0,
     toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
@@ -603,18 +604,23 @@ const mostBetsPlacedPerVenue = async (
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
   sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
-  let pipeline = [
-    {
-      $match: {
-        venueId: {
-          $ne: null,
-        },
-        transaction_date_time: {
-          $gte: fromDateUTC,
-          $lte: toDateUTC,
-        },
-      },
+
+  const $match = {
+    venueId: {
+      $ne: null,
     },
+    transaction_date_time: {
+      $gte: fromDateUTC,
+      $lte: toDateUTC,
+    },
+  };
+
+  if (jurisdiction && jurisdiction.toLowerCase() !== "all") {
+    $match['venueState'] = jurisdiction.toUpperCase();
+  }
+
+  let pipeline = [
+    { $match },
     {
       $group: {
         _id: '$venueId',
@@ -661,16 +667,22 @@ const mostBetsPlacedPerVenue = async (
       }
     }
   ];
-  return BetModel.aggregate(pipeline);
+  const response = await BetModel.aggregate(pipeline);
+  const { paginatedResults, totalCount } = response[0];
+  return {
+    data: paginatedResults,
+    total_count: totalCount[0] && totalCount[0].count || 0,
+  };
 };
 
 const searchMostBetsPlacedPerVenue = async (
-  text='.',
+  text = '.',
   limit,
   page,
   fromDateUTC,
   toDateUTC,
-  sort
+  sort,
+  jurisdiction = "",
 ) => {
   fromDateUTC = fromDateUTC * 1 || 0,
     toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
@@ -684,9 +696,11 @@ const searchMostBetsPlacedPerVenue = async (
         venueId: {
           $ne: null,
         },
-        $or: [{ venueType: { $regex: new RegExp(text, 'i') } },
-        { venueState: { $regex: new RegExp(text, 'i') } },
-        { venueName: { $regex: new RegExp(text, 'i') } }],
+        venueState: { $regex: new RegExp(jurisdiction, 'i') },
+        $or: [
+          { venueType: { $regex: new RegExp(text, 'i') } },
+          { venueName: { $regex: new RegExp(text, 'i') } }
+        ],
         transaction_date_time: {
           $gte: fromDateUTC,
           $lte: toDateUTC,
@@ -739,7 +753,12 @@ const searchMostBetsPlacedPerVenue = async (
       }
     }
   ];
-  return BetModel.aggregate(pipeline);
+  const response = await BetModel.aggregate(pipeline);
+  const { paginatedResults, totalCount } = response[0];
+  return {
+    data: paginatedResults,
+    total_count: totalCount[0] && totalCount[0].count || 0,
+  };
 };
 
 const mostAmountSpentPerVenue = async (
@@ -747,7 +766,8 @@ const mostAmountSpentPerVenue = async (
   page,
   fromDateUTC,
   toDateUTC,
-  sort
+  sort,
+  jurisdiction,
 ) => {
   fromDateUTC = fromDateUTC * 1 || 0,
     toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
@@ -755,18 +775,22 @@ const mostAmountSpentPerVenue = async (
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
   sort = sort?.toLowerCase() === 'asc' ? 1 : -1;
-  let pipeline = [
-    {
-      $match: {
-        venueId: {
-          $ne: null,
-        },
-        transaction_date_time: {
-          $gte: fromDateUTC,
-          $lte: toDateUTC,
-        },
-      },
+
+  const $match = {
+    venueId: {
+      $ne: null,
     },
+    transaction_date_time: {
+      $gte: fromDateUTC,
+      $lte: toDateUTC,
+    },
+  };
+  if (jurisdiction && jurisdiction.toLowerCase() !== "all") {
+    $match['venueState'] = jurisdiction.toUpperCase();
+  }
+
+  let pipeline = [
+    { $match },
     {
       $group: {
         _id: '$venueId',
@@ -813,19 +837,25 @@ const mostAmountSpentPerVenue = async (
       }
     }
   ];
-  return BetModel.aggregate(pipeline);
+  const response = await BetModel.aggregate(pipeline);
+  const { paginatedResults, totalCount } = response[0];
+  return {
+    data: paginatedResults,
+    total_count: totalCount[0] && totalCount[0].count || 0,
+  };
 };
 
 const searchMostAmountSpentPerVenue = async (
-  text='.',
+  text = '.',
   limit,
   page,
   fromDateUTC,
   toDateUTC,
-  sort
+  sort,
+  jurisdiction = "",
 ) => {
-  fromDateUTC = fromDateUTC * 1 || 0,
-    toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
+  fromDateUTC = fromDateUTC * 1 || 0;
+  toDateUTC = toDateUTC * 1 || Date.parse(new Date().toUTCString());
   limit = limit * 1 || 1000;
   page = page * 1 || 1;
   const skip = (page - 1) * limit;
@@ -836,9 +866,11 @@ const searchMostAmountSpentPerVenue = async (
         venueId: {
           $ne: null,
         },
-        $or: [{ venueType: { $regex: new RegExp(text, 'i') } },
-        { venueState: { $regex: new RegExp(text, 'i') } },
-        { venueName: { $regex: new RegExp(text, 'i') } }],
+        venueState: { $regex: new RegExp(jurisdiction, 'i') },
+        $or: [
+          { venueType: { $regex: new RegExp(text, 'i') } },
+          { venueName: { $regex: new RegExp(text, 'i') } }
+        ],
         transaction_date_time: {
           $gte: fromDateUTC,
           $lte: toDateUTC,
@@ -891,7 +923,12 @@ const searchMostAmountSpentPerVenue = async (
       }
     }
   ];
-  return BetModel.aggregate(pipeline);
+  const response = await BetModel.aggregate(pipeline);
+  const { paginatedResults, totalCount } = response[0];
+  return {
+    data: paginatedResults,
+    total_count: totalCount[0] && totalCount[0].count || 0,
+  };
 };
 
 module.exports = {
